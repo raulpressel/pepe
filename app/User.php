@@ -30,7 +30,7 @@ class User extends \TCG\Voyager\Models\User
     public function inscripcion () {
         return $this->hasOne(Inscipcione::Class);
     }
-
+    
 
 
 
