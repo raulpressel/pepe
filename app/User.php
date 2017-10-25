@@ -27,7 +27,10 @@ class User extends \TCG\Voyager\Models\User
         'password', 'remember_token',
     ];
 
- 
+    public function inscripcion () {
+        return $this->hasOne(Inscipcione::Class);
+    }
+
 
 
 

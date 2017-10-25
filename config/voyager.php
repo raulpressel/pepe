@@ -105,8 +105,8 @@ return [
     |
     */
 
-    'prefix' => 'admin',
-
+    //'prefix' => 'admin',
+    'prefix' => 'administracion',
     /*
     |--------------------------------------------------------------------------
     | Multilingual configuration
