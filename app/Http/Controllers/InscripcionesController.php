@@ -261,7 +261,32 @@ public function edit(Request $request, $id)
      */
     public function update(Request $request, $id)
     {
-        //
+         $slug = $this->getSlug($request);
+
+        $dataType = Voyager::model('DataType')->where('slug', '=', $slug)->first();
+
+        $data = call_user_func([$dataType->model_name, 'findOrFail'], $id);
+
+        // Check permission
+        $this->authorize('edit', $data);
+
+        // Validate fields with ajax
+        $val = $this->validateBread($request->all(), $dataType->editRows);
+
+        if ($val->fails()) {
+            return response()->json(['errors' => $val->messages()]);
+        }
+
+        if (!$request->ajax()) {
+            $this->insertUpdateData($request, $slug, $dataType->editRows, $data);
+
+            return redirect()
+                ->route("voyager.{$dataType->slug}.index")
+                ->with([
+                    'message'    => __('voyager.generic.successfully_updated')." {$dataType->display_name_singular}",
+                    'alert-type' => 'success',
+                ]);
+        }
     }
 
     /**
@@ -272,6 +297,86 @@ public function edit(Request $request, $id)
      */
     public function destroy($id)
     {
-        //
+         $slug = $this->getSlug($request);
+
+        $dataType = Voyager::model('DataType')->where('slug', '=', $slug)->first();
+
+        // Check permission
+        $this->authorize('delete', app($dataType->model_name));
+
+        // Init array of IDs
+        $ids = [];
+        if (empty($id)) {
+            // Bulk delete, get IDs from POST
+            $ids = explode(',', $request->ids);
+        } else {
+            // Single item delete, get ID from URL
+            $ids[] = $id;
+        }
+        foreach ($ids as $id) {
+            $data = call_user_func([$dataType->model_name, 'findOrFail'], $id);
+            $this->cleanup($dataType, $data);
+        }
+
+        $displayName = count($ids) > 1 ? $dataType->display_name_plural : $dataType->display_name_singular;
+
+        $data = $data->destroy($ids)
+            ? [
+                'message'    => __('voyager.generic.successfully_deleted')." {$displayName}",
+                'alert-type' => 'success',
+            ]
+            : [
+                'message'    => __('voyager.generic.error_deleting')." {$displayName}",
+                'alert-type' => 'error',
+            ];
+
+        return redirect()->route("voyager.{$dataType->slug}.index")->with($data);
+    }
+protected function cleanup($dataType, $data)
+    {
+        // Delete Translations, if present
+        if (is_bread_translatable($data)) {
+            $data->deleteAttributeTranslations($data->getTranslatableAttributes());
+        }
+
+        // Delete Images
+        $this->deleteBreadImages($data, $dataType->deleteRows->where('type', 'image'));
+
+        // Delete Files
+        foreach ($dataType->deleteRows->where('type', 'file') as $row) {
+            foreach (json_decode($data->{$row->field}) as $file) {
+                $this->deleteFileIfExists($file->download_link);
+            }
+        }
+    }
+
+    /**
+     * Delete all images related to a BREAD item.
+     *
+     * @param \Illuminate\Database\Eloquent\Model $data
+     * @param \Illuminate\Database\Eloquent\Model $rows
+     *
+     * @return void
+     */
+    public function deleteBreadImages($data, $rows)
+    {
+        foreach ($rows as $row) {
+            $this->deleteFileIfExists($data->{$row->field});
+
+            $options = json_decode($row->details);
+
+            if (isset($options->thumbnails)) {
+                foreach ($options->thumbnails as $thumbnail) {
+                    $ext = explode('.', $data->{$row->field});
+                    $extension = '.'.$ext[count($ext) - 1];
+
+                    $path = str_replace($extension, '', $data->{$row->field});
+
+                    $thumb_name = $thumbnail->name;
+
+                    $this->deleteFileIfExists($path.'-'.$thumb_name.$extension);
+                }
+            }
+        }
     }
 }
