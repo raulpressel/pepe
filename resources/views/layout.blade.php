@@ -2,13 +2,20 @@
 <html lang="es">
 <head>
 	<meta charset="UTF-8">
-	<link rel="stylesheet" href="/css/app.css">
-	<link rel="stylesheet" href="/css/owlcarousel/owl.carousel.min.css">
-	<link rel="stylesheet" href="/css/owlcarousel/owl.theme.default.min.css">
+	<link href='https://fonts.googleapis.com/css?family=Lato:300,400,700,400italic,300italic' rel='stylesheet' type='text/css'>
+	<link rel="stylesheet" href="../css/app.css">
+	<link rel="stylesheet" href="../css/docs.theme.min.css">
+	<link rel="stylesheet" href="../owlcarousel/assets/owl.carousel.min.css">
+	<link rel="stylesheet" href="../owlcarousel/assets/owl.theme.default.min.css">
+
 	<title>Inicio</title>
+
+		<script src="../js/jquery.min.js"></script>
+		<script src="../owlcarousel/owl.carousel.js"></script>
+	
 </head>
 <body>
-	<header>
+	<header class="header">
 		<nav class="navbar navbar-default" role="navigation">
  		<div class="container">
  			<!-- Brand and toggle get grouped for better mobile display -->
@@ -51,20 +58,85 @@
  			</div><!-- /.navbar-collapse -->
  		</div>
  		</nav>
-		
-	<div class="owl-carousel">
-	  <div><img src="/img/logo.JPG" ></div>
-	  <div><img src="/img/facefcyt.jpg" ></div>
-	  <div><img src="/img/canalyoutube.jpg" ></div>
-	</div> 
 	</header>
+	  
 
-	
+
+    <section id="demos">
+      <div class="row">
+        <div class="large-12 columns">
+          <div class="owl-carousel owl-theme">
+            <div class="item">
+              <h4>1</h4><img src="../img/drag.png">
+            </div>
+            <div class="item">
+              <h4>2</h4><img src="../img/logo.png">
+            </div>
+            <div class="item"><img src="../img/responsive.png">
+              <h4>3</h4>
+            </div>
+            <div class="item"><img src="../img/zombie.png">
+              <h4>4</h4>
+            </div>
+            <div class="item"><img src="../img/zombie.png">
+              <h4>4</h4>
+            </div>
+            <div class="item"><img src="../img/zombie.png">
+              <h4>4</h4>
+            </div>
+            <div class="item"><img src="../img/zombie.png">
+              <h4>4</h4>
+            </div>
+            <div class="item"><img src="../img/zombie.png">
+              <h4>4</h4>
+            </div>
+            <div class="item"><img src="../img/zombie.png">
+              <h4>4</h4>
+            </div>
+            <div class="item"><img src="../img/zombie.png">
+              <h4>4</h4>
+            </div>
+            <div class="item"><img src="../img/zombie.png">
+              <h4>4</h4>
+            </div>
+          </div>
+          
+          <script>
+            $(document).ready(function() {
+              $('.owl-carousel').owlCarousel({
+                loop: true,
+                margin: 10,
+                responsiveClass: true,
+                autoWidth:true,
+                autoplay:false,
+				autoplayTimeout:5000,
+				autoplayHoverPause:false,
+                responsive: {
+                  0: {
+                    items: 2,
+                    nav: true
+                  },
+                  600: {
+                    items: 3,
+                    nav: false
+                  },
+                  1000: {
+                    items: 5,
+                    nav: true,
+                    loop: false,
+                    margin: 20
+                  }
+                }
+              })
+            })
+          </script>
+        </div>
+      </div>
+    </section>
 
 		<div class="container">
 
-		@yield('contenido')	
-
+		
 		<form class="form-horizontal" method="POST" action="{{ route('login') }}">
                         {{ csrf_field() }}
 
@@ -120,9 +192,7 @@
                     </form>
 
 
-
-
-
+		@yield('contenido')	
 
 
 
@@ -144,8 +214,10 @@
 				
 		</div>
 		
-		<script src="/js/jquery.min.js"></script>
-		<script src="/js/owlcarousel/owl.carousel.min.js"></script>
+		
+
+		
+    	<script src="../js/app.js"></script>
 
 	</body>
 
