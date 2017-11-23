@@ -32,6 +32,11 @@ class User extends \TCG\Voyager\Models\User
     }
     
 
-
+      public function id () {
+        return $this->hasOne(DatosPersona::Class);
+    }
+      public function name () {
+        return $this->hasOne(DatosPersona::Class);
+    }
 
 }

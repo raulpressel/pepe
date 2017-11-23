@@ -27,3 +27,9 @@ Auth::routes();
 Route::get('/home', 'HomeController@index')->name('home');
 
 
+/*Esto es el restfull de datos*/
+
+Route::resource('datospersona', 'DatosPersonaController');
+Auth::routes();
+
+Route::get('/home', 'HomeController@index')->name('home');

@@ -36,7 +36,7 @@
 					<li class="">
 						<a href="{{ route('home') }}">Inicio</a></li>
 					<li class="" >
-						<a href="">Saludos</a></li>
+						<a href="{{route ('register')}}">Registrate!</a></li>
 					
  				</ul>
  				
@@ -74,12 +74,6 @@
             </div>
             <div class="item"><img src="../img/responsive.png">
               <h4>3</h4>
-            </div>
-            <div class="item"><img src="../img/zombie.png">
-              <h4>4</h4>
-            </div>
-            <div class="item"><img src="../img/zombie.png">
-              <h4>4</h4>
             </div>
             <div class="item"><img src="../img/zombie.png">
               <h4>4</h4>
