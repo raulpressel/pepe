@@ -54,21 +54,20 @@
 	@foreach($datos as $dato)
 
  		<tr>
-					<td>{{ $datos->id }}</td>
-					<td>{{ $datos->name }}</td>
-					<td>{{ $datos->email }}</td>
+					<td>{{ $dato->id }}</td>
+					<td>{{ $dato->user_name }}</td>
+					
 					<td>
 				@endforeach
 
 
 		@foreach($users as $user)
-					<td>{{ $users->id }}</td>
-					<td>{{ $users->name }}</td>
-					<td>{{ $users->email }}</td>
+					<td>{{ $user->id }}</td>
+					<td>{{ $user->name }}</td>
+					<td>{{ $user->email }}</td>
 					<td>
 				@endforeach
-            {!! Form::submit('Enviar',['class'=>'btn waves-effect']) !!}
-            {!! Form::close() !!}
+            
         </div>
  
     </div>

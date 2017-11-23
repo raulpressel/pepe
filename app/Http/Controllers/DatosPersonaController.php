@@ -41,7 +41,10 @@ class DatosPersonaController extends Controller
      */
     public function create()
     {
-        return view ('datospersona.create');
+        $datos = DatosPersona::with(['user_name', 'user_id'])->get();
+        $users = User::with(['id', 'name'])->get();
+        
+        return view ('datospersona.create', compact('datos', 'users'));
         
     }
 

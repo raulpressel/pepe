@@ -4,4 +4,5 @@
 	<h1>Listado de todos los usuarios</h1>
 	@foreach($datos as $dato)
 		<p>{{ $dato->user_name }}</p>
+		
 	@endforeach
