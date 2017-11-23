@@ -25,7 +25,7 @@ class DatosPersonaController extends Controller
     {
 
 
-        $datos = DatosPersona::with(['user_name', 'user_id']);
+        $datos = DatosPersona::with(['user_name', 'user_id'])->get();
 
         
         return view('datospersona.index', compact('datos')) ;

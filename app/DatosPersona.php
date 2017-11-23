@@ -17,9 +17,14 @@ class DatosPersona extends Model
 		return $this->belongsTo(Beca::class);
 	}*/
 
-     public function id()
+     public function user_id()
     {
-        return $this->hasMany(User::class);
+        return $this->belongsTo(User::class);
+    }
+
+    public function user_name()
+    {
+        return $this->belongsTo(User::class);
     }
 }
 
