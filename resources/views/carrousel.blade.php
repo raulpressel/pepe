@@ -1,9 +1,3 @@
-@extends('layout')
-
-@section('contenido')
-
-
-
 <section id="demos">
       <div class="row">
         <div class="large-12 columns">
@@ -69,5 +63,3 @@
         </div>
       </div>
     </section>
-
-@stop

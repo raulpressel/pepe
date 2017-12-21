@@ -1,3 +1,6 @@
+@extends('layout')
+
+@section('contenido')
 
  
 {{ Form::open(array('route' => 'datospersona.store', 'method' => 'POST')) }}

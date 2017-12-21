@@ -1,3 +1,4 @@
+@include ('layout')
 <h1>hola desde el index</h1>
 
 

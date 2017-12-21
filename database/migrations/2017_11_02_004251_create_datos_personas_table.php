@@ -16,9 +16,9 @@ class CreateDatosPersonasTable extends Migration
         Schema::create('datos_personas', function (Blueprint $table) {
             $table->increments('id');
             $table->integer('user_id')->unsigned();
-            $table->foreign('user_id')->references('id')->on('users');
+            $table->foreign('user_id')->references('id')->on('users'); //oculto    
             $table->string('user_name');
-            $table->foreign('user_name')->references('name')->on('users');
+            $table->foreign('user_name')->references('name')->on('users'); //oculto
             $table->string('carrera_id');
             $table->date('anio_ingreso');
             $table->date('anio_carrera');
