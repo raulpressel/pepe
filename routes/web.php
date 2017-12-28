@@ -21,9 +21,6 @@ Route::group(['prefix' => 'administracion'], function () {
 });
 Route::get('login', ['as' => 'login', 'uses'=>'Auth\LoginController@showLoginForm']);
 
-
-Auth::routes();
-
 Route::get('/home', 'HomeController@index')->name('home');
 
 

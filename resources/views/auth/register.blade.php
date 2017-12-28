@@ -65,11 +65,11 @@
 
 
 
-                        <div class="form-group{{ $errors->has('name') ? ' has-error' : '' }}">
+                        <div class="form-group{{ $errors->has('dni') ? ' has-error' : '' }}">
                             <label for="name" class="col-md-4 control-label">Dni / Pasaporte</label>
 
                             <div class="col-md-6">
-                                <input id="name" type="text" class="form-control" name="dni" value="{{ old('dni') }}" required autofocus>
+                                <input id="dni" type="text" class="form-control" name="dni" value="{{ old('dni') }}" required autofocus>
 
                                 @if ($errors->has('dni'))
                                     <span class="help-block">

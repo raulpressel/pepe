@@ -31,18 +31,18 @@
  					<span class="icon-bar"></span>
  					<span class="icon-bar"></span>
  				</button>
- 				<a class="navbar-brand" href="#">SIGAB</a>
+ 				<a class="navbar-brand" href="/">SIGAB</a>
  			</div>
  	
  			<!-- Collect the nav links, forms, and other content for toggling -->
- 			<!-- <div class="collapse navbar-collapse navbar-ex1-collapse">
+ 			<div class="collapse navbar-collapse navbar-ex1-collapse">
  				<ul class="nav navbar-nav">
 					<li class="">
 						<a href="{{ route('home') }}">Inicio</a></li>
 					<li class="" >
 						<a href="{{route ('register')}}">Registrate!</a></li>
 					
- 				</ul> -->
+ 				</ul> 
  				
  				<ul class="nav navbar-nav navbar-right">
  					
@@ -66,39 +66,11 @@
 	  
 
 
-    
-		
-
-		
-		
 
 		@yield('contenido')	
 
-
-
-			
-
-		<div class="container">		
-					<center>
-						<table>
-							<tbody>
-								<tr>
-									<td align="center"><p>Facultad de Ciencia y Tecnologia - UADER</p></td>
-								</tr>
-								<tr>
-									<td align="center"><p><a href="http://fcyt.uader.edu.ar">fcyt.uader.edu.ar</a></p></td>
-								</tr>
-							</tbody>
-						</table>
-					</center>
-				
-		</div>
-		
-		
-
-		
-    	<script src="../js/app.js"></script>
-
+	@include('footer')
+		<script src="../js/app.js"></script>
 	</body>
 
 	</html>

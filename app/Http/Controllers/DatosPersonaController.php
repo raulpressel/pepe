@@ -10,8 +10,9 @@ use App\User;
 use DB;
 
 use Carbon\Carbon;
-
+use Illuminate\Support\Facades\Validator;
 use  Illuminate\Database\Eloquent\Model;
+use App\Http\Requests\CrearDatosPersona;
 
 
 class DatosPersonaController extends Controller
@@ -21,6 +22,16 @@ class DatosPersonaController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
+
+    public function __construct()
+    {
+        $this->middleware('auth'); //solo logeados acceden
+        $this->middleware('datosp', ['only' => ['create', 'store', 'index']]); //intercepta only o except
+    }
+
+
+
+
     public function index()
     {
 
@@ -54,9 +65,11 @@ class DatosPersonaController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(CrearDatosPersona $request)
     {
-        return Input::all();
+        dd('Hi');
+
+        return  $request->all();
         
           /*  $datos = DatosPersona::create($request->all());
 

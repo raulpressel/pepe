@@ -15,6 +15,10 @@ class DatosPersonaMiddleware
      */
     public function handle($request, Closure $next)
     {
-        return $next($request);
+        if (true) {
+            return $next($request);
+        }
+        return response('No puedes continuar', 404);
+        
     }
 }

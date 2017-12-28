@@ -1,8 +1,4 @@
-
-
-  {{ csrf_field() }}
-  
-  <div class="container">
+  <div class="container"> <!!Esto se puede cambiar  o la de abajo!!>
   <div class="row">
     <section>
         <div class="wizard">
@@ -82,19 +78,33 @@
                     </li>
                 </ul>
             </div>
-            <form role="form">
-              @include('datospersona.steps.datos_estudiante')
-              @include('datospersona.steps.situacion_academica')
-              @include('datospersona.steps.situacion_economica_estudiante')
-              @include('datospersona.steps.vivienda_cursado')
-              @include('datospersona.steps.viaja_cursar')
-              @include('datospersona.steps.grupo_familiar')
-              @include('datospersona.steps.patrimonio_familiar')
-              @include('datospersona.steps.consideraciones_particulares')
-              @include('datospersona.steps.enviar')
-              
 
-            </form>
+            <!!Esto es para los errores!!>
+            @if ($errors->any())
+            <div class="alert alert-danger" role="alert">
+              <p>Porfavor corrije los siguientes errores:</p>
+              <ul>
+                @foreach($errors->all() as $error)
+                <li>{{ $error }}</li>
+                @endforeach
+              </ul>
+              @endif
+            </div>
+
+              <form method="POST" action="{{ route('datospersona.store') }}">
+              {{ csrf_field() }}
+                @include('datospersona.steps.datos_estudiante')
+                @include('datospersona.steps.situacion_academica')
+                @include('datospersona.steps.situacion_economica_estudiante')
+                @include('datospersona.steps.vivienda_cursado')
+                @include('datospersona.steps.viaja_cursar')
+                @include('datospersona.steps.grupo_familiar')
+                @include('datospersona.steps.patrimonio_familiar')
+                @include('datospersona.steps.consideraciones_particulares')
+                @include('datospersona.steps.enviar')
+               </form>
+
+              </div>
     
           <script>
               $(document).ready(function () {
@@ -140,6 +150,3 @@
 
 
 
-{{ Form::close() }}
-
-@stop
