@@ -69,5 +69,6 @@
         </div>
       </div>
     </section>
+@include('footer')
 
 @stop

@@ -8,7 +8,7 @@
             <div class="item">
               <h4>2</h4><img src="../img/logo.png">
             </div>
-            <div class="item"><img src="../img/responsive.png">
+            <div class="item"><img src="img/becas.jpg" width="100%">
               <h4>3</h4>
             </div>
             <div class="item"><img src="../img/zombie.png">

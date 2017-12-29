@@ -1,6 +1,5 @@
-@extends('layouts.app')
+@include('layout')
 
-@section('content')
 <div class="container">
     <div class="row">
         <div class="col-md-8 col-md-offset-2">
@@ -43,7 +42,7 @@
                             <div class="col-md-6 col-md-offset-4">
                                 <div class="checkbox">
                                     <label>
-                                        <input type="checkbox" name="remember" {{ old('remember') ? 'checked' : '' }}> Remember Me
+                                        <input type="checkbox" name="remember" {{ old('remember') ? 'checked' : '' }}> Recordar mis datos
                                     </label>
                                 </div>
                             </div>
@@ -56,7 +55,7 @@
                                 </button>
 
                                 <a class="btn btn-link" href="{{ route('password.request') }}">
-                                    Forgot Your Password?
+                                    Olvidaste tu passoword?
                                 </a>
                             </div>
                         </div>
@@ -65,5 +64,6 @@
             </div>
         </div>
     </div>
+
+@include('footer')
 </div>
-@endsection
