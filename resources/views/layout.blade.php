@@ -38,17 +38,38 @@
  			<div class="collapse navbar-collapse navbar-ex1-collapse">
  				<ul class="nav navbar-nav">
 					<li class="">
-						<a href="{{ route('home') }}">Inicio</a></li>
+						<a href="/">Inicio</a></li>
+                        @if(auth()->check())
 					<li class="" >
 						<a href="/administracion">Administracion de beca</a></li>
-					
- 				</ul> 
+                        @endif
+
+                    <li class="dropdown">
+                            <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">Informacion sobre Becas</a>
+                            <ul class="dropdown-menu" role="menu">
+                                    <li><a href="/seleccionados_2017">Seleccion de Becados 2017</a></li>
+                                    <li><a href="/requisitos" >Requisitos para la Inscripcion a la Beca</a></li>
+                                    <li><a href="/formulario">Formulario para imprimir</a></li>
+                            </ul>
+                    </li>
+                    <li class="dropdown">
+                            <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">Sitios de interes</a>
+                            <ul class="dropdown-menu" role="menu">
+                                    <li><a href="http://www.uader.com.ar">Sitio institucional Uader</a></li>
+                                    <li><a href="http://fcyt.uader.edu.ar">Sede FCyT</a></li>
+                                    <li><a href="/" >Nose</a></li>
+                                    <li><a href="/" >Nose2</a></li>                
+                            </ul>
+                    </li>
+                    <li class="" >
+                        <a href="/contacto">Contacto</a></li>
+                </ul>					 
  				
  				<ul class="nav navbar-nav navbar-right">
                         <!-- Authentication Links -->
                         @guest
                             <li><a href="{{ route('login') }}">Login</a></li>
-                            <li><a href="{{ route('register') }}">Register</a></li>
+                            <li><a href="{{ route('register') }}">Registrarse</a></li>
                         @else
                             <li class="dropdown">
                                 <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
@@ -67,6 +88,7 @@
                                             {{ csrf_field() }}
                                         </form>
                                     </li>
+                                    <li><a href="/administracion/profile">Editar perfil</a></li>
                                 </ul>
                             </li>
                         @endguest
@@ -76,13 +98,11 @@
  		</nav>
 	</header>
 	  
-
-
-
 		@yield('contenido')	
 
-	
 		<script src="../js/app.js"></script>
 	</body>
 
 	</html>
+
+

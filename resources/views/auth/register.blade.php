@@ -4,28 +4,15 @@
     <div class="row">
         <div class="col-md-8 col-md-offset-2">
             <div class="panel panel-default">
-                <div class="panel-heading">Registro</div>
-
+                <div class="panel-heading">Complete los datos para el registro</div>
                 <div class="panel-body">
+                <h5>Datos para el login: </h5>
+
                     <form class="form-horizontal" method="POST" action="{{ route('register') }}">
                         {{ csrf_field() }}
 
-                        <div class="form-group{{ $errors->has('name') ? ' has-error' : '' }}">
-                            <label for="name" class="col-md-4 control-label">Nombre</label>
-
-                            <div class="col-md-6">
-                                <input id="name" type="text" class="form-control" name="name" value="{{ old('name') }}" required autofocus>
-
-                                @if ($errors->has('name'))
-                                    <span class="help-block">
-                                        <strong>{{ $errors->first('name') }}</strong>
-                                    </span>
-                                @endif
-                            </div>
-                        </div>
-
                         <div class="form-group{{ $errors->has('email') ? ' has-error' : '' }}">
-                            <label for="email" class="col-md-4 control-label"> Introduce tu E-Mail </label>
+                            <label for="email" class="col-md-4 control-label"> Direccion de E-Mail </label>
 
                             <div class="col-md-6">
                                 <input id="email" type="email" class="form-control" name="email" value="{{ old('email') }}" required>
@@ -60,12 +47,42 @@
                             </div>
                         </div>
 
-                        <h2>Datos Personales para la beca</h2>
+                       <h5>Datos Personales para la beca</h5>
+
+
+                         <div class="form-group{{ $errors->has('name') ? ' has-error' : '' }}">
+                            <label for="name" class="col-md-4 control-label">Nombre</label>
+
+                            <div class="col-md-6">
+                                <input id="name" type="text" class="form-control" name="name" value="{{ old('name') }}" required autofocus>
+
+                                @if ($errors->has('name'))
+                                    <span class="help-block">
+                                        <strong>{{ $errors->first('name') }}</strong>
+                                    </span>
+                                @endif
+                            </div>
+                        </div>
+
+
+                         <div class="form-group{{ $errors->has('apellido') ? ' has-error' : '' }}">
+                            <label for="apellido" class="col-md-4 control-label">Ingrese su apellido</label>
+
+                            <div class="col-md-6">
+                                <input id="apellido" type="text" class="form-control" name="apellido" value="{{ old('apellido') }}" required>
+
+                                @if ($errors->has('apellido'))
+                                    <span class="help-block">
+                                        <strong>{{ $errors->first('apellido') }}</strong>
+                                    </span>
+                                @endif
+                            </div>
+                        </div>
 
 
 
                         <div class="form-group{{ $errors->has('dni') ? ' has-error' : '' }}">
-                            <label for="name" class="col-md-4 control-label">Dni / Pasaporte</label>
+                            <label for="dni" class="col-md-4 control-label">Dni / Pasaporte</label>
 
                             <div class="col-md-6">
                                 <input id="dni" type="text" class="form-control" name="dni" value="{{ old('dni') }}" required autofocus>
