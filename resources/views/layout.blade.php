@@ -2,8 +2,10 @@
 <html lang="es">
 <head>
 	<meta charset="UTF-8">
+
   <link href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.0/css/bootstrap.min.css" rel="stylesheet">
 	
+  <link rel="stylesheet" href="../css/validation.css">
   <link rel="stylesheet" href="../css/app.css">
 	<link rel="stylesheet" href="../css/docs.theme.min.css">
 	<link rel="stylesheet" href="../owlcarousel/assets/owl.carousel.min.css">

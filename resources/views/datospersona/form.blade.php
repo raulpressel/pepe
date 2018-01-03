@@ -1,4 +1,4 @@
-  <div class="container"> <!!Esto se puede cambiar  o la de abajo!!>
+<div class="container"> <!!Esto se puede cambiar  o la de abajo!!>
   <div class="row">
     <section>
         <div class="wizard">
@@ -145,7 +145,7 @@
           </script>
           </div>
     </section>
-   </div>
+  </div>
 </div>
 
 
