@@ -29,4 +29,12 @@ Route::get('/home', 'HomeController@index')->name('home');
 Route::resource('datospersona', 'DatosPersonaController');
 Auth::routes();
 
-Route::get('/home', 'HomeController@index')->name('home');
+
+//Rutas para no logeados
+Route::get('contacto', function () {
+    return view('contacto');
+});
+Route::get('requisitos', function () {
+    return view('requisitos');
+});
+

@@ -2,8 +2,6 @@
 
 @section('contenido')
 
-
-
 <section id="demos">
       <div class="row">
         <div class="large-12 columns">
@@ -37,6 +35,10 @@
             </div>
           </div>
           
+
+<ul><h1>Bienvenidos al sitio web para la inscripcion de la Beca FCyT-Uader</h1>
+<p>Raul paga el asado</p></ul>
+
           <script>
             $(document).ready(function() {
               $('.owl-carousel').owlCarousel({
