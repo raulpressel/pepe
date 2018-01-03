@@ -185,17 +185,9 @@
         state = /^([a-zA-Z])+$/.test($(this).val())
                 }
         else if ($group.data('validate') == "radio") {
-          if (document.getElementById("Si").checked ? true : false) {
-            state = true;  
-          }
-          else if (document.getElementById("No").checked ? true : false){
-            state = true;    
-          }
-          else if (document.getElementById("Otros").checked ? true : false){
-            state = true;    
-          }
-          
-        
+            
+         state = $(this).prop('checked')===true;
+              
         }
         
 
