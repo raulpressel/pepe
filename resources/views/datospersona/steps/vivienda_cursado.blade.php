@@ -19,8 +19,8 @@
           <label for="validate-select">Casa de Familiares:</label>
           <br>
           <div class="input-group" data-validate="radio">
-              <input value="{{ old('casafam') }}" value="Si" type="radio" name="casafam" id="casafamSi"  required> Si 
-              <input value="{{ old('casafam') }}" value="No" type="radio" name="casafam" id="casafamNo" required> No <br>
+              <input value="Si" type="radio" name="casafam" id="casafamSi"  required> Si 
+              <input value="No" type="radio" name="casafam" id="casafamNo" required> No <br>
             <span class="input-group-addon danger"><span class="glyphicon glyphicon-remove"></span></span>
           </div>
         </div>
@@ -29,8 +29,8 @@
           <label for="validate-select">Alquila:</label>
           <br>
           <div class="input-group" data-validate="radio">
-              <input value="{{ old('alq') }}" value="Si" type="radio" name="alq" id="alqSi"  required> Si 
-              <input value="{{ old('alq') }}" value="No" type="radio" name="alq" id="alqNo" required> No <br>
+              <input value="Si" type="radio" name="alq" id="alqSi"  required> Si 
+              <input value="No" type="radio" name="alq" id="alqNo" required> No <br>
             <span class="input-group-addon danger"><span class="glyphicon glyphicon-remove"></span></span>
           </div>
         </div>

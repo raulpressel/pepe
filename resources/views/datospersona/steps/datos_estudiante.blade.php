@@ -58,7 +58,7 @@
         <div class="form-group">
           <label for="validate-select">Estado Civil:</label>
             <div class="input-group">
-                <select value="{{ old('estcivil') }}"  class="form-control" name="estcivil" id="estcivil" placeholder="Seleccione una opción" required>
+                <select  class="form-control" name="estcivil" id="estcivil" placeholder="Seleccione una opción" required>
                   <option value="">Seleccione una opción</option>
                   <option value="item_1">Soltero</option>
                   <option value="item_2">Casado</option>
@@ -131,7 +131,7 @@
         <div class="form-group">
         <label for="validate-phone">Celular:</label>
         <div class="input-group" data-validate="phone">
-        <input value="{{ old('cel') }}" type="text" class="form-control" name="cel" id="cel" placeholder="Ingrese solo numeros" >
+        <input value="{{ old('cel') }}" type="text" class="form-control" name="cel" id="cel" placeholder="Ingrese solo numeros" required >
         <span class="input-group-addon danger"><span class="glyphicon glyphicon-remove"></span></span>
         </div>
         </div>
@@ -161,7 +161,7 @@
 
 
         $(document).ready(function() {
-        $('.input-group input[required], .input-group input, .input-group textarea[required], .input-group select[required], input-group radio[required]').on('keyup change', function() {
+        $('.input-group input[required], .input-group textarea[required], .input-group select[required], input-group radio[required]').on('keyup change', function() {
         var $form = $(this).closest('form'),
         $group = $(this).closest('.input-group'),
         $addon = $group.find('.input-group-addon'),
@@ -186,7 +186,8 @@
                 }
         else if ($group.data('validate') == "radio") {
             
-         state = $(this).prop('checked')===true;
+         state = $(this).prop('checked') === true;
+
               
         }
         

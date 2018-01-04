@@ -23,7 +23,7 @@ class CrearDatosPersona extends FormRequest
      */
     public function rules()
     {
-        return [
+        return [/*
                 'apellido' => 'required|string',
                 'nombre' => 'required|string',
                 'dni' => 'required',
