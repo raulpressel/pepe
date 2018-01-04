@@ -12,7 +12,7 @@
           <div class="form-group">
               <label for="validate-letras">Motivos:</label>
                 <div class="input-group">
-                <input type="text-area" class="form-control" name="motivos" id="motivos" placeholder="Ingrese solo letras" required>
+                <input value="{{ old('motivos') }}" type="text-area" class="form-control" name="motivos" id="motivos" placeholder="Ingrese solo letras" required>
                 <span class="input-group-addon danger"><span class="glyphicon glyphicon-remove"></span></span>
             </div>
           </div>

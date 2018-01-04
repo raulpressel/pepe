@@ -11,16 +11,16 @@
             <div class="form-group">
               <label for="validate-letras">Apellidos:</label>
                 <div class="input-group" data-validate="letras">
-                <input type="text" class="form-control" name="apellido" id="apellido" placeholder="Ingrese solo letras" required>
+                <input value="{{ old('apellido') }}" type="text" class="form-control" name="apellido" id="apellido" placeholder="Ingrese solo letras" required>
                 <span class="input-group-addon danger"><span class="glyphicon glyphicon-remove"></span></span>
             </div>
-          </div>
+          </div>    
           <p><i>Ingrese solo letras</i></p>            
 
         <div class="form-group">
         <label for="validate-letras">Nombres:</label>
         <div class="input-group" data-validate="letras">
-        <input type="text" class="form-control" name="nombre" id="nombres" placeholder="Ingrese solo letras" required>
+        <input value="{{ old('nombre') }}" type="text" class="form-control" name="nombre" id="nombres" placeholder="Ingrese solo letras" required>
         <span class="input-group-addon danger"><span class="glyphicon glyphicon-remove"></span></span>
         </div>
 
@@ -30,7 +30,7 @@
         <div class="form-group">
         <label for="validate-number">DNI/Pasaporte N°:</label>
         <div class="input-group" data-validate="number">
-        <input type="text" class="form-control" name="dni" id="dni" placeholder="Ingrese solo numeros" required>
+        <input value="{{ old('dni') }}" type="text" class="form-control" name="dni" id="dni" placeholder="Ingrese solo numeros" required>
         <span class="input-group-addon danger"><span class="glyphicon glyphicon-remove"></span></span>
         </div>
         </div>             
@@ -38,17 +38,17 @@
 
 
         <div class="form-group">
-        <label for="validate-number">Ingresa la imagen del DNI:</label>
-        <div class="input-group">
-        {{ Form::file('image') }}
-        </div>
+          <label for="validate-number">Ingresa la imagen del DNI:</label>
+          <div class="input-group">
+            <input type="file" name='imagen_dni' accept=".jpg, .jpeg, .png" class="form-control" required>
+          </div>
         </div>
 
 
         <div class="form-group">
         <label for="validate-number">CUIL N°:</label>
         <div class="input-group" data-validate="number">
-        <input type="text" class="form-control" name="cuil" id="cuil" placeholder="Ingrese solo numeros" required>
+        <input value="{{ old('cuil') }}"  type="text" class="form-control" name="cuil" id="cuil" placeholder="Ingrese solo numeros" required>
         <span class="input-group-addon danger"><span class="glyphicon glyphicon-remove"></span></span>
         </div>
         </div>             
@@ -58,7 +58,7 @@
         <div class="form-group">
           <label for="validate-select">Estado Civil:</label>
             <div class="input-group">
-                <select class="form-control" name="estcivil" id="estcivil" placeholder="Seleccione una opción" required>
+                <select value="{{ old('estcivil') }}"  class="form-control" name="estcivil" id="estcivil" placeholder="Seleccione una opción" required>
                   <option value="">Seleccione una opción</option>
                   <option value="item_1">Soltero</option>
                   <option value="item_2">Casado</option>
@@ -74,7 +74,7 @@
         <div class="form-group">
         <label for="validate-date">Fecha de nacimiento:</label>
         <div class="input-group" data-validate="date">
-        <input type="date" class="form-control" name="cumple" id="cumple" required>
+        <input value="{{ old('cumple') }}" type="date" class="form-control" name="cumple" id="cumple" required>
         <span class="input-group-addon danger"><span class="glyphicon glyphicon-remove"></span></span>
         </div>
         </div>
@@ -82,7 +82,7 @@
         <div class="form-group">
         <label for="validate-text">Domicilio que figura en el DNI:</label>
         <div class="input-group">
-        <input type="text" class="form-control" name="domi" id="domi" placeholder="" required>
+        <input value="{{ old('domi') }}" type="text" class="form-control" name="domi" id="domi" placeholder="" required>
         <span class="input-group-addon danger"><span class="glyphicon glyphicon-remove"></span></span>
         </div>
         </div>
@@ -90,7 +90,7 @@
         <div class="form-group">
         <label for="validate-letras">Ciudad:</label>
         <div class="input-group" data-validate="letras">
-        <input type="text" class="form-control" name="ciudad" id="ciudad" placeholder="Ingrese solo letras" required>
+        <input value="{{ old('ciudad') }}" type="text" class="form-control" name="ciudad" id="ciudad" placeholder="Ingrese solo letras" required>
         <span class="input-group-addon danger"><span class="glyphicon glyphicon-remove"></span></span>
         </div>
 
@@ -101,7 +101,7 @@
         <div class="form-group">
         <label for="validate-number">Código Postal:</label>
         <div class="input-group" data-validate="number">
-        <input type="text" class="form-control" name="cp" id="cp" placeholder="Ingrese solo numeros" required>
+        <input value="{{ old('cp') }}" type="text" class="form-control" name="cp" id="cp" placeholder="Ingrese solo numeros" required>
         <span class="input-group-addon danger"><span class="glyphicon glyphicon-remove"></span></span>
         </div>
         </div>             
@@ -111,7 +111,7 @@
         <div class="form-group">
         <label for="validate-letras">Provincia:</label>
         <div class="input-group" data-validate="letras">
-        <input type="text" class="form-control" name="provincia" id="provincia" placeholder="Ingrese solo letras" required>
+        <input value="{{ old('provincia') }}" type="text" class="form-control" name="provincia" id="provincia" placeholder="Ingrese solo letras" required>
         <span class="input-group-addon danger"><span class="glyphicon glyphicon-remove"></span></span>
         </div>
 
@@ -121,7 +121,7 @@
         <div class="form-group">
         <label for="validate-letras">Nacionalidad:</label>
         <div class="input-group" data-validate="letras">
-        <input type="text" class="form-control" name="nacionalidad" id="nacionalidad" placeholder="Ingrese solo letras" required>
+        <input value="{{ old('nacionalidad') }}" type="text" class="form-control" name="nacionalidad" id="nacionalidad" placeholder="Ingrese solo letras" required>
         <span class="input-group-addon danger"><span class="glyphicon glyphicon-remove"></span></span>
         </div>
 
@@ -131,7 +131,7 @@
         <div class="form-group">
         <label for="validate-phone">Celular:</label>
         <div class="input-group" data-validate="phone">
-        <input type="text" class="form-control" name="cel" id="cel" placeholder="Ingrese solo numeros" required>
+        <input value="{{ old('cel') }}" type="text" class="form-control" name="cel" id="cel" placeholder="Ingrese solo numeros" >
         <span class="input-group-addon danger"><span class="glyphicon glyphicon-remove"></span></span>
         </div>
         </div>
@@ -141,7 +141,7 @@
         <div class="form-group">
         <label for="validate-email">E-mail:</label>
         <div class="input-group" data-validate="email">
-        <input type="text" class="form-control" name="validate-email" id="validate-email" placeholder="Ingrese un E-mail valido" required>
+        <input value="{{ old('email') }}" type="text" class="form-control" name="email" id="email" placeholder="Ingrese un E-mail valido" required>
         <span class="input-group-addon danger"><span class="glyphicon glyphicon-remove"></span></span>
         </div>
         </div>
@@ -150,7 +150,7 @@
         <div class="form-group">
         <label for="validate-optional">Facebook</label>
         <div class="input-group">
-        <input type="text" class="form-control" name="face" id="face" placeholder="Ingrese usuario de facebook">
+        <input value="{{ old('face') }}" type="text" class="form-control" name="face" id="face" placeholder="Ingrese usuario de facebook">
         <span class="input-group-addon info"><span class="glyphicon glyphicon-asterisk"></span></span>
         </div>
         </div>
@@ -161,7 +161,7 @@
 
 
         $(document).ready(function() {
-        $('.input-group input[required], .input-group textarea[required], .input-group select[required], input-group radio[required]').on('keyup change', function() {
+        $('.input-group input[required], .input-group input, .input-group textarea[required], .input-group select[required], input-group radio[required]').on('keyup change', function() {
         var $form = $(this).closest('form'),
         $group = $(this).closest('.input-group'),
         $addon = $group.find('.input-group-addon'),

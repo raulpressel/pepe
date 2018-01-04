@@ -11,8 +11,8 @@
           <label for="validate-select">Trabaja</label>
           <br>
           <div class="input-group" data-validate="radio">
-              <input  type="radio" name="trabaja" id="trabajaSi"  required> Si 
-              <input  type="radio" name="trabaja" id="trabajaNo" required> No <br>
+              <input value="{{ old('trabaja') }}" value="Si" type="radio" name="trabaja" id="trabajaSi"  required> Si 
+              <input value="{{ old('trabaja') }}" value="No" type="radio" name="trabaja" id="trabajaNo" required> No <br>
             <span class="input-group-addon danger"><span class="glyphicon glyphicon-remove"></span></span>
           </div>
         </div>
@@ -20,7 +20,7 @@
         <div class="form-group">
           <label for="validate-number">Ingresos Propios (Mensuales) $:</label>
           <div class="input-group" data-validate="number">
-            <input type="text" class="form-control" name="sueldo" id="sueldo" placeholder="Ingrese solo numeros" required>
+            <input value="{{ old('sueldo}') }}" type="text" class="form-control" name="sueldo" id="sueldo" placeholder="Ingrese solo numeros" required>
             <span class="input-group-addon danger"><span class="glyphicon glyphicon-remove"></span></span>
           </div>
         </div>             
@@ -30,8 +30,8 @@
           <label for="validate-select">Tiene Becas:</label>
           <br>
           <div class="input-group" data-validate="radio">
-              <input  type="radio" name="beca" id="becaSi"  required> Si
-              <input  type="radio" name="beca" id="becaNo" required> No <br>
+              <input value="{{ old('beca') }}" value="Si" type="radio" name="beca" id="becaSi"  required> Si
+              <input value="{{ old('beca') }}" value="No" type="radio" name="beca" id="becaNo" required> No <br>
             <span class="input-group-addon danger"><span class="glyphicon glyphicon-remove"></span></span>
           </div>
         </div>
@@ -40,8 +40,8 @@
           <label for="validate-select">PROGRESAR:</label>
           <br>
           <div class="input-group" data-validate="radio">
-              <input  type="radio" name="pasan" id="pasanSi"  required> Si
-              <input  type="radio" name="pasan" id="pasanNo" required> No <br>
+              <input value="{{ old('pasan') }}" value="Si" type="radio" name="pasan" id="pasanSi"  required> Si
+              <input value="{{ old('pasan') }}" value="No" type="radio" name="pasan" id="pasanNo" required> No <br>
             <span class="input-group-addon danger"><span class="glyphicon glyphicon-remove"></span></span>
           </div>
         </div>
@@ -50,8 +50,8 @@
           <label for="validate-select">Asignación Universal por Hijo:</label>
           <br>
           <div class="input-group" data-validate="radio">
-              <input  type="radio" name="asig" id="asigSi"  required> Si
-              <input  type="radio" name="asig" id="asigNo" required> No <br>
+              <input value="{{ old('asig') }}" value="Si" type="radio" name="asig" id="asigSi"  required> Si
+              <input value="{{ old('asig') }}" value="No" type="radio" name="asig" id="asigNo" required> No <br>
             <span class="input-group-addon danger"><span class="glyphicon glyphicon-remove"></span></span>
           </div>
         </div>
@@ -59,7 +59,7 @@
         <div class="form-group">
         <label for="validate-optional">Otros Ingresos:</label>
         <div class="input-group">
-        <input type="text-area" class="form-control" name="otrosing" id="otrosing" placeholder="Campo opcional">
+        <input value="{{ old('otrosing') }}" type="text-area" class="form-control" name="otrosing" id="otrosing" placeholder="Campo opcional">
         <span class="input-group-addon info"><span class="glyphicon glyphicon-asterisk"></span></span>
         </div>
         </div>
