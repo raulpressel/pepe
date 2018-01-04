@@ -68,6 +68,7 @@ class DatosPersonaController extends Controller
     public function store(CrearDatosPersona $request)
     {
        
+        
 
         return  $request->all();
         
