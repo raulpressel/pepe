@@ -6,6 +6,7 @@
   <link href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.0/css/bootstrap.min.css" rel="stylesheet">
 	
   <link rel="stylesheet" href="../css/validation.css">
+  <link rel="stylesheet" href="../css/accordion.css">
   <link rel="stylesheet" href="../css/app.css">
 	<link rel="stylesheet" href="../css/docs.theme.min.css">
 	<link rel="stylesheet" href="../owlcarousel/assets/owl.carousel.min.css">
@@ -15,7 +16,8 @@
 
 		
     <script src="../js/jquery.min.js"></script>
-		<script src="../owlcarousel/owl.carousel.js"></script>
+    <script src="http://code.jquery.com/jquery-1.11.1.min.js"></script>
+    <script src="../owlcarousel/owl.carousel.js"></script>
     <script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.0/js/bootstrap.min.js"></script>
 
 	

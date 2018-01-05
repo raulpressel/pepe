@@ -8,14 +8,14 @@
 
         <div class="col-sm-offset-2 col-sm-5">
           
-            <div class="form-group">
-              <label for="validate-letras">Apellidos:</label>
-                <div class="input-group" data-validate="letras">
+        <div class="form-group">
+            <label for="validate-letras">Apellidos:</label>
+            <div class="input-group" data-validate="letras">
                 <input value="{{ old('apellido') }}" type="text" class="form-control" name="apellido" id="apellido" placeholder="Ingrese solo letras" required>
                 <span class="input-group-addon danger"><span class="glyphicon glyphicon-remove"></span></span>
             </div>
-          </div>    
-          <p><i>Ingrese solo letras</i></p>            
+        </div>    
+        <p><i>Ingrese solo letras</i></p>            
 
         <div class="form-group">
         <label for="validate-letras">Nombres:</label>
@@ -60,10 +60,10 @@
             <div class="input-group">
                 <select  class="form-control" name="estcivil" id="estcivil" placeholder="Seleccione una opción" required>
                   <option value="">Seleccione una opción</option>
-                  <option value="item_1">Soltero</option>
-                  <option value="item_2">Casado</option>
-                  <option value="item_3">Divorciado</option>
-                  <option value="item_4">Viudo</option>
+                  <option value="soltero">Soltero</option>
+                  <option value="casado">Casado</option>
+                  <option value="divorciado">Divorciado</option>
+                  <option value="viudo">Viudo</option>
                 </select>
               <span class="input-group-addon danger"><span class="glyphicon glyphicon-remove"></span></span>
             </div>
@@ -159,7 +159,7 @@
 
         <script>
 
-
+        
         $(document).ready(function() {
         $('.input-group input[required], .input-group textarea[required], .input-group select[required], input-group radio[required]').on('keyup change', function() {
         var $form = $(this).closest('form'),
@@ -214,7 +214,7 @@
 
         $('.input-group input[required], .input-group textarea[required], .input-group select[required]').trigger('change');
 
-
+               
         });
 
 
