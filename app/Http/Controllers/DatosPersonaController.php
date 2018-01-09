@@ -13,6 +13,7 @@ use Carbon\Carbon;
 use Illuminate\Support\Facades\Validator;
 use  Illuminate\Database\Eloquent\Model;
 use App\Http\Requests\CrearDatosPersona;
+use Auth;
 
 
 class DatosPersonaController extends Controller
@@ -34,12 +35,12 @@ class DatosPersonaController extends Controller
 
     public function index()
     {
-
-
         $datos = DatosPersona::with(['user_name', 'user_id'])->get();
-
+        $user = Auth::user(); 
+        $carrera = DB::table('carreras')->get();
         
-        return view('datospersona.index', compact('datos')) ;
+        
+        return view('datospersona.index', compact('datos','user','carrera')) ;
 
         
         
@@ -53,9 +54,8 @@ class DatosPersonaController extends Controller
     public function create()
     {
         $datos = DatosPersona::with(['user_name', 'user_id'])->get();
-        $users = User::with(['id', 'name'])->get();
-        
-        return view ('datospersona.create', compact('datos', 'users'));
+        $user = Auth::user();
+        return view ('datospersona.create', compact('datos', 'user'));
         
     }
 
@@ -67,15 +67,12 @@ class DatosPersonaController extends Controller
      */
     public function store(CrearDatosPersona $request)
     {
-       
-        
 
-        return  $request->all();
         
-          /*  $datos = DatosPersona::create($request->all());
+            $datos = DatosPersona::create($request->all());
 
             if (auth()->check()) {
-                auth()->user()->messages()->save($datos);
+                auth()->user()->datos()->save($datos);
             }
 
             event(new MessageWasReceived($datos));
@@ -83,8 +80,7 @@ class DatosPersonaController extends Controller
         //esta forma sirve cuando sabemos que siempre tenemos un usario autenticado
         //auth()->user()->messages()->create($request->all());
 
-        return redirect()->route('datospersona.create')->with('info', 'Hemos recibido tu mensaje'); 
-        */
+        return redirect()->route('datospersona.create')->with('info', 'Hemos recibido tu inscripcion');
     }
 
     /**
