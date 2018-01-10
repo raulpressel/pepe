@@ -20,4 +20,10 @@
 	@endforeach
 </select>
 
-{{dd($carrera)}}
+
+<form>
+@foreach($carrera as $carreras)
+<label>asd</label>
+<input type="text" name="pepe[{{$carreras->id}}]">
+@endforeach
+</form>

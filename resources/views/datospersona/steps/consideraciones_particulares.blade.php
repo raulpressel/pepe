@@ -37,7 +37,7 @@
           <div class="form-group" >
               <label for="validate-letras">Parentesco:</label>
               <div class="input-group" data-validate="letras">
-                  <input value="{{ old('parentesco0') }}" type="text" class="form-control" name="consideraciones[0].parentesco" id="consideraciones[0].parentesco" placeholder="Ingrese solo letras" required>
+                  <input value="{{ old('parentesco0') }}" type="text" class="form-control" name="consideraciones[0][parentesco]" id="consideraciones[0].parentesco" placeholder="Ingrese solo letras" required>
                   <span class="input-group-addon danger"><span class="glyphicon glyphicon-remove"></span></span>
               </div>
           </div>    
@@ -48,7 +48,7 @@
           <div class="form-group">
             <label for="validate-letras">Enfermedad:</label>
             <div class="input-group" data-validate="letras">
-            <input value="{{ old('apeynom0') }}" type="text" class="form-control" name="consideraciones[0].enfermedad" id="consideraciones[0].enfermedad" placeholder="Ingrese solo letras" required>
+            <input value="{{ old('apeynom0') }}" type="text" class="form-control" name="consideraciones[0][enfermedad]" id="consideraciones[0].enfermedad" placeholder="Ingrese solo letras" required>
             <span class="input-group-addon danger"><span class="glyphicon glyphicon-remove"></span></span>
             </div>
          </div>
@@ -57,7 +57,7 @@
         <div class="form-group">
             <label for="validate-letras">Produce Incapacidad:</label>
             <div class="input-group" data-validate="letras">
-                <input value="{{ old('ocupacionfam0') }}" type="text" class="form-control" name="consideraciones[0].incapacidad" id="consideraciones[0].incapacidad" placeholder="Ingrese solo letras" required>
+                <input value="{{ old('ocupacionfam0') }}" type="text" class="form-control" name="consideraciones[0][incapacidad]" id="consideraciones[0].incapacidad" placeholder="Ingrese solo letras" required>
                 <span class="input-group-addon danger"><span class="glyphicon glyphicon-remove"></span></span>
             </div>
         </div>    
@@ -66,7 +66,7 @@
         <div class="form-group">
           <label for="validate-number">Imagen Certificado:</label>
           <div class="input-group">
-            <input type="file" name='consideraciones[0].imagen' accept=".jpg, .jpeg, .png" class="form-control" required>
+            <input type="file" name='consideraciones[0][imagen]' accept=".jpg, .jpeg, .png" class="form-control" required>
           </div>
         </div>
       
@@ -97,7 +97,7 @@
           var i=1;
           var j=2;
          $("#add_con").click(function(){
-          $('#addrp'+i).html("<div class='panel panel-default'><div class='panel-heading'><h4 class='panel-title'><a data-toggle='collapse' data-parent='#proposalAcoordion' href='#collapseConsid"+i+"'>Consideraciones "+(i+1)+"</a></h4></div><div id='collapseConsid"+i+"' class='panel-collapse collapse in'><div class='panel-body'><div class='form-group'><label for='validate-letras'>Parentesco:</label><div class='input-group' data-validate='letras'><input type='text' class='form-control' name='consideraciones["+i+"].parentesco' id='consideraciones["+i+"].parentesco' placeholder='Ingrese solo letras' required><span class='input-group-addon danger'><span class='glyphicon glyphicon-remove'></span></span></div></div><p><i>Ingrese solo letras</i></p><div class='form-group'><label for='validate-letras'>Apellidos y Nombres:</label><div class='input-group' data-validate='letras'><input  type='text' class='form-control' name='consideraciones["+i+"].enfermedad' id='consideraciones["+i+"].enfermedad' placeholder='Ingrese solo letras' required><span class='input-group-addon danger'><span class='glyphicon glyphicon-remove'></span></span></div></div><p><i>Ingrese solo letras</i></p><div class='form-group'><label for='validate-letras'>Ocupación:</label><div class='input-group' data-validate='letras'><input type='text' class='form-control' name='consideraciones["+i+"].incapacidad' id='consideraciones["+i+"].incapacidad' placeholder='Ingrese solo letras' required><span class='input-group-addon danger'><span class='glyphicon glyphicon-remove'></span></span></div></div><p><i>Ingrese solo letras</i></p><div class='form-group'><label for='validate-number'>Certificación Negativa ANSES:</label><div class='input-group'><input type='file' name='consideraciones["+i+"].imagen' accept='.jpg, .jpeg, .png' class='form-control' required></div></div></div></div></div>");
+          $('#addrp'+i).html("<div class='panel panel-default'><div class='panel-heading'><h4 class='panel-title'><a data-toggle='collapse' data-parent='#proposalAcoordion' href='#collapseConsid"+i+"'>Consideraciones "+(i+1)+"</a></h4></div><div id='collapseConsid"+i+"' class='panel-collapse collapse in'><div class='panel-body'><div class='form-group'><label for='validate-letras'>Parentesco:</label><div class='input-group' data-validate='letras'><input type='text' class='form-control' name='consideraciones["+i+"][parentesco]' id='consideraciones["+i+"].parentesco' placeholder='Ingrese solo letras' required><span class='input-group-addon danger'><span class='glyphicon glyphicon-remove'></span></span></div></div><p><i>Ingrese solo letras</i></p><div class='form-group'><label for='validate-letras'>Apellidos y Nombres:</label><div class='input-group' data-validate='letras'><input  type='text' class='form-control' name='consideraciones["+i+"][enfermedad]' id='consideraciones["+i+"].enfermedad' placeholder='Ingrese solo letras' required><span class='input-group-addon danger'><span class='glyphicon glyphicon-remove'></span></span></div></div><p><i>Ingrese solo letras</i></p><div class='form-group'><label for='validate-letras'>Ocupación:</label><div class='input-group' data-validate='letras'><input type='text' class='form-control' name='consideraciones["+i+"][incapacidad]' id='consideraciones["+i+"].incapacidad' placeholder='Ingrese solo letras' required><span class='input-group-addon danger'><span class='glyphicon glyphicon-remove'></span></span></div></div><p><i>Ingrese solo letras</i></p><div class='form-group'><label for='validate-number'>Certificación Negativa ANSES:</label><div class='input-group'><input type='file' name='consideraciones["+i+"][imagen]' accept='.jpg, .jpeg, .png' class='form-control' required></div></div></div></div></div>");
 
 
         

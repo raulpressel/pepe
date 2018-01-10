@@ -27,7 +27,7 @@ class CrearDatosPersona extends FormRequest
         'apellido' => 'required|string|max:256',
         'nombre' => 'required|string|max:256',
         'dni' => 'required|numeric|min:0|max:100000000',
-        'imagen_dni' => 'mimes:jpeg,bmp,png,jpg|image|required',
+        //'imagen_dni' => 'mimes:jpeg,bmp,png,jpg|required',
         'cuil' => 'required|numeric|min:0|max:100000000000',
         'estcivil' => 'required',
         'cumple' => 'date_format:Y-m-d|required',

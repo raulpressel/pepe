@@ -69,16 +69,16 @@ class DatosPersonaController extends Controller
      */
     public function store(CrearDatosPersona $request)
     {
-
+dd($request);
         
             $datos = DatosPersona::create($request->all());
 
-            if (auth()->check()) {
+           /* if (auth()->check()) {
                 auth()->user()->datos()->save($datos);
             }
 
             event(new MessageWasReceived($datos));
-
+            */
         //esta forma sirve cuando sabemos que siempre tenemos un usario autenticado
         //auth()->user()->messages()->create($request->all());
 
