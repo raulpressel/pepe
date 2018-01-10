@@ -157,9 +157,9 @@
         <p>Ej: www.facebook.com/<b>fcytUader</b></p>              
 
 
+        
         <script>
 
-        
         $(document).ready(function() {
         $('.input-group input[required], .input-group textarea[required], .input-group select[required], input-group radio[required]').on('keyup change', function() {
         var $form = $(this).closest('form'),
@@ -218,7 +218,7 @@
         });
 
 
-        </script>      
+        </script>   
 
 
 
