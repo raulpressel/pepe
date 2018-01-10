@@ -23,6 +23,7 @@ class CrearDatosPersona extends FormRequest
      */
     public function rules()
     {
+<<<<<<< Updated upstream
         return[
         'apellido' => 'required|string|max:256',
         'nombre' => 'required|string|max:256',
@@ -84,6 +85,70 @@ class CrearDatosPersona extends FormRequest
         //'imagen_incapacidad0' => 'required',
         //'motivos' => 'required', ver con text area
         ];
+=======
+        return [
+                'apellido' => 'required|string|max:256',
+                'nombre' => 'required|string|max:256',
+                'dni' => 'required|numeric|min:0|max:100000000',
+                'imagen_dni' => 'required|image:jpg',
+                'cuil' => 'required|numeric|min:0|max:100000000000',
+                'estcivil' => 'required',
+                'cumple' => 'required|date_format:yyyy/mm/dd',
+                'domi' => 'required|max:256',
+                'ciudad' => 'required|string|max:256',
+                'cp' => 'required|numeric|max:10000',
+                'provincia' => 'required|string|max:256',
+                'nacionalidad' => 'required|string|max:256',
+                'cel' => 'required|numeric|min:999999|max:10000000000',
+                'email' => 'required|email',
+                //'face' => 'required',
+                'carrera_cursa' => 'required|string|max:256',
+                'anioingreso' => 'required|numeric|min:999|max:10000',   
+                'aniocursado' => 'required|numeric|min:0|max:6',
+                'trabaja' => 'required',
+                'sueldo' => 'required|numeric|min:0|max:1000000',
+                'beca' => 'required',
+                'pasan' => 'required',
+                'asig' => 'required',
+                //'otrosing' => 'required',   
+                'domicursa' => 'required|max:256',
+                'casafam' => 'required',
+                'alq' => 'required',
+                //'montoalq' => 'required',         required_if....a un futuro
+                'urbano' => 'required',
+                //'cantviaja' => 'required|numeric',  required iff a un futuro
+                'mediadist' => 'required',
+                //'preciopasaje' => 'required',             required if
+                //'cantviajamedia' => 'required',           required if
+                /*'parentesco0' => 'required',
+                'apeynom0' => 'required',
+                'dni0' => 'required',
+                'imagen_dni0' => 'required',
+                'edad0' => 'required',
+                'ocu0' => 'required',
+                'ingreso0' => 'required',
+                'imagen_ingreso0' => 'required',
+                'imagen_anses0' => 'required',*/        //requiere if si agrega parentesco
+                'propietario' => 'required',
+                'alquila' => 'required',
+                //'precioalquiler' => 'required',           requiere if
+                'prestada' => 'required',
+                //'otrosvivienda' => 'required',
+                'campo' => 'required',
+                //'has' => 'required',              require if
+                //'actividad' => 'required',        require if
+                'terreno' => 'required',
+                //'terrenocant' => 'required',      require if
+                'auto' => 'required',
+                //'autocant' => 'required',         require if
+                'moto' => 'required',
+                //'motocant' => 'required',         require if
+                /*'enfermedad0' => 'required',
+                'incapacidad0' => 'required',
+                'imagen_incapacidad0' => 'required',*/  //require if
+                'motivos' => 'required'         //A ver con el text area 
+                        ];
+>>>>>>> Stashed changes
     }
 /*
     public function messages(){
