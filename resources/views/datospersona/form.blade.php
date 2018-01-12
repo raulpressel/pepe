@@ -1,4 +1,4 @@
-<div class="container"> <!!Esto se puede cambiar  o la de abajo!!>
+<div class="container"> <!-- !!Esto se puede cambiar  o la de abajo!! -->
   <div class="row">
     <section>
         <div class="wizard">
@@ -79,7 +79,7 @@
                 </ul>
             </div>
 
-            <!!Esto es para los errores!!>
+            <!-- Esto es para los errores!!-->
             @if ($errors->any())
             <div class="alert alert-danger" role="alert">
               <p>Porfavor corrije los siguientes errores:</p>

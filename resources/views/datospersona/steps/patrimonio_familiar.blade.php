@@ -10,7 +10,7 @@
 		        <div class="form-group">
 		          <label for="validate-select">Propietario:</label>
 		          <br>
-		          <div class="input-group" data-validate="radio">
+		          <div class="input-group" data-validate="radiofamiliar">
 		              <input value="Si" type="radio" name="propietario" id="propietarioSi"  required> Si -  
 		              <input value="No" type="radio" name="propietario" id="propietarioNo" required>  No <br>
 		            <span class="input-group-addon danger"><span class="glyphicon glyphicon-remove"></span></span>
@@ -19,7 +19,7 @@
 		        <div class="form-group">
 		          <label for="validate-select">Alquila:</label>
 		          <br>
-		          <div class="input-group" data-validate="radio">
+		          <div class="input-group" data-validate="radiofamiliar">
 		              <input  value="Si" type="radio" name="alquila" id="alquilaSi"  required> Si -  
 		              <input  value="No" type="radio" name="alquila" id="alquilaNo" required>  No <br>
 		            <span class="input-group-addon danger"><span class="glyphicon glyphicon-remove"></span></span>
@@ -36,7 +36,7 @@
 				<div class="form-group">
 		          <label for="validate-select">Prestada:</label>
 		          <br>
-		          <div class="input-group" data-validate="radio">
+		          <div class="input-group" data-validate="radiofamiliar">
 		              <input value="Si" type="radio" name="prestada" id="prestadaSi"  required> Si 
 		              <input value="No" type="radio" name="prestada" id="prestadaNo" required> No <br>
 		            <span class="input-group-addon danger"><span class="glyphicon glyphicon-remove"></span></span>
@@ -57,7 +57,7 @@
 				<div class="form-group">
 			      	<label for="validate-select">Posee Campos:</label>
 			          <br>
-			          <div class="input-group" data-validate="radio">
+			          <div class="input-group" data-validate="radiofamiliar">
 			              <input  value="Si" type="radio" name="campo" id="campoSi"  required> Si 
 			              <input  value="No" type="radio" name="campo" id="campoNo" required> No <br>
 			            <span class="input-group-addon danger"><span class="glyphicon glyphicon-remove"></span></span>
@@ -82,7 +82,7 @@
 			     <div class="form-group">
 			        <label for="validate-select">Posee Terrenos:</label>
 			          <br>
-			          <div class="input-group" data-validate="radio">
+			          <div class="input-group" data-validate="radiofamiliar">
 			              <input  value="Si" type="radio" name="terreno" id="terrenoSi"  required> Si 
 			              <input  value="No" type="radio" name="terreno" id="terrenoNo" required> No <br>
 			            <span class="input-group-addon danger"><span class="glyphicon glyphicon-remove"></span></span>
@@ -99,7 +99,7 @@
 					<div class="form-group">
 			        	<label for="validate-select">Posee automotores:</label>
 			          	<br>
-			          	<div class="input-group" data-validate="radio">
+			          	<div class="input-group" data-validate="radiofamiliar">
 			              <input  value="Si" type="radio" name="auto" id="autoSi"  required> Si 
 			              <input  value="No" type="radio" name="auto" id="autoaNo" required> No <br>
 			            <span class="input-group-addon danger"><span class="glyphicon glyphicon-remove"></span></span>
@@ -118,7 +118,7 @@
 					<div class="form-group">
 			        	<label for="validate-select">Posee motocicletas:</label>
 			          	<br>
-			          	<div class="input-group" data-validate="radio">
+			          	<div class="input-group" data-validate="radiofamiliar">
 			              <input  value="Si" type="radio" name="moto" id="motoSi"  required> Si 
 			              <input  value="No" type="radio" name="moto" id="motoNo" required> No <br>
 			            <span class="input-group-addon danger"><span class="glyphicon glyphicon-remove"></span></span>

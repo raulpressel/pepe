@@ -8,10 +8,13 @@
 
         <div class="col-sm-offset-2 col-sm-5">
           
+              <input type="hidden" name="user_id" id="user_id" value={{ $user->id }}>
+
+
         <div class="form-group">
             <label for="validate-letras">Apellidos:</label>
             <div class="input-group" data-validate="letras">
-                <input value="{{ old('apellido') }}" type="text" class="form-control" name="apellido" id="apellido" placeholder="Ingrese solo letras" required>
+                <input readonly value="{{ $user->apellido }}" type="text" class="form-control" name="apellido" id="apellido" placeholder="Ingrese solo letras" required>
                 <span class="input-group-addon danger"><span class="glyphicon glyphicon-remove"></span></span>
             </div>
         </div>    
@@ -20,7 +23,7 @@
         <div class="form-group">
         <label for="validate-letras">Nombres:</label>
         <div class="input-group" data-validate="letras">
-        <input value="{{ old('nombre') }}" type="text" class="form-control" name="nombre" id="nombres" placeholder="Ingrese solo letras" required>
+        <input readonly value="{{ $user->name  }}" type="text" class="form-control" name="nombre" id="nombres" placeholder="Ingrese solo letras" required>
         <span class="input-group-addon danger"><span class="glyphicon glyphicon-remove"></span></span>
         </div>
 
@@ -30,7 +33,7 @@
         <div class="form-group">
         <label for="validate-number">DNI/Pasaporte N°:</label>
         <div class="input-group" data-validate="number">
-        <input value="{{ old('dni') }}" type="text" class="form-control" name="dni" id="dni" placeholder="Ingrese solo numeros" required>
+        <input readonly value="{{ $user->dni }}" type="text" class="form-control" name="dni" id="dni" placeholder="Ingrese solo numeros" required>
         <span class="input-group-addon danger"><span class="glyphicon glyphicon-remove"></span></span>
         </div>
         </div>             
@@ -88,6 +91,35 @@
         </div>
 
         <div class="form-group">
+              <label for="validate-letras">Seleccione una Provincia:</label>
+                <div class="input-group" >
+                <!--input value="{{ old('carrera_cursa') }}" type="text" class="form-control" name="carrera_cursa" id="carrera_cursa" placeholder="Ingrese solo letras" required> -->
+                <select class="form-control" name="provincia" id="provincia" placeholder="Seleccione una opción" required>
+                <option value="">Seleccione una opción</option>
+                @foreach($provincia as $provincias)
+                <option value= {{$provincias->id}}><p>{{ $provincias->provincia }}</p></option>
+                @endforeach
+              </select>
+                <span class="input-group-addon danger"><span class="glyphicon glyphicon-remove"></span></span>
+            </div>
+        </div>
+
+
+        <div class="form-group">
+              <label for="validate-letras">Seleccione una Ciudad:</label>
+                <div class="input-group" >
+                <!--input value="{{ old('carrera_cursa') }}" type="text" class="form-control" name="carrera_cursa" id="carrera_cursa" placeholder="Ingrese solo letras" required> -->
+                <select class="form-control" name="localidad" id="localidad" placeholder="Seleccione una opción" required>
+                <option value="">Seleccione una opción</option>
+                @foreach($localidad as $localidades)
+                <option value= {{$localidades->id}}><p>{{ $localidades->localidad }}</p></option> 
+                @endforeach
+              </select>
+                <span class="input-group-addon danger"><span class="glyphicon glyphicon-remove"></span></span>
+            </div>
+        </div>
+
+    <!--    <div class="form-group">
         <label for="validate-letras">Ciudad:</label>
         <div class="input-group" data-validate="letras">
         <input value="{{ old('ciudad') }}" type="text" class="form-control" name="ciudad" id="ciudad" placeholder="Ingrese solo letras" required>
@@ -95,8 +127,9 @@
         </div>
 
         </div>
-        <p><i>Ingrese solo letras</i></p>
+        <p><i>Ingrese solo letras</i></p> 
 
+    -->
 
         <div class="form-group">
         <label for="validate-number">Código Postal:</label>
@@ -107,6 +140,7 @@
         </div>             
         <p><i>Ingrese solo numeros</i></p>
 
+<!--
 
         <div class="form-group">
         <label for="validate-letras">Provincia:</label>
@@ -116,7 +150,7 @@
         </div>
 
         </div>
-        <p><i>Ingrese solo letras</i></p>
+        <p><i>Ingrese solo letras</i></p> -->
 
         <div class="form-group">
         <label for="validate-letras">Nacionalidad:</label>
@@ -141,7 +175,7 @@
         <div class="form-group">
         <label for="validate-email">E-mail:</label>
         <div class="input-group" data-validate="email">
-        <input value="{{ old('email') }}" type="text" class="form-control" name="email" id="email" placeholder="Ingrese un E-mail valido" required>
+        <input readonly value="{{ $user->email }}" type="text" class="form-control" name="email" id="email" placeholder="Ingrese un E-mail valido" required>
         <span class="input-group-addon danger"><span class="glyphicon glyphicon-remove"></span></span>
         </div>
         </div>
@@ -184,13 +218,26 @@
         else if ($group.data('validate') == "letras") {
         state = /^([a-zA-Z])+$/.test($(this).val())
                 }
-        else if ($group.data('validate') == "radio") {
+        else if ($group.data('validate') == "radioecono") {
             
          state = $(this).prop('checked') === true;
-
               
         }
-        
+        else if ($group.data('validate') == "radiovivienda") {
+            
+         state = $(this).prop('checked') === true;
+              
+        }
+        else if ($group.data('validate') == "radioviaja") {
+            
+         state = $(this).prop('checked') === true;
+              
+        }
+        else if ($group.data('validate') == "radiofamiliar") {
+            
+         state = $(this).prop('checked') === true;
+              
+        }
 
 
 
@@ -219,6 +266,33 @@
 
 
         </script>   
+
+        <script language="javascript">
+            $(document).ready(function(){
+                $("#cbx_estado").change(function () {
+ 
+                    $('#cbx_localidad').find('option').remove().end().append('<option value="whatever"></option>').val('whatever');
+                    
+                    $("#cbx_estado option:selected").each(function () {
+                        id_estado = $(this).val();
+                        $.post("includes/getMunicipio.php", { id_estado: id_estado }, function(data){
+                            $("#cbx_municipio").html(data);
+                        });            
+                    });
+                })
+            });
+            
+            $(document).ready(function(){
+                $("#cbx_municipio").change(function () {
+                    $("#cbx_municipio option:selected").each(function () {
+                        id_municipio = $(this).val();
+                        $.post("includes/getLocalidad.php", { id_municipio: id_municipio }, function(data){
+                            $("#cbx_localidad").html(data);
+                        });            
+                    });
+                })
+            });
+        </script>
 
 
 

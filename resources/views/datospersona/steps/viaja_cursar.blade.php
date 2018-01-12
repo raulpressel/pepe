@@ -9,7 +9,7 @@
         <div class="form-group">
           <label for="validate-select">Utiliza colectivos Urbanos:</label>
           <br>
-          <div class="input-group" data-validate="radio">
+          <div class="input-group" data-validate="radioviaja">
               <input  value="Si" type="radio" name="urbano" id="urbanoSi"  required> Si 
               <input  value="No" type="radio" name="urbano" id="urbanoNo" required> No <br>
             <span class="input-group-addon danger"><span class="glyphicon glyphicon-remove"></span></span>
@@ -30,7 +30,7 @@
         <div class="form-group">
           <label for="validate-select">Utiliza colectivos de Media Distancia:</label>
           <br>
-          <div class="input-group" data-validate="radio">
+          <div class="input-group" data-validate="radioviaja">
               <input  value="Si" type="radio" name="mediadist" id="mediadistSi"  required> Si 
               <input  value="No" type="radio" name="mediadist" id="mediadistNo" required> No <br>
             <span class="input-group-addon danger"><span class="glyphicon glyphicon-remove"></span></span>

@@ -18,7 +18,7 @@
         <div class="form-group">
           <label for="validate-select">Casa de Familiares:</label>
           <br>
-          <div class="input-group" data-validate="radio">
+          <div class="input-group" data-validate="radiovivienda">
               <input value="Si" type="radio" name="casafam" id="casafamSi"  required> Si 
               <input value="No" type="radio" name="casafam" id="casafamNo" required> No <br>
             <span class="input-group-addon danger"><span class="glyphicon glyphicon-remove"></span></span>
@@ -28,7 +28,7 @@
        <div class="form-group">
           <label for="validate-select">Alquila:</label>
           <br>
-          <div class="input-group" data-validate="radio">
+          <div class="input-group" data-validate="radiovivienda">
               <input value="Si" type="radio" name="alq" id="alqSi"  required> Si 
               <input value="No" type="radio" name="alq" id="alqNo" required> No <br>
             <span class="input-group-addon danger"><span class="glyphicon glyphicon-remove"></span></span>

@@ -9,11 +9,19 @@
 
           <div class="form-group">
               <label for="validate-letras">Carrera que cursa:</label>
-                <div class="input-group" data-validate="letras">
-                <input value="{{ old('carrera_cursa') }}" type="text" class="form-control" name="carrera_cursa" id="carrera_cursa" placeholder="Ingrese solo letras" required>
+                <div class="input-group" >
+                <!--input value="{{ old('carrera_cursa') }}" type="text" class="form-control" name="carrera_cursa" id="carrera_cursa" placeholder="Ingrese solo letras" required> -->
+                <select class="form-control" name="carrera_cursa" id="carrera_cursa" placeholder="Seleccione una opción" required>
+                <option value="">Seleccione una opción</option>
+                @foreach($carrera as $carreras)
+                <option value= {{$carreras->id}}><p>{{ $carreras->nombre }}</p></option>
+                @endforeach
+              </select>
                 <span class="input-group-addon danger"><span class="glyphicon glyphicon-remove"></span></span>
             </div>
           </div>
+
+
 
           <div class="form-group">
               <label for="validate-letras">Año de Ingreso:</label>
