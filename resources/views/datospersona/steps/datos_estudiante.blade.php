@@ -112,7 +112,7 @@
                 <select class="form-control" name="localidad" id="localidad" placeholder="Seleccione una opción" required>
                 <option value="">Seleccione una opción</option>
                 @foreach($localidad as $localidades)
-                <option value= {{$localidades->id}}><p>{{ $localidades->localidad }}</p></option> 
+                <option value= {{$localidades->id_privincia}}><p>{{ $localidades->localidad }}</p></option> 
                 @endforeach
               </select>
                 <span class="input-group-addon danger"><span class="glyphicon glyphicon-remove"></span></span>
