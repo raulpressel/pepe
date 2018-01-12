@@ -11,8 +11,8 @@
           <label for="validate-select">Trabaja</label>
           <br>
           <div class="input-group" data-validate="radioecono">
-              <input  value="Si"  type="radio" name="trabaja" id="trabajaSi"  required> Si 
-              <input  value="No"  type="radio" name="trabaja" id="trabajaNo" required> No <br>
+              <input  value=1  type="radio" name="trabaja" id="trabajaSi"  required> Si 
+              <input  value=0  type="radio" name="trabaja" id="trabajaNo" required> No <br>
             <span class="input-group-addon danger"><span class="glyphicon glyphicon-remove"></span></span>
           </div>
         </div>
@@ -30,8 +30,8 @@
           <label for="validate-select">Tiene Becas:</label>
           <br>
           <div class="input-group" data-validate="radioecono">
-              <input  value="Si" type="radio" name="beca" id="becaSi"  required> Si
-              <input  value="No" type="radio" name="beca" id="becaNo" required> No <br>
+              <input  value=1 type="radio" name="beca" id="becaSi"  required> Si
+              <input  value=0 type="radio" name="beca" id="becaNo" required> No <br>
             <span class="input-group-addon danger"><span class="glyphicon glyphicon-remove"></span></span>
           </div>
         </div>
@@ -40,8 +40,8 @@
           <label for="validate-select">PROGRESAR:</label>
           <br>
           <div class="input-group" data-validate="radioecono">
-              <input  value="Si" type="radio" name="pasan" id="pasanSi"  required> Si
-              <input value="No" type="radio" name="pasan" id="pasanNo" required> No <br>
+              <input  value=1 type="radio" name="pasan" id="pasanSi"  required> Si
+              <input value=0 type="radio" name="pasan" id="pasanNo" required> No <br>
             <span class="input-group-addon danger"><span class="glyphicon glyphicon-remove"></span></span>
           </div>
         </div>
@@ -50,8 +50,8 @@
           <label for="validate-select">Asignación Universal por Hijo:</label>
           <br>
           <div class="input-group" data-validate="radioecono">
-              <input  value="Si" type="radio" name="asig" id="asigSi"  required> Si
-              <input  value="No" type="radio" name="asig" id="asigNo" required> No <br>
+              <input  value=1 type="radio" name="asig" id="asigSi"  required> Si
+              <input  value=0 type="radio" name="asig" id="asigNo" required> No <br>
             <span class="input-group-addon danger"><span class="glyphicon glyphicon-remove"></span></span>
           </div>
         </div>

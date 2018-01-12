@@ -93,7 +93,7 @@
         <div class="form-group">
               <label for="validate-letras">Seleccione una Provincia:</label>
                 <div class="input-group" >
-                <!--input value="{{ old('carrera_cursa') }}" type="text" class="form-control" name="carrera_cursa" id="carrera_cursa" placeholder="Ingrese solo letras" required> -->
+                <!--input value="{{ old('provincia') }}" type="text" class="form-control" name="carrera_cursa" id="carrera_cursa" placeholder="Ingrese solo letras" required> -->
                 <select class="form-control" name="provincia" id="provincia" placeholder="Seleccione una opción" required>
                 <option value="">Seleccione una opción</option>
                 @foreach($provincia as $provincias)
@@ -108,7 +108,7 @@
         <div class="form-group">
               <label for="validate-letras">Seleccione una Ciudad:</label>
                 <div class="input-group" >
-                <!--input value="{{ old('carrera_cursa') }}" type="text" class="form-control" name="carrera_cursa" id="carrera_cursa" placeholder="Ingrese solo letras" required> -->
+                <!--input value="{{ old('localidad') }}" type="text" class="form-control" name="carrera_cursa" id="carrera_cursa" placeholder="Ingrese solo letras" required> -->
                 <select class="form-control" name="localidad" id="localidad" placeholder="Seleccione una opción" required>
                 <option value="">Seleccione una opción</option>
                 @foreach($localidad as $localidades)
@@ -267,32 +267,17 @@
 
         </script>   
 
-        <script language="javascript">
-            $(document).ready(function(){
-                $("#cbx_estado").change(function () {
- 
-                    $('#cbx_localidad').find('option').remove().end().append('<option value="whatever"></option>').val('whatever');
-                    
-                    $("#cbx_estado option:selected").each(function () {
-                        id_estado = $(this).val();
-                        $.post("includes/getMunicipio.php", { id_estado: id_estado }, function(data){
-                            $("#cbx_municipio").html(data);
-                        });            
-                    });
-                })
-            });
-            
-            $(document).ready(function(){
-                $("#cbx_municipio").change(function () {
-                    $("#cbx_municipio option:selected").each(function () {
-                        id_municipio = $(this).val();
-                        $.post("includes/getLocalidad.php", { id_municipio: id_municipio }, function(data){
-                            $("#cbx_localidad").html(data);
-                        });            
-                    });
-                })
-            });
-        </script>
+        <script type='text/javascript'>
+        
+        $(document).ready(function(){
+        /* Evento que se ejecuta cada vez que se selecciona un elemento en el 
+        primer select */
+        $("provincia").change(function(){
+            /* asignamos el valor del primer elemento al segundo elemento */
+            $("#localidad").val($("#provincia").val());
+        });
+    });
+    </script>
 
 
 
