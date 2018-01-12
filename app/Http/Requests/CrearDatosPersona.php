@@ -56,15 +56,15 @@ class CrearDatosPersona extends FormRequest
         'mediadist' => 'required',
         //'preciopasaje' => 'required', if a futuro
         //'cantviajamedia' => 'required', if a futuro 
-        /*'parentesco0' => 'required',
-        'apeynom0' => 'required',
-        'dni0' => 'required',
-        'imagen_dni0' => 'required',
-        'edad0' => 'required',
-        'ocu0' => 'required',
-        'ingreso0' => 'required',
-        'imagen_ingreso0' => 'required',
-        'imagen_anses0' => 'required',*/
+        /*'familiar.*.parentesco' => 'required',
+        'familiar.*.apeynom' => 'required',
+        'familiar.*.dni' => 'required',
+        'familiar.*.imagen_dni' => 'required',
+        'familiar.*.edad' => 'required',
+        'familiar.*.ocu' => 'required',
+        'familiar.*.ingreso' => 'required',
+        'familiar.*.imagen_ingreso' => 'required',
+        'familiar.*.imagen_anses' => 'required',*/
         'propietario' => 'required',
         'alquila' => 'required',
         //'precioalquiler' => 'required', if a futuro
@@ -79,9 +79,9 @@ class CrearDatosPersona extends FormRequest
         //'autocant' => 'required', if futuro
         'moto' => 'required',
         //'motocant' => 'required', if futuro
-        //'enfermedad0' => 'required',
-        //'incapacidad0' => 'required',
-        //'imagen_incapacidad0' => 'required',
+        //'consideraciones.*.enfermedad' => 'required',
+        //'consideraciones.*.incapacidad' => 'required',
+        //'consideraciones.*.imagen_incapacidad' => 'required',
         //'motivos' => 'required', ver con text area
         ];
     }
