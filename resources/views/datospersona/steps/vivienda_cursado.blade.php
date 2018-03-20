@@ -15,7 +15,30 @@
         </div>
         </div>
 
-        <div class="form-group">
+
+          <div class="form-group">
+              <label for="validate-letras">Casa de Familiares:</label>
+                <div class="input-group">
+                  <select value="{{ old('casafam') }}" class="form-control" name="casafam" id="casafam" placeholder="Seleccione una opción" required>
+                    <option value="">Seleccione una opción</option>
+                    <option value="1">Si</option><option value="2">No</option>
+                </select>
+                <span class="input-group-addon danger"><span class="glyphicon glyphicon-remove"></span></span>
+            </div>
+          </div>
+
+
+          <div class="form-group">
+              <label for="validate-letras">Alquila:</label>
+                <div class="input-group">
+                  <select value="{{ old('urbano') }}" class="form-control" name="alq" id="alq" placeholder="Seleccione una opción" required>
+                    <option value="">Seleccione una opción</option>
+                    <option value="1">Si</option><option value="2">No</option>
+                </select>
+                <span class="input-group-addon danger"><span class="glyphicon glyphicon-remove"></span></span>
+            </div>
+          </div>
+        <!-- <div class="form-group">
           <label for="validate-select">Casa de Familiares:</label>
           <br>
           <div class="input-group" data-validate="radiovivienda">
@@ -33,7 +56,7 @@
               <input value=0 type="radio" name="alq" id="alqNo" required> No <br>
             <span class="input-group-addon danger"><span class="glyphicon glyphicon-remove"></span></span>
           </div>
-        </div>
+        </div>  -->
    
         <div class="form-group">
           <label for="validate-number">Monto  $:</label>

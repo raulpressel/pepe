@@ -90,46 +90,11 @@
         </div>
         </div>
 
-        <div class="form-group">
-              <label for="validate-letras">Seleccione una Provincia:</label>
-                <div class="input-group" >
-                <!--input value="{{ old('provincia') }}" type="text" class="form-control" name="carrera_cursa" id="carrera_cursa" placeholder="Ingrese solo letras" required> -->
-                <select class="form-control" name="provincia" id="provincia" placeholder="Seleccione una opción" required>
-                <option value="">Seleccione una opción</option>
-                @foreach($provincia as $provincias)
-                <option value= {{$provincias->id}}><p>{{ $provincias->provincia }}</p></option>
-                @endforeach
-              </select>
-                <span class="input-group-addon danger"><span class="glyphicon glyphicon-remove"></span></span>
-            </div>
-        </div>
+        <select id="provincia" name="provincia"><option value="1">Buenos Aires</option><option value="2">Buenos Aires-GBA</option><option value="3">Capital Federal</option><option value="4">Catamarca</option><option value="5">Chaco</option><option value="6">Chubut</option><option value="7">Córdoba</option><option value="8">Corrientes</option><option value="9">Entre Ríos</option><option value="10">Formosa</option><option value="11">Jujuy</option><option value="12">La Pampa</option><option value="13">La Rioja</option><option value="14">Mendoza</option><option value="15">Misiones</option><option value="16">Neuquén</option><option value="17">Río Negro</option><option value="18">Salta</option><option value="19">San Juan</option><option value="20">San Luis</option><option value="21">Santa Cruz</option><option value="22">Santa Fe</option><option value="23">Santiago del Estero</option><option value="24">Tierra del Fuego</option><option value="25">Tucumán</option><option value="26">jose</option></select>
+
+            {!! Form::select('localidad', ['placeholder'=>'Selecciona una provincia'], null, ['id'=>'localidad']) !!}
 
 
-        <div class="form-group">
-              <label for="validate-letras">Seleccione una Ciudad:</label>
-                <div class="input-group" >
-                <!--input value="{{ old('localidad') }}" type="text" class="form-control" name="carrera_cursa" id="carrera_cursa" placeholder="Ingrese solo letras" required> -->
-                <select class="form-control" name="localidad" id="localidad" placeholder="Seleccione una opción" required>
-                <option value="">Seleccione una opción</option>
-                @foreach($localidad as $localidades)
-                <option value= {{$localidades->id_privincia}}><p>{{ $localidades->localidad }}</p></option> 
-                @endforeach
-              </select>
-                <span class="input-group-addon danger"><span class="glyphicon glyphicon-remove"></span></span>
-            </div>
-        </div>
-
-    <!--    <div class="form-group">
-        <label for="validate-letras">Ciudad:</label>
-        <div class="input-group" data-validate="letras">
-        <input value="{{ old('ciudad') }}" type="text" class="form-control" name="ciudad" id="ciudad" placeholder="Ingrese solo letras" required>
-        <span class="input-group-addon danger"><span class="glyphicon glyphicon-remove"></span></span>
-        </div>
-
-        </div>
-        <p><i>Ingrese solo letras</i></p> 
-
-    -->
 
         <div class="form-group">
         <label for="validate-number">Código Postal:</label>
@@ -140,17 +105,7 @@
         </div>             
         <p><i>Ingrese solo numeros</i></p>
 
-<!--
 
-        <div class="form-group">
-        <label for="validate-letras">Provincia:</label>
-        <div class="input-group" data-validate="letras">
-        <input value="{{ old('provincia') }}" type="text" class="form-control" name="provincia" id="provincia" placeholder="Ingrese solo letras" required>
-        <span class="input-group-addon danger"><span class="glyphicon glyphicon-remove"></span></span>
-        </div>
-
-        </div>
-        <p><i>Ingrese solo letras</i></p> -->
 
         <div class="form-group">
         <label for="validate-letras">Nacionalidad:</label>
@@ -218,7 +173,7 @@
         else if ($group.data('validate') == "letras") {
         state = /^([a-zA-Z])+$/.test($(this).val())
                 }
-        else if ($group.data('validate') == "radioecono") {
+        /*else if ($group.data('validate') == "radioecono") {
             
          state = $(this).prop('checked') === true;
               
@@ -237,7 +192,7 @@
             
          state = $(this).prop('checked') === true;
               
-        }
+        } */
 
 
 
@@ -266,19 +221,20 @@
 
 
         </script>   
-
-        <script type='text/javascript'>
         
-        $(document).ready(function(){
-        /* Evento que se ejecuta cada vez que se selecciona un elemento en el 
-        primer select */
-        $("provincia").change(function(){
-            /* asignamos el valor del primer elemento al segundo elemento */
-            $("#localidad").val($("#provincia").val());
+        <script language="javascript">
+            $("#provincia").change(function (event) {
+             
+                $("#localidad").empty();
+            $.get("localidad/"+event.target.value+"", function(response, state) {
+                for(i=0; i<response.length; i++){
+                $("#localidad").append("<option value='"+response[i].id+"'>"+response[i].localidad+" </option>");
+            }
+            });
         });
-    });
-    </script>
+        </script> 
 
+        
 
 
         <ul class="list-unstyled pull-right">

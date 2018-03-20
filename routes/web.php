@@ -11,6 +11,9 @@
 |
 */
 
+use App\Localidad;
+
+
 Route::get('/', function () {
     return view('home');
 });
@@ -38,3 +41,26 @@ Route::get('requisitos', function () {
     return view('requisitos');
 });
 
+
+/*Route::get('selects', function()
+{
+	$provincia = DB::table('provincias')->get();	
+	
+    return view('selects', compact('.provincia'));
+});
+
+Route::get('selects/{id}', function($id)
+{
+	$id_provincia = $id;
+
+	$localidades = Localidad::find($id_provincia)->localidad;
+
+	
+    return Response::json($localidades);
+});
+
+*/
+
+Route::resource('selects', 'ProvinciaController');
+
+Route::get('datospersona/localidad/{id}', 'DatosPersonaController@getLocalidades');

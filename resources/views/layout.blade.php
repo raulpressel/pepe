@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-	<meta charset="UTF-8">
+    <meta charset="UTF-8">
 
   <link href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.0/css/bootstrap.min.css" rel="stylesheet">
 
@@ -15,12 +15,15 @@
     <link rel="stylesheet" href="../owlcarousel/assets/owl.theme.default.min.css">
 
 	<title>Inicio</title>
-
-	<script src="../js/ajax.js"></script>	
-    <script src="../js/jquery.min.js"></script>
+    
+	
+    <!-- <script src="../js/jquery.min.js"></script> -->
     <script src="http://code.jquery.com/jquery-1.11.1.min.js"></script>
     <script src="../owlcarousel/owl.carousel.js"></script>
     <script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.0/js/bootstrap.min.js"></script>
+    <!-- <script src="http://code.jquery.com/jquery-latest.js"></script> -->
+
+       
 
 	
 </head>
@@ -106,7 +109,7 @@
 	  
 		@yield('contenido')	
 
-		<script src="../js/app.js"></script>
+		
 	</body>
 
 	</html>

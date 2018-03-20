@@ -7,7 +7,7 @@
     
     <div class="col-sm-offset-2 col-sm-5" >
       
-      <div class="form-group">
+      <!-- <div class="form-group">
           <label for="validate-select">Trabaja</label>
           <br>
           <div class="input-group" data-validate="radioecono">
@@ -15,7 +15,18 @@
               <input  value=0  type="radio" name="trabaja" id="trabajaNo" required> No <br>
             <span class="input-group-addon danger"><span class="glyphicon glyphicon-remove"></span></span>
           </div>
-        </div>
+        </div> -->
+
+        <div class="form-group">
+              <label for="validate-letras">Trabaja:</label>
+                <div class="input-group">
+                  <select value="{{ old('trabaja') }}" class="form-control" name="trabaja" id="trabaja" placeholder="Seleccione una opción" required>
+                    <option value="">Seleccione una opción</option>
+                    <option value="1">Si</option><option value="2">No</option>
+                </select>
+                <span class="input-group-addon danger"><span class="glyphicon glyphicon-remove"></span></span>
+            </div>
+          </div>
    
         <div class="form-group">
           <label for="validate-number">Ingresos Propios (Mensuales) $:</label>
@@ -26,7 +37,40 @@
         </div>             
         <p><i>Ingrese solo numeros</i></p>
 
-     <div class="form-group">
+        <div class="form-group">
+              <label for="validate-letras">Tiene Becas:</label>
+                <div class="input-group">
+                  <select value="{{ old('beca') }}" class="form-control" name="beca" id="beca" placeholder="Seleccione una opción" required>
+                    <option value="">Seleccione una opción</option>
+                    <option value="1">Si</option><option value="2">No</option>
+                </select>
+                <span class="input-group-addon danger"><span class="glyphicon glyphicon-remove"></span></span>
+            </div>
+          </div>
+
+          <div class="form-group">
+              <label for="validate-letras">PROGRESAR:</label>
+                <div class="input-group">
+                  <select value="{{ old('progresar') }}" class="form-control" name="progresar" id="progresar" placeholder="Seleccione una opción" required>
+                    <option value="">Seleccione una opción</option>
+                    <option value="1">Si</option><option value="2">No</option>
+                </select>
+                <span class="input-group-addon danger"><span class="glyphicon glyphicon-remove"></span></span>
+            </div>
+          </div>
+
+          <div class="form-group">
+              <label for="validate-letras">Asignación Universal por Hijo:</label>
+                <div class="input-group">
+                  <select value="{{ old('asig') }}" class="form-control" name="asig" id="asig" placeholder="Seleccione una opción" required>
+                    <option value="">Seleccione una opción</option>
+                    <option value="1">Si</option><option value="2">No</option>
+                </select>
+                <span class="input-group-addon danger"><span class="glyphicon glyphicon-remove"></span></span>
+            </div>
+          </div>
+
+    <!-- <div class="form-group">
           <label for="validate-select">Tiene Becas:</label>
           <br>
           <div class="input-group" data-validate="radioecono">
@@ -54,7 +98,7 @@
               <input  value=0 type="radio" name="asig" id="asigNo" required> No <br>
             <span class="input-group-addon danger"><span class="glyphicon glyphicon-remove"></span></span>
           </div>
-        </div>
+        </div> -->
           
         <div class="form-group">
         <label for="validate-optional">Otros Ingresos:</label>

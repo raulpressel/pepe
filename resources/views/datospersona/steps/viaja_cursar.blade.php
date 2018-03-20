@@ -6,7 +6,7 @@
 
         <div class="col-sm-offset-2 col-sm-5">
 
-        <div class="form-group">
+     <!--   <div class="form-group">
           <label for="validate-select">Utiliza colectivos Urbanos:</label>
           <br>
           <div class="input-group" data-validate="radioviaja">
@@ -14,7 +14,18 @@
               <input  value=0 type="radio" name="urbano" id="urbanoNo" required> No <br>
             <span class="input-group-addon danger"><span class="glyphicon glyphicon-remove"></span></span>
           </div>
-        </div>
+        </div> -->
+
+          <div class="form-group">
+              <label for="validate-letras">Utiliza colectivos Urbanos:</label>
+                <div class="input-group">
+                  <select value="{{ old('urbano') }}" class="form-control" name="urbano" id="urbano" placeholder="Seleccione una opción" required>
+                    <option value="">Seleccione una opción</option>
+                    <option value="1">Si</option><option value="2">No</option>
+                </select>
+                <span class="input-group-addon danger"><span class="glyphicon glyphicon-remove"></span></span>
+            </div>
+          </div>
     
       <div class="form-group">
               <label for="validate-letras">Cantidad de veces que viaja por semana:</label>
@@ -27,7 +38,7 @@
             </div>
           </div>
 
-        <div class="form-group">
+       <!-- <div class="form-group">
           <label for="validate-select">Utiliza colectivos de Media Distancia:</label>
           <br>
           <div class="input-group" data-validate="radioviaja">
@@ -35,7 +46,19 @@
               <input  value=0 type="radio" name="mediadist" id="mediadistNo" required> No <br>
             <span class="input-group-addon danger"><span class="glyphicon glyphicon-remove"></span></span>
           </div>
-        </div>
+        </div> -->
+
+
+          <div class="form-group">
+              <label for="validate-letras">Utiliza colectivos de Media Distancia:</label>
+                <div class="input-group">
+                  <select value="{{ old('mediadist') }}" class="form-control" name="mediadist" id="mediadist" placeholder="Seleccione una opción" required>
+                    <option value="">Seleccione una opción</option>
+                    <option value="1">Si</option><option value="2">No</option>
+                </select>
+                <span class="input-group-addon danger"><span class="glyphicon glyphicon-remove"></span></span>
+            </div>
+          </div>
 
        <div class="form-group">
           <label for="validate-number">Precio Pasaje  $:</label>

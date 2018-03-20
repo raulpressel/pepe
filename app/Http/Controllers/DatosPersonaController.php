@@ -6,7 +6,8 @@ use App\DatosPersona;
 use Illuminate\Http\Request;
 use App\Beca;
 use App\User;
-
+use App\Provincia;
+use App\Localidad;
 use DB;
 
 use Carbon\Carbon;
@@ -56,11 +57,19 @@ class DatosPersonaController extends Controller
         $datos = DatosPersona::with(['user_name', 'user_id'])->get();
         $user = Auth::user();
         $carrera = DB::table('carreras')->get();
-        $provincia = DB::table('provincias')->get();
-        $localidad = DB::table('localidades')->get();
-        return view ('datospersona.create', compact('datos', 'user', 'carrera', 'provincia', 'localidad'));
+        //$provincia = DB::table('provincias')->get();
+        //$localidad = DB::table('localidades')->get();
+        return view ('datospersona.create', compact('datos', 'user', 'carrera'));
 
         
+    }
+
+    public function getLocalidades(Request $request, $id)
+    {
+        if($request->ajax()){
+            $localidad = Localidad::localidades($id);
+            return response()->json($localidad);
+        }
     }
 
     /**
