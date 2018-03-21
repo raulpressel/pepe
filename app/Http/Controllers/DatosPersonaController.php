@@ -8,6 +8,8 @@ use App\Beca;
 use App\User;
 use App\Provincia;
 use App\Localidad;
+use App\familiar;
+use App\consideracione;
 use DB;
 
 use Carbon\Carbon;
@@ -80,6 +82,7 @@ class DatosPersonaController extends Controller
      */
     public function store(CrearDatosPersona $request)
     {        
+        //dd($request);
          try{
             $datos = new DatosPersona;
             $datos->user_id = $request->user_id;
@@ -91,9 +94,9 @@ class DatosPersonaController extends Controller
             $datos->estado_civil = $request->estcivil;
             $datos->cumple = $request->cumple;
             $datos->domicilio = $request->domi;
-            $datos->ciudad = $request->ciudad;
-            $datos->cp = $request->cp;
+            $datos->localidad = $request->localidad;
             $datos->provincia = $request->provincia;
+            $datos->cp = $request->cp;
             $datos->nacionalidad = $request->nacionalidad;
             $datos->cel = $request->cel;
             $datos->user_email = $request->email;
@@ -101,10 +104,11 @@ class DatosPersonaController extends Controller
             $datos->carrera_cursa = $request->carrera_cursa;
             $datos->anio_ingreso = $request->anioingreso;
             $datos->anio_cursado = $request->aniocursado;
-            $datos->tiene_trabajo = $request->trabajo;
+            $datos->tiene_trabajo = $request->trabaja;
             $datos->sueldo = $request->sueldo;
             $datos->tiene_beca = $request->beca;
             $datos->tiene_pasantia = $request->pasan;
+            $datos->tiene_progresar = $request->progresar;
             $datos->tiene_asig = $request->asig;
             $datos->otros_ing = $request->otrosing;
             $datos->domi_cursado = $request->domicursa;
@@ -116,6 +120,7 @@ class DatosPersonaController extends Controller
             $datos->usa_media_dist = $request->mediadist;
             $datos->precio_pasaje = $request->preciopasaje;
             $datos->cant_viaja_media = $request->cantviajamedia;
+            
             $datos->es_propietario = $request->propietario;
             $datos->alquila = $request->alquila;
             $datos->precio_alquiler = $request->precioalquiler;
@@ -131,27 +136,32 @@ class DatosPersonaController extends Controller
             $datos->tiene_moto = $request->moto;
             $datos->cant_moto = $request->motocant;
             $datos->motivos = $request->motivos;
-            /*
-            $fam = new Familiar;
 
+            $datos->save();
 
-            $fam->parentesco = $request->
-            $fam->apeynom = $request->
-            $fam->dnifam = $request->
-            $fam->imagen_dnifam = $request->
-            $fam->edadfam = $request->
-            $fam->ocupacionfam = $request->
-            $fam->ingresosfam = $request->
-            $fam->comprobanteingresosfam = $request->
-            $fam->ansensfam = $request->
-
-            $con = new Consideraciones;
-
-            $con->parentesco
-            $con->enfermedad
-            $con->incapacidad
-            $con->imagen
-            */
+            for($i=0;$i<count($request->familiar);$i++) {
+                $fam = new familiar;
+                $fam->user_id = $request->user_id;
+                $fam->parentesco = $request->familiar[$i]['parentesco'];
+                $fam->apeynom = $request->familiar[$i]['apeynom'];
+                $fam->dni = $request->familiar[$i]['dnifam'];
+                //$fam->imagen_dni = $request->familiar[$i]['imagen_dnifam'];
+                $fam->edad = $request->familiar[$i]['edadfam'];
+                $fam->ocupacion = $request->familiar[$i]['ocupacionfam'];
+                $fam->ingresos = $request->familiar[$i]['ingresosfam'];
+                $fam->comprobante_ingresos = $request->familiar[$i]['comprobanteingresosfam'];
+                $fam->anses = $request->familiar[$i]['ansesfam'];
+                $fam->save();
+            }
+            for ($j = 0; $i<count($request->consideraciones); $j++) {
+                $con = new consideracione;
+                $con->user_id = $request->user_id;            
+                $con->parentesco = $request->consideraciones[$j]['parentesco'];
+                $con->enfermedad = $request->consideraciones[$j]['enfermedad'];
+                $con->incapacidad = $request->consideraciones[$j]['incapacidad'];
+                $con->cert_incapacidad = $request->consideraciones[$j]['imagen'];
+                $con->save();
+            }
 
 
 
@@ -159,6 +169,7 @@ class DatosPersonaController extends Controller
             return Redirect::to('/datospersona.create')->with('msg', ' Algo salio mal prueba de nuevo.');
 
         }
+        */
 
 
 
@@ -171,7 +182,8 @@ class DatosPersonaController extends Controller
         //esta forma sirve cuando sabemos que siempre tenemos un usario autenticado
         //auth()->user()->messages()->create($request->all());
 
-        return redirect()->route('datospersona.create')->with('info', 'Hemos recibido tu inscripcion');
+        return redirect()->route('home')->with('info', 'Hemos recibido tu inscripcion');
+        //meter el alert https://www.youtube.com/watch?v=t2OgwDHKIkQ
     }
 
     /**
