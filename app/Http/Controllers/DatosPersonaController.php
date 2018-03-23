@@ -56,16 +56,12 @@ class DatosPersonaController extends Controller
      */
     public function create()
     {
-        if (!session()->has('user_id')){
         $datos = DatosPersona::with(['user_name', 'user_id'])->get();
         $user = Auth::user();
         $carrera = DB::table('carreras')->get();
         //$provincia = DB::table('provincias')->get();
         //$localidad = DB::table('localidades')->get();
         return view ('datospersona.create', compact('datos', 'user', 'carrera'));
-    }else{
-        return view ('datospersona.index');
-    }
         
     }
 
