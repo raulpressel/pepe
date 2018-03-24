@@ -61,6 +61,20 @@
                 <span class="input-group-addon danger"><span class="glyphicon glyphicon-remove"></span></span>
             </div>
         </div>    
+
+        <!-- <div class="form-group">
+          <label for="validate-select">Estado Civil:</label>
+            <div class="input-group">
+                <select  class="form-control" name="estcivil" id="estcivil" placeholder="Seleccione una opción" required>
+                  <option value="">Seleccione una opción</option>
+                  <option value="soltero">Soltero</option>
+                  <option value="casado">Casado</option>
+                  <option value="divorciado">Divorciado</option>
+                  <option value="viudo">Viudo</option>
+                </select>
+              <span class="input-group-addon danger"><span class="glyphicon glyphicon-remove"></span></span>
+            </div>
+        </div> -->
         
 
         <div class="form-group">

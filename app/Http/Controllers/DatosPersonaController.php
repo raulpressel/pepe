@@ -38,12 +38,12 @@ class DatosPersonaController extends Controller
 
     public function index()
     {
-        $datos = DatosPersona::with(['user_name', 'user_id'])->get();
+        $dato = DatosPersona::with(['user_name', 'user_id'])->get();
         $user = Auth::user(); 
         $carrera = DB::table('carreras')->get();
         
         
-        return view('datospersona.index', compact('datos','user','carrera')) ;
+        return view('datospersona.index', compact('dato','user','carrera')) ;
 
         
         
@@ -56,12 +56,17 @@ class DatosPersonaController extends Controller
      */
     public function create()
     {
-        $datos = DatosPersona::with(['user_name', 'user_id'])->get();
+        
         $user = Auth::user();
+        
+        $id = DB::table('datos_personas')->where('user_id', $user->id)->first(); //devuelvo el primero que encuentra
+
+        
         $carrera = DB::table('carreras')->get();
-        //$provincia = DB::table('provincias')->get();
-        //$localidad = DB::table('localidades')->get();
-        return view ('datospersona.create', compact('datos', 'user', 'carrera'));
+        
+        
+        
+        return view ('datospersona.create', compact('user', 'carrera', 'id'));
 
         
     }
@@ -169,7 +174,7 @@ class DatosPersonaController extends Controller
             return Redirect::to('/datospersona.create')->with('msg', ' Algo salio mal prueba de nuevo.');
 
         }
-        */
+
 
 
 
@@ -203,9 +208,15 @@ class DatosPersonaController extends Controller
      * @param  \App\DatosPersona  $datosPersona
      * @return \Illuminate\Http\Response
      */
-    public function edit(DatosPersona $datosPersona)
+    //public function edit(DatosPersona $datosPersona)
+    public function edit($id)
     {
-        return view('datospersona.edit');
+        $user = Auth::user();
+        
+        $carrera = DB::table('carreras')->get();
+        
+        $datos = DatosPersona::findOrFail($id);
+        return view('datospersona.edit', compact('datos','carrera', 'user'));
     }
 
     /**

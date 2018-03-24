@@ -16,6 +16,11 @@
                 <span class="input-group-addon danger"><span class="glyphicon glyphicon-remove"></span></span>
             </div>
           </div>
+
+          @if (Session::get('cuil'))
+          {{ Session::get('cuil') }}
+          @else No tiene el cuil
+          @endif
         
         <ul class="list-inline pull-right">
             <li><button type="button" class="btn btn-default prev-step">Anterior</button></li>
