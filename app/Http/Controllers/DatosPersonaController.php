@@ -64,9 +64,9 @@ class DatosPersonaController extends Controller
         
         $carrera = DB::table('carreras')->get();
         
-        
-        
         return view ('datospersona.create', compact('user', 'carrera', 'id'));
+
+
 
         
     }
@@ -144,23 +144,9 @@ class DatosPersonaController extends Controller
 
             $datos->save();
 
-            for($i=0;$i<count($request->familiar);$i++) {
-                $fam = new familiar;
-                $fam->user_id = $request->user_id;
-                $fam->parentesco = $request->familiar[$i]['parentesco'];
-                $fam->apeynom = $request->familiar[$i]['apeynom'];
-                $fam->dni = $request->familiar[$i]['dnifam'];
-                //$fam->imagen_dni = $request->familiar[$i]['imagen_dnifam'];
-                $fam->edad = $request->familiar[$i]['edadfam'];
-                $fam->ocupacion = $request->familiar[$i]['ocupacionfam'];
-                $fam->ingresos = $request->familiar[$i]['ingresosfam'];
-                $fam->comprobante_ingresos = $request->familiar[$i]['comprobanteingresosfam'];
-                $fam->anses = $request->familiar[$i]['ansesfam'];
-                $fam->save();
-            }
-            for ($j = 0; $i<count($request->consideraciones); $j++) {
+            for ($j=0;$j<count($request->consideraciones);$j++) {
                 $con = new consideracione;
-                $con->user_id = $request->user_id;            
+                $con->user_id = $request->user_id;
                 $con->parentesco = $request->consideraciones[$j]['parentesco'];
                 $con->enfermedad = $request->consideraciones[$j]['enfermedad'];
                 $con->incapacidad = $request->consideraciones[$j]['incapacidad'];
@@ -168,12 +154,25 @@ class DatosPersonaController extends Controller
                 $con->save();
             }
 
+            for($i=0;$i<count($request->familiar);$i++) {
+                $fam = new familiar;
+                $fam->user_id = $request->user_id;
+                $fam->parentesco = $request->familiar[$i]['parentesco'];
+                $fam->apeynom = $request->familiar[$i]['apeynom'];
+                $fam->dni = $request->familiar[$i]['dnifam'];
+                $fam->imagen_dni = $request->familiar[$i]['imagen_dnifam'];
+                $fam->edad = $request->familiar[$i]['edadfam'];
+                $fam->ocupacion = $request->familiar[$i]['ocupacionfam'];
+                $fam->ingresos = $request->familiar[$i]['ingresosfam'];
+                $fam->comprobante_ingresos = $request->familiar[$i]['comprobanteingresosfam'];
+                $fam->anses = $request->familiar[$i]['ansesfam'];
+                $fam->save();
+            }
 
-
-        }catch (\Exception $e){
-            return Redirect::to('/datospersona.create')->with('msg', ' Algo salio mal prueba de nuevo.');
-
+            
+           
         }
+
 
 
 
@@ -187,8 +186,13 @@ class DatosPersonaController extends Controller
         //esta forma sirve cuando sabemos que siempre tenemos un usario autenticado
         //auth()->user()->messages()->create($request->all());
 
+        catch (\Exception $e){
+            abort(404);//return redirect()->route('datospersona.index')->with('msg', ' Algo salio mal prueba de nuevo.');
+
+        }
         return redirect()->route('home')->with('info', 'Hemos recibido tu inscripcion');
         //meter el alert https://www.youtube.com/watch?v=t2OgwDHKIkQ
+
     }
 
     /**
@@ -217,6 +221,14 @@ class DatosPersonaController extends Controller
         
         $datos = DatosPersona::findOrFail($id);
         return view('datospersona.edit', compact('datos','carrera', 'user'));
+
+        /*
+
+        $datos = DatosPersona::findOrFail($datosPersona->id);
+        
+        return view('datospersona.edit', compact('datos'));
+        falta la vista...*/
+    
     }
 
     /**
@@ -228,7 +240,16 @@ class DatosPersonaController extends Controller
      */
     public function update(Request $request, DatosPersona $datosPersona)
     {
-        //
+
+        
+       /* $datos_upd = DatosPersona::findOrFail($datosPersona->id);
+
+        $datos_upd->update($request->all());            
+
+        return redirect()->route('datosPersona.index');
+
+        crear la vista..... (datospersona->id andara?=)
+        */
     }
 
     /**
