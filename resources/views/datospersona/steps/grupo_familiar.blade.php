@@ -30,7 +30,7 @@
                   <span class="input-group-addon danger"><span class="glyphicon glyphicon-remove"></span></span>
               </div>
           </div>    
-          <p><i>Ingrese solo letras</i></p>            
+          
 
 
 
@@ -41,7 +41,7 @@
             <span class="input-group-addon danger"><span class="glyphicon glyphicon-remove"></span></span>
             </div>
          </div>
-          <p><i>Ingrese solo letras</i></p>
+          
 
         <div class="form-group">
           <label for="validate-number">DNI:</label>
@@ -50,7 +50,7 @@
               <span class="input-group-addon danger"><span class="glyphicon glyphicon-remove"></span></span>
             </div>
         </div>             
-          <p><i>Ingrese solo numeros</i></p>
+          
 
 
         <div class="form-group">
@@ -68,7 +68,7 @@
               <span class="input-group-addon danger"><span class="glyphicon glyphicon-remove"></span></span>
             </div>
         </div>             
-          <p><i>Ingrese solo numeros</i></p>
+          
         
 
         <div class="form-group">
@@ -86,7 +86,7 @@
               <span class="input-group-addon danger"><span class="glyphicon glyphicon-remove"></span></span>
             </div>
         </div>             
-          <p><i>Ingrese solo numeros</i></p>         
+            
 
         
         <div class="form-group">
@@ -130,7 +130,7 @@
           var i=1;
           var j=2;
          $("#add_div").click(function(){
-          $('#addr'+i).html("<div class='panel panel-default'><div class='panel-heading'><h4 class='panel-title'><a data-toggle='collapse' data-parent='#proposalAcoordion' href='#collapseContact"+i+"'>Familiar "+(i+1)+"</a></h4></div><div id='collapseContact"+i+"' class='panel-collapse collapse in'><div class='panel-body'><div class='form-group'><label for='validate-letras'>Parentesco:</label><div class='input-group' data-validate='letras'><input type='text' class='form-control' name='familiar["+i+"][parentesco]' id='familiar["+i+"].parentesco' placeholder='Ingrese solo letras' required><span class='input-group-addon danger'><span class='glyphicon glyphicon-remove'></span></span></div></div><p><i>Ingrese solo letras</i></p><div class='form-group'><label for='validate-letras'>Apellidos y Nombres:</label><div class='input-group' data-validate='letras'><input  type='text' class='form-control' name='familiar["+i+"][apeynom]' id='familiar["+i+"].apeynom' placeholder='Ingrese solo letras' required><span class='input-group-addon danger'><span class='glyphicon glyphicon-remove'></span></span></div></div><p><i>Ingrese solo letras</i></p><div class='form-group'><label for='validate-number'>DNI:</label><div class='input-group' data-validate='number'><input type='text' class='form-control' name='familiar["+i+"][dnifam]' id='familiar["+i+"].dnifam' placeholder='Ingrese solo numeros' required><span class='input-group-addon danger'><span class='glyphicon glyphicon-remove'></span></span></div></div><p><i>Ingrese solo numeros</i></p><div class='form-group'><label for='validate-number'>Ingresa la imagen del DNI:</label><div class='input-group'><input type='file' name='familiar["+i+"][imagen_dnifam]' accept='.jpg, .jpeg, .png' class='form-control' required></div></div><div class='form-group'><label for='validate-number'>Edad:</label><div class='input-group' data-validate='number'><input type='text' class='form-control' name='familiar["+i+"][edadfam]' id='familiar["+i+"].edadfam' placeholder='Ingrese solo numeros' required><span class='input-group-addon danger'><span class='glyphicon glyphicon-remove'></span></span></div></div><p><i>Ingrese solo numeros</i></p><div class='form-group'><label for='validate-letras'>Ocupación:</label><div class='input-group' data-validate='letras'><input type='text' class='form-control' name='familiar["+i+"][ocupacionfam]' id='familiar["+i+"].ocupacionfam' placeholder='Ingrese solo letras' required><span class='input-group-addon danger'><span class='glyphicon glyphicon-remove'></span></span></div></div><p><i>Ingrese solo letras</i></p><div class='form-group'><label for='validate-number'>Ingresos:</label><div class='input-group' data-validate='number'><input type='text' class='form-control' name='familiar["+i+"][ingresosfam]' id='familiar["+i+"].ingresosfam' placeholder='Ingrese solo numeros' required><span class='input-group-addon danger'><span class='glyphicon glyphicon-remove'></span></span></div></div><p><i>Ingrese solo numeros</i></p><div class='form-group'><label for='validate-number'>Imagen comprobante ingresos:</label><div class='input-group'><input type='file' name='familiar["+i+"][comprobanteingresosfam]' accept='.jpg, .jpeg, .png' class='form-control' required></div></div><div class='form-group'><label for='validate-number'>Certificación Negativa ANSES:</label><div class='input-group'><input type='file' name='familiar["+i+"][ansesfam]' accept='.jpg, .jpeg, .png' class='form-control' required></div></div></div></div></div>");
+          $('#addr'+i).html("<div class='panel panel-default'><div class='panel-heading'><h4 class='panel-title'><a data-toggle='collapse' data-parent='#proposalAcoordion' href='#collapseContact"+i+"'>Familiar "+(i+1)+"</a></h4></div><div id='collapseContact"+i+"' class='panel-collapse collapse in'><div class='panel-body'><div class='form-group'><label for='validate-letras'>Parentesco:</label><div class='input-group' data-validate='letras'><input type='text' class='form-control' name='familiar["+i+"][parentesco]' id='familiar["+i+"].parentesco' placeholder='Ingrese solo letras' required><span class='input-group-addon danger'><span class='glyphicon glyphicon-remove'></span></span></div></div><div class='form-group'><label for='validate-letras'>Apellidos y Nombres:</label><div class='input-group' data-validate='letras'><input  type='text' class='form-control' name='familiar["+i+"][apeynom]' id='familiar["+i+"].apeynom' placeholder='Ingrese solo letras' required><span class='input-group-addon danger'><span class='glyphicon glyphicon-remove'></span></span></div></div><div class='form-group'><label for='validate-number'>DNI:</label><div class='input-group' data-validate='number'><input type='text' class='form-control' name='familiar["+i+"][dnifam]' id='familiar["+i+"].dnifam' placeholder='Ingrese solo numeros' required><span class='input-group-addon danger'><span class='glyphicon glyphicon-remove'></span></span></div></div><div class='form-group'><label for='validate-number'>Ingresa la imagen del DNI:</label><div class='input-group'><input type='file' name='familiar["+i+"][imagen_dnifam]' accept='.jpg, .jpeg, .png' class='form-control' required></div></div><div class='form-group'><label for='validate-number'>Edad:</label><div class='input-group' data-validate='number'><input type='text' class='form-control' name='familiar["+i+"][edadfam]' id='familiar["+i+"].edadfam' placeholder='Ingrese solo numeros' required><span class='input-group-addon danger'><span class='glyphicon glyphicon-remove'></span></span></div></div><div class='form-group'><label for='validate-letras'>Ocupación:</label><div class='input-group' data-validate='letras'><input type='text' class='form-control' name='familiar["+i+"][ocupacionfam]' id='familiar["+i+"].ocupacionfam' placeholder='Ingrese solo letras' required><span class='input-group-addon danger'><span class='glyphicon glyphicon-remove'></span></span></div></div><div class='form-group'><label for='validate-number'>Ingresos:</label><div class='input-group' data-validate='number'><input type='text' class='form-control' name='familiar["+i+"][ingresosfam]' id='familiar["+i+"].ingresosfam' placeholder='Ingrese solo numeros' required><span class='input-group-addon danger'><span class='glyphicon glyphicon-remove'></span></span></div></div><div class='form-group'><label for='validate-number'>Imagen comprobante ingresos:</label><div class='input-group'><input type='file' name='familiar["+i+"][comprobanteingresosfam]' accept='.jpg, .jpeg, .png' class='form-control' required></div></div><div class='form-group'><label for='validate-number'>Certificación Negativa ANSES:</label><div class='input-group'><input type='file' name='familiar["+i+"][ansesfam]' accept='.jpg, .jpeg, .png' class='form-control' required></div></div></div></div></div>");
 
 
         
@@ -165,12 +165,8 @@
         state = /^([0-9]{4})-(1[0-2]|0[1-9])-(3[0-1]|0[1-9]|[1-2][0-9])$/.test($(this).val())
         }
         else if ($group.data('validate') == "letras") {
-        state = /^([a-zA-Z])+$/.test($(this).val())
-                }
-        else if ($group.data('validate') == "radio") {
-            
-         state = $(this).prop('checked') === true;
-
+        state = /^([a-zñA-ZÑ]+(\s*[a-zñA-ZÑ]*)*[a-zñA-ZÑ])+$/.test($(this).val()) 
+        
               
         }
         

@@ -45,10 +45,6 @@
             </div>
           </div>
 
-        <p><i>Seleccione año de la carrera que cursa</i></p>
-        <p></p>
-        <p></p>
-      
           <ul class="list-inline pull-right">
               <li><button type="button" class="btn btn-default prev-step">Anterior</button></li>
               <li><button type="button" class="btn btn-primary next-step">Siguiente</button></li>

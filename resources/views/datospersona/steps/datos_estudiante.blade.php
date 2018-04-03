@@ -18,7 +18,7 @@
                 <span class="input-group-addon danger"><span class="glyphicon glyphicon-remove"></span></span>
             </div>
         </div>    
-        <p><i>Ingrese solo letras</i></p>            
+    
 
         <div class="form-group">
         <label for="validate-letras">Nombres:</label>
@@ -28,7 +28,7 @@
         </div>
 
         </div>
-        <p><i>Ingrese solo letras</i></p>
+        
 
         <div class="form-group">
         <label for="validate-number">DNI/Pasaporte N°:</label>
@@ -37,7 +37,7 @@
         <span class="input-group-addon danger"><span class="glyphicon glyphicon-remove"></span></span>
         </div>
         </div>             
-        <p><i>Ingrese solo numeros</i></p>
+        
 
 
         <div class="form-group">
@@ -55,7 +55,7 @@
         <span class="input-group-addon danger"><span class="glyphicon glyphicon-remove"></span></span>
         </div>
         </div>             
-        <p><i>Ingrese solo numeros</i></p>
+        
                           
 
         <div class="form-group">
@@ -85,7 +85,7 @@
         <div class="form-group">
         <label for="validate-text">Domicilio que figura en el DNI:</label>
         <div class="input-group">
-        <input value="{{ old('domi') }}" type="text" class="form-control" name="domi" id="domi" placeholder="" required>
+        <input value="{{ old('domi') }}" type="text" class="form-control" name="domi" id="domi" placeholder="Ingrese letras y numeros" required>
         <span class="input-group-addon danger"><span class="glyphicon glyphicon-remove"></span></span>
         </div>
         </div>
@@ -101,7 +101,7 @@
         <div class="form-group">
           <label for="validate-select">Localidad:</label>
             <div class="input-group">
-                     <select class="form-control" id="localidad" name="localidad" required><option value="placeholder">Selecciona una localidad</option></select>
+                     <select class="form-control" id="localidad" name="localidad" required><option value="" selected>Selecciona una localidad</option></select>
               <span class="input-group-addon danger"><span class="glyphicon glyphicon-remove"></span></span>
             </div>
         </div> 
@@ -118,7 +118,7 @@
         <span class="input-group-addon danger"><span class="glyphicon glyphicon-remove"></span></span>
         </div>
         </div>             
-        <p><i>Ingrese solo numeros</i></p>
+        
 
 
 
@@ -130,7 +130,7 @@
         </div>
 
         </div>
-        <p><i>Ingrese solo letras</i></p>
+        
 
         <div class="form-group">
         <label for="validate-phone">Celular:</label>
@@ -138,8 +138,14 @@
         <input value="{{ old('cel') }}" type="text" class="form-control" name="cel" id="cel" placeholder="Ingrese solo numeros" required >
         <span class="input-group-addon danger"><span class="glyphicon glyphicon-remove"></span></span>
         </div>
+        <ul class="center-block ">
+            
+            <li class="input-group-addon text-left">
+                Sin el 0 y sin el 15
+            </li>
+        </ul>
         </div>
-        <p><i>Sin el 0 y sin el 15</i></p>
+        
 
 
         <div class="form-group">
@@ -157,8 +163,14 @@
         <input value="{{ old('face') }}" type="text" class="form-control" name="face" id="face" placeholder="Ingrese usuario de facebook">
         <span class="input-group-addon info"><span class="glyphicon glyphicon-asterisk"></span></span>
         </div>
+        <ul class="center-block">
+            
+            <li class="input-group-addon text-left">
+                Ej: www.facebook.com/<b>fcytUader</b>
+            </li>
+        </ul>
         </div>
-        <p>Ej: www.facebook.com/<b>fcytUader</b></p>              
+        
 
 
         
@@ -186,7 +198,7 @@
         state = /^([0-9]{4})-(1[0-2]|0[1-9])-(3[0-1]|0[1-9]|[1-2][0-9])$/.test($(this).val())
         }
         else if ($group.data('validate') == "letras") {
-        state = /^([a-zA-Z])+$/.test($(this).val())
+        state = /^([a-zñA-ZÑ]+(\s*[a-zñA-ZÑ]*)*[a-zñA-ZÑ])+$/.test($(this).val())
                 }
         /*else if ($group.data('validate') == "radioecono") {
             
@@ -241,7 +253,9 @@
             $("#provincia").change(function (event) {
              
                 $("#localidad").empty();
+                $("#localidad").append("<option value='' selected>Seleccione una localidad </option>");
             $.get("localidad/"+event.target.value+"", function(response, state) {
+                
                 for(i=0; i<response.length; i++){
                 $("#localidad").append("<option value='"+response[i].localidad+"'>"+response[i].localidad+" </option>");
             }

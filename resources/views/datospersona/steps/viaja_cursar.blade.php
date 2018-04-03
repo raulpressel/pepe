@@ -6,15 +6,7 @@
 
         <div class="col-sm-offset-2 col-sm-5">
 
-     <!--   <div class="form-group">
-          <label for="validate-select">Utiliza colectivos Urbanos:</label>
-          <br>
-          <div class="input-group" data-validate="radioviaja">
-              <input  value=1 type="radio" name="urbano" id="urbanoSi"  required> Si 
-              <input  value=0 type="radio" name="urbano" id="urbanoNo" required> No <br>
-            <span class="input-group-addon danger"><span class="glyphicon glyphicon-remove"></span></span>
-          </div>
-        </div> -->
+     
 
           <div class="form-group">
               <label for="validate-letras">Utiliza colectivos Urbanos:</label>
@@ -38,15 +30,7 @@
             </div>
           </div>
 
-       <!-- <div class="form-group">
-          <label for="validate-select">Utiliza colectivos de Media Distancia:</label>
-          <br>
-          <div class="input-group" data-validate="radioviaja">
-              <input  value=1 type="radio" name="mediadist" id="mediadistSi"  required> Si 
-              <input  value=0 type="radio" name="mediadist" id="mediadistNo" required> No <br>
-            <span class="input-group-addon danger"><span class="glyphicon glyphicon-remove"></span></span>
-          </div>
-        </div> -->
+       
 
 
           <div class="form-group">
@@ -63,11 +47,11 @@
        <div class="form-group">
           <label for="validate-number">Precio Pasaje  $:</label>
           <div class="input-group" data-validate="number">
-            <input value="{{ old('preciopasaje') }}"  type="number" class="form-control" name="preciopasaje" id="preciopasaje" placeholder="Ingrese solo numeros">
+            <input value="{{ old('preciopasaje') }}"  type="number" min="0" class="form-control" name="preciopasaje" id="preciopasaje" placeholder="Ingrese solo numeros">
             <span class="input-group-addon info"><span class="glyphicon glyphicon-asterisk"></span></span>
           </div>
         </div>             
-        <p><i>Ingrese solo numeros</i></p>     
+        
 
       <div class="form-group">
               <label for="validate-letras">Cantidad de veces que viaja por semana:</label>

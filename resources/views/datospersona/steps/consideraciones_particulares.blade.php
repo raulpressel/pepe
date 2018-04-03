@@ -54,27 +54,24 @@
          </div>
           <p><i>Ingrese solo letras</i></p>
 
-        <div class="form-group">
+       <!-- <div class="form-group">
             <label for="validate-letras">Produce Incapacidad:</label>
             <div class="input-group" data-validate="letras">
                 <input value="{{ old('ocupacionfam0') }}" type="text" class="form-control" name="consideraciones[0][incapacidad]" id="consideraciones[0].incapacidad" placeholder="Ingrese solo letras" required>
                 <span class="input-group-addon danger"><span class="glyphicon glyphicon-remove"></span></span>
             </div>
-        </div>    
+        </div>    -->
 
-        <!-- <div class="form-group">
-          <label for="validate-select">Estado Civil:</label>
-            <div class="input-group">
-                <select  class="form-control" name="estcivil" id="estcivil" placeholder="Seleccione una opción" required>
-                  <option value="">Seleccione una opción</option>
-                  <option value="soltero">Soltero</option>
-                  <option value="casado">Casado</option>
-                  <option value="divorciado">Divorciado</option>
-                  <option value="viudo">Viudo</option>
+              <div class="form-group">
+              <label for="validate-letras">Produce Incapacidad:</label>
+                <div class="input-group">
+                  <select value="{{ old('consideraciones[0][incapacidad]') }}" class="form-control" name="consideraciones[0][incapacidad]" id="consideraciones[0][incapacidad]" placeholder="Seleccione una opción" required>
+                    <option value="">Seleccione una opción</option>
+                    <option value="1">Si</option><option value="2">No</option>
                 </select>
-              <span class="input-group-addon danger"><span class="glyphicon glyphicon-remove"></span></span>
+                <span class="input-group-addon danger"><span class="glyphicon glyphicon-remove"></span></span>
             </div>
-        </div> -->
+          </div>
         
 
         <div class="form-group">

@@ -11,7 +11,7 @@
                     <li role="presentation" class="active">
                         <a href="#step1" data-toggle="tab" aria-controls="step1" role="tab" title="Paso 1">
                             <span class="round-tab">
-                                <i class="glyphicon glyphicon-user"></i>
+                                <i class="icon-user"></i>
                             </span>
                         </a>
                     </li>
@@ -19,15 +19,17 @@
                     <li role="presentation" class="disabled">
                         <a href="#step2" data-toggle="tab" aria-controls="step2" role="tab" title="Paso 2">
                             <span class="round-tab">
-                                <i class="glyphicon glyphicon-book"></i>
-                            </span>
+                              <i class="icon-mortar-board"></i>  
+                                 
+                                 
+                           </span>
                         </a>
                     </li>
 
                     <li role="presentation" class="disabled">
                         <a href="#step3" data-toggle="tab" aria-controls="step3" role="tab" title="Paso 3">
                             <span class="round-tab">
-                                <i class="glyphicon glyphicon-usd"></i>
+                                <i class="icon-attach_money"></i>
                             </span>
                         </a>
                     </li>
@@ -35,14 +37,14 @@
                     <li role="presentation" class="disabled">
                         <a href="#step4" data-toggle="tab" aria-controls="step4" role="tab" title="Paso 4">
                             <span class="round-tab">
-                                <i class="glyphicon glyphicon-home"></i>
+                                <i class="icon-home"></i>
                             </span>
                         </a>
                     </li>
                    <li role="presentation" class="disabled">
                         <a href="#step5" data-toggle="tab" aria-controls="step5" role="tab" title="Paso 5">
                             <span class="round-tab">
-                                <i class="glyphicon glyphicon-"></i>
+                                <i class="icon-bus"></i>
                             </span>
                         </a>
                     </li>
@@ -50,7 +52,7 @@
                     <li role="presentation" class="disabled">
                         <a href="#step6" data-toggle="tab" aria-controls="step6" role="tab" title="Paso 6">
                             <span class="round-tab">
-                                <i class="glyphicon glyphicon-gift"></i>
+                                <i class="icon-group2"></i>
                             </span>
                         </a>
                     </li>
@@ -58,21 +60,21 @@
                     <li role="presentation" class="disabled">
                         <a href="#step7" data-toggle="tab" aria-controls="step7" role="tab" title="Paso 7">
                             <span class="round-tab">
-                                <i class="glyphicon glyphicon-euro"></i>
+                                <i class="icon-moneybag"></i>
                             </span>
                         </a>
                     </li>
                     <li role="presentation" class="disabled">
                         <a href="#step8" data-toggle="tab" aria-controls="step8" role="tab" title="Paso 8">
                             <span class="round-tab">
-                                <i class="glyphicon glyphicon-picture"></i>
+                                <i class="icon-aid-kit"></i>
                             </span>
                         </a>
                     </li>                    
                     <li role="presentation" class="disabled">
-                        <a href="#complete" data-toggle="tab" aria-controls="complete" role="tab" title="Completo">
+                        <a href="#complete" data-toggle="tab" aria-controls="complete" role="tab" title="Enviar">
                             <span class="round-tab">
-                                <i class="glyphicon glyphicon-ok"></i>
+                                <i class="icon-checkmark"></i>
                             </span>
                         </a>
                     </li>

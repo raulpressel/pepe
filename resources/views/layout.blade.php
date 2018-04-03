@@ -2,11 +2,14 @@
 <html lang="es">
 <head>
     <meta charset="UTF-8">
+    
 
   <link href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.0/css/bootstrap.min.css" rel="stylesheet">
 
+
     
     <link rel="stylesheet" href="../css/tabs.css">	
+    <link rel="stylesheet" href="../css/icon.css">  
     <link rel="stylesheet" href="../css/validation.css">
     <link rel="stylesheet" href="../css/accordion.css">
     <!-- <link rel="stylesheet" href="../css/app.css"> -->
