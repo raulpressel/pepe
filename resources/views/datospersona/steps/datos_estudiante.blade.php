@@ -39,13 +39,28 @@
         </div>             
         
 
-
+<!--
         <div class="form-group">
           <label for="validate-number">Ingresa la imagen del DNI:</label>
           <div class="input-group">
             <input type="file" name='imagen_dni' accept=".jpg, .jpeg, .png" class="form-control" required>
           </div>
+        </div> -->
+
+        <div class="form-group">
+          <label for="validate-number">Ingresa la imagen del DNI:</label>
+          <div class="input-group">
+            <input type="file" id="files" name="files[]" multiple class="form-control" required>
+            <span class="input-group-addon danger"><span class="glyphicon glyphicon-remove"></span></span>
+          </div>
         </div>
+        
+        <div class="form-group">
+            <div class="input-group">
+                <output id="list-miniatura"></output>
+            </div>
+        </div>
+
 
 
         <div class="form-group">
@@ -200,30 +215,7 @@
         else if ($group.data('validate') == "letras") {
         state = /^([a-zñA-ZÑ]+(\s*[a-zñA-ZÑ]*)*[a-zñA-ZÑ])+$/.test($(this).val())
                 }
-        /*else if ($group.data('validate') == "radioecono") {
-            
-         state = $(this).prop('checked') === true;
-              
-        }
-        else if ($group.data('validate') == "radiovivienda") {
-            
-         state = $(this).prop('checked') === true;
-              
-        }
-        else if ($group.data('validate') == "radioviaja") {
-            
-         state = $(this).prop('checked') === true;
-              
-        }
-        else if ($group.data('validate') == "radiofamiliar") {
-            
-         state = $(this).prop('checked') === true;
-              
-        } */
-
-
-
-
+        
         if (state) {
         $addon.removeClass('danger');
         $addon.addClass('success');
@@ -262,6 +254,41 @@
             });
         });
         </script> 
+        
+
+<script>
+  function handleFileSelect(evt) {
+    var files = evt.target.files; // FileList object
+ 
+    // Loop through the FileList and render image files as thumbnails.
+    for (var i = 0, f; f = files[i]; i++) {
+ 
+      // Only process image files.
+      if (!f.type.match('image.*')) {
+        continue;
+      }
+
+
+ 
+      var reader = new FileReader();
+ 
+      // Closure to capture the file information.
+      reader.onload = (function(theFile) {
+        return function(e) {
+          // Render thumbnail.
+          var span = document.createElement('span');
+          span.innerHTML = ['Nombre: ', escape(theFile.name), ' || Tamanio: ', escape(theFile.size), ' bytes || type: ', escape(theFile.type), '<br /><img class="thumb" src="', e.target.result,'" title="', escape(theFile.name), '"/><br />'].join('');
+          document.getElementById('list-miniatura').insertBefore(span, null);
+        };
+      })(f);
+ 
+      // Read in the image file as a data URL.
+      reader.readAsDataURL(f);
+    }
+  }
+ 
+  document.getElementById('files').addEventListener('change', handleFileSelect, false);
+</script>
 
         
 

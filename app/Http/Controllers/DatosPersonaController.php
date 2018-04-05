@@ -43,7 +43,8 @@ class DatosPersonaController extends Controller
         $carrera = DB::table('carreras')->get();
         
         
-        return view('datospersona.index', compact('dato','user','carrera')) ;
+        
+        return view('datospersona.index', compact('dato','user','carrera'));
 
         
         
@@ -63,8 +64,9 @@ class DatosPersonaController extends Controller
 
         
         $carrera = DB::table('carreras')->get();
+        $condicion = DB::table('condicion')->get();
         
-        return view ('datospersona.create', compact('user', 'carrera', 'id'));
+        return view ('datospersona.create', compact('user', 'carrera', 'id', 'condicion'));
 
 
 

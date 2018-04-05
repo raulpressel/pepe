@@ -8,6 +8,19 @@
         <div class="col-sm-offset-2 col-sm-5">
 
           <div class="form-group">
+            <label for="validate-letras">Condición:</label>
+              <div class="input-group">
+                <select class="form-control" name="cond" id="cond" placeholder="Seleccione una opción" required>
+                  <option value="">Seleccione una opción</option>
+                  @foreach($condicion as $condiciones)
+                    <option value= {{$condiciones->id}}><p>{{ $condiciones->nombre }}</p></option>
+                  @endforeach
+                </select> 
+                <span class="input-group-addon danger"><span class="glyphicon glyphicon-remove"></span></span>               
+              </div>
+          </div>
+
+          <div class="form-group">
               <label for="validate-letras">Carrera que cursa:</label>
                 <div class="input-group" >
                 <!--input value="{{ old('carrera_cursa') }}" type="text" class="form-control" name="carrera_cursa" id="carrera_cursa" placeholder="Ingrese solo letras" required> -->
