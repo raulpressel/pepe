@@ -21,30 +21,41 @@
                 <div class="input-group">
                   <select value="{{ old('casafam') }}" class="form-control" name="casafam" id="casafam" placeholder="Seleccione una opción" required>
                     <option value="">Seleccione una opción</option>
-                    <option value="1">Si</option><option value="2">No</option>
+                    <option value="Si">Si</option><option value="No">No</option>
                 </select>
                 <span class="input-group-addon danger"><span class="glyphicon glyphicon-remove"></span></span>
             </div>
           </div>
 
 
-          <div class="form-group">
+          <div  class="form-group">
               <label for="validate-letras">Alquila:</label>
                 <div class="input-group">
                   <select value="{{ old('urbano') }}" class="form-control" name="alq" id="alq" placeholder="Seleccione una opción" required>
                     <option value="">Seleccione una opción</option>
-                    <option value="1">Si</option><option value="2">No</option>
+                    <option value="Si">Si</option><option value="No">No</option>
                 </select>
                 <span class="input-group-addon danger"><span class="glyphicon glyphicon-remove"></span></span>
             </div>
           </div>
-        
+        <div style="display:none;" id="reciboalqdiv" class="form-group">
+
+            <label for="validate-number">Recibo de Alquiler:</label>
+            
+            <div class="input-group">
+              <input  type="file" id="reciboalq" name="reciboalq[]" multiple class="form-control" required>
+                <span class="input-group-addon danger"><span class="glyphicon glyphicon-remove"></span></span>
+              </div>
+              <div class="input-group">
+                <output id="list-reciboalq"></output>
+              </div>
+            </div>
    
-        <div class="form-group">
+        <div style="display:none;" id="montoalqdiv" class="form-group">
           <label for="validate-number">Monto  $:</label>
           <div class="input-group" data-validate="number">
-            <input value="{{ old('montoalq') }}" type="number" min="0" class="form-control" name="montoalq" id="montoalq" placeholder="Ingrese solo numeros">
-            <span class="input-group-addon info"><span class="glyphicon glyphicon-asterisk"></span></span>
+            <input value="{{ old('montoalq') }}" type="number" class="form-control" name="montoalq" id="montoalq" placeholder="Ingrese solo numeros" required>
+            <span class="input-group-addon danger"><span class="glyphicon glyphicon-remove"></span></span>
           </div>
         </div>             
         
@@ -57,3 +68,37 @@
 
 </div>
 </div>
+
+
+<script type="text/javascript">
+
+$('#alq').on('change',function()
+{
+var selected = $(this).val();
+
+if (selected === "") {
+$('#montoalqdiv').hide(); 
+$('#reciboalqdiv').hide();
+
+}
+else{
+
+
+
+if(selected === "Si") {
+
+$('#reciboalqdiv').show(); 
+$('#montoalqdiv').show(); 
+ 
+}
+else if(selected === "No") {
+$('#montoalqdiv').hide(); 
+$('#reciboalqdiv').hide(); 
+
+}
+
+
+}
+
+});
+</script>

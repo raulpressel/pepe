@@ -13,13 +13,41 @@
                 <select class="form-control" name="cond" id="cond" placeholder="Seleccione una opción" required>
                   <option value="">Seleccione una opción</option>
                   @foreach($condicion as $condiciones)
-                    <option value= {{$condiciones->id}}><p>{{ $condiciones->nombre }}</p></option>
+                    <option value= {{$condiciones->nombre}}><p>{{ $condiciones->nombre }}</p></option>
                   @endforeach
                 </select> 
                 <span class="input-group-addon danger"><span class="glyphicon glyphicon-remove"></span></span>               
               </div>
           </div>
 
+          <div style="display:none;" id="div" class="form-group">
+            <label style="display:none;" id="ing" for="validate-number">Ingrese Constancia de inscripción a la Universidad:</label>
+            <label style="display:none;" id="res" for="validate-number">Ingrese Constancia de alumno regular:</label>
+            <div class="input-group">
+              <input  type="file" id="constancia" name="constancia[]" multiple class="form-control" required>
+                <span class="input-group-addon danger"><span class="glyphicon glyphicon-remove"></span></span>
+              </div>
+              <div class="input-group">
+                <output id="list-constancia"></output>
+              </div>
+            </div>
+
+            
+        
+        
+        
+        <div style="display:none;" id="div2" class="form-group">
+          <label style="display:none;" id="ing2" for="validate-number">Ingrese Título Secundario Certificado de finalización con promedio general:</label>
+          <label style="display:none;" id="res2" for="validate-number">Ingrese Analítico de materias aprobadas:</label>
+          <div class="input-group">
+            <input  type="file" id="certificado" name="certificado[]" multiple class="form-control" required>
+            <span class="input-group-addon danger"><span class="glyphicon glyphicon-remove"></span></span>
+          </div>
+          <div class="input-group">
+                <output id="list-certificado"></output>
+          </div>
+        </div>
+          
           <div class="form-group">
               <label for="validate-letras">Carrera que cursa:</label>
                 <div class="input-group" >
@@ -71,3 +99,46 @@
     </div>
   
 </div>
+
+
+<script type="text/javascript">
+
+$('#cond').on('change',function()
+{
+var selected = $(this).val();
+
+
+if (selected === "") {
+  $('#div').hide(); 
+  $('#div2').hide();   
+}
+else{
+$('#div').show(); 
+$('#div2').show();
+
+if(selected === "Ingresante") {
+
+$('#ing').show(); 
+$('#ing2').show(); 
+}
+else {
+$('#ing').hide(); 
+$('#ing2').hide(); 
+
+}
+
+if((selected === "Renovante") || (selected === "Nuevo") || (selected === "Condicional") ) {
+
+$('#res').show(); 
+$('#res2').show(); 
+}
+else {
+$('#res').hide(); 
+$('#res2').hide();
+
+}
+
+}
+
+});
+</script>

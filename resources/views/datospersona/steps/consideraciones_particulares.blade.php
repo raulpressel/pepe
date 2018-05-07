@@ -33,58 +33,66 @@
                       <div class="panel-body">
            
 
-            
           <div class="form-group" >
               <label for="validate-letras">Parentesco:</label>
-              <div class="input-group" data-validate="letras">
-                  <input value="{{ old('parentesco0') }}" type="text" class="form-control" name="consideraciones[0][parentesco]" id="consideraciones[0].parentesco" placeholder="Ingrese solo letras" required>
+              <div class="input-group">
+                    <select class="form-control" name="consideraciones[0][parentesco]" id="consideraciones[0][parentesco]" placeholder="Seleccione una opción" required>
+                    <option value="">Seleccione una opción</option>  
+                    <option value='Abuelo'>Abuelo/a</option>
+                    <option value='Concubino'>Concubino/a</option>
+                    <option value='Conyuge'>Cónyuge</option>
+                    <option value='Cuniado'>Cuñado/a</option>
+                    <option value='Hermano'>Hermano/a</option>
+                    <option value='Hijo'>Hijo/a</option>
+                    <option value='madre'>Madre</option>
+                    <option value='padre'>Padre</option>
+                    <option value='Nieto'>Nieto/a</option>
+                    <option value='novio'>Novio/a</option>
+                    <option value='Nuera'>Nuera</option>
+                    <option value='Otro'>Otro</option>
+                    <option value='Primo'>Primo/a</option>
+                    <option value='Sobrino'>Sobrino/a</option>
+                    <option value='Tio'>Tio/a</option>
+                    <option value='Yerno'>Yerno</option>
+                </select>
                   <span class="input-group-addon danger"><span class="glyphicon glyphicon-remove"></span></span>
               </div>
-          </div>    
-          <p><i>Ingrese solo letras</i></p>            
+          </div>
 
 
 
           <div class="form-group">
             <label for="validate-letras">Enfermedad:</label>
             <div class="input-group" data-validate="letras">
-            <input value="{{ old('apeynom0') }}" type="text" class="form-control" name="consideraciones[0][enfermedad]" id="consideraciones[0].enfermedad" placeholder="Ingrese solo letras" required>
+            <input  type="text" class="form-control" name="consideraciones[0][enfermedad]" id="consideraciones[0].enfermedad" placeholder="Ingrese solo letras" required>
             <span class="input-group-addon danger"><span class="glyphicon glyphicon-remove"></span></span>
             </div>
          </div>
-          <p><i>Ingrese solo letras</i></p>
-
-       <!-- <div class="form-group">
-            <label for="validate-letras">Produce Incapacidad:</label>
-            <div class="input-group" data-validate="letras">
-                <input value="{{ old('ocupacionfam0') }}" type="text" class="form-control" name="consideraciones[0][incapacidad]" id="consideraciones[0].incapacidad" placeholder="Ingrese solo letras" required>
-                <span class="input-group-addon danger"><span class="glyphicon glyphicon-remove"></span></span>
-            </div>
-        </div>    -->
 
               <div class="form-group">
-              <label for="validate-letras">Produce Incapacidad:</label>
+              <label for="validate-letras">Produce Incapacidad y/o Enfermedad cronica grave:</label>
                 <div class="input-group">
-                  <select value="{{ old('consideraciones[0][incapacidad]') }}" class="form-control" name="consideraciones[0][incapacidad]" id="consideraciones[0][incapacidad]" placeholder="Seleccione una opción" required>
+                  <select  class="form-control" name="consideraciones[0][incapacidad]" id="incapacidad0" placeholder="Seleccione una opción" required>
                     <option value="">Seleccione una opción</option>
-                    <option value="1">Si</option><option value="2">No</option>
+                    <option value="Si">Si</option><option value="No">No</option>
                 </select>
                 <span class="input-group-addon danger"><span class="glyphicon glyphicon-remove"></span></span>
             </div>
           </div>
         
-
-        <div class="form-group">
-          <label for="validate-number">Imagen Certificado:</label>
-          <div class="input-group">
-            <input type="file" name='consideraciones[0][imagen]' accept=".jpg, .jpeg, .png" class="form-control" required>
-          </div>
-        </div>
-      
-      
-      </div>
-                  </div>
+        <div style="display:none;" id="imagencertificadodiv0" class="form-group">
+            <label for="validate-number">Imagen Certificado:</label>
+            <div class="input-group">
+              <input  type="file" id="imagencertificado0" name="consideraciones[0][imagen]" multiple class="form-control" required>
+                <span class="input-group-addon danger"><span class="glyphicon glyphicon-remove"></span></span>
               </div>
+              <div class="input-group">
+                <output id="list-imagencertificado0"></output>
+              </div>
+            </div>
+          </div>
+          </div>
+          </div>
 
 
       </div> <!--  cierra div addr -->
@@ -108,7 +116,7 @@
           var i=1;
           var j=2;
          $("#add_con").click(function(){
-          $('#addrp'+i).html("<div class='panel panel-default'><div class='panel-heading'><h4 class='panel-title'><a data-toggle='collapse' data-parent='#proposalAcoordion' href='#collapseConsid"+i+"'>Consideraciones "+(i+1)+"</a></h4></div><div id='collapseConsid"+i+"' class='panel-collapse collapse in'><div class='panel-body'><div class='form-group'><label for='validate-letras'>Parentesco:</label><div class='input-group' data-validate='letras'><input type='text' class='form-control' name='consideraciones["+i+"][parentesco]' id='consideraciones["+i+"].parentesco' placeholder='Ingrese solo letras' required><span class='input-group-addon danger'><span class='glyphicon glyphicon-remove'></span></span></div></div><p><i>Ingrese solo letras</i></p><div class='form-group'><label for='validate-letras'>Apellidos y Nombres:</label><div class='input-group' data-validate='letras'><input  type='text' class='form-control' name='consideraciones["+i+"][enfermedad]' id='consideraciones["+i+"].enfermedad' placeholder='Ingrese solo letras' required><span class='input-group-addon danger'><span class='glyphicon glyphicon-remove'></span></span></div></div><p><i>Ingrese solo letras</i></p><div class='form-group'><label for='validate-letras'>Ocupación:</label><div class='input-group' data-validate='letras'><input type='text' class='form-control' name='consideraciones["+i+"][incapacidad]' id='consideraciones["+i+"].incapacidad' placeholder='Ingrese solo letras' required><span class='input-group-addon danger'><span class='glyphicon glyphicon-remove'></span></span></div></div><p><i>Ingrese solo letras</i></p><div class='form-group'><label for='validate-number'>Certificación Negativa ANSES:</label><div class='input-group'><input type='file' name='consideraciones["+i+"][imagen]' accept='.jpg, .jpeg, .png' class='form-control' required></div></div></div></div></div>");
+          $('#addrp'+i).html("<div class='panel panel-default'><div class='panel-heading'><h4 class='panel-title'><a data-toggle='collapse' data-parent='#proposalAcoordion' href='#collapseConsid'>Consideraciones "+(i+1)+"</a></h4></div><div id='collapseConsid' class='panel-collapse collapse in'><div class='panel-body'><div class='form-group' ><label for='validate-letras'>Parentesco:</label><div class='input-group'><select class='form-control' name='consideraciones["+i+"][parentesco]' id='consideraciones["+i+"][parentesco]' placeholder='Seleccione una opción' required><option value=''>Seleccione una opción</option><option value='Abuelo'>Abuelo/a</option><option value='Concubino'>Concubino/a</option><option value='Conyuge'>Cónyuge</option><option value='Cuniado'>Cuñado/a</option><option value='Hermano'>Hermano/a</option><option value='Hijo'>Hijo/a</option><option value='madre'>Madre</option><option value='padre'>Padre</option><option value='Nieto'>Nieto/a</option><option value='novio'>Novio/a</option><option value='Nuera'>Nuera</option><option value='Otro'>Otro</option><option value='Primo'>Primo/a</option><option value='Sobrino'>Sobrino/a</option><option value='Tio'>Tio/a</option><option value='Yerno'>Yerno</option></select><span class='input-group-addon danger'><span class='glyphicon glyphicon-remove'></span></span></div></div><div class='form-group'><label for='validate-letras'>Enfermedad:</label><div class='input-group' data-validate='letras'><input  type='text' class='form-control' name='consideraciones["+i+"][enfermedad]' id='consideraciones["+i+"].enfermedad' placeholder='Ingrese solo letras' required><span class='input-group-addon danger'><span class='glyphicon glyphicon-remove'></span></span></div></div><div class='form-group'><label for='validate-letras'>Produce Incapacidad y/o Enfermedad cronica grave:</label><div class='input-group'><select  class='form-control' name='consideraciones["+i+"][incapacidad]' id='incapacidad"+i+"' placeholder='Seleccione una opción' required><option value=''>Seleccione una opción</option><option value='Si'>Si</option><option value='No'>No</option></select><span class='input-group-addon danger'><span class='glyphicon glyphicon-remove'></span></span></div></div><div style='display:none;' id='imagencertificadodiv"+i+"' class='form-group'><label for='validate-number'>Imagen Certificado:</label><div class='input-group'><input  type='file' id='imagencertificado"+i+"' name='consideraciones["+i+"][imagen]' multiple class='form-control' required><span class='input-group-addon danger'><span class='glyphicon glyphicon-remove'></span></span></div><div class='input-group'><output id='list-imagencertificado"+i+"'></output></div></div></div></div></div>");
 
 
         
@@ -116,10 +124,30 @@
 
           $('#tab_logiccon').append('<div id="addrp'+(i+1)+'"></div>'); 
             
-          
+         
+
           i++; 
           j++;
 
+          $('#incapacidad1').on('change',function()
+          {
+          var selected = $(this).val();
+
+          if (selected === "") {
+          $('#imagencertificadodiv1').hide(); 
+
+          }
+          else{
+
+          if(selected === "Si") {
+          $('#imagencertificadodiv1').show(); 
+          }
+          else if(selected === "No") {
+          $('#imagencertificadodiv1').hide(); 
+          }
+          }
+
+          });
         
         $(document).ready(function() {
         $('.input-group input[required], .input-group textarea[required], .input-group select[required], input-group radio[required]').on('keyup change', function() {
@@ -205,3 +233,25 @@
 
 </div>
 
+<script type="text/javascript">
+
+$('#incapacidad0').on('change',function()
+{
+var selected = $(this).val();
+
+if (selected === "") {
+$('#imagencertificadodiv0').hide(); 
+
+}
+else{
+
+if(selected === "Si") {
+$('#imagencertificadodiv0').show(); 
+}
+else if(selected === "No") {
+$('#imagencertificadodiv0').hide(); 
+}
+}
+
+});
+</script>

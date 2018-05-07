@@ -53,13 +53,22 @@
             <input type="file" id="files" name="files[]" multiple class="form-control" required>
             <span class="input-group-addon danger"><span class="glyphicon glyphicon-remove"></span></span>
           </div>
+        <div class="input-group">
+            <output id="list-files"></output>
+        </div>
         </div>
         
         <div class="form-group">
-            <div class="input-group">
-                <output id="list-miniatura"></output>
-            </div>
+          <label for="validate-number">Certificación Negativa Anses:</label>
+          <div class="input-group">
+            <input type="file" id="anses" name="anses[]" multiple class="form-control" required>
+            <span class="input-group-addon danger"><span class="glyphicon glyphicon-remove"></span></span>
+          </div>
+        <div class="input-group">
+            <output id="list-anses"></output>
         </div>
+        </div>
+
 
 
 
@@ -186,7 +195,28 @@
         </ul>
         </div>
         
-
+        <div class="form-group">
+              <label for="validate-letras">Discapacidad y/o Enfermedad cronica grave:</label>
+                <div class="input-group">
+                  <select  class="form-control" name="discaest" id="discaest" placeholder="Seleccione una opción" required>
+                    <option value="">Seleccione una opción</option>
+                    <option value="Si">Si</option><option value="No">No</option>
+                </select>
+                <span class="input-group-addon danger"><span class="glyphicon glyphicon-remove"></span></span>
+            </div>
+          </div>
+        
+        <div style="display:none;" id="imagendiscaestdiv" class="form-group">
+            <label for="validate-number">Imagen Certificado:</label>
+            <div class="input-group">
+              <input  type="file" id="imagendiscaest" name="imagendiscaest" multiple class="form-control" required>
+                <span class="input-group-addon danger"><span class="glyphicon glyphicon-remove"></span></span>
+              </div>
+              <div class="input-group">
+                <output id="list-imagendiscaest"></output>
+              </div>
+            </div>
+          
 
         
         <script>
@@ -254,12 +284,21 @@
             });
         });
         </script> 
+
+    
         
 
 <script>
+  $(document).on('click', 'input[type="file"]', function(evt) {
+
+let idd = this.id;
+            
+
   function handleFileSelect(evt) {
     var files = evt.target.files; // FileList object
- 
+    
+            
+          
     // Loop through the FileList and render image files as thumbnails.
     for (var i = 0, f; f = files[i]; i++) {
  
@@ -267,8 +306,6 @@
       if (!f.type.match('image.*')) {
         continue;
       }
-
-
  
       var reader = new FileReader();
  
@@ -278,19 +315,23 @@
           // Render thumbnail.
           var span = document.createElement('span');
           span.innerHTML = ['Nombre: ', escape(theFile.name), ' || Tamanio: ', escape(theFile.size), ' bytes || type: ', escape(theFile.type), '<br /><img class="thumb" src="', e.target.result,'" title="', escape(theFile.name), '"/><br />'].join('');
-          document.getElementById('list-miniatura').insertBefore(span, null);
+          document.getElementById('list-'+ idd).insertBefore(span, null);
         };
       })(f);
  
       // Read in the image file as a data URL.
       reader.readAsDataURL(f);
     }
-  }
- 
-  document.getElementById('files').addEventListener('change', handleFileSelect, false);
+  
+
+    }
+  document.getElementById(idd).addEventListener('change', handleFileSelect, false);
+
+  
+
+  });
 </script>
 
-        
 
 
         <ul class="list-unstyled pull-right">
@@ -302,3 +343,26 @@
   </div>
 </div>
 
+
+<script type="text/javascript">
+
+$('#discaest').on('change',function()
+{
+var selected = $(this).val();
+
+if (selected === "") {
+$('#imagendiscaestdiv').hide(); 
+
+}
+else{
+
+if(selected === "Si") {
+$('#imagendiscaestdiv').show(); 
+}
+else if(selected === "No") {
+$('#imagendiscaestdiv').hide(); 
+}
+}
+
+});
+</script>

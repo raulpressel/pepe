@@ -8,7 +8,7 @@
 
 
     <link rel="stylesheet" href="../css/prev.css">  
-    <link rel="stylesheet" href="../css/tabs.css">	
+    <!-- <link rel="stylesheet" href="../css/tabs.css">	-->
     <link rel="stylesheet" href="../css/icon.css">  
     <link rel="stylesheet" href="../css/validation.css">
     <link rel="stylesheet" href="../css/accordion.css">
