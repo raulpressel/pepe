@@ -2,7 +2,13 @@
 
 namespace App\Http\Controllers;
 
+use App\Inscripcione;
+use App\User;
+use App\DatosPersona;
+
+use PDF;
 use Illuminate\Http\Request;
+
 use Illuminate\Support\Facades\DB;
 use TCG\Voyager\Database\Schema\SchemaManager;
 use TCG\Voyager\Facades\Voyager;
@@ -19,7 +25,7 @@ class InscripcionesController extends Controller
     
      */
     public function index(Request $request)
-    {
+    {/*
         // GET THE SLUG, ex. 'posts', 'pages', etc.
         $slug = $this->getSlug($request);
 
@@ -96,6 +102,36 @@ class InscripcionesController extends Controller
             'searchable',
             'isServerSide'
         ));
+        */
+
+        //Aca arranca lo mio xd
+
+        $dato = DB::table('datos_personas')
+        ->join('inscripciones', function ($join){
+            $join->on('datos_personas.user_id','=','inscripciones.user_id');
+        })->get()->toArray(); // devuelvo todos los datos_personas inscriptos
+        
+
+        $inscrip = DB::table('inscripciones')
+        ->join('users', function ($join) 
+            {
+                $join->on('inscripciones.user_id','=','users.id');
+            })
+        ->get();//Devuelvo los que estan inscriptos y son usuarios
+
+        $becas = DB::table('becas')->get();
+
+
+       //dd($dato,$inscrip);
+   /*
+
+        $dato = DatosPersona::with(['user_name', 'user_id'])->get();
+        $user = Auth::user(); 
+        $carrera = DB::table('carreras')->get();
+  */   
+        
+        return view('vendor.voyager.inscripciones.listar', compact('inscrip','dato','becas'));
+
     }
 
     /**
@@ -379,4 +415,41 @@ protected function cleanup($dataType, $data)
             }
         }
     }
+
+
+
+
+    public function pdf(Request $request){
+       //dd($request);
+       //return response()->json($request);
+        
+       
+      /*  $inscrip = DB::table('inscripciones')
+        ->join('users', function ($join) 
+            {
+                $join->on('inscripciones.user_id','=','users.id');
+            })
+        ->get();//Devuelvo los que estan inscriptos y son usuarios
+        */
+      // $pdf = PDF::loadView('vendor.voyager.inscripciones.pdfview', );
+   
+    //return $pdf->download('pepe.pdf');
+
+        
+
+        
+
+        /////
+
+         $inscrip = Inscripcione::where('user_id','like','%'.$request->usuario.'%')->get();
+         
+
+        // dd($inscrip);
+         $pdf = PDF::loadView('vendor.voyager.inscripciones.pdfview', ['inscrip'=>$inscrip]);
+   
+        return $pdf->download('pepe.pdf');
+
+
+}
+
 }

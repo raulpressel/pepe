@@ -18,7 +18,8 @@
 
 
 <a href="{{ route('datospersona.edit', $id->user_id) }} ">
-	
+<h1>Editar datos cargados de {{$id->user_name}}</h1>
+
 </a> 
 
 

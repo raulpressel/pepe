@@ -173,8 +173,13 @@
                                             </a>
                                         @endcan
                                         @can('read', $data)
-                                            <a href="{{ route('voyager.'.$dataType->slug.'.show', $data->{$data->getKeyName()}) }}" title="{{ __('voyager.generic.view') }}" class="btn btn-sm btn-warning pull-right">
-                                                <i class="voyager-eye"></i> <span class="hidden-xs hidden-sm">{{ __('voyager.generic.view') }}</span>
+                                            <a href="{{ route('datospersona.edit', $id ) }}" title="{{ __('voyager.generic.view') }}" class="btn btn-sm btn-warning pull-righ">
+                                           
+                                            <!-- Original ---------------------------- tenemos q pasar user_id no id... si no no se puede editar desde aca....
+
+                                            <a href="{{ route('voyager.'.$dataType->slug.'.show', $data->{$data->getKeyName()}) }}" title="{{ __('voyager.generic.view') }}" class="btn btn-sm btn-warning pull-right">-->
+
+                                                <i class="voyager-eye"></i> <span class="hidden-xs hidden-sm">Ver datos de beca</span>
                                             </a>
                                         @endcan
                                     </td>

@@ -11,6 +11,7 @@ use App\Localidad;
 use App\familiar;
 use App\consideracione;
 use DB;
+use App\Inscripcione;
 
 use Carbon\Carbon;
 use Illuminate\Support\Facades\Validator;
@@ -62,10 +63,8 @@ class DatosPersonaController extends Controller
         
         $id = DB::table('datos_personas')->where('user_id', $user->id)->first(); //devuelvo el primero que encuentra
 
-        
         $carrera = DB::table('carreras')->get();
         $condicion = DB::table('condicion')->get();
-        
         return view ('datospersona.create', compact('user', 'carrera', 'id', 'condicion'));
 
 
@@ -96,7 +95,18 @@ class DatosPersonaController extends Controller
             $datos->user_apellido = $request->apellido;
             $datos->user_name = $request->nombre;
             $datos->user_dni = $request->dni;
-            $datos->imagen_dni = $request->imagen_dni;
+            $datos->imagen_dni = $request->file('files');
+            
+
+            //$datos->imagen_dni = $request->imagen_dni; cambiar variable al form.. llega como name files
+            
+            /*$datos->imagen_dni = $request->file('files');
+            $imagens = $request->file('files');
+
+            foreach($imagens as $imagen){
+
+            }*/
+
             $datos->cuil = $request->cuil;
             $datos->estado_civil = $request->estcivil;
             $datos->cumple = $request->cumple;
@@ -170,8 +180,8 @@ class DatosPersonaController extends Controller
                 $fam->anses = $request->familiar[$i]['ansesfam'];
                 $fam->save();
             }
-
-            
+            $inscripto = new Inscripcione();
+            $inscripto->Inscribir($request);
            
         }
 
@@ -189,7 +199,9 @@ class DatosPersonaController extends Controller
         //auth()->user()->messages()->create($request->all());
 
         catch (\Exception $e){
-            abort(404);//return redirect()->route('datospersona.index')->with('msg', ' Algo salio mal prueba de nuevo.');
+           dd($e);
+
+           // abort(404);//return redirect()->route('datospersona.index')->with('msg', ' Algo salio mal prueba de nuevo.');
 
         }
         return redirect()->route('home')->with('info', 'Hemos recibido tu inscripcion');
@@ -215,21 +227,20 @@ class DatosPersonaController extends Controller
      * @return \Illuminate\Http\Response
      */
     //public function edit(DatosPersona $datosPersona)
-    public function edit($id)
+    public function edit($user_id)
     {
         $user = Auth::user();
         
         $carrera = DB::table('carreras')->get();
+        $condicion = DB::table('condicion')->get();
         
-        $datos = DatosPersona::findOrFail($id);
-        return view('datospersona.edit', compact('datos','carrera', 'user'));
 
-        /*
+        //$datos = DatosPersona::findOrFail($user_id);// si descomento esto se edita con el id de datos persona y no con el user_id por eso el datos de abajo VER
 
-        $datos = DatosPersona::findOrFail($datosPersona->id);
-        
-        return view('datospersona.edit', compact('datos'));
-        falta la vista...*/
+
+        $datos = DB::table('datos_personas')->where('user_id', $user->id)->first(); //devuelvo el primero que encuentra
+
+        return view('datospersona.edit', compact('datos','carrera', 'user','condicion'));
     
     }
 
