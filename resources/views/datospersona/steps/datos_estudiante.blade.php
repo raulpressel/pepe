@@ -39,22 +39,14 @@
         </div>             
         
 
-<!--
         <div class="form-group">
           <label for="validate-number">Ingresa la imagen del DNI:</label>
           <div class="input-group">
-            <input type="file" name='imagen_dni' accept=".jpg, .jpeg, .png" class="form-control" required>
-          </div>
-        </div> -->
-
-        <div class="form-group">
-          <label for="validate-number">Ingresa la imagen del DNI:</label>
-          <div class="input-group">
-            <input type="file" id="files" name="files[]" multiple class="form-control" required>
+            <input type="file" id="imagen_dni" name="imagen_dni[]" multiple class="form-control" required>
             <span class="input-group-addon danger"><span class="glyphicon glyphicon-remove"></span></span>
           </div>
         <div class="input-group">
-            <output id="list-files"></output>
+            <output id="list-imagen_dni"></output>
         </div>
         </div>
         

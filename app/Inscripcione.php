@@ -57,8 +57,8 @@ class Inscripcione extends Model
         $inscripto->sede_nombre = "Oro ve";
         $inscripto->univ_nombre = "UADER";
         //hasta aca
-        $inscripto->merito = $meritos;
-        $inscripto->observacion = $obs;
+        $inscripto->merito = 100;
+        $inscripto->observacion = 'hola';
         $inscripto->save();
     }
 

@@ -94,7 +94,7 @@
               @endif
             </div>
 
-              <form method="POST" action="{{ route('datospersona.store') }}">
+              <form method="POST" action="{{ route('datospersona.store') }}" files="true" enctype="multipart/form-data">
               {{ csrf_field() }}
                 @include('datospersona.steps.datos_estudiante')
                 @include('datospersona.steps.situacion_academica')

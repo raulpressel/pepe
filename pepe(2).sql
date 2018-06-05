@@ -1,11 +1,11 @@
 -- phpMyAdmin SQL Dump
--- version 4.5.4.1deb2ubuntu2
--- http://www.phpmyadmin.net
+-- version 4.6.6deb5
+-- https://www.phpmyadmin.net/
 --
--- Servidor: localhost
--- Tiempo de generación: 08-05-2018 a las 15:26:10
--- Versión del servidor: 5.7.22-0ubuntu0.16.04.1
--- Versión de PHP: 7.0.28-0ubuntu0.16.04.1
+-- Servidor: localhost:3306
+-- Tiempo de generación: 05-06-2018 a las 20:39:49
+-- Versión del servidor: 5.7.22-0ubuntu18.04.1
+-- Versión de PHP: 7.0.30-0ubuntu0.16.04.1
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 SET time_zone = "+00:00";
@@ -19,8 +19,6 @@ SET time_zone = "+00:00";
 --
 -- Base de datos: `pepe`
 --
-CREATE DATABASE IF NOT EXISTS `pepe` DEFAULT CHARACTER SET latin1 COLLATE latin1_swedish_ci;
-USE `pepe`;
 
 -- --------------------------------------------------------
 
@@ -109,7 +107,7 @@ CREATE TABLE `consideraciones` (
   `parentesco` varchar(255) COLLATE utf8_unicode_ci DEFAULT NULL,
   `enfermedad` varchar(255) COLLATE utf8_unicode_ci DEFAULT NULL,
   `incapacidad` varchar(255) COLLATE utf8_unicode_ci DEFAULT NULL,
-  `cert_incapacidad` blob,
+  `cert_incapacidad` varchar(250) COLLATE utf8_unicode_ci DEFAULT NULL,
   `created_at` timestamp NULL DEFAULT NULL,
   `updated_at` timestamp NULL DEFAULT NULL,
   `deleted_at` timestamp NULL DEFAULT NULL
@@ -120,24 +118,7 @@ CREATE TABLE `consideraciones` (
 --
 
 INSERT INTO `consideraciones` (`id`, `user_id`, `parentesco`, `enfermedad`, `incapacidad`, `cert_incapacidad`, `created_at`, `updated_at`, `deleted_at`) VALUES
-(16, 1, 'asd', 'asd', 'asd', 0x53656c65636369c3b36e5f3032352e706e67, '2018-03-26 01:22:46', '2018-03-26 01:22:46', NULL),
-(17, 1, 'asd', 'asd', 'asd', 0x53656c65636369c3b36e5f3032352e706e67, '2018-03-26 01:29:49', '2018-03-26 01:29:49', NULL),
-(18, 1, 'asd', 'asd', '1', 0x53656c65636369c3b36e5f3032332e706e67, '2018-04-05 22:04:43', '2018-04-05 22:04:43', NULL),
-(19, 1, 'asd', 'asd', '1', 0x53656c65636369c3b36e5f3032332e706e67, '2018-04-05 22:07:09', '2018-04-05 22:07:09', NULL),
-(20, 1, 'asd', 'asd', '1', 0x53656c65636369c3b36e5f3032332e706e67, '2018-04-05 22:07:27', '2018-04-05 22:07:27', NULL),
-(21, 1, 'asd', 'asd', '1', 0x53656c65636369c3b36e5f3032332e706e67, '2018-04-05 22:07:49', '2018-04-05 22:07:49', NULL),
-(22, 1, 'asd', 'asd', '1', 0x53656c65636369c3b36e5f3032332e706e67, '2018-04-05 22:24:28', '2018-04-05 22:24:28', NULL),
-(23, 1, 'asd', 'asd', '1', 0x53656c65636369c3b36e5f3032332e706e67, '2018-04-05 22:25:10', '2018-04-05 22:25:10', NULL),
-(24, 1, 'asd', 'asd', '1', 0x53656c65636369c3b36e5f3032332e706e67, '2018-04-05 22:25:46', '2018-04-05 22:25:46', NULL),
-(25, 1, 'asd', 'asd', '1', 0x53656c65636369c3b36e5f3032332e706e67, '2018-04-05 22:28:33', '2018-04-05 22:28:33', NULL),
-(26, 1, 'asd', 'asd', '1', 0x53656c65636369c3b36e5f3032332e706e67, '2018-04-05 22:28:49', '2018-04-05 22:28:49', NULL),
-(27, 1, 'asd', 'asd', '1', 0x53656c65636369c3b36e5f3032332e706e67, '2018-04-05 22:29:12', '2018-04-05 22:29:12', NULL),
-(28, 1, 'asd', 'asd', '1', 0x53656c65636369c3b36e5f3032332e706e67, '2018-04-05 22:29:49', '2018-04-05 22:29:49', NULL),
-(29, 1, 'asd', 'asd', '1', 0x53656c65636369c3b36e5f3032332e706e67, '2018-04-05 22:30:37', '2018-04-05 22:30:37', NULL),
-(30, 2, 'asd', 'asd', '2', 0x7064662e706e67, '2018-04-07 04:43:21', '2018-04-07 04:43:21', NULL),
-(31, 1, 'asd', 'asd', '2', 0x53656c65636369c3b36e5f3032342e706e67, '2018-04-07 05:59:35', '2018-04-07 05:59:35', NULL),
-(32, 2, 'asd', 'asd', '2', 0x7064662e706e67, '2018-04-07 06:45:24', '2018-04-07 06:45:24', NULL),
-(33, 1, 'asd', 'asd', '2', 0x53656c65636369c3b36e5f3032342e706e67, '2018-04-07 06:57:25', '2018-04-07 06:57:25', NULL);
+(99, 1, 'Abuelo', 'asd', 'Si', '3333333/imagen_discapacidad_familiar0-0.png', '2018-05-12 01:42:08', '2018-05-12 01:42:08', NULL);
 
 -- --------------------------------------------------------
 
@@ -170,7 +151,7 @@ INSERT INTO `data_rows` (`id`, `data_type_id`, `field`, `type`, `display_name`, 
 (27, 3, 'name', 'text', 'Nombre', 1, 1, 1, 1, 1, 1, NULL, 2),
 (28, 3, 'email', 'text', 'Email', 1, 1, 1, 1, 1, 1, NULL, 5),
 (29, 3, 'password', 'password', 'password', 1, 0, 0, 1, 1, 0, NULL, 6),
-(30, 3, 'user_belongsto_role_relationship', 'relationship', 'Rol', 0, 1, 1, 1, 1, 0, '{"model":"TCG\\\\Voyager\\\\Models\\\\Role","table":"roles","type":"belongsTo","column":"role_id","key":"id","label":"name","pivot_table":"roles","pivot":"0"}', 7),
+(30, 3, 'user_belongsto_role_relationship', 'relationship', 'Rol', 0, 1, 1, 1, 1, 0, '{\"model\":\"TCG\\\\Voyager\\\\Models\\\\Role\",\"table\":\"roles\",\"type\":\"belongsTo\",\"column\":\"role_id\",\"key\":\"id\",\"label\":\"name\",\"pivot_table\":\"roles\",\"pivot\":\"0\"}', 7),
 (31, 3, 'remember_token', 'text', 'remember_token', 0, 0, 0, 0, 0, 0, NULL, 10),
 (32, 3, 'created_at', 'timestamp', 'Fecha de creacion', 0, 1, 1, 0, 0, 0, NULL, 11),
 (33, 3, 'updated_at', 'timestamp', 'updated_at', 0, 0, 0, 0, 0, 0, NULL, 12),
@@ -198,7 +179,7 @@ INSERT INTO `data_rows` (`id`, `data_type_id`, `field`, `type`, `display_name`, 
 (64, 7, 'observacion', 'text', 'Observacion', 0, 1, 1, 1, 1, 1, NULL, 9),
 (65, 7, 'created_at', 'timestamp', 'Created At', 0, 1, 1, 1, 0, 1, NULL, 10),
 (66, 7, 'updated_at', 'timestamp', 'Updated At', 0, 0, 0, 0, 0, 0, NULL, 11),
-(67, 7, 'inscripcione_belongsto_user_relationship', 'relationship', 'users', 0, 1, 1, 1, 1, 1, '{"model":"App\\\\User","table":"users","type":"belongsTo","column":"user_id","key":"id","label":"name","pivot_table":"becas","pivot":"0"}', 12);
+(67, 7, 'inscripcione_belongsto_user_relationship', 'relationship', 'users', 0, 1, 1, 1, 1, 1, '{\"model\":\"App\\\\User\",\"table\":\"users\",\"type\":\"belongsTo\",\"column\":\"user_id\",\"key\":\"id\",\"label\":\"name\",\"pivot_table\":\"becas\",\"pivot\":\"0\"}', 12);
 
 -- --------------------------------------------------------
 
@@ -244,8 +225,9 @@ CREATE TABLE `datos_personas` (
   `user_id` int(10) UNSIGNED NOT NULL,
   `user_name` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
   `user_apellido` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `user_dni` int(10) UNSIGNED NOT NULL,
-  `imagen_dni` blob,
+  `user_dni` int(15) UNSIGNED NOT NULL,
+  `imagen_dni` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `cert_anses` varchar(250) COLLATE utf8mb4_unicode_ci NOT NULL,
   `cuil` int(11) NOT NULL,
   `estado_civil` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
   `cumple` date NOT NULL,
@@ -256,44 +238,54 @@ CREATE TABLE `datos_personas` (
   `cel` int(10) UNSIGNED NOT NULL,
   `user_email` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
   `face` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `disca_estudiante` varchar(20) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `certificado_discapacidad` varchar(250) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `condicion_estudiante` varchar(80) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `constancia_estudiante` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `certificado_estudiante` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
   `carrera_cursa` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
   `anio_ingreso` int(11) NOT NULL,
   `tiene_trabajo` tinytext COLLATE utf8mb4_unicode_ci NOT NULL,
+  `tipo_trabajo` varchar(120) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `comprobante_ingresos` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
   `sueldo` int(11) NOT NULL,
   `tiene_beca` tinyint(4) NOT NULL,
   `tiene_pasantia` tinyint(4) DEFAULT NULL,
-  `created_at` timestamp NULL DEFAULT NULL,
-  `updated_at` timestamp NULL DEFAULT NULL,
   `tiene_asig` tinyint(4) NOT NULL,
   `otros_ing` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
   `domi_cursado` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `casa_fam` tinyint(4) NOT NULL,
-  `tiene_alq` tinyint(4) NOT NULL,
+  `casa_fam` varchar(6) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `tiene_alq` varchar(6) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `recibo_alquiler` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
   `monto_alq` tinyint(4) NOT NULL,
-  `usa_urbano` tinyint(4) NOT NULL,
+  `usa_urbano` varchar(6) COLLATE utf8mb4_unicode_ci NOT NULL,
   `cant_viajes` int(11) NOT NULL,
-  `usa_media_dist` tinyint(4) NOT NULL,
+  `usa_media_dist` varchar(6) COLLATE utf8mb4_unicode_ci NOT NULL,
   `precio_pasaje` int(11) DEFAULT NULL,
   `cant_viaja_media` int(11) DEFAULT NULL,
+  `recibo_pasaje` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
   `es_propietario` tinyint(4) NOT NULL,
-  `alquila` tinyint(4) DEFAULT NULL,
+  `alquila` varchar(6) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `recibo_alquiler_familiar` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
   `precio_alquiler` int(11) DEFAULT NULL,
   `prestada` tinyint(4) DEFAULT NULL,
   `otros_vivienda` varchar(11) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
-  `tiene_campo` tinyint(4) NOT NULL,
+  `tiene_campo` varchar(6) COLLATE utf8mb4_unicode_ci NOT NULL,
   `cant_has` int(11) DEFAULT NULL,
   `actividad` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
-  `tiene_terreno` tinyint(4) NOT NULL,
+  `tiene_terreno` varchar(6) COLLATE utf8mb4_unicode_ci NOT NULL,
   `cant_terreno` int(11) DEFAULT NULL,
-  `tiene_auto` tinyint(4) NOT NULL,
+  `tiene_auto` varchar(6) COLLATE utf8mb4_unicode_ci NOT NULL,
   `cant_auto` int(11) DEFAULT NULL,
-  `tiene_moto` tinyint(4) NOT NULL,
+  `tiene_moto` varchar(6) COLLATE utf8mb4_unicode_ci NOT NULL,
   `cant_moto` int(11) DEFAULT NULL,
   `motivos` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `deleted_at` timestamp NULL DEFAULT NULL,
   `localidad` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
   `anio_cursado` int(11) NOT NULL,
-  `tiene_progresar` tinyint(4) NOT NULL
+  `tiene_progresar` tinyint(4) NOT NULL,
+  `created_at` timestamp NULL DEFAULT NULL,
+  `updated_at` timestamp NULL DEFAULT NULL,
+  `deleted_at` timestamp NULL DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 -- --------------------------------------------------------
@@ -331,12 +323,13 @@ CREATE TABLE `familiars` (
   `parentesco` varchar(255) COLLATE utf8_unicode_ci DEFAULT NULL,
   `apeynom` varchar(255) COLLATE utf8_unicode_ci DEFAULT NULL,
   `dni` int(11) DEFAULT NULL,
-  `imagen_dni` blob,
+  `imagen_dni` varchar(255) COLLATE utf8_unicode_ci DEFAULT NULL,
   `edad` int(11) DEFAULT NULL,
   `ocupacion` varchar(255) COLLATE utf8_unicode_ci DEFAULT NULL,
+  `actividad_laboral` varchar(80) COLLATE utf8_unicode_ci NOT NULL,
   `ingresos` int(11) DEFAULT NULL,
-  `comprobante_ingresos` blob,
-  `anses` blob,
+  `comprobante_ingresos` varchar(255) COLLATE utf8_unicode_ci DEFAULT NULL,
+  `anses` varchar(255) COLLATE utf8_unicode_ci DEFAULT NULL,
   `created_at` timestamp NULL DEFAULT NULL,
   `updated_at` timestamp NULL DEFAULT NULL,
   `deleted_at` timestamp NULL DEFAULT NULL
@@ -346,25 +339,8 @@ CREATE TABLE `familiars` (
 -- Volcado de datos para la tabla `familiars`
 --
 
-INSERT INTO `familiars` (`id`, `user_id`, `parentesco`, `apeynom`, `dni`, `imagen_dni`, `edad`, `ocupacion`, `ingresos`, `comprobante_ingresos`, `anses`, `created_at`, `updated_at`, `deleted_at`) VALUES
-(30, 1, 'mascota', 'perro', 234234, 0x53656c65636369c3b36e5f3032342e706e67, 12, 'asd', 123, 0x53656c65636369c3b36e5f3032322e706e67, 0x53656c65636369c3b36e5f3032342e706e67, '2018-03-26 01:22:46', '2018-03-26 01:22:46', NULL),
-(31, 1, 'mascota', 'perro', 234234, 0x53656c65636369c3b36e5f3032342e706e67, 12, 'asd', 123, 0x53656c65636369c3b36e5f3032322e706e67, 0x53656c65636369c3b36e5f3032342e706e67, '2018-03-26 01:29:49', '2018-03-26 01:29:49', NULL),
-(32, 1, 'mascota', 'perro', 234234, 0x53656c65636369c3b36e5f3032352e706e67, 12, 'asd', 123, 0x53656c65636369c3b36e5f3032342e706e67, 0x696d616765732e6a7067, '2018-04-05 22:04:43', '2018-04-05 22:04:43', NULL),
-(33, 1, 'mascota', 'perro', 234234, 0x53656c65636369c3b36e5f3032352e706e67, 12, 'asd', 123, 0x53656c65636369c3b36e5f3032342e706e67, 0x696d616765732e6a7067, '2018-04-05 22:07:09', '2018-04-05 22:07:09', NULL),
-(34, 1, 'mascota', 'perro', 234234, 0x53656c65636369c3b36e5f3032352e706e67, 12, 'asd', 123, 0x53656c65636369c3b36e5f3032342e706e67, 0x696d616765732e6a7067, '2018-04-05 22:07:27', '2018-04-05 22:07:27', NULL),
-(35, 1, 'mascota', 'perro', 234234, 0x53656c65636369c3b36e5f3032352e706e67, 12, 'asd', 123, 0x53656c65636369c3b36e5f3032342e706e67, 0x696d616765732e6a7067, '2018-04-05 22:07:49', '2018-04-05 22:07:49', NULL),
-(36, 1, 'mascota', 'perro', 234234, 0x53656c65636369c3b36e5f3032352e706e67, 12, 'asd', 123, 0x53656c65636369c3b36e5f3032342e706e67, 0x696d616765732e6a7067, '2018-04-05 22:24:28', '2018-04-05 22:24:28', NULL),
-(37, 1, 'mascota', 'perro', 234234, 0x53656c65636369c3b36e5f3032352e706e67, 12, 'asd', 123, 0x53656c65636369c3b36e5f3032342e706e67, 0x696d616765732e6a7067, '2018-04-05 22:25:10', '2018-04-05 22:25:10', NULL),
-(38, 1, 'mascota', 'perro', 234234, 0x53656c65636369c3b36e5f3032352e706e67, 12, 'asd', 123, 0x53656c65636369c3b36e5f3032342e706e67, 0x696d616765732e6a7067, '2018-04-05 22:25:46', '2018-04-05 22:25:46', NULL),
-(39, 1, 'mascota', 'perro', 234234, 0x53656c65636369c3b36e5f3032352e706e67, 12, 'asd', 123, 0x53656c65636369c3b36e5f3032342e706e67, 0x696d616765732e6a7067, '2018-04-05 22:28:34', '2018-04-05 22:28:34', NULL),
-(40, 1, 'mascota', 'perro', 234234, 0x53656c65636369c3b36e5f3032352e706e67, 12, 'asd', 123, 0x53656c65636369c3b36e5f3032342e706e67, 0x696d616765732e6a7067, '2018-04-05 22:28:49', '2018-04-05 22:28:49', NULL),
-(41, 1, 'mascota', 'perro', 234234, 0x53656c65636369c3b36e5f3032352e706e67, 12, 'asd', 123, 0x53656c65636369c3b36e5f3032342e706e67, 0x696d616765732e6a7067, '2018-04-05 22:29:12', '2018-04-05 22:29:12', NULL),
-(42, 1, 'mascota', 'perro', 234234, 0x53656c65636369c3b36e5f3032352e706e67, 12, 'asd', 123, 0x53656c65636369c3b36e5f3032342e706e67, 0x696d616765732e6a7067, '2018-04-05 22:29:49', '2018-04-05 22:29:49', NULL),
-(43, 1, 'mascota', 'perro', 234234, 0x53656c65636369c3b36e5f3032352e706e67, 12, 'asd', 123, 0x53656c65636369c3b36e5f3032342e706e67, 0x696d616765732e6a7067, '2018-04-05 22:30:37', '2018-04-05 22:30:37', NULL),
-(44, 2, 'asd', 'perro', 234234, 0x75616465722d776964672e6a7067, 12, 'asd', 123, 0x7064662e706e67, 0x7064662e706e67, '2018-04-07 04:43:21', '2018-04-07 04:43:21', NULL),
-(45, 1, 'mascota', 'perro', 234234, 0x53656c65636369c3b36e5f3032342e706e67, 12, 'asd', 123, 0x53656c65636369c3b36e5f3032342e706e67, 0x53656c65636369c3b36e5f3032342e706e67, '2018-04-07 05:59:35', '2018-04-07 05:59:35', NULL),
-(46, 2, 'mascota', 'perro', 234234, 0x7a6f6d6269652e706e67, 12, 'asd', 123, 0x7a6f6d6269652e706e67, 0x75616465722d776964672e6a7067, '2018-04-07 06:45:24', '2018-04-07 06:45:24', NULL),
-(47, 1, 'mascota', 'perro', 234234, 0x53656c65636369c3b36e5f3032342e706e67, 12, 'asd', 123, 0x53656c65636369c3b36e5f3032332e706e67, 0x53656c65636369c3b36e5f3032332e706e67, '2018-04-07 06:57:25', '2018-04-07 06:57:25', NULL);
+INSERT INTO `familiars` (`id`, `user_id`, `parentesco`, `apeynom`, `dni`, `imagen_dni`, `edad`, `ocupacion`, `actividad_laboral`, `ingresos`, `comprobante_ingresos`, `anses`, `created_at`, `updated_at`, `deleted_at`) VALUES
+(100, 1, 'Abuelo', 'perro', 234234, '3333333/familiar/imagen_dni_familiar0-0.png', 12, 'asd', 'activosfam0', 123, '3333333/familiar/comprobante_ingresos_fam0-0.png', '3333333/familiar/comprobante_anses-0-0.png', '2018-05-12 01:42:08', '2018-05-12 01:42:08', NULL);
 
 -- --------------------------------------------------------
 
@@ -385,6 +361,61 @@ CREATE TABLE `inscripciones` (
   `created_at` timestamp NULL DEFAULT NULL,
   `updated_at` timestamp NULL DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+
+--
+-- Volcado de datos para la tabla `inscripciones`
+--
+
+INSERT INTO `inscripciones` (`id`, `user_id`, `user_nombre`, `carrera_nombre`, `facultad_nombre`, `sede_nombre`, `univ_nombre`, `merito`, `observacion`, `created_at`, `updated_at`) VALUES
+(21, '1', 'Admin', '1', 'Fcyt', 'Oro ve', 'UADER', 100, 'hola', '2018-05-10 01:02:15', '2018-05-10 01:02:15'),
+(22, '1', 'Admin', '1', 'Fcyt', 'Oro ve', 'UADER', 100, 'hola', '2018-05-10 01:03:26', '2018-05-10 01:03:26'),
+(23, '1', 'Admin', '1', 'Fcyt', 'Oro ve', 'UADER', 100, 'hola', '2018-05-10 01:03:52', '2018-05-10 01:03:52'),
+(24, '1', 'Admin', '1', 'Fcyt', 'Oro ve', 'UADER', 100, 'hola', '2018-05-10 01:05:34', '2018-05-10 01:05:34'),
+(25, '1', 'Admin', '1', 'Fcyt', 'Oro ve', 'UADER', 100, 'hola', '2018-05-10 01:32:09', '2018-05-10 01:32:09'),
+(26, '1', 'Admin', '1', 'Fcyt', 'Oro ve', 'UADER', 100, 'hola', '2018-05-10 01:32:49', '2018-05-10 01:32:49'),
+(27, '1', 'Admin', '1', 'Fcyt', 'Oro ve', 'UADER', 100, 'hola', '2018-05-10 01:33:26', '2018-05-10 01:33:26'),
+(28, '1', 'Admin', '1', 'Fcyt', 'Oro ve', 'UADER', 100, 'hola', '2018-05-10 04:28:16', '2018-05-10 04:28:16'),
+(29, '1', 'Admin', '1', 'Fcyt', 'Oro ve', 'UADER', 100, 'hola', '2018-05-10 04:34:38', '2018-05-10 04:34:38'),
+(30, '1', 'Admin', '1', 'Fcyt', 'Oro ve', 'UADER', 100, 'hola', '2018-05-10 04:37:21', '2018-05-10 04:37:21'),
+(31, '1', 'Admin', '1', 'Fcyt', 'Oro ve', 'UADER', 100, 'hola', '2018-05-10 04:41:29', '2018-05-10 04:41:29'),
+(32, '1', 'Admin', '1', 'Fcyt', 'Oro ve', 'UADER', 100, 'hola', '2018-05-10 04:42:36', '2018-05-10 04:42:36'),
+(33, '1', 'Admin', '1', 'Fcyt', 'Oro ve', 'UADER', 100, 'hola', '2018-05-10 05:07:19', '2018-05-10 05:07:19'),
+(34, '1', 'Admin', '1', 'Fcyt', 'Oro ve', 'UADER', 100, 'hola', '2018-05-10 16:56:37', '2018-05-10 16:56:37'),
+(35, '1', 'Admin', '1', 'Fcyt', 'Oro ve', 'UADER', 100, 'hola', '2018-05-10 16:57:23', '2018-05-10 16:57:23'),
+(36, '1', 'Admin', '1', 'Fcyt', 'Oro ve', 'UADER', 100, 'hola', '2018-05-10 17:05:16', '2018-05-10 17:05:16'),
+(37, '1', 'Admin', '1', 'Fcyt', 'Oro ve', 'UADER', 100, 'hola', '2018-05-10 17:05:34', '2018-05-10 17:05:34'),
+(38, '1', 'Admin', '1', 'Fcyt', 'Oro ve', 'UADER', 100, 'hola', '2018-05-10 17:09:41', '2018-05-10 17:09:41'),
+(39, '1', 'Admin', '1', 'Fcyt', 'Oro ve', 'UADER', 100, 'hola', '2018-05-10 17:14:05', '2018-05-10 17:14:05'),
+(40, '1', 'Admin', '1', 'Fcyt', 'Oro ve', 'UADER', 100, 'hola', '2018-05-10 17:15:11', '2018-05-10 17:15:11'),
+(41, '1', 'Admin', '1', 'Fcyt', 'Oro ve', 'UADER', 100, 'hola', '2018-05-10 18:44:56', '2018-05-10 18:44:56'),
+(42, '1', 'Admin', '1', 'Fcyt', 'Oro ve', 'UADER', 100, 'hola', '2018-05-10 21:30:22', '2018-05-10 21:30:22'),
+(43, '1', 'Admin', '1', 'Fcyt', 'Oro ve', 'UADER', 100, 'hola', '2018-05-10 21:33:01', '2018-05-10 21:33:01'),
+(44, '1', 'Admin', '1', 'Fcyt', 'Oro ve', 'UADER', 100, 'hola', '2018-05-10 21:37:52', '2018-05-10 21:37:52'),
+(45, '1', 'Admin', '1', 'Fcyt', 'Oro ve', 'UADER', 100, 'hola', '2018-05-10 21:38:49', '2018-05-10 21:38:49'),
+(46, '1', 'Admin', '1', 'Fcyt', 'Oro ve', 'UADER', 100, 'hola', '2018-05-10 21:39:20', '2018-05-10 21:39:20'),
+(47, '1', 'Admin', '1', 'Fcyt', 'Oro ve', 'UADER', 100, 'hola', '2018-05-10 21:39:53', '2018-05-10 21:39:53'),
+(48, '1', 'Admin', '1', 'Fcyt', 'Oro ve', 'UADER', 100, 'hola', '2018-05-10 21:40:08', '2018-05-10 21:40:08'),
+(49, '1', 'Admin', '1', 'Fcyt', 'Oro ve', 'UADER', 100, 'hola', '2018-05-10 21:40:34', '2018-05-10 21:40:34'),
+(50, '1', 'Admin', '1', 'Fcyt', 'Oro ve', 'UADER', 100, 'hola', '2018-05-10 22:31:27', '2018-05-10 22:31:27'),
+(51, '1', 'Admin', '1', 'Fcyt', 'Oro ve', 'UADER', 100, 'hola', '2018-05-10 22:46:26', '2018-05-10 22:46:26'),
+(52, '1', 'Admin', '1', 'Fcyt', 'Oro ve', 'UADER', 100, 'hola', '2018-05-10 22:52:05', '2018-05-10 22:52:05'),
+(53, '1', 'Admin', '1', 'Fcyt', 'Oro ve', 'UADER', 100, 'hola', '2018-05-10 23:06:33', '2018-05-10 23:06:33'),
+(54, '1', 'Admin', '1', 'Fcyt', 'Oro ve', 'UADER', 100, 'hola', '2018-05-10 23:10:10', '2018-05-10 23:10:10'),
+(55, '1', 'Admin', '1', 'Fcyt', 'Oro ve', 'UADER', 100, 'hola', '2018-05-10 23:13:45', '2018-05-10 23:13:45'),
+(56, '1', 'Admin', '1', 'Fcyt', 'Oro ve', 'UADER', 100, 'hola', '2018-05-10 23:16:52', '2018-05-10 23:16:52'),
+(57, '1', 'Admin', '1', 'Fcyt', 'Oro ve', 'UADER', 100, 'hola', '2018-05-10 23:25:26', '2018-05-10 23:25:26'),
+(58, '1', 'Admin', '1', 'Fcyt', 'Oro ve', 'UADER', 100, 'hola', '2018-05-10 23:26:00', '2018-05-10 23:26:00'),
+(59, '1', 'Admin', '1', 'Fcyt', 'Oro ve', 'UADER', 100, 'hola', '2018-05-11 02:34:27', '2018-05-11 02:34:27'),
+(60, '1', 'Admin', '1', 'Fcyt', 'Oro ve', 'UADER', 100, 'hola', '2018-05-11 02:34:53', '2018-05-11 02:34:53'),
+(61, '1', 'Admin', '1', 'Fcyt', 'Oro ve', 'UADER', 100, 'hola', '2018-05-11 03:30:43', '2018-05-11 03:30:43'),
+(62, '1', 'Admin', '1', 'Fcyt', 'Oro ve', 'UADER', 100, 'hola', '2018-05-11 03:53:30', '2018-05-11 03:53:30'),
+(63, '1', 'Admin', '1', 'Fcyt', 'Oro ve', 'UADER', 100, 'hola', '2018-05-11 03:59:45', '2018-05-11 03:59:45'),
+(64, '1', 'Admin', '1', 'Fcyt', 'Oro ve', 'UADER', 100, 'hola', '2018-05-11 04:21:24', '2018-05-11 04:21:24'),
+(65, '1', 'Admin', '1', 'Fcyt', 'Oro ve', 'UADER', 100, 'hola', '2018-05-11 04:22:39', '2018-05-11 04:22:39'),
+(66, '1', 'Admin', '1', 'Fcyt', 'Oro ve', 'UADER', 100, 'hola', '2018-05-11 04:28:58', '2018-05-11 04:28:58'),
+(67, '1', 'Admin', '1', 'Fcyt', 'Oro ve', 'UADER', 100, 'hola', '2018-05-11 04:30:00', '2018-05-11 04:30:00'),
+(68, '1', 'Admin', '1', 'Fcyt', 'Oro ve', 'UADER', 100, 'hola', '2018-05-12 01:17:36', '2018-05-12 01:17:36'),
+(69, '1', 'Admin', '1', 'Fcyt', 'Oro ve', 'UADER', 100, 'hola', '2018-05-12 01:42:08', '2018-05-12 01:42:08');
 
 -- --------------------------------------------------------
 
@@ -3451,7 +3482,7 @@ ALTER TABLE `condicion`
 -- AUTO_INCREMENT de la tabla `consideraciones`
 --
 ALTER TABLE `consideraciones`
-  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=34;
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=100;
 --
 -- AUTO_INCREMENT de la tabla `data_rows`
 --
@@ -3466,7 +3497,7 @@ ALTER TABLE `data_types`
 -- AUTO_INCREMENT de la tabla `datos_personas`
 --
 ALTER TABLE `datos_personas`
-  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=17;
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT;
 --
 -- AUTO_INCREMENT de la tabla `facultades`
 --
@@ -3476,12 +3507,12 @@ ALTER TABLE `facultades`
 -- AUTO_INCREMENT de la tabla `familiars`
 --
 ALTER TABLE `familiars`
-  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=48;
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=101;
 --
 -- AUTO_INCREMENT de la tabla `inscripciones`
 --
 ALTER TABLE `inscripciones`
-  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=21;
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=70;
 --
 -- AUTO_INCREMENT de la tabla `localidades`
 --
