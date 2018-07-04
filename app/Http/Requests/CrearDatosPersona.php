@@ -28,8 +28,8 @@ class CrearDatosPersona extends FormRequest
         'apellido' => 'required|string|max:256',
         'nombre' => 'required|string|max:256',
         'dni' => 'required|numeric|min:0|max:100000000',
-        'imagen_dni' => 'required|mimes:jpeg,bmp,png,jpg', //ver de agregar tamaño a todas las img, y si se agrega pdf
-        'anses'=> 'mimes:jpeg,bmp,png,jpg|required',
+      //  'imagen_dni' => 'required|mimes:jpeg,bmp,png,jpg', //ver de agregar tamaño a todas las img, y si se agrega pdf
+        //'anses'=> 'mimes:jpeg,bmp,png,jpg|required',
         'cuil' => 'required|numeric|min:0|max:100000000000',
         'estcivil' => 'required|string',
         'cumple' => 'date_format:Y-m-d|required',
@@ -45,16 +45,16 @@ class CrearDatosPersona extends FormRequest
         //'imagendiscaest'=> 'mimes:jpeg,bmp,png,jpg|required', requiered_if
         'carrera_cursa' => 'required|numeric',
         'cond'=>'required|string',
-        'constancia' => 'mimes:jpeg,bmp,png,jpg|required',
-        'certificado' => 'mimes:jpeg,bmp,png,jpg|required',
+        //'constancia' => 'mimes:jpeg,bmp,png,jpg|required',
+        //'certificado' => 'mimes:jpeg,bmp,png,jpg|required',
         //aca quede verificando...
 
         'carrera_cursa' => 'required',
         'anioingreso' => 'required|numeric|min:999|max:10000',
-        'aniocursado' => 'required|numeric|min:999|max:10000',
+        'aniocursado' => 'required|numeric|min:0|max:8',
         'trabaja' => 'required',
         //'actlab' => 'required', esto es con required_if?
-        'comping' => 'mimes:jpeg,bmp,png,jpg|required',
+        //'comping' => 'mimes:jpeg,bmp,png,jpg|required',
         'sueldo' => 'required|numeric|min:0|max:1000000',
         'beca' => 'required',
         'progresar' => 'required',

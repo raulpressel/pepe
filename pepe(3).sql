@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: localhost:3306
--- Tiempo de generación: 05-06-2018 a las 20:39:49
+-- Tiempo de generación: 04-07-2018 a las 16:45:10
 -- Versión del servidor: 5.7.22-0ubuntu18.04.1
 -- Versión de PHP: 7.0.30-0ubuntu0.16.04.1
 
@@ -19,6 +19,8 @@ SET time_zone = "+00:00";
 --
 -- Base de datos: `pepe`
 --
+CREATE DATABASE IF NOT EXISTS `pepe` DEFAULT CHARACTER SET latin1 COLLATE latin1_swedish_ci;
+USE `pepe`;
 
 -- --------------------------------------------------------
 
@@ -118,7 +120,12 @@ CREATE TABLE `consideraciones` (
 --
 
 INSERT INTO `consideraciones` (`id`, `user_id`, `parentesco`, `enfermedad`, `incapacidad`, `cert_incapacidad`, `created_at`, `updated_at`, `deleted_at`) VALUES
-(99, 1, 'Abuelo', 'asd', 'Si', '3333333/imagen_discapacidad_familiar0-0.png', '2018-05-12 01:42:08', '2018-05-12 01:42:08', NULL);
+(99, 1, 'Abuelo', 'asd', 'Si', '3333333/imagen_discapacidad_familiar0-0.png', '2018-05-12 01:42:08', '2018-05-12 01:42:08', NULL),
+(100, 1, 'Abuelo', 'asd', 'Si', '3333333/imagen_discapacidad_familiar0-0.png', '2018-06-06 03:19:31', '2018-06-06 03:19:31', NULL),
+(101, 2, 'Concubino', 'asd', 'Si', '34299846/imagen_discapacidad_familiar0-0.png', '2018-06-14 19:47:36', '2018-06-14 19:47:36', NULL),
+(102, 2, 'Concubino', 'asd', 'Si', '34299846/imagen_discapacidad_familiar0-0.png', '2018-06-14 19:50:20', '2018-06-14 19:50:20', NULL),
+(103, 2, 'Concubino', 'asd', 'Si', '34299846/imagen_discapacidad_familiar0-0.png', '2018-06-14 19:50:46', '2018-06-14 19:50:46', NULL),
+(104, 2, 'Abuelo', 'asd', 'Si', '34299846/imagen_discapacidad_familiar0-1529035924.png', '2018-06-15 04:12:05', '2018-06-15 04:12:05', NULL);
 
 -- --------------------------------------------------------
 
@@ -288,6 +295,14 @@ CREATE TABLE `datos_personas` (
   `deleted_at` timestamp NULL DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
+--
+-- Volcado de datos para la tabla `datos_personas`
+--
+
+INSERT INTO `datos_personas` (`id`, `user_id`, `user_name`, `user_apellido`, `user_dni`, `imagen_dni`, `cert_anses`, `cuil`, `estado_civil`, `cumple`, `domicilio`, `cp`, `provincia`, `nacionalidad`, `cel`, `user_email`, `face`, `disca_estudiante`, `certificado_discapacidad`, `condicion_estudiante`, `constancia_estudiante`, `certificado_estudiante`, `carrera_cursa`, `anio_ingreso`, `tiene_trabajo`, `tipo_trabajo`, `comprobante_ingresos`, `sueldo`, `tiene_beca`, `tiene_pasantia`, `tiene_asig`, `otros_ing`, `domi_cursado`, `casa_fam`, `tiene_alq`, `recibo_alquiler`, `monto_alq`, `usa_urbano`, `cant_viajes`, `usa_media_dist`, `precio_pasaje`, `cant_viaja_media`, `recibo_pasaje`, `es_propietario`, `alquila`, `recibo_alquiler_familiar`, `precio_alquiler`, `prestada`, `otros_vivienda`, `tiene_campo`, `cant_has`, `actividad`, `tiene_terreno`, `cant_terreno`, `tiene_auto`, `cant_auto`, `tiene_moto`, `cant_moto`, `motivos`, `localidad`, `anio_cursado`, `tiene_progresar`, `created_at`, `updated_at`, `deleted_at`) VALUES
+(1, 1, 'Admin', 'adminsito', 3333333, '3333333/imagen_dni_0.png', '3333333/certificado_anses-0.png', 123123123, 'soltero', '2016-03-03', 'av siempre vivias 123', 3100, '1', 'asdasd', 3436123123, 'admin@admin.com', 'asd', 'Si', 'certificado_discapacidad.png', 'Ingresante', '3333333/constancia_estudiante-0.png', '3333333/certificado_estudiante-0.png', '1', 2000, 'Si', 'activos', '3333333/comprobante_ingresos-0.png', 0, 1, NULL, 1, 'asdasd', 'asdasd', 'Si', 'Si', '3333333/recibo_alquiler-0.png', -1, 'Si', 0, 'Si', 0, 0, '3333333/recibo_pasaje-0.png', 1, 'Si', '3333333/recibo_alquiler_familiar-0.png', 0, 1, 'asdasd', 'Si', 0, 'asdasd', 'Si', 0, 'Si', 0, 'Si', 0, 'asd', '25 de Mayo', 1, 1, '2018-06-06 03:19:31', '2018-06-06 03:19:31', NULL),
+(5, 2, 'damian', 'sacksss', 34299846, '34299846/imagen_dni_1529035924.png', '34299846/certificado_anses-1529035924.png', 123123123, 'soltero', '2016-04-14', 'asdasdasd', 3100, '2', 'asdasd', 3436123123, 'damian@damian.com', 'asdasd', 'Si', 'certificado_discapacidad1529035924.png', 'Ingresante', '34299846/constancia_estudiante-1529035924.png', '34299846/certificado_estudiante-1529035924.png', '1', 2000, 'Si', 'activos', '34299846/comprobante_ingresos-1529035924.png', 0, 1, NULL, 1, 'asdasd', 'av siempre vivas 1111', 'Si', 'Si', '34299846/recibo_alquiler-1529035924.png', 1, 'Si', 0, 'Si', 0, 0, '34299846/recibo_pasaje-1529035924.png', 1, 'Si', '34299846/recibo_alquiler_familiar-1529035924.png', 0, 1, 'asdasd', 'Si', 0, 'asdasd', 'Si', 0, 'Si', 0, 'Si', 0, 'asdasd', '20 de Junio', 1, 1, '2018-06-15 04:12:04', '2018-06-15 04:12:04', NULL);
+
 -- --------------------------------------------------------
 
 --
@@ -340,7 +355,12 @@ CREATE TABLE `familiars` (
 --
 
 INSERT INTO `familiars` (`id`, `user_id`, `parentesco`, `apeynom`, `dni`, `imagen_dni`, `edad`, `ocupacion`, `actividad_laboral`, `ingresos`, `comprobante_ingresos`, `anses`, `created_at`, `updated_at`, `deleted_at`) VALUES
-(100, 1, 'Abuelo', 'perro', 234234, '3333333/familiar/imagen_dni_familiar0-0.png', 12, 'asd', 'activosfam0', 123, '3333333/familiar/comprobante_ingresos_fam0-0.png', '3333333/familiar/comprobante_anses-0-0.png', '2018-05-12 01:42:08', '2018-05-12 01:42:08', NULL);
+(100, 1, 'Abuelo', 'perro', 234234, '3333333/familiar/imagen_dni_familiar0-0.png', 12, 'asd', 'activosfam0', 123, '3333333/familiar/comprobante_ingresos_fam0-0.png', '3333333/familiar/comprobante_anses-0-0.png', '2018-05-12 01:42:08', '2018-05-12 01:42:08', NULL),
+(101, 1, 'Abuelo', 'perro', 234234, '3333333/familiar/imagen_dni_familiar0-0.png', 12, 'asd', 'activosfam0', 123, '3333333/familiar/comprobante_ingresos_fam0-0.png', '3333333/familiar/comprobante_anses-0-0.png', '2018-06-06 03:19:31', '2018-06-06 03:19:31', NULL),
+(102, 2, 'Abuelo', 'perro', 234234, '34299846/familiar/imagen_dni_familiar0-0.png', 12, 'asd', 'activosfam0', 213, '34299846/familiar/comprobante_ingresos_fam0-0.png', '34299846/familiar/comprobante_anses-0-0.png', '2018-06-14 19:47:36', '2018-06-14 19:47:36', NULL),
+(103, 2, 'Abuelo', 'perro', 234234, '34299846/familiar/imagen_dni_familiar0-0.png', 12, 'asd', 'activosfam0', 213, '34299846/familiar/comprobante_ingresos_fam0-0.png', '34299846/familiar/comprobante_anses-0-0.png', '2018-06-14 19:50:20', '2018-06-14 19:50:20', NULL),
+(104, 2, 'Abuelo', 'perro', 234234, '34299846/familiar/imagen_dni_familiar0-0.png', 12, 'asd', 'activosfam0', 213, '34299846/familiar/comprobante_ingresos_fam0-0.png', '34299846/familiar/comprobante_anses-0-0.png', '2018-06-14 19:50:46', '2018-06-14 19:50:46', NULL),
+(105, 2, 'Abuelo', 'perro', 234234, '34299846/familiar/imagen_dni_familiar0-1529035925.png', 12, 'asd', 'activosfam0', 123, '34299846/familiar/comprobante_ingresos_fam1529035925-0.png', '34299846/familiar/comprobante_anses-1529035925-0.png', '2018-06-15 04:12:05', '2018-06-15 04:12:05', NULL);
 
 -- --------------------------------------------------------
 
@@ -352,6 +372,8 @@ CREATE TABLE `inscripciones` (
   `id` int(10) UNSIGNED NOT NULL,
   `user_id` varchar(255) COLLATE utf8_unicode_ci DEFAULT NULL,
   `user_nombre` varchar(255) COLLATE utf8_unicode_ci DEFAULT NULL,
+  `beca_id` int(11) DEFAULT NULL,
+  `beca_nombre` varchar(255) COLLATE utf8_unicode_ci DEFAULT NULL,
   `carrera_nombre` varchar(255) COLLATE utf8_unicode_ci DEFAULT NULL,
   `facultad_nombre` varchar(255) COLLATE utf8_unicode_ci DEFAULT NULL,
   `sede_nombre` varchar(255) COLLATE utf8_unicode_ci DEFAULT NULL,
@@ -366,56 +388,58 @@ CREATE TABLE `inscripciones` (
 -- Volcado de datos para la tabla `inscripciones`
 --
 
-INSERT INTO `inscripciones` (`id`, `user_id`, `user_nombre`, `carrera_nombre`, `facultad_nombre`, `sede_nombre`, `univ_nombre`, `merito`, `observacion`, `created_at`, `updated_at`) VALUES
-(21, '1', 'Admin', '1', 'Fcyt', 'Oro ve', 'UADER', 100, 'hola', '2018-05-10 01:02:15', '2018-05-10 01:02:15'),
-(22, '1', 'Admin', '1', 'Fcyt', 'Oro ve', 'UADER', 100, 'hola', '2018-05-10 01:03:26', '2018-05-10 01:03:26'),
-(23, '1', 'Admin', '1', 'Fcyt', 'Oro ve', 'UADER', 100, 'hola', '2018-05-10 01:03:52', '2018-05-10 01:03:52'),
-(24, '1', 'Admin', '1', 'Fcyt', 'Oro ve', 'UADER', 100, 'hola', '2018-05-10 01:05:34', '2018-05-10 01:05:34'),
-(25, '1', 'Admin', '1', 'Fcyt', 'Oro ve', 'UADER', 100, 'hola', '2018-05-10 01:32:09', '2018-05-10 01:32:09'),
-(26, '1', 'Admin', '1', 'Fcyt', 'Oro ve', 'UADER', 100, 'hola', '2018-05-10 01:32:49', '2018-05-10 01:32:49'),
-(27, '1', 'Admin', '1', 'Fcyt', 'Oro ve', 'UADER', 100, 'hola', '2018-05-10 01:33:26', '2018-05-10 01:33:26'),
-(28, '1', 'Admin', '1', 'Fcyt', 'Oro ve', 'UADER', 100, 'hola', '2018-05-10 04:28:16', '2018-05-10 04:28:16'),
-(29, '1', 'Admin', '1', 'Fcyt', 'Oro ve', 'UADER', 100, 'hola', '2018-05-10 04:34:38', '2018-05-10 04:34:38'),
-(30, '1', 'Admin', '1', 'Fcyt', 'Oro ve', 'UADER', 100, 'hola', '2018-05-10 04:37:21', '2018-05-10 04:37:21'),
-(31, '1', 'Admin', '1', 'Fcyt', 'Oro ve', 'UADER', 100, 'hola', '2018-05-10 04:41:29', '2018-05-10 04:41:29'),
-(32, '1', 'Admin', '1', 'Fcyt', 'Oro ve', 'UADER', 100, 'hola', '2018-05-10 04:42:36', '2018-05-10 04:42:36'),
-(33, '1', 'Admin', '1', 'Fcyt', 'Oro ve', 'UADER', 100, 'hola', '2018-05-10 05:07:19', '2018-05-10 05:07:19'),
-(34, '1', 'Admin', '1', 'Fcyt', 'Oro ve', 'UADER', 100, 'hola', '2018-05-10 16:56:37', '2018-05-10 16:56:37'),
-(35, '1', 'Admin', '1', 'Fcyt', 'Oro ve', 'UADER', 100, 'hola', '2018-05-10 16:57:23', '2018-05-10 16:57:23'),
-(36, '1', 'Admin', '1', 'Fcyt', 'Oro ve', 'UADER', 100, 'hola', '2018-05-10 17:05:16', '2018-05-10 17:05:16'),
-(37, '1', 'Admin', '1', 'Fcyt', 'Oro ve', 'UADER', 100, 'hola', '2018-05-10 17:05:34', '2018-05-10 17:05:34'),
-(38, '1', 'Admin', '1', 'Fcyt', 'Oro ve', 'UADER', 100, 'hola', '2018-05-10 17:09:41', '2018-05-10 17:09:41'),
-(39, '1', 'Admin', '1', 'Fcyt', 'Oro ve', 'UADER', 100, 'hola', '2018-05-10 17:14:05', '2018-05-10 17:14:05'),
-(40, '1', 'Admin', '1', 'Fcyt', 'Oro ve', 'UADER', 100, 'hola', '2018-05-10 17:15:11', '2018-05-10 17:15:11'),
-(41, '1', 'Admin', '1', 'Fcyt', 'Oro ve', 'UADER', 100, 'hola', '2018-05-10 18:44:56', '2018-05-10 18:44:56'),
-(42, '1', 'Admin', '1', 'Fcyt', 'Oro ve', 'UADER', 100, 'hola', '2018-05-10 21:30:22', '2018-05-10 21:30:22'),
-(43, '1', 'Admin', '1', 'Fcyt', 'Oro ve', 'UADER', 100, 'hola', '2018-05-10 21:33:01', '2018-05-10 21:33:01'),
-(44, '1', 'Admin', '1', 'Fcyt', 'Oro ve', 'UADER', 100, 'hola', '2018-05-10 21:37:52', '2018-05-10 21:37:52'),
-(45, '1', 'Admin', '1', 'Fcyt', 'Oro ve', 'UADER', 100, 'hola', '2018-05-10 21:38:49', '2018-05-10 21:38:49'),
-(46, '1', 'Admin', '1', 'Fcyt', 'Oro ve', 'UADER', 100, 'hola', '2018-05-10 21:39:20', '2018-05-10 21:39:20'),
-(47, '1', 'Admin', '1', 'Fcyt', 'Oro ve', 'UADER', 100, 'hola', '2018-05-10 21:39:53', '2018-05-10 21:39:53'),
-(48, '1', 'Admin', '1', 'Fcyt', 'Oro ve', 'UADER', 100, 'hola', '2018-05-10 21:40:08', '2018-05-10 21:40:08'),
-(49, '1', 'Admin', '1', 'Fcyt', 'Oro ve', 'UADER', 100, 'hola', '2018-05-10 21:40:34', '2018-05-10 21:40:34'),
-(50, '1', 'Admin', '1', 'Fcyt', 'Oro ve', 'UADER', 100, 'hola', '2018-05-10 22:31:27', '2018-05-10 22:31:27'),
-(51, '1', 'Admin', '1', 'Fcyt', 'Oro ve', 'UADER', 100, 'hola', '2018-05-10 22:46:26', '2018-05-10 22:46:26'),
-(52, '1', 'Admin', '1', 'Fcyt', 'Oro ve', 'UADER', 100, 'hola', '2018-05-10 22:52:05', '2018-05-10 22:52:05'),
-(53, '1', 'Admin', '1', 'Fcyt', 'Oro ve', 'UADER', 100, 'hola', '2018-05-10 23:06:33', '2018-05-10 23:06:33'),
-(54, '1', 'Admin', '1', 'Fcyt', 'Oro ve', 'UADER', 100, 'hola', '2018-05-10 23:10:10', '2018-05-10 23:10:10'),
-(55, '1', 'Admin', '1', 'Fcyt', 'Oro ve', 'UADER', 100, 'hola', '2018-05-10 23:13:45', '2018-05-10 23:13:45'),
-(56, '1', 'Admin', '1', 'Fcyt', 'Oro ve', 'UADER', 100, 'hola', '2018-05-10 23:16:52', '2018-05-10 23:16:52'),
-(57, '1', 'Admin', '1', 'Fcyt', 'Oro ve', 'UADER', 100, 'hola', '2018-05-10 23:25:26', '2018-05-10 23:25:26'),
-(58, '1', 'Admin', '1', 'Fcyt', 'Oro ve', 'UADER', 100, 'hola', '2018-05-10 23:26:00', '2018-05-10 23:26:00'),
-(59, '1', 'Admin', '1', 'Fcyt', 'Oro ve', 'UADER', 100, 'hola', '2018-05-11 02:34:27', '2018-05-11 02:34:27'),
-(60, '1', 'Admin', '1', 'Fcyt', 'Oro ve', 'UADER', 100, 'hola', '2018-05-11 02:34:53', '2018-05-11 02:34:53'),
-(61, '1', 'Admin', '1', 'Fcyt', 'Oro ve', 'UADER', 100, 'hola', '2018-05-11 03:30:43', '2018-05-11 03:30:43'),
-(62, '1', 'Admin', '1', 'Fcyt', 'Oro ve', 'UADER', 100, 'hola', '2018-05-11 03:53:30', '2018-05-11 03:53:30'),
-(63, '1', 'Admin', '1', 'Fcyt', 'Oro ve', 'UADER', 100, 'hola', '2018-05-11 03:59:45', '2018-05-11 03:59:45'),
-(64, '1', 'Admin', '1', 'Fcyt', 'Oro ve', 'UADER', 100, 'hola', '2018-05-11 04:21:24', '2018-05-11 04:21:24'),
-(65, '1', 'Admin', '1', 'Fcyt', 'Oro ve', 'UADER', 100, 'hola', '2018-05-11 04:22:39', '2018-05-11 04:22:39'),
-(66, '1', 'Admin', '1', 'Fcyt', 'Oro ve', 'UADER', 100, 'hola', '2018-05-11 04:28:58', '2018-05-11 04:28:58'),
-(67, '1', 'Admin', '1', 'Fcyt', 'Oro ve', 'UADER', 100, 'hola', '2018-05-11 04:30:00', '2018-05-11 04:30:00'),
-(68, '1', 'Admin', '1', 'Fcyt', 'Oro ve', 'UADER', 100, 'hola', '2018-05-12 01:17:36', '2018-05-12 01:17:36'),
-(69, '1', 'Admin', '1', 'Fcyt', 'Oro ve', 'UADER', 100, 'hola', '2018-05-12 01:42:08', '2018-05-12 01:42:08');
+INSERT INTO `inscripciones` (`id`, `user_id`, `user_nombre`, `beca_id`, `beca_nombre`, `carrera_nombre`, `facultad_nombre`, `sede_nombre`, `univ_nombre`, `merito`, `observacion`, `created_at`, `updated_at`) VALUES
+(21, '1', 'Admin', 1, '', '1', 'Fcyt', 'Oro ve', 'UADER', 100, 'hola', '2018-05-10 01:02:15', '2018-05-10 01:02:15'),
+(22, '10', 'juan', 2, '', '1', 'Fcyt', 'Oro ve', '', 100, 'hola', '2018-05-10 01:03:26', '2018-05-10 01:03:26'),
+(23, '2', 'asdssssss', 2, '', '1', 'Fcyt', 'Oro ve', '', 100, 'hola', '2018-05-10 01:03:52', '2018-05-10 01:03:52'),
+(24, '2', 'Prueba', 2, '', '1', 'Fcyt', 'Oro ve', '', 200, 'hola', '2018-05-10 01:05:34', '2018-05-10 01:05:34'),
+(25, '1', 'Admin', 1, '', '1', 'Fcyt', 'Oro ve', 'UADER', 100, 'hola', '2018-05-10 01:32:09', '2018-05-10 01:32:09'),
+(26, '1', 'Admin', 1, '', '1', 'Fcyt', 'Oro ve', 'UADER', 100, 'hola', '2018-05-10 01:32:49', '2018-05-10 01:32:49'),
+(27, '1', 'Admin', 1, '', '1', 'Fcyt', 'Oro ve', 'UADER', 100, 'hola', '2018-05-10 01:33:26', '2018-05-10 01:33:26'),
+(28, '1', 'Admin', 1, '', '1', 'Fcyt', 'Oro ve', 'UADER', 100, 'hola', '2018-05-10 04:28:16', '2018-05-10 04:28:16'),
+(29, '1', 'Admin', 1, '', '1', 'Fcyt', 'Oro ve', 'UADER', 100, 'hola', '2018-05-10 04:34:38', '2018-05-10 04:34:38'),
+(30, '1', 'Admin', 1, '', '1', 'Fcyt', 'Oro ve', 'UADER', 100, 'hola', '2018-05-10 04:37:21', '2018-05-10 04:37:21'),
+(31, '1', 'Admin', 1, '', '1', 'Fcyt', 'Oro ve', 'UADER', 100, 'hola', '2018-05-10 04:41:29', '2018-05-10 04:41:29'),
+(32, '1', 'Admin', 1, '', '1', 'Fcyt', 'Oro ve', 'UADER', 100, 'hola', '2018-05-10 04:42:36', '2018-05-10 04:42:36'),
+(33, '1', 'Admin', 2, '', '1', 'caca', 'Oro ve', '', 100, 'hola', '2018-05-10 05:07:19', '2018-05-10 05:07:19'),
+(34, '1', 'Admin', 1, '', '1', 'Fcyt', 'Oro ve', 'UADER', 100, 'hola', '2018-05-10 16:56:37', '2018-05-10 16:56:37'),
+(35, '1', 'Admin', 1, '', '1', 'Fcyt', 'Oro ve', 'UADER', 100, 'hola', '2018-05-10 16:57:23', '2018-05-10 16:57:23'),
+(36, '1', 'Admin', 1, '', '1', 'Fcyt', 'Oro ve', 'UADER', 100, 'hola', '2018-05-10 17:05:16', '2018-05-10 17:05:16'),
+(37, '1', 'Admin', 1, '', '1', 'Fcyt', 'Oro ve', 'UADER', 100, 'hola', '2018-05-10 17:05:34', '2018-05-10 17:05:34'),
+(38, '1', 'Admin', 1, '', '1', 'Fcyt', 'Oro ve', 'UADER', 100, 'hola', '2018-05-10 17:09:41', '2018-05-10 17:09:41'),
+(39, '1', 'Admin', 1, '', '1', 'Fcyt', 'Oro ve', 'UADER', 100, 'hola', '2018-05-10 17:14:05', '2018-05-10 17:14:05'),
+(40, '1', 'Admin', 1, '', '1', 'Fcyt', 'Oro ve', 'UADER', 100, 'hola', '2018-05-10 17:15:11', '2018-05-10 17:15:11'),
+(41, '1', 'Admin', 1, '', '1', 'Fcyt', 'Oro ve', 'UADER', 100, 'hola', '2018-05-10 18:44:56', '2018-05-10 18:44:56'),
+(42, '1', 'Admin', 1, '', '1', 'Fcyt', 'Oro ve', 'UADER', 100, 'hola', '2018-05-10 21:30:22', '2018-05-10 21:30:22'),
+(43, '1', 'Admin', 1, '', '1', 'Fcyt', 'Oro ve', 'UADER', 100, 'hola', '2018-05-10 21:33:01', '2018-05-10 21:33:01'),
+(44, '1', 'Admin', 1, '', '1', 'Fcyt', 'Oro ve', 'UADER', 100, 'hola', '2018-05-10 21:37:52', '2018-05-10 21:37:52'),
+(45, '1', 'Admin', 1, '', '1', 'Fcyt', 'Oro ve', 'UADER', 100, 'hola', '2018-05-10 21:38:49', '2018-05-10 21:38:49'),
+(46, '1', 'Admin', 1, '', '1', 'Fcyt', 'Oro ve', 'UADER', 100, 'hola', '2018-05-10 21:39:20', '2018-05-10 21:39:20'),
+(47, '1', 'Admin', 1, '', '1', 'Fcyt', 'Oro ve', 'UADER', 100, 'hola', '2018-05-10 21:39:53', '2018-05-10 21:39:53'),
+(48, '1', 'Admin', 1, '', '1', 'Fcyt', 'Oro ve', 'UADER', 100, 'hola', '2018-05-10 21:40:08', '2018-05-10 21:40:08'),
+(49, '1', 'Admin', 1, '', '1', 'Fcyt', 'Oro ve', 'UADER', 100, 'hola', '2018-05-10 21:40:34', '2018-05-10 21:40:34'),
+(50, '1', 'Admin', 1, '', '1', 'Fcyt', 'Oro ve', 'UADER', 100, 'hola', '2018-05-10 22:31:27', '2018-05-10 22:31:27'),
+(51, '1', 'Admin', 1, '', '1', 'Fcyt', 'Oro ve', 'UADER', 100, 'hola', '2018-05-10 22:46:26', '2018-05-10 22:46:26'),
+(52, '1', 'Admin', 1, '', '1', 'Fcyt', 'Oro ve', 'UADER', 100, 'hola', '2018-05-10 22:52:05', '2018-05-10 22:52:05'),
+(53, '1', 'Admin', 1, '', '1', 'Fcyt', 'Oro ve', 'UADER', 100, 'hola', '2018-05-10 23:06:33', '2018-05-10 23:06:33'),
+(54, '1', 'Admin', 1, '', '1', 'Fcyt', 'Oro ve', 'UADER', 100, 'hola', '2018-05-10 23:10:10', '2018-05-10 23:10:10'),
+(55, '1', 'Admin', 1, '', '1', 'Fcyt', 'Oro ve', 'UADER', 100, 'hola', '2018-05-10 23:13:45', '2018-05-10 23:13:45'),
+(56, '1', 'Admin', 1, '', '1', 'Fcyt', 'Oro ve', 'UADER', 100, 'hola', '2018-05-10 23:16:52', '2018-05-10 23:16:52'),
+(57, '1', 'Admin', 1, '', '1', 'Fcyt', 'Oro ve', 'UADER', 100, 'hola', '2018-05-10 23:25:26', '2018-05-10 23:25:26'),
+(58, '1', 'Admin', 1, '', '1', 'Fcyt', 'Oro ve', 'UADER', 100, 'hola', '2018-05-10 23:26:00', '2018-05-10 23:26:00'),
+(59, '1', 'Admin', 1, '', '1', 'Fcyt', 'Oro ve', 'UADER', 100, 'hola', '2018-05-11 02:34:27', '2018-05-11 02:34:27'),
+(60, '1', 'Admin', 1, '', '1', 'Fcyt', 'Oro ve', 'UADER', 100, 'hola', '2018-05-11 02:34:53', '2018-05-11 02:34:53'),
+(61, '1', 'Admin', 1, '', '1', 'Fcyt', 'Oro ve', 'UADER', 100, 'hola', '2018-05-11 03:30:43', '2018-05-11 03:30:43'),
+(62, '1', 'Admin', 1, '', '1', 'Fcyt', 'Oro ve', 'UADER', 100, 'hola', '2018-05-11 03:53:30', '2018-05-11 03:53:30'),
+(63, '1', 'Admin', 1, '', '1', 'Fcyt', 'Oro ve', 'UADER', 100, 'hola', '2018-05-11 03:59:45', '2018-05-11 03:59:45'),
+(64, '1', 'Admin', 1, '', '1', 'Fcyt', 'Oro ve', 'UADER', 100, 'hola', '2018-05-11 04:21:24', '2018-05-11 04:21:24'),
+(65, '1', 'Admin', 1, '', '1', 'Fcyt', 'Oro ve', 'UADER', 100, 'hola', '2018-05-11 04:22:39', '2018-05-11 04:22:39'),
+(66, '1', 'Admin', 1, '', '1', 'Fcyt', 'Oro ve', 'UADER', 100, 'hola', '2018-05-11 04:28:58', '2018-05-11 04:28:58'),
+(67, '1', 'Admin', 1, '', '1', 'Fcyt', 'Oro ve', 'UADER', 100, 'hola', '2018-05-11 04:30:00', '2018-05-11 04:30:00'),
+(68, '1', 'Admin', 1, '', '1', 'Fcyt', 'Oro ve', 'UADER', 100, 'hola', '2018-05-12 01:17:36', '2018-05-12 01:17:36'),
+(69, '1', 'Admin', 1, '', '1', 'Fcyt', 'Oro ve', 'UADER', 100, 'hola', '2018-05-12 01:42:08', '2018-05-12 01:42:08'),
+(70, '1', 'Admin', 1, '', '1', 'Fcyt', 'Oro ve', 'UADER', 100, 'hola', '2018-06-06 03:19:31', '2018-06-06 03:19:31'),
+(72, '2', 'damian', 2, '2', '1', 'Fcyt', 'Oro ve', '', 100, 'hola', '2018-06-15 04:12:05', '2018-06-15 04:12:05');
 
 -- --------------------------------------------------------
 
@@ -3282,8 +3306,8 @@ CREATE TABLE `users` (
 --
 
 INSERT INTO `users` (`id`, `role_id`, `name`, `email`, `avatar`, `password`, `remember_token`, `created_at`, `updated_at`, `dni`, `apellido`) VALUES
-(1, 1, 'Admin', 'admin@admin.com', 'users/April2018/PKRKJz2i7O6dIx85hE6R.png', '$2y$10$B5r4YrVVtfEsWRyujJoGV.JbVqAyGbzXumdf8Kilk.cUHk5bPjJc2', 'eW9bNK7CnEDq14LyEZfDUfA5guCGoPCE72DMM5PisfADUpi9nQvM8OIOKoco', '2017-10-16 08:55:45', '2018-04-06 04:26:03', 3333333, 'adminsito'),
-(2, 2, 'damian', 'damian@damian.com', 'users/default.png', '$2y$10$.C21j5A2agat86PPZjpOjel7e./6BPO1l18IRZXYdCyYztK8qNOoa', 'K5A0F2kriAWGA30Yce772S9mRlLPlT9NTctX3zFFBlhcC7N2ks2NwkZf9Qz5', '2017-10-22 01:00:26', '2018-01-02 04:24:28', 34299846, 'sacksss'),
+(1, 1, 'Admin', 'admin@admin.com', 'users/April2018/PKRKJz2i7O6dIx85hE6R.png', '$2y$10$B5r4YrVVtfEsWRyujJoGV.JbVqAyGbzXumdf8Kilk.cUHk5bPjJc2', 'mysbSyWzqsrOTV5UNFEhFywKW9PiPZPqOCvcNENagCaNv55V95jWEpnCJhzy', '2017-10-16 08:55:45', '2018-04-06 04:26:03', 3333333, 'adminsito'),
+(2, 2, 'damian', 'damian@damian.com', 'users/June2018/0mHOftuHm7YdjYKNKAA1.jpg', '$2y$10$pDWbuTlmSUsr.LGrPKN/HuoDfCuZrHbufnTUNV/n2eVCR3HxZTQYC', 'zGkE6K7wfmPac6elL0MsXzaUJcr160fgqgXfXHjMRnFUq8I7R4xpw15gg8Sd', '2017-10-22 01:00:26', '2018-06-15 03:33:14', 34299846, 'sacksss'),
 (8, 3, 'Pedro el Mods', 'Jorge@jorge.com', 'users/December2017/b3pvfQLjt8XGvujOhypz.png', '$2y$10$.vqHvIHEtZ8rMtjXLnCZIe062UfrWIosHmNF72MMarLeVzw5opmV2', 'lcsdDoc5NEW4ZxGDM5twOHJ5LJZX0fdAG2YNdEZ3qrKsWXdX54lqPIVnc2gs', '2017-12-29 22:17:41', '2018-01-02 04:11:18', 335552951, 'El curioso'),
 (9, 2, 'Prueba', 'prueba@prueba.com', 'users/December2017/gOLcIg9MiCneJxC0W0b9.png', '$2y$10$EWsbEqmib.miKI4dAblJoOAbrIfoptRaeO/R0LHMlHueD4FNglyiy', 'apUUKtC2PSxeQeLSKF58fwQsiqOlOWfVnC9jKf9QyRmkq7VlaxSeI0CWCv5i', '2017-12-29 22:23:24', '2017-12-29 22:23:24', 33332323, 'Apellido del prueba'),
 (10, 2, 'Pepito', 'pepe@pepe.com', 'users/April2018/L5vlX0Cmnk0bdbXVpMp3.png', '$2y$10$GI0D4wYbCLvRg7gCVkqfseCJa/95J9eNjYr5d04E69YY12B.o.Opm', '2gV4Ze8GUvWoUyILHMz0sNFkuu7M0aKsxKemMfOtaMfCql968KTKEotN282O', '2018-01-02 01:20:57', '2018-04-06 04:23:25', 23123123, 'Flores');
@@ -3296,7 +3320,8 @@ INSERT INTO `users` (`id`, `role_id`, `name`, `email`, `avatar`, `password`, `re
 -- Indices de la tabla `becas`
 --
 ALTER TABLE `becas`
-  ADD PRIMARY KEY (`id`);
+  ADD PRIMARY KEY (`id`),
+  ADD KEY `nombre` (`nombre`);
 
 --
 -- Indices de la tabla `carreras`
@@ -3482,7 +3507,7 @@ ALTER TABLE `condicion`
 -- AUTO_INCREMENT de la tabla `consideraciones`
 --
 ALTER TABLE `consideraciones`
-  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=100;
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=105;
 --
 -- AUTO_INCREMENT de la tabla `data_rows`
 --
@@ -3497,7 +3522,7 @@ ALTER TABLE `data_types`
 -- AUTO_INCREMENT de la tabla `datos_personas`
 --
 ALTER TABLE `datos_personas`
-  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
 --
 -- AUTO_INCREMENT de la tabla `facultades`
 --
@@ -3507,12 +3532,12 @@ ALTER TABLE `facultades`
 -- AUTO_INCREMENT de la tabla `familiars`
 --
 ALTER TABLE `familiars`
-  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=101;
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=106;
 --
 -- AUTO_INCREMENT de la tabla `inscripciones`
 --
 ALTER TABLE `inscripciones`
-  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=70;
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=73;
 --
 -- AUTO_INCREMENT de la tabla `localidades`
 --

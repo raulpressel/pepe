@@ -56,6 +56,9 @@ class Inscripcione extends Model
         $inscripto->facultad_nombre = "Fcyt"; 
         $inscripto->sede_nombre = "Oro ve";
         $inscripto->univ_nombre = "UADER";
+        $inscripto->beca_id = 2;
+        $inscripto->beca_nombre = 2;
+        
         //hasta aca
         $inscripto->merito = 100;
         $inscripto->observacion = 'hola';

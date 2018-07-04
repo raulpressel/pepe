@@ -108,14 +108,14 @@ class DatosPersonaController extends Controller
                     foreach ($img as $contador=>$imagen) {             //recorro las cargadas
                         $nom=$imagen->getClientOriginalName();          //NO SE usa, pero toma el nombre cargado
                         $ext=$imagen->getClientOriginalExtension();     //captura la extension del archivo
-                        $nombre = 'imagen_dni_'.$contador.'.'.$ext;       //concateno e invento los nombre
+                        $nombre = 'imagen_dni_'.time().'.'.$ext;       //concateno e invento los nombre
                         $rutas[]=$imagen->storeAs($request->dni,$nombre); //se guarda en la carpeta dni, con el nombre
                         $datos->imagen_dni = collect($rutas)->implode(', ');    //guardo las rutas separadas ,
                     }
                 } 
                 else                                                     // si cargo solo 1 img
                 {
-                    $nombre='imagen_dni.'.$img->getClientOriginalExtension();
+                    $nombre='imagen_dni'.time().'.'.$img->getClientOriginalExtension();
                     $img->storeAs($request->dni,$nombre);
                     $datos->imagen_dni = $nombre;
                 }
@@ -128,13 +128,13 @@ class DatosPersonaController extends Controller
                 if(is_array($img)){ 
                     foreach ($img as $contador=>$imagen) {
                         $ext=$imagen->getClientOriginalExtension();
-                        $nombre='certificado_anses-'.$contador.'.'.$ext;
+                        $nombre='certificado_anses-'.time().'.'.$ext;
                         $rutas[]=$imagen->storeAs($request->dni,$nombre);
                         $datos->cert_anses = collect($rutas)->implode(', ');
                     }
                 }
                 else{
-                    $nombre='certificado_anses.'.$img->getClientOriginalExtension();
+                    $nombre='certificado_anses'.time().'.'.$img->getClientOriginalExtension();
                     $img->storeAs($request->dni,$nombre);
                     $datos->cert_anses = $nombre;
                 }
@@ -161,13 +161,13 @@ class DatosPersonaController extends Controller
                 if(is_array($img)){ 
                     foreach ($img as $contador=>$imagen) {
                         $ext=$imagen->getClientOriginalExtension();
-                        $nombre='certificado_discapacidad-'.$contador.'.'.$ext;
+                        $nombre='certificado_discapacidad-'.time().'.'.$ext;
                         $rutas[]=$imagen->storeAs($request->dni,$nombre);
                         $datos->certificado_discapacidad = collect($rutas)->implode(', ');
                     }
                 }
                 else{
-                    $nombre='certificado_discapacidad.'.$img->getClientOriginalExtension();
+                    $nombre='certificado_discapacidad'.time().'.'.$img->getClientOriginalExtension();
                     $img->storeAs($request->dni,$nombre);
                     $datos->certificado_discapacidad = $nombre;
                 }
@@ -182,13 +182,13 @@ class DatosPersonaController extends Controller
                 if(is_array($img)){ 
                     foreach ($img as $contador=>$imagen) {
                         $ext=$imagen->getClientOriginalExtension();
-                        $nombre='constancia_estudiante-'.$contador.'.'.$ext;
+                        $nombre='constancia_estudiante-'.time().'.'.$ext;
                         $rutas[]=$imagen->storeAs($request->dni,$nombre);
                         $datos->constancia_estudiante = collect($rutas)->implode(', ');
                     }
                 }
                 else{
-                    $nombre='constancia_estudiante.'.$img->getClientOriginalExtension();
+                    $nombre='constancia_estudiante'.time().'.'.$img->getClientOriginalExtension();
                     $img->storeAs($request->dni,$nombre);
                     $datos->constancia_estudiante = $nombre;
                 }
@@ -200,13 +200,13 @@ class DatosPersonaController extends Controller
                 if(is_array($img)){ 
                     foreach ($img as $contador=>$imagen) {
                         $ext=$imagen->getClientOriginalExtension();
-                        $nombre='certificado_estudiante-'.$contador.'.'.$ext;
+                        $nombre='certificado_estudiante-'.time().'.'.$ext;
                         $rutas[]=$imagen->storeAs($request->dni,$nombre);
                         $datos->certificado_estudiante = collect($rutas)->implode(', ');
                     }
                 }
                 else{
-                    $nombre='certificado_estudiante.'.$img->getClientOriginalExtension();
+                    $nombre='certificado_estudiante'.time().'.'.$img->getClientOriginalExtension();
                     $img->storeAs($request->dni,$nombre);
                     $datos->certificado_estudiante = $nombre;
                 }
@@ -224,13 +224,13 @@ class DatosPersonaController extends Controller
                 if(is_array($img)){ 
                     foreach ($img as $contador=>$imagen) {
                         $ext=$imagen->getClientOriginalExtension();
-                        $nombre='comprobante_ingresos-'.$contador.'.'.$ext;
+                        $nombre='comprobante_ingresos-'.time().'.'.$ext;
                         $rutas[]=$imagen->storeAs($request->dni,$nombre);
                         $datos->comprobante_ingresos = collect($rutas)->implode(', ');
                     }
                 }
                 else{
-                    $nombre='comprobante_ingresos.'.$img->getClientOriginalExtension();
+                    $nombre='comprobante_ingresos'.time().'.'.$img->getClientOriginalExtension();
                     $img->storeAs($request->dni,$nombre);
                     $datos->comprobante_ingresos = $nombre;
                 }
@@ -251,14 +251,14 @@ class DatosPersonaController extends Controller
                 if(is_array($img)){ 
                     foreach ($img as $contador=>$imagen) {
                         $ext=$imagen->getClientOriginalExtension();
-                        $nombre='recibo_alquiler-'.$contador.'.'.$ext;
+                        $nombre='recibo_alquiler-'.time().'.'.$ext;
                         $rutas[]=$imagen->storeAs($request->dni,$nombre);
                         $datos->recibo_alquiler = collect($rutas)->implode(', ');
                     }
                 }
                 else{
                     $ext = $img->getClientOriginalExtension();
-                    $nombre='recibo_alquiler.'.$ext;
+                    $nombre='recibo_alquiler-'.time().'.'.$ext;
                     $img->storeAs($request->dni,$nombre);
                     $datos->recibo_alquiler = $nombre;
                 }
@@ -277,14 +277,14 @@ class DatosPersonaController extends Controller
                 if(is_array($img)){ 
                     foreach ($img as $contador=>$imagen) {
                         $ext=$imagen->getClientOriginalExtension();
-                        $nombre='recibo_pasaje-'.$contador.'.'.$ext;
+                        $nombre='recibo_pasaje-'.time().'.'.$ext;
                         $rutas[]=$imagen->storeAs($request->dni,$nombre);
                         $datos->recibo_pasaje = collect($rutas)->implode(', ');
                     }
                 }
                 else{
                     $ext = $img->getClientOriginalExtension();
-                    $nombre='recibo_pasaje.'.$ext;
+                    $nombre='recibo_pasaje-'.time().'.'.$ext;
                     $img->storeAs($request->dni,$nombre);
                     $datos->recibo_pasaje = $nombre;
                 }
@@ -300,13 +300,13 @@ class DatosPersonaController extends Controller
                 if(is_array($img)){ 
                     foreach ($img as $contador=>$imagen) {
                         $ext=$imagen->getClientOriginalExtension();
-                        $nombre='recibo_alquiler_familiar-'.$contador.'.'.$ext;
+                        $nombre='recibo_alquiler_familiar-'.time().'.'.$ext;
                         $rutas[]=$imagen->storeAs($request->dni,$nombre);
                         $datos->recibo_alquiler_familiar = collect($rutas)->implode(', ');
                     }
                 }
                 else{
-                    $nombre='recibo_alquiler_familiar.'.$img->getClientOriginalExtension();
+                    $nombre='recibo_alquiler_familiar'.time().'.'.$img->getClientOriginalExtension();
                     $img->storeAs($request->dni,$nombre);
                     $datos->recibo_alquiler_familiar = $nombre;
                 }
@@ -340,14 +340,14 @@ class DatosPersonaController extends Controller
                     if(is_array($img)){ 
                         foreach ($img as $contador=>$imagen) {
                             $ext=$imagen->getClientOriginalExtension();
-                            $nombre='imagen_discapacidad_familiar'.$j.'-'.$contador.'.'.$ext;
+                            $nombre='imagen_discapacidad_familiar'.$j.'-'.time().'.'.$ext;
                             $rutas[]=$imagen->storeAs($request->dni,$nombre);
                             $con->cert_incapacidad = collect($rutas)->implode(', ');
                         }
                     }
                     else{
                         $ext=$img->getClientOriginalExtension();
-                        $nombre='imagen_discapacidad_familiar'.$j.'.'.$ext;
+                        $nombre='imagen_discapacidad_familiar-'.$j.'-'.time().'.'.$ext;
                         $img->storeAs($request->dni,$nombre);
                         $con->cert_incapacidad = $nombre;
                         }
@@ -373,14 +373,14 @@ class DatosPersonaController extends Controller
                     if(is_array($img)){ 
                         foreach ($img as $contador=>$imagen) {
                             $ext=$imagen->getClientOriginalExtension();
-                            $nombre='imagen_dni_familiar'.$i.'-'.$contador.'.'.$ext;
+                            $nombre='imagen_dni_familiar'.$i.'-'.time().'.'.$ext;
                             $rutas[] =$imagen->storeAs($ruta,$nombre);
                             $fam->imagen_dni= collect($rutas)->implode(', ');
                         }
                     }
                     else{
                         $ext = $img->getClientOriginalExtension();
-                        $nombre='imagen_dni_familiar-'.$i.'.'.$ext;
+                        $nombre='imagen_dni_familiar-'.$i.'-'.time().'.'.$ext;
                         $img->storeAs($request->dni,$nombre);
                         $fam->imagen_dni = $nombre;
                         }
@@ -396,7 +396,7 @@ class DatosPersonaController extends Controller
                     if(is_array($img)){
                     foreach ($img as $contador=>$imagen) {
                         $ext = $imagen->getClientOriginalExtension();
-                        $nombre = 'comprobante_ingresos_fam'.$contador.'-'.$i.'.'.$ext;
+                        $nombre = 'comprobante_ingresos_fam'.time().'-'.$i.'.'.$ext;
                         $rutas[]=$imagen->storeAs($ruta,$nombre);
                         $fam->comprobante_ingresos =collect($rutas)->implode(', ');
                     }
@@ -404,7 +404,7 @@ class DatosPersonaController extends Controller
                 }
                 else{
                       $ext = $img->getClientOriginalExtension();
-                      $nombre = 'comprobante_ingresos_fam-'.$i.'.'.$ext;
+                      $nombre = 'comprobante_ingresos_fam-'.$i.'-'.time().'.'.$ext;
                       $img->storeAs($ruta,$nombre); 
                       $fam->comprobante_ingresos=$nombre;
                   }
@@ -418,7 +418,7 @@ class DatosPersonaController extends Controller
                     if(is_array($img)){
                     foreach ($img as $contador=>$imagen) {
                         $ext = $imagen->getClientOriginalExtension();
-                        $nombre = 'comprobante_anses-'.$contador.'-'.$i.'.'.$ext;
+                        $nombre = 'comprobante_anses-'.time().'-'.$i.'.'.$ext;
                         $rutas[]=$imagen->storeAs($ruta,$nombre);
                         $fam->anses = collect($rutas)->implode(', ');
                     }
@@ -426,7 +426,7 @@ class DatosPersonaController extends Controller
                 }else
                 {  
                       $ext = $img->getClientOriginalExtension();
-                      $nombre = 'comprobante_anses-'.$i.'.'.$ext;
+                      $nombre = 'comprobante_anses-'.$i.'-'.time().'.'.$ext;
                       $img->storeAs($ruta,$nombre); 
                       $fam->anses=$nombre;
                   }

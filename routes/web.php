@@ -42,8 +42,13 @@ Route::get('requisitos', function () {
 });
 
 
-Route::get('pdf', 'InscripcionesController@pdf')->name('pdf');
-
 Route::resource('selects', 'ProvinciaController');
 
 Route::get('datospersona/localidad/{id}', 'DatosPersonaController@getLocalidades');
+
+Route::post('pdf', 'InscripcionesController@pdf')->name('pdf');//para pdf
+
+Route::post('/administracion/inscripciones/seleccion', 'InscripcionesController@seleccion')->name('seleccion'); //seleccion de beca
+Route::get('administracion/inscripciones/usuarios/datos_usuario/{user_id}', 'InscripcionesController@datos_usuario')->name('datos_usuario'); //VER LOS DATOS INSCRIPTS
+
+Route::get('storage/{filename}', 'InscripcionesController@getFile')->where('filename', '^[^/]+$');
