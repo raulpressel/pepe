@@ -34,7 +34,7 @@
             <label for="validate-number">Recibo de Alquiler:</label>
             
             <div class="input-group">
-              <input  type="file" id="reciboalqfam" name="reciboalqfam[]" multiple class="form-control" required>
+              <input  type="file" id="reciboalqfam" name="reciboalqfam" accept=".jpg, .jpeg, .png, .pdf" class="form-control" required>
                 <span class="input-group-addon danger"><span class="glyphicon glyphicon-remove"></span></span>
               </div>
               <div class="input-group">

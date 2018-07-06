@@ -24,7 +24,7 @@
             <label style="display:none;" id="ing" for="validate-number">Ingrese Constancia de inscripción a la Universidad:</label>
             <label style="display:none;" id="res" for="validate-number">Ingrese Constancia de alumno regular:</label>
             <div class="input-group">
-              <input  type="file" id="constancia" name="constancia[]" multiple class="form-control" required>
+              <input  type="file" id="constancia" name="constancia" class="form-control" accept=".jpg, .jpeg, .png, .pdf" required>
                 <span class="input-group-addon danger"><span class="glyphicon glyphicon-remove"></span></span>
               </div>
               <div class="input-group">
@@ -40,7 +40,7 @@
           <label style="display:none;" id="ing2" for="validate-number">Ingrese Título Secundario Certificado de finalización con promedio general:</label>
           <label style="display:none;" id="res2" for="validate-number">Ingrese Analítico de materias aprobadas:</label>
           <div class="input-group">
-            <input  type="file" id="certificado" name="certificado[]" multiple class="form-control" required>
+            <input  type="file" id="certificado" name="certificado[]" multiple class="form-control" accept=".jpg, .jpeg, .png, .pdf" required>
             <span class="input-group-addon danger"><span class="glyphicon glyphicon-remove"></span></span>
           </div>
           <div class="input-group">

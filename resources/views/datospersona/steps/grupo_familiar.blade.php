@@ -66,17 +66,32 @@
               <span class="input-group-addon danger"><span class="glyphicon glyphicon-remove"></span></span>
             </div>
         </div>             
-          
 
         <div class="form-group">
-          <label for="validate-number">Ingresa la imagen del DNI:</label>
+          <label for="validate-number">Ingresa fotos de frente y dorso del DNI</label>
+        
+        </div>
+        
+        <div class="form-group">
+          <label for="validate-number">  Solo frente</label>
           <div class="input-group">
-            <input type="file" id="familiar[0][imagen_dnifam]" name='familiar[0][imagen_dnifam]' accept=".jpg, .jpeg, .png" class="form-control" required>
+            <input type="file" id="familiar[0][frente]" name="familiar[0][frente]" class="form-control" accept=".jpg, .jpeg, .png" required>
             <span class="input-group-addon danger"><span class="glyphicon glyphicon-remove"></span></span>
           </div>
+        <div class="input-group">
+            <output id="list-familiar[0][frente]"></output>
+        </div>
+        </div>
+
+        <div class="form-group">
+          <label for="validate-number">  Solo dorso</label>
           <div class="input-group">
-            <output id="list-familiar[0][imagen_dnifam]"></output>
+            <input type="file" id="familiar[0][dorso]" name="familiar[0][dorso]" class="form-control" accept=".jpg, .jpeg, .png" required>
+            <span class="input-group-addon danger"><span class="glyphicon glyphicon-remove"></span></span>
           </div>
+        <div class="input-group">
+            <output id="list-familiar[0][dorso]"></output>
+        </div>
         </div>
 
 
@@ -124,20 +139,53 @@
           </div>
    
           
-           <div style="display:none;" id="comingfamdiv0" class="form-group">
+           
 
-            <label style="display:none;" id="recibofam0" for="validate-number">Últimos tres recibos de sueldo:</label>
-            <label style="display:none;" id="afipfam0" for="validate-number">Comrpobante de AFIP/pago monotributo:</label>
-            <label style="display:none;" id="juradafam0" for="validate-number">Declaración jurada especificando actividad laboral e ingresos mensuales:</label>
-            <div class="input-group">
-              <input  type="file" id="familiar[0][comping]" name="familiar[0][comping]" multiple class="form-control" required>
+           <label style="display:none;" id="recibofam0" for="validate-number">Últimos tres recibos de sueldo</label>
+            <label style="display:none;" id="afipfam0" for="validate-number">Comrpobante de AFIP/pago monotributo</label>
+            <label style="display:none;" id="juradafam0" for="validate-number">Declaración jurada especificando actividad laboral e ingresos mensuales</label>
+            
+             
+
+            <div style="display:none;" id="imag11" > 
+              <label for="validate-number">Comprobante:</label>
+              <div class="input-group">
+              <input  type="file" id="familiar[0][comping1]" name="familiar[0][comping1]" accept=".jpg, .jpeg, .png, .pdf" class="form-control" required>
+              <span class="input-group-addon danger"><span class="glyphicon glyphicon-remove"></span></span>
+              </div>
+              <div class="input-group">
+                <output id="list-familiar[0][comping1]"></output>
+              </div>
+            </div>
+              
+              
+            <div style="display:none;" id="imag12" >
+              <label for="validate-number">Comprobante:</label>
+              <div class="input-group">
+              <input  type="file" id="familiar[0][comping2]" name="familiar[0][comping2]" accept=".jpg, .jpeg, .png, .pdf" class="form-control" required>
                 <span class="input-group-addon danger"><span class="glyphicon glyphicon-remove"></span></span>
               </div>
               <div class="input-group">
-                <output id="list-familiar[0][comping]"></output>
+                <output id="list-familiar[0][comping2]"></output>
               </div>
-            </div>    
+              </div>
+            
+
+            
+            <div style="display:none;" id="imag13" >
+              <label for="validate-number">Comprobante:</label>
+              <div class="input-group">
+              <input  type="file" id="familiar[0][comping3]" name="familiar[0][comping3]" accept=".jpg, .jpeg, .png, .pdf"  class="form-control" required>
+                <span class="input-group-addon danger"><span class="glyphicon glyphicon-remove"></span></span>
+              </div>
+              <div class="input-group">
+                <output id="list-familiar[0][comping3]"></output>
+              </div>
+              </div>
+              
+
         
+
         <div style="display:none;" id="ingresosfamdiv0" class="form-group">
           <label for="validate-number">Ingresos:</label>
             <div class="input-group" data-validate="number">
@@ -150,7 +198,7 @@
         <div class="form-group">
           <label for="validate-number">Certificación Negativa ANSES:</label>
           <div class="input-group">
-            <input type="file" id="familiar[0][ansesfam]" name='familiar[0][ansesfam]' accept=".jpg, .jpeg, .png" class="form-control" required>   
+            <input type="file" id="familiar[0][ansesfam]" name='familiar[0][ansesfam]' accept=".jpg, .jpeg, .png, .pdf" class="form-control" required>   
             <span class="input-group-addon danger"><span class="glyphicon glyphicon-remove"></span></span>
           </div>
           <div class="input-group">
@@ -185,7 +233,7 @@
           var i=1;
           var j=2;
          $("#add_div").click(function(){
-          $('#addr'+i).html("<div class='panel panel-default'><div class='panel-heading'><h4 class='panel-title'><a data-toggle='collapse' data-parent='#proposalAcoordion' href='#collapseContact'>Familiar "+(i+1)+"</a></h4></div><div id='collapseContact' class='panel-collapse collapse in'><div class='panel-body'><div class='form-group' ><label for='validate-letras'>Parentesco:</label><div class='input-group'><select class='form-control' name='familiar["+i+"][parentesco]' id='familiar["+i+"].parentesco' placeholder='Seleccione una opción' required><option value=''>Seleccione una opción</option><option value='Abuelo'>Abuelo/a</option><option value='Concubino'>Concubino/a</option><option value='Conyuge'>Cónyuge</option><option value='Cuniado'>Cuñado/a</option><option value='Hermano'>Hermano/a</option><option value='Hijo'>Hijo/a</option><option value='madre'>Madre</option><option value='padre'>Padre</option><option value='Nieto'>Nieto/a</option><option value='novio'>Novio/a</option><option value='Nuera'>Nuera</option><option value='Otro'>Otro</option><option value='Primo'>Primo/a</option><option value='Sobrino'>Sobrino/a</option><option value='Tio'>Tio/a</option><option value='Yerno'>Yerno</option></select><span class='input-group-addon danger'><span class='glyphicon glyphicon-remove'></span></span></div></div><div class='form-group'><label for='validate-letras'>Apellidos y Nombres:</label><div class='input-group' data-validate='letras'><input  type='text' class='form-control' name='familiar["+i+"][apeynom]' id='familiar["+i+"].apeynom' placeholder='Ingrese solo letras' required><span class='input-group-addon danger'><span class='glyphicon glyphicon-remove'></span></span></div></div><div class='form-group'><label for='validate-number'>DNI:</label><div class='input-group' data-validate='number'><input  type='text' class='form-control' name='familiar["+i+"][dnifam]' id='familiar["+i+"].dnifam' placeholder='Ingrese solo numeros' required><span class='input-group-addon danger'><span class='glyphicon glyphicon-remove'></span></span></div></div><div class='form-group'><label for='validate-number'>Ingresa la imagen del DNI:</label><div class='input-group'><input type='file' id='familiar["+i+"][imagen_dnifam]' name='familiar["+i+"][imagen_dnifam]' accept='.jpg, .jpeg, .png' class='form-control' required><span class='input-group-addon danger'><span class='glyphicon glyphicon-remove'></span></span></div><div class='input-group'><output id='list-familiar["+i+"][imagen_dnifam]'></output></div></div><div class='form-group'><label for='validate-number'>Edad:</label><div class='input-group' data-validate='number'><input   type='text' class='form-control' name='familiar["+i+"][edadfam]' id='familiar["+i+"].edadfam' placeholder='Ingrese solo numeros' required><span class='input-group-addon danger'><span class='glyphicon glyphicon-remove'></span></span></div></div><div class='form-group'><label for='validate-letras'>Ocupación:</label><div class='input-group' data-validate='letras'><input  type='text' class='form-control' name='familiar["+i+"][ocupacionfam]' id='familiar["+i+"].ocupacionfam' placeholder='Ingrese solo letras' required><span class='input-group-addon danger'><span class='glyphicon glyphicon-remove'></span></span></div></div><div class='form-group'><label for='validate-letras'>Trabaja:</label><div class='input-group'><select class='form-control' name='familiar["+i+"][trabaja]' id='familiartrabaja"+i+"' placeholder='Seleccione una opción' required><option value=''>Seleccione una opción</option><option value='Si'>Si</option><option value='No'>No</option></select><span class='input-group-addon danger'><span class='glyphicon glyphicon-remove'></span></span></div></div><div style='display:none;' id='actlabfamdiv"+i+"' class='form-group'><label for='validate-letras'>Actividad laboral:</label><div class='input-group'><select class='form-control' name='familiar["+i+"][actlab]' id='familiaractlab"+i+"' placeholder='Seleccione una opción' required><option value=''>Seleccione una opción</option><option value='activosfam"+i+"'>Empleados Activos o Jubilados</option><option value='monotrifam"+i+"'>Autónomos y Monotributistas</option><option value='informalfam"+i+"'>Trabajadores Informales</option></select><span class='input-group-addon danger'><span class='glyphicon glyphicon-remove'></span></span></div></div><div style='display:none;' id='comingfamdiv"+i+"' class='form-group'><label style='display:none;' id='recibofam"+i+"' for='validate-number'>Últimos tres recibos de sueldo:</label><label style='display:none;' id='afipfam"+i+"' for='validate-number'>Comrpobante de AFIP/pago monotributo:</label><label style='display:none;' id='juradafam"+i+"' for='validate-number'>Declaración jurada especificando actividad laboral e ingresos mensuales:</label><div class='input-group'><input  type='file' id='familiar["+i+"][comping]' name='familiar["+i+"][comping]' multiple class='form-control' required>                <span class='input-group-addon danger'><span class='glyphicon glyphicon-remove'></span></span></div><div class='input-group'><output id='list-familiar["+i+"][comping]'></output></div></div><div style='display:none;' id='ingresosfamdiv"+i+"' class='form-group'><label for='validate-number'>Ingresos:</label><div class='input-group' data-validate='number'><input   type='text' class='form-control' name='familiar["+i+"][ingresosfam]' id='familiar["+i+"].ingresosfam' placeholder='Ingrese solo numeros' required><span class='input-group-addon danger'><span class='glyphicon glyphicon-remove'></span></span></div></div><div class='form-group'><label for='validate-number'>Certificación Negativa ANSES:</label><div class='input-group'><input type='file' id='familiar["+i+"][ansesfam]' name='familiar["+i+"][ansesfam]' accept='.jpg, .jpeg, .png' class='form-control' required><span class='input-group-addon danger'><span class='glyphicon glyphicon-remove'></span></span></div><div class='input-group'><output id='list-familiar["+i+"][ansesfam]'></output></div></div></div></div></div>");
+          $('#addr'+i).html("<div class='panel panel-default'><div class='panel-heading'><h4 class='panel-title'><a data-toggle='collapse' data-parent='#proposalAcoordion' href='#collapseContact'>Familiar "+(i+1)+"</a></h4></div><div id='collapseContact' class='panel-collapse collapse in'><div class='panel-body'><div class='form-group' ><label for='validate-letras'>Parentesco:</label><div class='input-group'><select class='form-control' name='familiar["+i+"][parentesco]' id='familiar["+i+"].parentesco' placeholder='Seleccione una opción' required><option value=''>Seleccione una opción</option><option value='Abuelo'>Abuelo/a</option><option value='Concubino'>Concubino/a</option><option value='Conyuge'>Cónyuge</option><option value='Cuniado'>Cuñado/a</option><option value='Hermano'>Hermano/a</option><option value='Hijo'>Hijo/a</option><option value='madre'>Madre</option><option value='padre'>Padre</option><option value='Nieto'>Nieto/a</option><option value='novio'>Novio/a</option><option value='Nuera'>Nuera</option><option value='Otro'>Otro</option><option value='Primo'>Primo/a</option><option value='Sobrino'>Sobrino/a</option><option value='Tio'>Tio/a</option><option value='Yerno'>Yerno</option></select><span class='input-group-addon danger'><span class='glyphicon glyphicon-remove'></span></span></div></div><div class='form-group'><label for='validate-letras'>Apellidos y Nombres:</label><div class='input-group' data-validate='letras'><input  type='text' class='form-control' name='familiar["+i+"][apeynom]' id='familiar["+i+"].apeynom' placeholder='Ingrese solo letras' required><span class='input-group-addon danger'><span class='glyphicon glyphicon-remove'></span></span></div></div><div class='form-group'><label for='validate-number'>DNI:</label><div class='input-group' data-validate='number'><input  type='text' class='form-control' name='familiar["+i+"][dnifam]' id='familiar["+i+"].dnifam' placeholder='Ingrese solo numeros' required><span class='input-group-addon danger'><span class='glyphicon glyphicon-remove'></span></span></div></div><div class='form-group'><label for='validate-number'>Ingresa fotos de frente y dorso del DNI</label></div><div class='form-group'><label for='validate-number'>Solo frente</label><div class='input-group'><input type='file' id='familiar["+i+"][frente]' name='familiar["+i+"][frente]' class='form-control' accept='.jpg, .jpeg, .png' required><span class='input-group-addon danger'><span class='glyphicon glyphicon-remove'></span></span></div><div class='input-group'><output id='list-familiar["+i+"][frente]'></output></div></div><div class='form-group'><label for='validate-number'>Solo dorso</label><div class='input-group'><input type='file' id='familiar["+i+"][dorso]' name='familiar["+i+"][dorso]' class='form-control' accept='.jpg, .jpeg, .png' required><span class='input-group-addon danger'><span class='glyphicon glyphicon-remove'></span></span></div><div class='input-group'><output id='list-familiar["+i+"][dorso]'></output></div></div><div class='form-group'><label for='validate-number'>Edad:</label><div class='input-group' data-validate='number'><input   type='text' class='form-control' name='familiar["+i+"][edadfam]' id='familiar["+i+"].edadfam' placeholder='Ingrese solo numeros' required><span class='input-group-addon danger'><span class='glyphicon glyphicon-remove'></span></span></div></div><div class='form-group'><label for='validate-letras'>Ocupación:</label><div class='input-group' data-validate='letras'><input  type='text' class='form-control' name='familiar["+i+"][ocupacionfam]' id='familiar["+i+"].ocupacionfam' placeholder='Ingrese solo letras' required><span class='input-group-addon danger'><span class='glyphicon glyphicon-remove'></span></span></div></div><div class='form-group'><label for='validate-letras'>Trabaja:</label><div class='input-group'><select class='form-control' name='familiar["+i+"][trabaja]' id='familiartrabaja"+i+"' placeholder='Seleccione una opción' required><option value=''>Seleccione una opción</option><option value='Si'>Si</option><option value='No'>No</option></select><span class='input-group-addon danger'><span class='glyphicon glyphicon-remove'></span></span></div></div><div style='display:none;' id='actlabfamdiv"+i+"' class='form-group'><label for='validate-letras'>Actividad laboral:</label><div class='input-group'><select class='form-control' name='familiar["+i+"][actlab]' id='familiaractlab"+i+"' placeholder='Seleccione una opción' required><option value=''>Seleccione una opción</option><option value='activosfam"+i+"'>Empleados Activos o Jubilados</option><option value='monotrifam"+i+"'>Autónomos y Monotributistas</option><option value='informalfam"+i+"'>Trabajadores Informales</option></select><span class='input-group-addon danger'><span class='glyphicon glyphicon-remove'></span></span></div></div><label style='display:none;' id='recibofam"+i+"' for='validate-number'>Últimos tres recibos de sueldo:</label><label style='display:none;' id='afipfam"+i+"' for='validate-number'>Comrpobante de AFIP/pago monotributo:</label><label style='display:none;' id='juradafam"+i+"' for='validate-number'>Declaración jurada especificando actividad laboral e ingresos mensuales:</label><div style='display:none;' id='imag21' ><label for='validate-number'>Comprobante:</label><div class='input-group'><input  type='file' id='familiar["+i+"][comping1]' name='familiar["+i+"][comping1]' accept='.jpg, .jpeg, .png, .pdf' class='form-control' required><span class='input-group-addon danger'><span class='glyphicon glyphicon-remove'></span></span></div><div class='input-group'><output id='list-familiar["+i+"][comping1]'></output></div></div><div style='display:none;' id='imag22' ><label for='validate-number'>Comprobante:</label><div class='input-group'><input  type='file' id='familiar["+i+"][comping2]' name='familiar["+i+"][comping2]' accept='.jpg, .jpeg, .png, .pdf' class='form-control'><span class='input-group-addon danger'><span class='glyphicon glyphicon-remove'></span></span></div><div class='input-group'><output id='list-familiar["+i+"][comping2]'></output></div></div><div style='display:none;' id='imag23' ><label for='validate-number'>Comprobante:</label><div class='input-group'><input  type='file' id='familiar["+i+"][comping3]' name='familiar["+i+"][comping3]' accept='.jpg, .jpeg, .png, .pdf'  class='form-control'><span class='input-group-addon danger'><span class='glyphicon glyphicon-remove'></span></span></div><div class='input-group'><output id='list-familiar["+i+"][comping3]'></output></div></div><div style='display:none;' id='ingresosfamdiv"+i+"' class='form-group'><label for='validate-number'>Ingresos:</label><div class='input-group' data-validate='number'><input   type='text' class='form-control' name='familiar["+i+"][ingresosfam]' id='familiar["+i+"].ingresosfam' placeholder='Ingrese solo numeros' required><span class='input-group-addon danger'><span class='glyphicon glyphicon-remove'></span></span></div></div><div class='form-group'><label for='validate-number'>Certificación Negativa ANSES:</label><div class='input-group'><input type='file' id='familiar["+i+"][ansesfam]' name='familiar["+i+"][ansesfam]' accept='.jpg, .jpeg, .png, .pdf' class='form-control' required><span class='input-group-addon danger'><span class='glyphicon glyphicon-remove'></span></span></div><div class='input-group'><output id='list-familiar["+i+"][ansesfam]'></output></div></div></div></div></div>");
           
 
           $('#tab_logic').append('<div id="addr'+(i+1)+'"></div>'); 
@@ -223,29 +271,39 @@
             $('#recibofam1').hide(); 
             $('#afipfam1').hide(); 
             $('#juradafam1').hide();
-            $('#comingfamdiv1').hide(); 
+            
+            $('#imag21').hide();
+            $('#imag22').hide();
+            $('#imag23').hide(); 
             }
           else{
-
-          $('#comingfamdiv1').show(); 
 
           if(selected === "monotrifam1") {
             $('#recibofam1').hide(); 
             $('#juradafam1').hide();
             $('#afipfam1').show(); 
+            $('#imag21').show();
+            $('#imag22').hide();
+            $('#imag23').hide();
           }
           else if(selected === "informalfam1"){
             $('#recibofam1').hide(); 
             $('#afipfam1').hide(); 
             $('#juradafam1').show(); 
+            $('#imag21').show();
+            $('#imag22').hide();
+            $('#imag23').hide();
             }
           else if(selected === "activosfam1") {
             $('#afipfam1').hide(); 
             $('#juradafam1').hide();
             $('#recibofam1').show(); 
+            $('#imag21').show();
+            $('#imag22').show();
+            $('#imag23').show();
           }
           else{
-            $('#comingfamdiv1').hide();  
+            
             }
           }
           });
@@ -414,30 +472,43 @@ if (selected === "") {
   $('#recibofam0').hide(); 
   $('#afipfam0').hide(); 
   $('#juradafam0').hide();
-  $('#comingfamdiv0').hide(); 
+  $('#imag11').hide();
+  $('#imag12').hide();
+  $('#imag13').hide();
+
   }
 else{
 
-$('#comingfamdiv0').show(); 
 
 if(selected === "monotrifam0") {
   $('#recibofam0').hide(); 
   $('#juradafam0').hide();
   $('#afipfam0').show(); 
+  $('#imag12').hide();
+  $('#imag13').hide();
+  $('#imag11').show();
+
 }
 else if(selected === "informalfam0"){
   $('#recibofam0').hide(); 
   $('#afipfam0').hide(); 
   $('#juradafam0').show(); 
+  $('#imag11').show();
+  $('#imag13').hide();
+  $('#imag12').hide();
+  
   }
 else if(selected === "activosfam0") {
   $('#afipfam0').hide(); 
   $('#juradafam0').hide();
   $('#recibofam0').show(); 
+  $('#imag11').show();
+  $('#imag12').show();
+  $('#imag13').show();
 }
 else{
-  $('#comingfamdiv0').hide();  
-  }
+   
+  }  
 }
 });
 </script>

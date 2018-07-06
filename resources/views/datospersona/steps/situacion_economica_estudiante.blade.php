@@ -39,7 +39,7 @@
             <label style="display:none;" id="afip" for="validate-number">Comrpobante de AFIP/pago monotributo:</label>
             <label style="display:none;" id="jurada" for="validate-number">Declaración jurada especificando actividad laboral e ingresos mensuales:</label>
             <div class="input-group">
-              <input  type="file" id="comping" name="comping[]" multiple class="form-control" required>
+              <input  type="file" id="comping" name="comping[]" multiple accept=".jpg, .jpeg, .png, .pdf" class="form-control" required>
                 <span class="input-group-addon danger"><span class="glyphicon glyphicon-remove"></span></span>
               </div>
               <div class="input-group">

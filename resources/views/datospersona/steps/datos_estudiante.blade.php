@@ -40,20 +40,37 @@
         
 
         <div class="form-group">
-          <label for="validate-number">Ingresa la imagen del DNI:</label>
-          <div class="input-group">
-            <input type="file" id="imagen_dni" name="imagen_dni[]" multiple class="form-control" required>
-            <span class="input-group-addon danger"><span class="glyphicon glyphicon-remove"></span></span>
-          </div>
-        <div class="input-group">
-            <output id="list-imagen_dni"></output>
-        </div>
+          <label for="validate-number">Ingresa fotos de frente y dorso del DNI</label>
+        
         </div>
         
         <div class="form-group">
+          <label for="validate-number">  Solo frente</label>
+          <div class="input-group">
+            <input type="file" id="imagen_frente" name="imagen_frente" class="form-control" accept=".jpg, .jpeg, .png" required>
+            <span class="input-group-addon danger"><span class="glyphicon glyphicon-remove"></span></span>
+          </div>
+        <div class="input-group">
+            <output id="list-imagen_frente"></output>
+        </div>
+        </div>
+
+        <div class="form-group">
+          <label for="validate-number">  Solo dorso</label>
+          <div class="input-group">
+            <input type="file" id="imagen_dorso" name="imagen_dorso" class="form-control" accept=".jpg, .jpeg, .png" required>
+            <span class="input-group-addon danger"><span class="glyphicon glyphicon-remove"></span></span>
+          </div>
+        <div class="input-group">
+            <output id="list-imagen_dorso"></output>
+        </div>
+        </div>
+
+
+        <div class="form-group">
           <label for="validate-number">Certificación Negativa Anses:</label>
           <div class="input-group">
-            <input type="file" id="anses" name="anses[]" multiple class="form-control" required>
+            <input type="file" id="anses" name="anses" class="form-control" accept=".jpg, .jpeg, .png, .pdf" required>
             <span class="input-group-addon danger"><span class="glyphicon glyphicon-remove"></span></span>
           </div>
         <div class="input-group">
@@ -117,7 +134,7 @@
         <div class="form-group">
           <label for="validate-select">Localidad:</label>
             <div class="input-group">
-                     <select class="form-control" id="localidad" name="localidad" required><option value="" selected>Selecciona una localidad</option></select>
+                     <select value="{{ old('localidad') }}" class="form-control" id="localidad" name="localidad" required><option value="" selected>Selecciona una localidad</option></select>
               <span class="input-group-addon danger"><span class="glyphicon glyphicon-remove"></span></span>
             </div>
         </div> 
@@ -201,7 +218,7 @@
         <div style="display:none;" id="imagendiscaestdiv" class="form-group">
             <label for="validate-number">Imagen Certificado:</label>
             <div class="input-group">
-              <input  type="file" id="imagendiscaest" name="imagendiscaest" multiple class="form-control" required>
+              <input  type="file" id="imagendiscaest" name="imagendiscaest" class="form-control" accept=".jpg, .jpeg, .png, .pdf" required>
                 <span class="input-group-addon danger"><span class="glyphicon glyphicon-remove"></span></span>
               </div>
               <div class="input-group">
@@ -209,6 +226,7 @@
               </div>
             </div>
           
+
 
         
         <script>
