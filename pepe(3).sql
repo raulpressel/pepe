@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: localhost:3306
--- Tiempo de generación: 04-07-2018 a las 16:45:10
+-- Tiempo de generación: 16-07-2018 a las 17:19:52
 -- Versión del servidor: 5.7.22-0ubuntu18.04.1
 -- Versión de PHP: 7.0.30-0ubuntu0.16.04.1
 
@@ -19,8 +19,6 @@ SET time_zone = "+00:00";
 --
 -- Base de datos: `pepe`
 --
-CREATE DATABASE IF NOT EXISTS `pepe` DEFAULT CHARACTER SET latin1 COLLATE latin1_swedish_ci;
-USE `pepe`;
 
 -- --------------------------------------------------------
 
@@ -125,7 +123,18 @@ INSERT INTO `consideraciones` (`id`, `user_id`, `parentesco`, `enfermedad`, `inc
 (101, 2, 'Concubino', 'asd', 'Si', '34299846/imagen_discapacidad_familiar0-0.png', '2018-06-14 19:47:36', '2018-06-14 19:47:36', NULL),
 (102, 2, 'Concubino', 'asd', 'Si', '34299846/imagen_discapacidad_familiar0-0.png', '2018-06-14 19:50:20', '2018-06-14 19:50:20', NULL),
 (103, 2, 'Concubino', 'asd', 'Si', '34299846/imagen_discapacidad_familiar0-0.png', '2018-06-14 19:50:46', '2018-06-14 19:50:46', NULL),
-(104, 2, 'Abuelo', 'asd', 'Si', '34299846/imagen_discapacidad_familiar0-1529035924.png', '2018-06-15 04:12:05', '2018-06-15 04:12:05', NULL);
+(104, 2, 'Abuelo', 'asd', 'Si', '34299846/imagen_discapacidad_familiar0-1529035924.png', '2018-06-15 04:12:05', '2018-06-15 04:12:05', NULL),
+(105, 1, 'Abuelo', 'asd', 'Si', NULL, '2018-07-11 01:07:41', '2018-07-11 01:07:41', NULL),
+(106, 1, 'Abuelo', 'asd', 'Si', NULL, '2018-07-11 01:08:04', '2018-07-11 01:08:04', NULL),
+(107, 1, 'Abuelo', 'asd', 'Si', NULL, '2018-07-11 01:08:39', '2018-07-11 01:08:39', NULL),
+(108, 1, 'Abuelo', 'asd', 'Si', NULL, '2018-07-11 01:08:57', '2018-07-11 01:08:57', NULL),
+(109, 1, 'Abuelo', 'asd', 'Si', NULL, '2018-07-11 01:09:53', '2018-07-11 01:09:53', NULL),
+(110, 1, 'Abuelo', 'asd', 'Si', NULL, '2018-07-11 03:07:33', '2018-07-11 03:07:33', NULL),
+(111, 1, 'Abuelo', 'asd', 'Si', NULL, '2018-07-11 03:16:40', '2018-07-11 03:16:40', NULL),
+(112, 1, 'Abuelo', 'asd', 'Si', NULL, '2018-07-11 03:32:21', '2018-07-11 03:32:21', NULL),
+(113, 1, 'Abuelo', 'asd', 'Si', NULL, '2018-07-11 03:46:38', '2018-07-11 03:46:38', NULL),
+(114, 1, 'Abuelo', 'asd', 'Si', '3333333/imagen_discapacidad_familiar-01531280933.png', '2018-07-11 03:48:53', '2018-07-11 03:48:53', NULL),
+(115, 1, 'Abuelo', 'asd', 'Si', '3333333/imagen_discapacidad_familiar-01531280977.png', '2018-07-11 03:49:37', '2018-07-11 03:49:37', NULL);
 
 -- --------------------------------------------------------
 
@@ -233,7 +242,8 @@ CREATE TABLE `datos_personas` (
   `user_name` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
   `user_apellido` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
   `user_dni` int(15) UNSIGNED NOT NULL,
-  `imagen_dni` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `imagen_dni_frente` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `imagen_dni_dorso` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
   `cert_anses` varchar(250) COLLATE utf8mb4_unicode_ci NOT NULL,
   `cuil` int(11) NOT NULL,
   `estado_civil` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
@@ -290,6 +300,7 @@ CREATE TABLE `datos_personas` (
   `localidad` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
   `anio_cursado` int(11) NOT NULL,
   `tiene_progresar` tinyint(4) NOT NULL,
+  `revision` int(2) DEFAULT '0',
   `created_at` timestamp NULL DEFAULT NULL,
   `updated_at` timestamp NULL DEFAULT NULL,
   `deleted_at` timestamp NULL DEFAULT NULL
@@ -299,9 +310,12 @@ CREATE TABLE `datos_personas` (
 -- Volcado de datos para la tabla `datos_personas`
 --
 
-INSERT INTO `datos_personas` (`id`, `user_id`, `user_name`, `user_apellido`, `user_dni`, `imagen_dni`, `cert_anses`, `cuil`, `estado_civil`, `cumple`, `domicilio`, `cp`, `provincia`, `nacionalidad`, `cel`, `user_email`, `face`, `disca_estudiante`, `certificado_discapacidad`, `condicion_estudiante`, `constancia_estudiante`, `certificado_estudiante`, `carrera_cursa`, `anio_ingreso`, `tiene_trabajo`, `tipo_trabajo`, `comprobante_ingresos`, `sueldo`, `tiene_beca`, `tiene_pasantia`, `tiene_asig`, `otros_ing`, `domi_cursado`, `casa_fam`, `tiene_alq`, `recibo_alquiler`, `monto_alq`, `usa_urbano`, `cant_viajes`, `usa_media_dist`, `precio_pasaje`, `cant_viaja_media`, `recibo_pasaje`, `es_propietario`, `alquila`, `recibo_alquiler_familiar`, `precio_alquiler`, `prestada`, `otros_vivienda`, `tiene_campo`, `cant_has`, `actividad`, `tiene_terreno`, `cant_terreno`, `tiene_auto`, `cant_auto`, `tiene_moto`, `cant_moto`, `motivos`, `localidad`, `anio_cursado`, `tiene_progresar`, `created_at`, `updated_at`, `deleted_at`) VALUES
-(1, 1, 'Admin', 'adminsito', 3333333, '3333333/imagen_dni_0.png', '3333333/certificado_anses-0.png', 123123123, 'soltero', '2016-03-03', 'av siempre vivias 123', 3100, '1', 'asdasd', 3436123123, 'admin@admin.com', 'asd', 'Si', 'certificado_discapacidad.png', 'Ingresante', '3333333/constancia_estudiante-0.png', '3333333/certificado_estudiante-0.png', '1', 2000, 'Si', 'activos', '3333333/comprobante_ingresos-0.png', 0, 1, NULL, 1, 'asdasd', 'asdasd', 'Si', 'Si', '3333333/recibo_alquiler-0.png', -1, 'Si', 0, 'Si', 0, 0, '3333333/recibo_pasaje-0.png', 1, 'Si', '3333333/recibo_alquiler_familiar-0.png', 0, 1, 'asdasd', 'Si', 0, 'asdasd', 'Si', 0, 'Si', 0, 'Si', 0, 'asd', '25 de Mayo', 1, 1, '2018-06-06 03:19:31', '2018-06-06 03:19:31', NULL),
-(5, 2, 'damian', 'sacksss', 34299846, '34299846/imagen_dni_1529035924.png', '34299846/certificado_anses-1529035924.png', 123123123, 'soltero', '2016-04-14', 'asdasdasd', 3100, '2', 'asdasd', 3436123123, 'damian@damian.com', 'asdasd', 'Si', 'certificado_discapacidad1529035924.png', 'Ingresante', '34299846/constancia_estudiante-1529035924.png', '34299846/certificado_estudiante-1529035924.png', '1', 2000, 'Si', 'activos', '34299846/comprobante_ingresos-1529035924.png', 0, 1, NULL, 1, 'asdasd', 'av siempre vivas 1111', 'Si', 'Si', '34299846/recibo_alquiler-1529035924.png', 1, 'Si', 0, 'Si', 0, 0, '34299846/recibo_pasaje-1529035924.png', 1, 'Si', '34299846/recibo_alquiler_familiar-1529035924.png', 0, 1, 'asdasd', 'Si', 0, 'asdasd', 'Si', 0, 'Si', 0, 'Si', 0, 'asdasd', '20 de Junio', 1, 1, '2018-06-15 04:12:04', '2018-06-15 04:12:04', NULL);
+INSERT INTO `datos_personas` (`id`, `user_id`, `user_name`, `user_apellido`, `user_dni`, `imagen_dni_frente`, `imagen_dni_dorso`, `cert_anses`, `cuil`, `estado_civil`, `cumple`, `domicilio`, `cp`, `provincia`, `nacionalidad`, `cel`, `user_email`, `face`, `disca_estudiante`, `certificado_discapacidad`, `condicion_estudiante`, `constancia_estudiante`, `certificado_estudiante`, `carrera_cursa`, `anio_ingreso`, `tiene_trabajo`, `tipo_trabajo`, `comprobante_ingresos`, `sueldo`, `tiene_beca`, `tiene_pasantia`, `tiene_asig`, `otros_ing`, `domi_cursado`, `casa_fam`, `tiene_alq`, `recibo_alquiler`, `monto_alq`, `usa_urbano`, `cant_viajes`, `usa_media_dist`, `precio_pasaje`, `cant_viaja_media`, `recibo_pasaje`, `es_propietario`, `alquila`, `recibo_alquiler_familiar`, `precio_alquiler`, `prestada`, `otros_vivienda`, `tiene_campo`, `cant_has`, `actividad`, `tiene_terreno`, `cant_terreno`, `tiene_auto`, `cant_auto`, `tiene_moto`, `cant_moto`, `motivos`, `localidad`, `anio_cursado`, `tiene_progresar`, `revision`, `created_at`, `updated_at`, `deleted_at`) VALUES
+(5, 2, 'damian', 'sacksss', 34299846, '34299846/imagen_dni_1529035924.png', '', '34299846/certificado_anses-1529035924.png', 123123123, 'soltero', '2016-04-14', 'asdasdasd', 3100, '2', 'asdasd', 3436123123, 'damian@damian.com', 'asdasd', 'Si', 'certificado_discapacidad1529035924.png', 'Ingresante', '34299846/constancia_estudiante-1529035924.png', '34299846/certificado_estudiante-1529035924.png', '1', 2000, 'Si', 'activos', '34299846/comprobante_ingresos-1529035924.png', 0, 1, NULL, 1, 'asdasd', 'av siempre vivas 1111', 'Si', 'Si', '34299846/recibo_alquiler-1529035924.png', 1, 'Si', 0, 'Si', 0, 0, '34299846/recibo_pasaje-1529035924.png', 1, 'Si', '34299846/recibo_alquiler_familiar-1529035924.png', 0, 1, 'asdasd', 'Si', 0, 'asdasd', 'Si', 0, 'Si', 0, 'Si', 0, 'asdasd', '20 de Junio', 1, 1, 0, '2018-06-15 04:12:04', '2018-06-15 04:12:04', NULL),
+(6, 8, 'Pedro el Mods', 'El curioso', 33552951, '33552951/imagen_dni_1530830198.bmp', '', '33552951/certificado_anses-1530830198.bmp', 123123, 'soltero', '2017-05-03', 'asdasdasd', 123, '1', 'asdasd', 3436123123, 'Jorge@jorge.com', 'asdasd', 'Si', 'certificado_discapacidad1530830198.bmp', 'Ingresante', '33552951/constancia_estudiante-1530830198.bmp', '33552951/certificado_estudiante-1530830198.bmp', '1', 2000, 'Si', 'activos', '33552951/comprobante_ingresos-1530830198.bmp', 1, 1, NULL, 1, 'asdasd', 'asdasd', 'Si', 'Si', '33552951/recibo_alquiler-1530830198.bmp', -2, 'Si', 0, 'Si', 0, 0, '33552951/recibo_pasaje-1530830198.bmp', 1, 'Si', '33552951/recibo_alquiler_familiar-1530830198.bmp', 0, 1, 'asdasd', 'Si', 1, 'asdasd', 'Si', 2, 'Si', 1, 'Si', 0, 'ASD', '25 de Mayo', 1, 1, 0, '2018-07-05 22:36:38', '2018-07-05 22:36:38', NULL),
+(7, 8, 'Pedro el Mods', 'El curioso', 33552951, '33552951/imagen_dni_1530832324.bmp', '', '33552951/certificado_anses-1530832324.bmp', 123123, 'soltero', '2017-05-03', 'asdasdasd', 123, '1', 'asdasd', 3436123123, 'Jorge@jorge.com', 'asdasd', 'Si', 'certificado_discapacidad1530832324.bmp', 'Ingresante', '33552951/constancia_estudiante-1530832324.bmp', '33552951/certificado_estudiante-1530832324.bmp', '1', 2000, 'Si', 'activos', '33552951/comprobante_ingresos-1530832324.bmp', 1, 1, NULL, 1, 'asdasd', 'asdasd', 'Si', 'Si', '33552951/recibo_alquiler-1530832324.bmp', -2, 'Si', 0, 'Si', 0, 0, '33552951/recibo_pasaje-1530832324.bmp', 1, 'Si', '33552951/recibo_alquiler_familiar-1530832324.bmp', 0, 1, 'asdasd', 'Si', 1, 'asdasd', 'Si', 2, 'Si', 1, 'Si', 0, 'ASD', '25 de Mayo', 1, 1, 0, '2018-07-05 23:12:04', '2018-07-05 23:12:04', NULL),
+(8, 8, 'Pedro el Mods', 'El curioso', 33552951, '33552951/imagen_dni_1530832961.bmp', '', '33552951/certificado_anses-1530832961.bmp', 123123, 'soltero', '2017-05-03', 'asdasdasd', 123, '1', 'asdasd', 3436123123, 'Jorge@jorge.com', 'asdasd', 'Si', 'certificado_discapacidad1530832961.bmp', 'Ingresante', '33552951/constancia_estudiante-1530832961.bmp', '33552951/certificado_estudiante-1530832961.bmp', '1', 2000, 'Si', 'activos', '33552951/comprobante_ingresos-1530832961.bmp', 1, 1, NULL, 1, 'asdasd', 'asdasd', 'Si', 'Si', '33552951/recibo_alquiler-1530832961.bmp', -2, 'Si', 0, 'Si', 0, 0, '33552951/recibo_pasaje-1530832961.bmp', 1, 'Si', '33552951/recibo_alquiler_familiar-1530832961.bmp', 0, 1, 'asdasd', 'Si', 1, 'asdasd', 'Si', 2, 'Si', 1, 'Si', 0, 'ASD', '25 de Mayo', 1, 1, 0, '2018-07-05 23:22:41', '2018-07-05 23:22:41', NULL),
+(9, 8, 'Pedro el Mods', 'El curioso', 33552951, '33552951/imagen_dni_1530833713.bmp', '', '33552951/certificado_anses-1530833713.bmp', 123123, 'soltero', '2017-05-03', 'asdasdasd', 123, '1', 'asdasd', 3436123123, 'Jorge@jorge.com', 'asdasd', 'Si', 'certificado_discapacidad1530833713.bmp', 'Ingresante', '33552951/constancia_estudiante-1530833713.bmp', '33552951/certificado_estudiante-1530833713.bmp', '1', 2000, 'Si', 'activos', '33552951/comprobante_ingresos-1530833713.bmp', 1, 1, NULL, 1, 'asdasd', 'asdasd', 'Si', 'Si', '33552951/recibo_alquiler-1530833713.bmp', -2, 'Si', 0, 'Si', 0, 0, '33552951/recibo_pasaje-1530833713.bmp', 1, 'Si', '33552951/recibo_alquiler_familiar-1530833713.bmp', 0, 1, 'asdasd', 'Si', 1, 'asdasd', 'Si', 2, 'Si', 1, 'Si', 0, 'ASD', '25 de Mayo', 1, 1, 0, '2018-07-05 23:35:13', '2018-07-05 23:35:13', NULL);
 
 -- --------------------------------------------------------
 
@@ -338,12 +352,15 @@ CREATE TABLE `familiars` (
   `parentesco` varchar(255) COLLATE utf8_unicode_ci DEFAULT NULL,
   `apeynom` varchar(255) COLLATE utf8_unicode_ci DEFAULT NULL,
   `dni` int(11) DEFAULT NULL,
-  `imagen_dni` varchar(255) COLLATE utf8_unicode_ci DEFAULT NULL,
+  `imagen_dni_frente` varchar(255) COLLATE utf8_unicode_ci DEFAULT NULL,
+  `imagen_dni_dorso` varchar(255) COLLATE utf8_unicode_ci DEFAULT NULL,
   `edad` int(11) DEFAULT NULL,
   `ocupacion` varchar(255) COLLATE utf8_unicode_ci DEFAULT NULL,
-  `actividad_laboral` varchar(80) COLLATE utf8_unicode_ci NOT NULL,
+  `actividad_laboral` varchar(80) COLLATE utf8_unicode_ci DEFAULT NULL,
+  `comprobante_ingresos_1` varchar(255) COLLATE utf8_unicode_ci DEFAULT NULL,
+  `comprobante_ingresos_2` varchar(255) COLLATE utf8_unicode_ci DEFAULT NULL,
+  `comprobante_ingresos_3` varchar(255) COLLATE utf8_unicode_ci DEFAULT NULL,
   `ingresos` int(11) DEFAULT NULL,
-  `comprobante_ingresos` varchar(255) COLLATE utf8_unicode_ci DEFAULT NULL,
   `anses` varchar(255) COLLATE utf8_unicode_ci DEFAULT NULL,
   `created_at` timestamp NULL DEFAULT NULL,
   `updated_at` timestamp NULL DEFAULT NULL,
@@ -354,13 +371,20 @@ CREATE TABLE `familiars` (
 -- Volcado de datos para la tabla `familiars`
 --
 
-INSERT INTO `familiars` (`id`, `user_id`, `parentesco`, `apeynom`, `dni`, `imagen_dni`, `edad`, `ocupacion`, `actividad_laboral`, `ingresos`, `comprobante_ingresos`, `anses`, `created_at`, `updated_at`, `deleted_at`) VALUES
-(100, 1, 'Abuelo', 'perro', 234234, '3333333/familiar/imagen_dni_familiar0-0.png', 12, 'asd', 'activosfam0', 123, '3333333/familiar/comprobante_ingresos_fam0-0.png', '3333333/familiar/comprobante_anses-0-0.png', '2018-05-12 01:42:08', '2018-05-12 01:42:08', NULL),
-(101, 1, 'Abuelo', 'perro', 234234, '3333333/familiar/imagen_dni_familiar0-0.png', 12, 'asd', 'activosfam0', 123, '3333333/familiar/comprobante_ingresos_fam0-0.png', '3333333/familiar/comprobante_anses-0-0.png', '2018-06-06 03:19:31', '2018-06-06 03:19:31', NULL),
-(102, 2, 'Abuelo', 'perro', 234234, '34299846/familiar/imagen_dni_familiar0-0.png', 12, 'asd', 'activosfam0', 213, '34299846/familiar/comprobante_ingresos_fam0-0.png', '34299846/familiar/comprobante_anses-0-0.png', '2018-06-14 19:47:36', '2018-06-14 19:47:36', NULL),
-(103, 2, 'Abuelo', 'perro', 234234, '34299846/familiar/imagen_dni_familiar0-0.png', 12, 'asd', 'activosfam0', 213, '34299846/familiar/comprobante_ingresos_fam0-0.png', '34299846/familiar/comprobante_anses-0-0.png', '2018-06-14 19:50:20', '2018-06-14 19:50:20', NULL),
-(104, 2, 'Abuelo', 'perro', 234234, '34299846/familiar/imagen_dni_familiar0-0.png', 12, 'asd', 'activosfam0', 213, '34299846/familiar/comprobante_ingresos_fam0-0.png', '34299846/familiar/comprobante_anses-0-0.png', '2018-06-14 19:50:46', '2018-06-14 19:50:46', NULL),
-(105, 2, 'Abuelo', 'perro', 234234, '34299846/familiar/imagen_dni_familiar0-1529035925.png', 12, 'asd', 'activosfam0', 123, '34299846/familiar/comprobante_ingresos_fam1529035925-0.png', '34299846/familiar/comprobante_anses-1529035925-0.png', '2018-06-15 04:12:05', '2018-06-15 04:12:05', NULL);
+INSERT INTO `familiars` (`id`, `user_id`, `parentesco`, `apeynom`, `dni`, `imagen_dni_frente`, `imagen_dni_dorso`, `edad`, `ocupacion`, `actividad_laboral`, `comprobante_ingresos_1`, `comprobante_ingresos_2`, `comprobante_ingresos_3`, `ingresos`, `anses`, `created_at`, `updated_at`, `deleted_at`) VALUES
+(100, 1, 'Abuelo', 'perro', 234234, '3333333/familiar/imagen_dni_familiar0-0.png', NULL, 12, 'asd', 'activosfam0', NULL, NULL, NULL, 123, '3333333/familiar/comprobante_anses-0-0.png', '2018-05-12 01:42:08', '2018-05-12 01:42:08', NULL),
+(101, 1, 'Abuelo', 'perro', 234234, '3333333/familiar/imagen_dni_familiar0-0.png', NULL, 12, 'asd', 'activosfam0', NULL, NULL, NULL, 123, '3333333/familiar/comprobante_anses-0-0.png', '2018-06-06 03:19:31', '2018-06-06 03:19:31', NULL),
+(102, 2, 'Abuelo', 'perro', 234234, '34299846/familiar/imagen_dni_familiar0-0.png', NULL, 12, 'asd', 'activosfam0', NULL, NULL, NULL, 213, '34299846/familiar/comprobante_anses-0-0.png', '2018-06-14 19:47:36', '2018-06-14 19:47:36', NULL),
+(103, 2, 'Abuelo', 'perro', 234234, '34299846/familiar/imagen_dni_familiar0-0.png', NULL, 12, 'asd', 'activosfam0', NULL, NULL, NULL, 213, '34299846/familiar/comprobante_anses-0-0.png', '2018-06-14 19:50:20', '2018-06-14 19:50:20', NULL),
+(104, 2, 'Abuelo', 'perro', 234234, '34299846/familiar/imagen_dni_familiar0-0.png', NULL, 12, 'asd', 'activosfam0', NULL, NULL, NULL, 213, '34299846/familiar/comprobante_anses-0-0.png', '2018-06-14 19:50:46', '2018-06-14 19:50:46', NULL),
+(105, 2, 'Abuelo', 'perro', 234234, '34299846/familiar/imagen_dni_familiar0-1529035925.png', NULL, 12, 'asd', 'activosfam0', NULL, NULL, NULL, 123, '34299846/familiar/comprobante_anses-1529035925-0.png', '2018-06-15 04:12:05', '2018-06-15 04:12:05', NULL),
+(106, 1, 'Abuelo', 'perro', 234234, NULL, NULL, 12, 'asd', 'activosfam0', NULL, NULL, NULL, 123, NULL, '2018-07-11 01:09:53', '2018-07-11 01:09:53', NULL),
+(107, 1, 'Abuelo', 'perro', 234234, '3333333/familiar/imagen_dni_familiar-dorso-01531278453.png', NULL, 12, 'asd', 'activosfam0', '3333333/familiar/comprobante_ingresos_1_fam-01531278453.png', '3333333/familiar/comprobante_ingresos_2_fam-01531278453.png', '3333333/familiar/comprobante_ingresos_3_fam-01531278453.png', 123, '3333333/familiar/comprobante_anses01531278453.png', '2018-07-11 03:07:33', '2018-07-11 03:07:33', NULL),
+(108, 1, 'Abuelo', 'perro', 234234, '3333333/familiar/imagen_dni_familiar-dorso-01531279000.png', NULL, 12, 'asd', 'activosfam0', '3333333/familiar/comprobante_ingresos_1_fam-01531279000.png', '3333333/familiar/comprobante_ingresos_2_fam-01531279000.png', '3333333/familiar/comprobante_ingresos_3_fam-01531279000.png', 123, '3333333/familiar/comprobante_anses01531279000.png', '2018-07-11 03:16:40', '2018-07-11 03:16:40', NULL),
+(109, 1, 'Abuelo', 'perro', 234234, '3333333/familiar/imagen_dni_familiar-dorso-01531279941.png', NULL, 12, 'asd', 'activosfam0', '3333333/familiar/comprobante_ingresos_1_fam-01531279941.png', '3333333/familiar/comprobante_ingresos_2_fam-01531279941.png', '3333333/familiar/comprobante_ingresos_3_fam-01531279941.png', 123, '3333333/familiar/comprobante_anses01531279941.png', '2018-07-11 03:32:21', '2018-07-11 03:32:21', NULL),
+(110, 1, 'Abuelo', 'perro', 234234, '3333333/familiar/imagen_dni_familiar-dorso-01531280798.png', NULL, 12, 'asd', 'activosfam0', '3333333/familiar/comprobante_ingresos_1_fam-01531280798.png', '3333333/familiar/comprobante_ingresos_2_fam-01531280798.png', '3333333/familiar/comprobante_ingresos_3_fam-01531280798.png', 123, '3333333/familiar/comprobante_anses01531280798.png', '2018-07-11 03:46:38', '2018-07-11 03:46:38', NULL),
+(111, 1, 'Abuelo', 'perro', 234234, '3333333/familiar/imagen_dni_familiar-dorso-01531280933.png', NULL, 12, 'asd', 'activosfam0', '3333333/familiar/comprobante_ingresos_1_fam-01531280933.png', '3333333/familiar/comprobante_ingresos_2_fam-01531280933.png', '3333333/familiar/comprobante_ingresos_3_fam-01531280933.png', 123, '3333333/familiar/comprobante_anses01531280933.png', '2018-07-11 03:48:53', '2018-07-11 03:48:53', NULL),
+(112, 1, 'Abuelo', 'perro', 234234, '3333333/familiar/imagen_dni_familiar-dorso-01531280977.png', NULL, 12, 'asd', 'activosfam0', '3333333/familiar/comprobante_ingresos_1_fam-01531280977.png', '3333333/familiar/comprobante_ingresos_2_fam-01531280977.png', '3333333/familiar/comprobante_ingresos_3_fam-01531280977.png', 123, '3333333/familiar/comprobante_anses01531280977.png', '2018-07-11 03:49:37', '2018-07-11 03:49:37', NULL);
 
 -- --------------------------------------------------------
 
@@ -439,7 +463,14 @@ INSERT INTO `inscripciones` (`id`, `user_id`, `user_nombre`, `beca_id`, `beca_no
 (68, '1', 'Admin', 1, '', '1', 'Fcyt', 'Oro ve', 'UADER', 100, 'hola', '2018-05-12 01:17:36', '2018-05-12 01:17:36'),
 (69, '1', 'Admin', 1, '', '1', 'Fcyt', 'Oro ve', 'UADER', 100, 'hola', '2018-05-12 01:42:08', '2018-05-12 01:42:08'),
 (70, '1', 'Admin', 1, '', '1', 'Fcyt', 'Oro ve', 'UADER', 100, 'hola', '2018-06-06 03:19:31', '2018-06-06 03:19:31'),
-(72, '2', 'damian', 2, '2', '1', 'Fcyt', 'Oro ve', '', 100, 'hola', '2018-06-15 04:12:05', '2018-06-15 04:12:05');
+(72, '2', 'damian', 2, '2', '1', 'Fcyt', 'Oro ve', '', 100, 'hola', '2018-06-15 04:12:05', '2018-06-15 04:12:05'),
+(73, '1', 'Admin', 2, '2', '1', 'Fcyt', 'Oro ve', 'UADER', 100, 'hola', '2018-07-11 01:09:54', '2018-07-11 01:09:54'),
+(74, '1', 'Admin', 2, '2', '1', 'Fcyt', 'Oro ve', 'UADER', 100, 'hola', '2018-07-11 03:07:34', '2018-07-11 03:07:34'),
+(75, '1', 'Admin', 2, '2', '1', 'Fcyt', 'Oro ve', 'UADER', 100, 'hola', '2018-07-11 03:16:40', '2018-07-11 03:16:40'),
+(76, '1', 'Admin', 2, '2', '1', 'Fcyt', 'Oro ve', 'UADER', 100, 'hola', '2018-07-11 03:32:21', '2018-07-11 03:32:21'),
+(77, '1', 'Admin', 2, '2', '1', 'Fcyt', 'Oro ve', 'UADER', 100, 'hola', '2018-07-11 03:46:39', '2018-07-11 03:46:39'),
+(78, '1', 'Admin', 2, '2', '1', 'Fcyt', 'Oro ve', 'UADER', 100, 'hola', '2018-07-11 03:48:53', '2018-07-11 03:48:53'),
+(79, '1', 'Admin', 2, '2', '1', 'Fcyt', 'Oro ve', 'UADER', 100, 'hola', '2018-07-11 03:49:37', '2018-07-11 03:49:37');
 
 -- --------------------------------------------------------
 
@@ -3308,7 +3339,7 @@ CREATE TABLE `users` (
 INSERT INTO `users` (`id`, `role_id`, `name`, `email`, `avatar`, `password`, `remember_token`, `created_at`, `updated_at`, `dni`, `apellido`) VALUES
 (1, 1, 'Admin', 'admin@admin.com', 'users/April2018/PKRKJz2i7O6dIx85hE6R.png', '$2y$10$B5r4YrVVtfEsWRyujJoGV.JbVqAyGbzXumdf8Kilk.cUHk5bPjJc2', 'mysbSyWzqsrOTV5UNFEhFywKW9PiPZPqOCvcNENagCaNv55V95jWEpnCJhzy', '2017-10-16 08:55:45', '2018-04-06 04:26:03', 3333333, 'adminsito'),
 (2, 2, 'damian', 'damian@damian.com', 'users/June2018/0mHOftuHm7YdjYKNKAA1.jpg', '$2y$10$pDWbuTlmSUsr.LGrPKN/HuoDfCuZrHbufnTUNV/n2eVCR3HxZTQYC', 'zGkE6K7wfmPac6elL0MsXzaUJcr160fgqgXfXHjMRnFUq8I7R4xpw15gg8Sd', '2017-10-22 01:00:26', '2018-06-15 03:33:14', 34299846, 'sacksss'),
-(8, 3, 'Pedro el Mods', 'Jorge@jorge.com', 'users/December2017/b3pvfQLjt8XGvujOhypz.png', '$2y$10$.vqHvIHEtZ8rMtjXLnCZIe062UfrWIosHmNF72MMarLeVzw5opmV2', 'lcsdDoc5NEW4ZxGDM5twOHJ5LJZX0fdAG2YNdEZ3qrKsWXdX54lqPIVnc2gs', '2017-12-29 22:17:41', '2018-01-02 04:11:18', 335552951, 'El curioso'),
+(8, 3, 'Pedro el Mods', 'Jorge@jorge.com', 'users/December2017/b3pvfQLjt8XGvujOhypz.png', '$2y$10$.vqHvIHEtZ8rMtjXLnCZIe062UfrWIosHmNF72MMarLeVzw5opmV2', 'lcsdDoc5NEW4ZxGDM5twOHJ5LJZX0fdAG2YNdEZ3qrKsWXdX54lqPIVnc2gs', '2017-12-29 22:17:41', '2018-01-02 04:11:18', 33552951, 'El curioso'),
 (9, 2, 'Prueba', 'prueba@prueba.com', 'users/December2017/gOLcIg9MiCneJxC0W0b9.png', '$2y$10$EWsbEqmib.miKI4dAblJoOAbrIfoptRaeO/R0LHMlHueD4FNglyiy', 'apUUKtC2PSxeQeLSKF58fwQsiqOlOWfVnC9jKf9QyRmkq7VlaxSeI0CWCv5i', '2017-12-29 22:23:24', '2017-12-29 22:23:24', 33332323, 'Apellido del prueba'),
 (10, 2, 'Pepito', 'pepe@pepe.com', 'users/April2018/L5vlX0Cmnk0bdbXVpMp3.png', '$2y$10$GI0D4wYbCLvRg7gCVkqfseCJa/95J9eNjYr5d04E69YY12B.o.Opm', '2gV4Ze8GUvWoUyILHMz0sNFkuu7M0aKsxKemMfOtaMfCql968KTKEotN282O', '2018-01-02 01:20:57', '2018-04-06 04:23:25', 23123123, 'Flores');
 
@@ -3507,7 +3538,7 @@ ALTER TABLE `condicion`
 -- AUTO_INCREMENT de la tabla `consideraciones`
 --
 ALTER TABLE `consideraciones`
-  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=105;
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=116;
 --
 -- AUTO_INCREMENT de la tabla `data_rows`
 --
@@ -3522,7 +3553,7 @@ ALTER TABLE `data_types`
 -- AUTO_INCREMENT de la tabla `datos_personas`
 --
 ALTER TABLE `datos_personas`
-  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
 --
 -- AUTO_INCREMENT de la tabla `facultades`
 --
@@ -3532,12 +3563,12 @@ ALTER TABLE `facultades`
 -- AUTO_INCREMENT de la tabla `familiars`
 --
 ALTER TABLE `familiars`
-  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=106;
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=113;
 --
 -- AUTO_INCREMENT de la tabla `inscripciones`
 --
 ALTER TABLE `inscripciones`
-  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=73;
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=80;
 --
 -- AUTO_INCREMENT de la tabla `localidades`
 --
