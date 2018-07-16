@@ -52,3 +52,6 @@ Route::post('/administracion/inscripciones/seleccion', 'InscripcionesController@
 Route::get('administracion/inscripciones/usuarios/datos_usuario/{user_id}', 'InscripcionesController@datos_usuario')->name('datos_usuario'); //VER LOS DATOS INSCRIPTS
 
 Route::get('storage/{filename}', 'InscripcionesController@getFile')->where('filename', '^[^/]+$');
+
+
+Route::post('administracion/inscripciones/usuarios/datos_usuario', 'DatosPersonaController@revision')->name('rev');//para revision
