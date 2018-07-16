@@ -38,6 +38,7 @@
       <th>Dni / Cuit</th>
       <td>{{ $datos->user_dni}}</td>
       <td><a href="#" class="thumbnail" data-toggle="modal" data-target="#lightbox"> 
+<<<<<<< Updated upstream
         Imagen del dni frente
             <img src="{{ action('InscripcionesController@getFile',['filename' => $datos->imagen_dni_frente]) }}" alt="..." class="img-responsive lightbox hide">
         </a>
@@ -46,12 +47,18 @@
             <img src="{{ action('InscripcionesController@getFile',['filename' => $datos->imagen_dni_dorso]) }}" alt="..." class="img-responsive lightbox hide">
         </a>
         </td>         
+=======
+        Imagen del dni:
+            <img src="{{ action('InscripcionesController@getFile',['filename' => $datos->imagen_dni]) }}" alt="..." class="img-responsive lightbox hide">
+        </a></td>         
+>>>>>>> Stashed changes
 	  </tr>
 
 	  <tr>
 	  <th>Estado civil</th>	  
 	  <td>{{ $datos->estado_civil}}</td><td></td>
 	  </tr>
+<<<<<<< Updated upstream
 
 	  <tr>
 	  <th>Cumpleaños</th>
@@ -314,6 +321,167 @@
   </td>
   </tr>
   </table>
+=======
+
+	  <tr>
+	  <th>Cumpleaños</th>
+	  <td>{{ $datos->cumple}}</td><td></td>
+	  </tr>
+	  
+	  <tr>
+	  <th>Domicilio</th>
+	  <td>{{ $datos->domicilio}}</td> <td></td>
+	  </tr>
+
+	  <tr>
+	  <th>Codigo posta - Provincia - Nacionalidad</th>
+	  <td>{{ $datos->cp}} - {{ $datos->provincia}} - {{ $datos->nacionalidad}}</td><td></td>
+	  </tr>
+
+	  <tr>
+	  <th>Celurar</th>
+	  <td>{{ $datos->cel}}</td><td></td>	  
+	  </tr>
+
+	  <tr>
+	  <th>E-Mail</th>
+	  <td>{{ $datos->user_email}}</td><td></td>
+	  </tr>
+
+	  <tr>
+		  <th>Facebook</th>
+		  <td>{{ $datos->face}}</td><td></td>
+	  </tr>
+
+	  <tr><th>Posee discapacidad</th>
+		  <td>{{ $datos->disca_estudiante}}</td>
+		  <td><a href="#" class="thumbnail" data-toggle="modal" data-target="#lightbox">
+        		Certificado de discapacidad 
+            	<img src="{{ action('InscripcionesController@getFile',['filename' => $datos->certificado_discapacidad]) }}" alt="..." class="img-responsive lightbox hide">
+        	</a></td>
+		  </tr>
+
+
+
+	  </table>
+      </td>
+
+	<td width="50%">
+	<h3 align="center" class="">Datos Academicos</h3>
+		<table border="1">	  
+	      <tr><th class="bg-info">Datos<td class="bg-info">Informacion</td><td class="bg-info">Adjuntos</td></th></tr>
+		  
+		  <tr>
+		  	<th>Condicion estudiante</th>
+		  	<td>{{ $datos->condicion_estudiante}}</td>
+	  		<td>
+	  		<a href="#" class="thumbnail" data-toggle="modal" data-target="#lightbox">
+       		 Certificado de Estudiante 
+            <img src="{{ action('InscripcionesController@getFile',['filename' => $datos->certificado_estudiante]) }}" alt="..." class="img-responsive lightbox hide">
+        	</a>
+        	<a href="#" class="thumbnail" data-toggle="modal" data-target="#lightbox">
+        	Constancia de Estudiante 
+            <img src="{{ action('InscripcionesController@getFile',['filename' => $datos->constancia_estudiante]) }}" alt="..." class="img-responsive lightbox hide">
+       		</a>
+	  		</td>
+	  	 </tr>
+
+
+	  	 <tr>
+	  	 	<th>Carrera que cursa</th>
+	  	 	<td>{{ $datos->carrera_cursa}} <- nombre
+	  		</td><td></td>
+	  	 </tr>
+
+
+		  <tr>
+		  <th>Año de ingreso - Año de Cursado</th>
+	  	 	<td>{{ $datos->carrera_cursa}}{{ $datos->anio_ingreso}} - {{ $datos->anio_cursado}}
+	  		</td><td></td>
+
+	  	  </tr>
+
+		  </table>
+	</td>
+  </tr>
+  </table>
+
+
+  <table class="rwd_auto table table-responsive table-bordered" width="100%" cellpadding="5" cellspacing="5" border="0">
+    <tr>
+	    <td width="50%">
+ 		<h3 align="center" class="">Datos Economicos</h3>
+	
+	  	<table border="1">  
+      		<tr><th class="bg-info">Datos<td class="bg-info">Informacion</td><td class="bg-info">Adjuntos</td></th></tr>
+
+      		<tr>
+      			<th>Posee trabajo - Tipo trabajo - Sueldo</th>
+      			<td>{{ $datos->tiene_trabajo}} - {{ $datos->tipo_trabajo}} - ${{ $datos->sueldo}}</td><td>
+      				<a href="#" class="thumbnail" data-toggle="modal" data-target="#lightbox"> 
+       				Comprobante de ingresos
+           		 <img src="{{ action('InscripcionesController@getFile',['filename' => $datos->comprobante_ingresos]) }}" alt="..." class="img-responsive lightbox hide">
+        			</a>
+      			</td>
+      		</tr>
+
+      		<tr>
+      			<th>Posee beca</th>
+      			<td>{{ $datos->tiene_beca}}</td><td></td>
+      		</tr>
+
+      		<tr>
+      			<th>Posee PROGRESAR</th>
+      			<td>{{ $datos->tiene_progresar}}</td><td></td>
+      		</tr>
+
+      		<tr>
+      			<th>Posee Pasantia</th>
+      			<td>{{ $datos->tiene_pasantia}}</td><td></td>
+      		</tr>
+
+
+      		<tr>
+      			<th>Posee Asignacion x H</th>
+      			<td>{{ $datos->tiene_asig}}</td><td></td>
+      		</tr>
+
+
+      		<tr>
+      			<th>Posee Asignacion x H</th>
+      			<td>{{ $datos->otros_ing}}</td><td></td>
+      		</tr>
+      	
+
+
+
+	  	</table>
+     	</td>
+
+	<td width="50%">
+	<h3 align="center" class="">Datos de Vivienda</h3>
+		<table border="1">	  
+	      <tr><th class="bg-info">Datos<td class="bg-info">Informacion</td><td class="bg-info">Adjuntos</td></th></tr>
+
+
+	      	<tr>
+      			<th>Domicilio durante cursado</th>
+      			<td>{{ $datos->domi_cursado}}</td><td></td>
+      		</tr>
+
+
+	      	<tr>
+      			<th>Vive con la familia</th>
+      			<td>{{ $datos->domi_cursado}}</td><td></td>
+      		</tr>
+	
+
+
+		</table>
+	</td>
+	</tr>
+	</table>
+	  
 
 
 
@@ -321,6 +489,68 @@
 
 
 
+
+  <td></td>
+	  <td>{{ $datos->casa_fam}}</td>
+	  <td>{{ $datos->tiene_alq}}</td>
+	  <td>{{ $datos->recibo_alquiler}}</td>
+	  <td>{{ $datos->monto_alq}}</td>	  
+	  <td>{{ $datos->usa_urbano}}</td>
+	  <td>{{ $datos->cant_viajes}}</td>	  
+	  <td>{{ $datos->usa_media_dist}}</td>
+	  <td>{{ $datos->precio_pasaje}}</td>	  
+	  <td>{{ $datos->cant_viaja_media}}</td>	  
+	  <td>{{ $datos->recibo_pasaje}}</td>
+	  <td>{{ $datos->es_propietario}}</td>	  
+	  <td>{{ $datos->alquila}}</td>
+	  <td>{{ $datos->recibo_alquiler_familiar}}</td>
+	  <td>{{ $datos->precio_alquiler}}</td>	  
+	  <td>{{ $datos->prestada}}</td>	  
+	  <td>{{ $datos->otros_vivienda}}</td>
+	  <td>{{ $datos->tiene_campo}}</td>
+	  <td>{{ $datos->cant_has}}</td>	  
+	  <td>{{ $datos->actividad}}</td>
+	  <td>{{ $datos->tiene_terreno}}</td>
+	  <td>{{ $datos->cant_terreno}}</td>	  
+	  <td>{{ $datos->tiene_auto}}</td>
+	  <td>{{ $datos->cant_auto}}</td>	  
+	  <td>{{ $datos->tiene_moto}}</td>
+	  <td>{{ $datos->cant_moto}}</td>	  
+	  <td>{{ $datos->motivos}}</td>
+	  <td>{{ $datos->localidad}}</td> 
+	  <td>{{ $datos->tiene_progresar}}</td>	  
+	  <td>{{ $datos->created_at}}</td>
+	  <td>{{ $datos->updated_at}}</td>
+	  <td>{{ $datos->deleted_at}}</td>
+            
+
+</table>
+
+              
+    </div>
+
+
+
+
+
+
+	 
+
+
+
+
+
+
+
+>>>>>>> Stashed changes
+
+
+
+
+
+
+
+<<<<<<< Updated upstream
 <div id="lightbox" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">
     <div class="modal-dialog">
         <button type="button" class="close hidden" data-dismiss="modal" aria-hidden="true">×</button>
@@ -380,12 +610,96 @@
 @endif
 
 {!! Form::close() !!}
+=======
+
+
+
+
+
+
+
+
+<div class="container">
+    <div class="col-xs-6 col-sm-3">
+        <a href="#" class="thumbnail" data-toggle="modal" data-target="#lightbox"> 
+        Imagen del dni:
+            <img src="{{ action('InscripcionesController@getFile',['filename' => $datos->imagen_dni]) }}" alt="..." class="img-responsive">
+        </a>
+    </div>
+    <div class="col-xs-6 col-sm-3">
+        <a href="#" class="thumbnail" data-toggle="modal" data-target="#lightbox">
+        Imagen certificado de Anses: 
+            <img src="{{ action('InscripcionesController@getFile',['filename' => $datos->cert_anses]) }}" alt="..." class="img-responsive">
+        </a>
+    </div>
+    <div class="col-xs-6 col-sm-3">
+        <a href="#" class="thumbnail" data-toggle="modal" data-target="#lightbox">
+        Certificado de discapacidad: 
+            <img src="{{ action('InscripcionesController@getFile',['filename' => $datos->certificado_discapacidad]) }}" alt="..." class="img-responsive">
+        </a>
+    </div>
+    <div class="col-xs-6 col-sm-3">
+        <a href="#" class="thumbnail" data-toggle="modal" data-target="#lightbox">
+        Constancia de Estudiante: 
+            <img src="{{ action('InscripcionesController@getFile',['filename' => $datos->constancia_estudiante]) }}" alt="..." class="img-responsive">
+        </a>
+    </div>
+
+    <div class="col-xs-6 col-sm-3">
+        <a href="#" class="thumbnail" data-toggle="modal" data-target="#lightbox">
+        Certificado de Estudiante: 
+            <img src="{{ action('InscripcionesController@getFile',['filename' => $datos->certificado_estudiante]) }}" alt="..." class="img-responsive">
+        </a>
+    </div>
+
+    <div class="col-xs-6 col-sm-3">
+        <a href="#" class="thumbnail" data-toggle="modal" data-target="#lightbox">
+        Comprobante de ingresos: 
+            <img src="{{ action('InscripcionesController@getFile',['filename' => $datos->comprobante_ingresos]) }}" alt="..." class="img-responsive">
+        </a>
+    </div>
+    <div class="col-xs-6 col-sm-3">
+        <a href="#" class="thumbnail" data-toggle="modal" data-target="#lightbox">
+        Recibo de alquiler: 
+            <img src="{{ action('InscripcionesController@getFile',['filename' => $datos->recibo_alquiler]) }}" alt="..." class="img-responsive">
+        </a>
+    </div>
+    <div class="col-xs-6 col-sm-3">
+        <a href="#" class="thumbnail" data-toggle="modal" data-target="#lightbox">
+        Recibo de pasaje: 
+            <img src="{{ action('InscripcionesController@getFile',['filename' => $datos->recibo_pasaje]) }}" alt="..." class="img-responsive">
+        </a>
+    </div>
+
+    <div class="col-xs-6 col-sm-3">
+        <a href="#" class="thumbnail" data-toggle="modal" data-target="#lightbox">
+        Recibo de alquiler casa familia: 
+            <img src="{{ action('InscripcionesController@getFile',['filename' => $datos->recibo_alquiler_familiar]) }}" alt="..." class="img-responsive">
+        </a>
+    </div>
+>>>>>>> Stashed changes
+</div>
+
+<div id="lightbox" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <button type="button" class="close hidden" data-dismiss="modal" aria-hidden="true">×</button>
+        <div class="modal-content">
+            <div class="modal-body">
+                <img src="" alt="" />
+                 <div class="modal-footer">
+			        <button type="button" class="btn btn-default" data-dismiss="modal">Cerrar</button>
+			      </div>
+            </div>
+        </div>
+    </div>
 </div>
 
 
-
+<<<<<<< Updated upstream
 
 <br><br><br><br><br><br><br>
+=======
+>>>>>>> Stashed changes
 
 
 	
@@ -394,9 +708,12 @@
 @endsection
 
 
+<<<<<<< Updated upstream
 
 
 
+=======
+>>>>>>> Stashed changes
 <script>
 	$(document).ready(function() {
     var $lightbox = $('#lightbox');
