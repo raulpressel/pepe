@@ -32,6 +32,10 @@ class DatosPersona extends Model
         return $this->belongsTo('App\User','user_name', 'name');
     }
 
+    public function revision(){
+        return $this->belongsTo('App\DatosPersona','revision', 'rev');
+    }
+    
 
 }
 

@@ -1,6 +1,6 @@
 <?php
-
 namespace App;
+use DB;
 
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Support\Facades\Auth;
@@ -37,7 +37,9 @@ class Inscripcione extends Model
     //////////PAra calcular el merito... se podria llamar a una funcion externa...///
 
     public function Inscribir($request){
-        echo "HOLAAAAAAAAAA estamos en Inscripcione.php";
+        //echo "HOLAAAAAAAAAA estamos en Inscripcione.php";
+        $aux_beca =  DB::table('becas')->where('habilitada', "Si")->first(); //Si tiene mas becas habilitada  ardeee!
+        //dd($aux_beca);
         $inscripto = new Inscripcione();
             
          //calculo de meritos??¡¡?¡?
@@ -56,8 +58,8 @@ class Inscripcione extends Model
         $inscripto->facultad_nombre = "Fcyt"; 
         $inscripto->sede_nombre = "Oro ve";
         $inscripto->univ_nombre = "UADER";
-        $inscripto->beca_id = 2;
-        $inscripto->beca_nombre = 2;
+        $inscripto->beca_id = $aux_beca->id;
+        $inscripto->beca_nombre = $aux_beca->nombre;
         
         //hasta aca
         $inscripto->merito = 100;

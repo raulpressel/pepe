@@ -6,27 +6,20 @@
 
 
 @if (empty ($id->user_id))
+	@if($beca->habilitada=="Si")
 
-<p> esta vacia la tabla datos.. cargar form</p>
-
-	
-
-@include('datospersona.form',['user'])
-
+	@include('datospersona.form',['user'])
+	  
+	@endif
 @else
-
-
-
-<a href="{{ route('datospersona.edit', $id->user_id) }} ">
-<h1>Editar datos cargados de {{$id->user_name}}</h1>
-
-</a> 
-
-
-
+<div align="center">
+<a href="/administracion">
+<h3>{{$id->user_name}} ya cargaste satisfactoriamente tus datos<br> acceda al panel de administracion para mas info</h3></a> 
+</div>
 @endif
 
+<br><br><br>
+@include('footer')
 @endsection
-
 
 

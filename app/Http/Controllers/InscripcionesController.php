@@ -392,10 +392,12 @@ protected function cleanup($dataType, $data)
     public function datos_usuario(Request $request, $user_id){
 
         $datos = DB::table('datos_personas')->where('user_id','=',$user_id)->first();
+        $condicion = DB::table('condicion')->get();
+        $familiar=DB::table('familiars')->where('user_id',$user_id)->get();
+        $consideraciones=DB::table('consideraciones')->where('user_id',$user_id)->get();
 
 
-
-        return view('vendor.voyager.inscripciones.usuario.datos_usuario', compact('datos'));
+        return view('vendor.voyager.inscripciones.usuario.datos_usuario', compact('datos','condicion','familiar','consideraciones'));
     }
 
 
@@ -407,6 +409,40 @@ protected function cleanup($dataType, $data)
   
 
 
+    public function se_inscribio($id){
+        $user = User::find($id);
+        //dd($id_user->id);
+        
+        /*
+        $inscripcion = DB::table('inscripciones')->where('user_id', $user->id)->select('beca_id')->orderBy('created_at')->first();
+        //$datos_beca = DB::table('becas')->where('id', $inscripcion)->get(); //devuelvo el primero que encuentra
+
+         //devuelvo el primero que encuentra
+       // $inscripcion = DB::table('inscripciones')->where('user_id', $datos->user_id)->get();
+        dd($inscripcion->beca_id);
+        //InscripcionesController::nombre_beca($inscripcion);
+        return $inscripcion;
+        */
+        $datos_beca = DB::table('inscripciones')
+        ->join('datos_personas', 'inscripciones.user_id', '=', 'datos_personas.user_id')
+        ->join('becas', 'inscripciones.beca_id', '=', 'becas.id')
+        ->join('cronogramas', 'becas.id', '=', 'cronogramas.beca_id')
+        ->select('becas.nombre', 'becas.anio', 'datos_personas.revision','inscripciones.otorgamiento','cronogramas.fecha_1', 'cronogramas.fecha_2', 'cronogramas.fecha_3', 'cronogramas.fecha_4', 'cronogramas.fecha_5', 'cronogramas.fecha_6', 'cronogramas.fecha_6', 'cronogramas.fecha_7', 'cronogramas.fecha_8','cronogramas.beca_id' /*'datos_personas.user_name'*/)
+        ->get();
+        //dd($datos_beca->toJson());
+        return $datos_beca;
+        }
 
 
-}
+    public function nombre_beca($id){
+        $datos_beca = DB::table('becas')->where('id', $id)->get(); //devuelvo el primero que encuentra
+
+        //dd($datos_beca);
+        return $datos_beca;
+        }
+
+
+
+
+
+    }

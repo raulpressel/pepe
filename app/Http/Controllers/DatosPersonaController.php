@@ -63,10 +63,12 @@ class DatosPersonaController extends Controller
         $user = Auth::user();
         
         $id = DB::table('datos_personas')->where('user_id', $user->id)->first(); //devuelvo el primero que encuentra
+        $beca = DB::table('becas')->where('habilitada', "Si")->get(); //Si tiene mas becas habilitada explota adrede
 
         $carrera = DB::table('carreras')->get();
         $condicion = DB::table('condicion')->get();
-        return view ('datospersona.create', compact('user', 'carrera', 'id', 'condicion'));
+        dd($beca);
+        return view ('datospersona.create', compact('user', 'carrera', 'id', 'condicion','beca'));
 
 
 
@@ -90,8 +92,13 @@ class DatosPersonaController extends Controller
     public function store(CrearDatosPersona $request)
     {        
         //dd($request, $request->consideraciones, $request->familiar);
+        $beca_aux = DB::table('becas')->where('habilitada', "Si")->first(); //Si tiene mas becas habilitada explota adrede y ademas comprobar que no se altero el hidden del form
+
+        if ($beca_aux->id==$request->becaid){
+
          try{
             $datos = new DatosPersona;
+            $datos->beca_id = $request->becaid;
             $datos->user_id = $request->user_id;
             $datos->user_apellido = $request->apellido;
             $datos->user_name = $request->nombre;
@@ -493,6 +500,8 @@ class DatosPersonaController extends Controller
            // abort(404);//return redirect()->route('datospersona.index')->with('msg', ' Algo salio mal prueba de nuevo.');
 
         }
+        }
+
         return redirect()->route('home')->with('info', 'Hemos recibido tu inscripcion');
         //meter el alert https://www.youtube.com/watch?v=t2OgwDHKIkQ
 
@@ -567,10 +576,12 @@ class DatosPersonaController extends Controller
 
 
 
-    public function revision(Request $request){
-        dd($request);
-    }
-
+    public function revision($id){
+        $user = User::find($id);
+        //dd($id_user->id);
+        $datos = DB::table('datos_personas')->where('user_id', $user->id)->first(); //devuelvo el primero que encuentra
+        return $datos->revision;
+        }
 
 
 

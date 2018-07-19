@@ -381,6 +381,7 @@
 @endif
 
 {!! Form::close() !!}
+@endsection
 
 <script>
 	$(document).ready(function() {
