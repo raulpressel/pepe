@@ -62,18 +62,21 @@ class DatosPersonaController extends Controller
         
         $user = Auth::user();
         
-        $id = DB::table('datos_personas')->where('user_id', $user->id)->first(); //devuelvo el primero que encuentra
-        $beca = DB::table('becas')->where('habilitada', "Si")->get(); //Si tiene mas becas habilitada explota adrede
+        $id = DB::table('datos_personas')->where('user_id', $user->id)->get(); //devuelvo todos que encuentra
+        $beca = DB::table('becas')->join('datos_personas','datos_personas.beca_id','!=','becas.id')
+        ->where('habilitada', "Si")->select('becas.habilitada','becas.id','datos_personas.beca_id')->get(); //Si tiene mas becas habilitada explota adrede
 
+        $aux = DB::table('becas')->where('habilitada',"Si")->first();
         $carrera = DB::table('carreras')->get();
         $condicion = DB::table('condicion')->get();
-        dd($beca);
-        return view ('datospersona.create', compact('user', 'carrera', 'id', 'condicion','beca'));
+        //dd($aux,$id);
+        return view ('datospersona.create', compact('user', 'carrera', 'id', 'condicion','beca','aux'));
 
 
 
         
     }
+
 
     public function getLocalidades(Request $request, $id)
     {
@@ -528,7 +531,7 @@ class DatosPersonaController extends Controller
     public function edit($user_id)
     {
         $user = Auth::user();
-        
+
         $carrera = DB::table('carreras')->get();
         $condicion = DB::table('condicion')->get();
         
