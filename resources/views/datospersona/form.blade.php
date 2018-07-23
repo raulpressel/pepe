@@ -96,7 +96,7 @@
 
               <form method="POST" action="{{ route('datospersona.store') }}" files="true" enctype="multipart/form-data">
               {{ csrf_field() }}
-              <input type="hidden" id="becaid" name="becaid" value={{$beca->id}}>
+              <input type="hidden" id="becaid" name="becaid" value={{$aux->id}}>
                 @include('datospersona.steps.datos_estudiante')
                 @include('datospersona.steps.situacion_academica')
                 @include('datospersona.steps.situacion_economica_estudiante')

@@ -7,11 +7,8 @@
 
 <h4>A continuacion se detalla el contenido de su estado de inscripcion </h4>
 <br>
-@foreach( $inscripcion->se_inscribio(Auth::user()->id) as $inscrip )
 
-{{$inscrip->otorgamiento}}
-
-{{$inscrip->fecha_1}}
+@foreach( $inscripcion->se_inscribio() as $inscrip)
 
 
 <center>
@@ -25,30 +22,37 @@
 </thead>
 <tbody>
 <tr align="center">
-	<td style="width: 180px">{{$inscrip->nombre}}</td>
+	<td style="width: 180px">{{$inscrip->beca_nombre}}</td>
 	<td style="width: 180px">{{$inscrip->anio}}</td>
 	<td>
 
-	@if ($inscrip->revision ==0)
-Sus datos estan siendo procesados
-<h6>Porfavor, vuelva a ingresar luego</h6>
-@else
-Sus datos ya fueron chequeados por personal Becario
-<h6 >Espere el cierre de inscripcion de la beca para visualizar si se le otorgo el beneficio</h6>
-@endif
+
+@foreach( $inscripcion->revision($inscrip->user_id) as $inscrip1)
+
+	@if($inscrip->beca_id == $inscrip1->beca_id)
+		@if ($inscrip1->revision == 0)
+			Sus datos estan siendo procesados
+			<h6>Porfavor, vuelva a ingresar luego</h6>
+		@else
+			Sus datos ya fueron chequeados por personal Becario
+			<h6 >Espere el cierre de inscripcion de la beca para visualizar si se le otorgo el beneficio</h6>
+		@endif
+	@else 
+	@endif
+@endforeach
+	
 	</td>	
 </tr>
 
 </tbody>
 </table>
-
-
 </center>
-<br>
+<br>	
+
+
+
+
+
 @endforeach
 
 
-<font color="red">
-      Fecha de cobro: {{$inscrip->fecha_1}} - {{$inscrip->fecha_2}} - {{$inscrip->fecha_3}} - {{$inscrip->fecha_4}} - {{$inscrip->fecha_5}} - {{$inscrip->fecha_6}} - {{$inscrip->fecha_7}} - {{$inscrip->fecha_8}}
-
-</font>

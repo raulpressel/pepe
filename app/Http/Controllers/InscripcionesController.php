@@ -5,7 +5,7 @@ namespace App\Http\Controllers;
 use App\Inscripcione;
 use App\User;
 use App\DatosPersona;
-
+use Auth;
 use PDF;
 use Illuminate\Http\Request;
 use Illuminate\Support\Collection;
@@ -13,6 +13,7 @@ use Illuminate\Support\Facades\DB;
 use TCG\Voyager\Database\Schema\SchemaManager;
 use TCG\Voyager\Facades\Voyager;
 use TCG\Voyager\Http\Controllers\Traits\BreadRelationshipParser;
+
 
 use Illuminate\Support\Facades\Storage;
 
@@ -409,36 +410,28 @@ protected function cleanup($dataType, $data)
   
 
 
-    public function se_inscribio($id){
-        $user = User::find($id);
-        //dd($id_user->id);
+    public function se_inscribio(){
         
-        /*
-        $inscripcion = DB::table('inscripciones')->where('user_id', $user->id)->select('beca_id')->orderBy('created_at')->first();
-        //$datos_beca = DB::table('becas')->where('id', $inscripcion)->get(); //devuelvo el primero que encuentra
-
-         //devuelvo el primero que encuentra
-       // $inscripcion = DB::table('inscripciones')->where('user_id', $datos->user_id)->get();
-        dd($inscripcion->beca_id);
-        //InscripcionesController::nombre_beca($inscripcion);
-        return $inscripcion;
-        */
+        $user = Auth::user();;
+       
         $datos_beca = DB::table('inscripciones')
-        ->join('datos_personas', 'inscripciones.user_id', '=', 'datos_personas.user_id')
-        ->join('becas', 'inscripciones.beca_id', '=', 'becas.id')
-        ->join('cronogramas', 'becas.id', '=', 'cronogramas.beca_id')
-        ->select('becas.nombre', 'becas.anio', 'datos_personas.revision','inscripciones.otorgamiento','cronogramas.fecha_1', 'cronogramas.fecha_2', 'cronogramas.fecha_3', 'cronogramas.fecha_4', 'cronogramas.fecha_5', 'cronogramas.fecha_6', 'cronogramas.fecha_6', 'cronogramas.fecha_7', 'cronogramas.fecha_8','cronogramas.beca_id' /*'datos_personas.user_name'*/)
+        //->join('datos_personas',  'inscripciones.user_id', '=', 'datos_personas.user_id')/*datosp en insc*/
+        ->join('becas', 'inscripciones.beca_id', '=', 'becas.id') /*mismas becas*/
+        //->join('cronogramas', 'becas.id', '=', 'cronogramas.beca_id')/*cronograma de becas*/
+        ->where('inscripciones.user_id', '=', $user->id)
+        //->select('becas.nombre', 'inscripciones.otorgamiento','becas.anio'/*'cronogramas,.fecha_1', 'cronogramas.fecha_2', 'cronogramas.fecha_3', 'cronogramas.fecha_4', 'cronogramas.fecha_5', 'cronogramas.fecha_6', 'cronogramas.fecha_6', 'cronogramas.fecha_7', 'cronogramas.fecha_8','cronogramas.beca_id' /*'datos_personas.user_name'*/)
         ->get();
-        //dd($datos_beca->toJson());
-        return $datos_beca;
+
+       // dd($datos_beca);
+        return $datos_beca;//redirect('administracion', compact('dato', $datos_beca));
         }
 
 
-    public function nombre_beca($id){
-        $datos_beca = DB::table('becas')->where('id', $id)->get(); //devuelvo el primero que encuentra
-
-        //dd($datos_beca);
-        return $datos_beca;
+    public function revision($id){
+        $user = Auth::user();
+        $datos_personas = DB::table('datos_personas')->where('user_id', $id)->select('revision','beca_id')->get(); 
+       // dd($datos_personas);
+        return $datos_personas;
         }
 
 

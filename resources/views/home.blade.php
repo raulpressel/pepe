@@ -7,13 +7,13 @@
         <div class="large-12 columns">
           <div class="owl-carousel owl-theme">
             <div class="item">
-              <h4>1</h4><img src="../img/drag.png">
-            </div>
-            <div class="item">
+              <h4>Becas</h4><img src="../img/becas.jpg" width="10" height="10">
+            </div> 
+            <div class="item" style="width:300px;">
               <h4>2</h4><img src="../img/logo.png">
             </div>
-            <div class="item"><img src="../img/responsive.png">
-              <h4>3</h4>
+            <div class="item" style="width:250px;">
+              <h4>FCyT-Uader</h4>
             </div>
             <div class="item"><img src="../img/zombie.png">
               <h4>4</h4>
@@ -39,16 +39,27 @@
 <ul><h1>Bienvenidos al sitio web para la inscripcion de la Beca FCyT-Uader</h1>
 <p>Raul paga el asado</p></ul>
 
+
+
+        </div>
+      </div>
+    </section>
           <script>
             $(document).ready(function() {
               $('.owl-carousel').owlCarousel({
-                loop: true,
-                margin: 10,
+                animateOut: 'slideOutDown',
+                animateIn: 'flipInX',
+                items:1,
+                margin: 30,
+                setPadding:30,
+                smartSpeed:450,
                 responsiveClass: true,
+                loop: true,
                 autoWidth:true,
-                autoplay:false,
-				autoplayTimeout:5000,
-				autoplayHoverPause:false,
+                autoplay:true,
+                nav:true,
+        autoplayTimeout:5000,
+        autoplayHoverPause:false,
                 responsive: {
                   0: {
                     items: 2,
@@ -68,9 +79,6 @@
               })
             })
           </script>
-        </div>
-      </div>
-    </section>
 @include('footer')
 
 @stop
