@@ -155,7 +155,7 @@
 			        <div style="display:none;" id="motocantdiv" class="form-group">
 				        <label for="validate-optional">Cuántos:</label>
 				        <div class="input-group">
-				        <input value="{{ old('motocant') }}" type="number" min="0" class="form-control" name="motocant" id="terrenocant" placeholder="Ingrese solo numeros">
+				        <input value="{{ old('motocant') }}" type="number" min="0" class="form-control" name="motocant" id="motocant" placeholder="Ingrese solo numeros">
 				        <span class="input-group-addon info"><span class="glyphicon glyphicon-asterisk"></span></span>
 				        </div>
 			        </div>
