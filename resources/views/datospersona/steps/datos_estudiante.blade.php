@@ -6,7 +6,7 @@
         <h3>1.1 - Datos Personales del Estudiante</h3>
       </div>
 
-        <div class="col-sm-offset-2 col-sm-5">
+        <div class="col-sm-offset-2 col-sm-6">
           
               <input type="hidden" name="user_id" id="user_id" value={{ $user->id }}>
 
@@ -205,6 +205,7 @@
         </div>
         
         <div class="form-group">
+          
               <label for="validate-letras">Discapacidad y/o Enfermedad cronica grave:</label>
                 <div class="input-group">
                   <select  class="form-control" name="discaest" id="discaest" placeholder="Seleccione una opción" required>
@@ -213,9 +214,20 @@
                 </select>
                 <span class="input-group-addon danger"><span class="glyphicon glyphicon-remove"></span></span>
             </div>
+            
           </div>
         
-        <div style="display:none;" id="imagendiscaestdiv" class="form-group">
+        </div>
+        
+        
+        
+
+        <div class="col-sm-offset-3 col-sm-4">
+
+         <div id="imagendiscaestdiv" style="display:none;" class="form-group" >
+        
+          
+          
             <label for="validate-number">Imagen Certificado:</label>
             <div class="input-group">
               <input  type="file" id="imagendiscaest" name="imagendiscaest" class="form-control" accept=".jpg, .jpeg, .png, .pdf" required>
@@ -224,7 +236,9 @@
               <div class="input-group">
                 <output id="list-imagendiscaest"></output>
               </div>
+          
             </div>
+          </div>
           
 
 
@@ -232,12 +246,14 @@
         <script>
 
         $(document).ready(function() {
-        $('.input-group input[required], .input-group textarea[required], .input-group select[required], input-group radio[required]').on('keyup change', function() {
+        $('.input-group input[required], .input-group textarea[required], .input-group select[required], input-group radio[required]').on('change', function() {
         var $form = $(this).closest('form'),
         $group = $(this).closest('.input-group'),
         $addon = $group.find('.input-group-addon'),
         $icon = $addon.find('span'),
         state = false;
+
+        console.log($(this).val());
 
         if (!$group.data('validate')) {
         state = $(this).val() ? true : false;
@@ -279,17 +295,19 @@
         });
 
 
-        </script>   
+        </script>
+
+
         
         <script language="javascript">
             $("#provincia").change(function (event) {
              
-                $("#localidad").empty();
-                $("#localidad").append("<option value='' selected>Seleccione una localidad </option>");
-            $.get("localidad/"+event.target.value+"", function(response, state) {
-                
-                for(i=0; i<response.length; i++){
-                $("#localidad").append("<option value='"+response[i].localidad+"'>"+response[i].localidad+" </option>");
+              $("#localidad").empty();
+              $("#localidad").append("<option value='' selected>Seleccione una localidad </option>");
+              $.get("localidad/"+event.target.value+"", function(response, state) {
+              
+              for(i=0; i<response.length; i++){
+              $("#localidad").append("<option value='"+response[i].localidad+"'>"+response[i].localidad+" </option>");
             }
             });
         });
@@ -299,15 +317,13 @@
         
 
 <script>
-  $(document).on('click', 'input[type="file"]', function(evt) {
-
-let idd = this.id;
+ $(document).one('click', 'input[id="imagen_frente"]' , function(evt) {
+     let idd = this.id;
             
-
   function handleFileSelect(evt) {
     var files = evt.target.files; // FileList object
     
-            
+      $('#list-'+ idd).html("");      
           
     // Loop through the FileList and render image files as thumbnails.
     for (var i = 0, f; f = files[i]; i++) {
@@ -333,23 +349,103 @@ let idd = this.id;
       reader.readAsDataURL(f);
     }
   
-
     }
   document.getElementById(idd).addEventListener('change', handleFileSelect, false);
-
   
-
   });
+
+
+</script>
+
+<script >
+    
+    $(document).one('click', 'input[id="imagen_dorso"]' , function(evt) {
+    let idd = this.id;
+
+  function handleFileSelect(evt) {
+    var files = evt.target.files; // FileList object
+    
+      $('#list-'+ idd).html("");      
+          
+    // Loop through the FileList and render image files as thumbnails.
+    for (var i = 0, f; f = files[i]; i++) {
+ 
+      // Only process image files.
+      if (!f.type.match('image.*')) {
+        continue;
+      }
+ 
+      var reader = new FileReader();
+ 
+      // Closure to capture the file information.
+      reader.onload = (function(theFile) {
+        return function(e) {
+          // Render thumbnail.
+          var span = document.createElement('span');
+          span.innerHTML = ['Nombre: ', escape(theFile.name), ' || Tamanio: ', escape(theFile.size), ' bytes || type: ', escape(theFile.type), '<br /><img class="thumb" src="', e.target.result,'" title="', escape(theFile.name), '"/><br />'].join('');
+          document.getElementById('list-'+ idd).insertBefore(span, null);
+        };
+      })(f);
+ 
+      // Read in the image file as a data URL.
+      reader.readAsDataURL(f);
+    }
+  
+    }
+  document.getElementById(idd).addEventListener('change', handleFileSelect, false);
+  
+  });
+
+</script>
+
+<script >
+    
+    $(document).one('click', 'input[id="anses"]' , function(evt) {
+    let idd = this.id;
+
+  function handleFileSelect(evt) {
+    var files = evt.target.files; // FileList object
+    
+      $('#list-'+ idd).html("");      
+          
+    // Loop through the FileList and render image files as thumbnails.
+    for (var i = 0, f; f = files[i]; i++) {
+ 
+      // Only process image files.
+      if (!f.type.match('image.*')) {
+        continue;
+      }
+ 
+      var reader = new FileReader();
+ 
+      // Closure to capture the file information.
+      reader.onload = (function(theFile) {
+        return function(e) {
+          // Render thumbnail.
+          var span = document.createElement('span');
+          span.innerHTML = ['Nombre: ', escape(theFile.name), ' || Tamanio: ', escape(theFile.size), ' bytes || type: ', escape(theFile.type), '<br /><img class="thumb" src="', e.target.result,'" title="', escape(theFile.name), '"/><br />'].join('');
+          document.getElementById('list-'+ idd).insertBefore(span, null);
+        };
+      })(f);
+ 
+      // Read in the image file as a data URL.
+      reader.readAsDataURL(f);
+    }
+  
+    }
+  document.getElementById(idd).addEventListener('change', handleFileSelect, false);
+  
+  });
+
 </script>
 
 
-
-        <ul class="list-unstyled pull-right">
+<ul class="list-unstyled pull-right">
           <li><button type="button" class="btn btn-primary next-step">Siguiente</button></li>
         </ul>
       
             
-    </div>
+    <!-- div cierra columna -->
   </div>
 </div>
 
@@ -376,3 +472,97 @@ $('#imagendiscaestdiv').hide();
 
 });
 </script>
+
+<script >
+  $(document).ready(function(){
+          
+         $("#discaest").focus(function(){
+
+          $('#imagendiscaestdiv').html('');
+
+          
+          $('#imagendiscaestdiv').html("<div class='bordes'> <label for='validate-number'>Imagen Certificado:</label> <div class='input-group'>   <input  type='file' id='imagendiscaest' name='imagendiscaest' class='form-control' accept='.jpg, .jpeg, .png, .pdf' required><span class='input-group-addon danger'><span class='glyphicon glyphicon-remove'></span></span>              </div><div class='input-group'>       <output id='list-imagendiscaest'></output>   </div></div></div>");
+          
+          
+
+          $(document).ready(function() {
+
+        $('.input-group input[required]').on('change', function() {
+        
+        var $form = $(this).closest('form'),
+        $group = $(this).closest('.input-group'),
+        $addon = $group.find('.input-group-addon'),
+        $icon = $addon.find('span'),
+        state = false;
+
+        if (!$group.data('validate')) {
+        state = $(this).val() ? true : false;
+        }else if ($group.data('validate') == "number") {
+        state = !isNaN(parseFloat($(this).val())) && isFinite($(this).val());}
+        
+        
+
+
+        if (state) {
+        $addon.removeClass('danger');
+        $addon.addClass('success');
+        $icon.attr('class', 'glyphicon glyphicon-ok');
+        }else{
+        $addon.removeClass('success');
+        $addon.addClass('danger');
+        $icon.attr('class', 'glyphicon glyphicon-remove');
+        }
+
+        if ($form.find('.input-group-addon.danger').length == 0) {
+        $form.find('[type="submit"]').prop('disabled', false);
+        }else{
+        $form.find('[type="submit"]').prop('disabled', true);
+        }
+        });  //cierra div change key up
+
+        $('.input-group input[required]').trigger('change');
+               
+        }); //cierra div document ready
+
+         
+$(document).one('click', 'input[id="imagendiscaest"]' , function(evt) {
+    let idd = this.id;
+
+  function handleFileSelect(evt) {
+    var files = evt.target.files; // FileList object
+    
+      $('#list-'+ idd).html("");      
+          
+    // Loop through the FileList and render image files as thumbnails.
+    for (var i = 0, f; f = files[i]; i++) {
+ 
+      // Only process image files.
+      if (!f.type.match('image.*')) {
+        continue;
+      }
+ 
+      var reader = new FileReader();
+ 
+      // Closure to capture the file information.
+      reader.onload = (function(theFile) {
+        return function(e) {
+          // Render thumbnail.
+          var span = document.createElement('span');
+          span.innerHTML = ['Nombre: ', escape(theFile.name), ' || Tamanio: ', escape(theFile.size), ' bytes || type: ', escape(theFile.type), '<br /><img class="thumb" src="', e.target.result,'" title="', escape(theFile.name), '"/><br />'].join('');
+          document.getElementById('list-'+ idd).insertBefore(span, null);
+        };
+      })(f);
+ 
+      // Read in the image file as a data URL.
+      reader.readAsDataURL(f);
+    }
+  
+    }
+  document.getElementById(idd).addEventListener('change', handleFileSelect, false);
+  
+  });
+
+   }) 
+       })
+</script>
+

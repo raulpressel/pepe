@@ -5,7 +5,7 @@
         <h3>1.2 - Situación Académica</h3>
       </div>
 
-        <div class="col-sm-offset-2 col-sm-5">
+        <div class="col-sm-offset-2 col-sm-6">
 
           <div class="form-group">
             <label for="validate-letras">Condición:</label>
@@ -51,7 +51,7 @@
           <div class="form-group">
               <label for="validate-letras">Carrera que cursa:</label>
                 <div class="input-group" >
-                <!--input value="{{ old('carrera_cursa') }}" type="text" class="form-control" name="carrera_cursa" id="carrera_cursa" placeholder="Ingrese solo letras" required> -->
+                
                 <select class="form-control" name="carrera_cursa" id="carrera_cursa" placeholder="Seleccione una opción" required>
                 <option value="">Seleccione una opción</option>
                 @foreach($carrera as $carreras)
@@ -79,12 +79,21 @@
               <label for="validate-letras">Año de la carrera que cursa:</label>
                 <div class="input-group">
                   <select value="{{ old('aniocursado') }}" class="form-control" name="aniocursado" id="aniocursado" placeholder="Seleccione una opción" required>
-                    <option value="">Seleccione una opción</option>
-                    <option value="1">1</option><option value="2">2</option><option value="3">3</option><option value="4">4</option><option value="5">5</option>
-                </select>
+                    <option value="" selected>Seleccione una opción</option></select>
                 <span class="input-group-addon danger"><span class="glyphicon glyphicon-remove"></span></span>
             </div>
           </div>
+
+          <div class="form-group">
+              <label for="validate-letras">Cantidad de materias aprobadas:</label>
+                <div class="input-group">
+                  <select value="{{ old('cantmaterias') }}" class="form-control" name="cantmaterias" id="cantmaterias" placeholder="Seleccione una opción" required>
+                    <option value="" selected>Seleccione una opción</option></select>
+                <span class="input-group-addon danger"><span class="glyphicon glyphicon-remove"></span></span>
+            </div>
+          </div>
+          
+
 
           <ul class="list-inline pull-right">
               <li><button type="button" class="btn btn-default prev-step">Anterior</button></li>
@@ -100,13 +109,169 @@
   
 </div>
 
+<script language="javascript">
+            $("#carrera_cursa").change(function (event) {
+             
+                $("#aniocursado").empty();
+                $("#aniocursado").append("<option value='' selected>Seleccione una opción </option>");
+
+                $("#cantmaterias").empty();
+                $("#cantmaterias").append("<option value='' selected>Seleccione una opción </option>");
+
+                $.get("carrera/"+event.target.value+"", function(response, state) {
+                
+                for(i=0; i<response[0].cant_materias; i++){
+                
+                $("#cantmaterias").append("<option value='"+(i+1)+"'>"+(i+1)+" </option>");
+                }
+
+                for(i=0; i<response[0].cant_anios; i++){
+                
+                $("#aniocursado").append("<option value='"+(i+1)+"'>"+(i+1)+" </option>");
+                }
+
+            });
+        });
+  </script> 
+
+
+<script >
+  $(document).ready(function(){
+          
+         $("#cond").focus(function(){
+
+          $('#div').html('');
+
+          $('#div2').html('');
+
+          $('#div').html("<label style='display:none;' id='ing' for='validate-number'>Ingrese Constancia de inscripción a la Universidad:</label><label style='display:none;' id='res' for='validate-number'>Ingrese Constancia de alumno regular:</label><div class='input-group'><input  type='file' id='constancia' name='constancia' class='form-control' accept='.jpg, .jpeg, .png, .pdf' required><span class='input-group-addon danger'><span class='glyphicon glyphicon-remove'></span></span></div><div class='input-group'><output id='list-constancia'></output></div>");
+
+          $('#div2').html("<label style='display:none;' id='ing2' for='validate-number'>Ingrese Título Secundario Certificado de finalización con promedio general:</label><label style='display:none;' id='res2' for='validate-number'>Ingrese Analítico de materias aprobadas:</label><div class='input-group'><input  type='file' id='certificado' name='certificado[]' class='form-control' accept='.jpg, .jpeg, .png, .pdf' required><span class='input-group-addon danger'><span class='glyphicon glyphicon-remove'></span></span></div><div class='input-group'><output id='list-certificado'></output></div>");
+
+          $(document).ready(function() {
+
+        $('.input-group input[required]').on('change', function() {
+        
+        var $form = $(this).closest('form'),
+        $group = $(this).closest('.input-group'),
+        $addon = $group.find('.input-group-addon'),
+        $icon = $addon.find('span'),
+        state = false;
+
+        if (!$group.data('validate')) {
+        state = $(this).val() ? true : false;
+        }else if ($group.data('validate') == "number") {
+        state = !isNaN(parseFloat($(this).val())) && isFinite($(this).val());}
+        
+        
+
+
+        if (state) {
+        $addon.removeClass('danger');
+        $addon.addClass('success');
+        $icon.attr('class', 'glyphicon glyphicon-ok');
+        }else{
+        $addon.removeClass('success');
+        $addon.addClass('danger');
+        $icon.attr('class', 'glyphicon glyphicon-remove');
+        }
+
+        if ($form.find('.input-group-addon.danger').length == 0) {
+        $form.find('[type="submit"]').prop('disabled', false);
+        }else{
+        $form.find('[type="submit"]').prop('disabled', true);
+        }
+        });  //cierra div change key up
+
+        $('.input-group input[required]').trigger('change');
+               
+        }); //cierra div document ready
+
+         
+
+         $(document).one('click', 'input[id="certificado"]' , function(evt) {
+    let idd = this.id;
+
+  function handleFileSelect(evt) {
+    var files = evt.target.files; // FileList object
+    
+      $('#list-'+ idd).html("");      
+          
+    // Loop through the FileList and render image files as thumbnails.
+    for (var i = 0, f; f = files[i]; i++) {
+ 
+      // Only process image files.
+      if (!f.type.match('image.*')) {
+        continue;
+      }
+ 
+      var reader = new FileReader();
+ 
+      // Closure to capture the file information.
+      reader.onload = (function(theFile) {
+        return function(e) {
+          // Render thumbnail.
+          var span = document.createElement('span');
+          span.innerHTML = ['Nombre: ', escape(theFile.name), ' || Tamanio: ', escape(theFile.size), ' bytes || type: ', escape(theFile.type), '<br /><img class="thumb" src="', e.target.result,'" title="', escape(theFile.name), '"/><br />'].join('');
+          document.getElementById('list-'+ idd).insertBefore(span, null);
+        };
+      })(f);
+ 
+      // Read in the image file as a data URL.
+      reader.readAsDataURL(f);
+    }
+  
+    }
+  document.getElementById(idd).addEventListener('change', handleFileSelect, false);
+  
+  });
+
+    $(document).one('click', 'input[id="constancia"]' , function(evt) {
+    let idd = this.id;
+
+  function handleFileSelect(evt) {
+    var files = evt.target.files; // FileList object
+    
+      $('#list-'+ idd).html("");      
+          
+    // Loop through the FileList and render image files as thumbnails.
+    for (var i = 0, f; f = files[i]; i++) {
+ 
+      // Only process image files.
+      if (!f.type.match('image.*')) {
+        continue;
+      }
+ 
+      var reader = new FileReader();
+ 
+      // Closure to capture the file information.
+      reader.onload = (function(theFile) {
+        return function(e) {
+          // Render thumbnail.
+          var span = document.createElement('span');
+          span.innerHTML = ['Nombre: ', escape(theFile.name), ' || Tamanio: ', escape(theFile.size), ' bytes || type: ', escape(theFile.type), '<br /><img class="thumb" src="', e.target.result,'" title="', escape(theFile.name), '"/><br />'].join('');
+          document.getElementById('list-'+ idd).insertBefore(span, null);
+        };
+      })(f);
+ 
+      // Read in the image file as a data URL.
+      reader.readAsDataURL(f);
+    }
+  
+    }
+  document.getElementById(idd).addEventListener('change', handleFileSelect, false);
+  
+  });
+
+   }) 
+       })
+</script>
 
 <script type="text/javascript">
 
 $('#cond').on('change',function()
 {
 var selected = $(this).val();
-
 
 if (selected === "") {
   $('#div').hide(); 
@@ -142,3 +307,5 @@ $('#res2').hide();
 
 });
 </script>
+
+
