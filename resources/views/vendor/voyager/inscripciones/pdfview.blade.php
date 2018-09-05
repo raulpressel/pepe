@@ -10,8 +10,8 @@
 			<thead>
 				<tr>
 					<th>Nombre del inscripto</th>
-					<th>Dni/Pasaporte</th>
-					<th>Meritos</th>
+					<th>Facultad</th>
+					<th>Otorgada</th>
 				</tr>
 			</thead>
 			@foreach($inscrip as $inscriptos)
@@ -23,7 +23,7 @@
 						{{$inscriptos->facultad_nombre}}
 					</p></td>
 					<td><p>
-						{{ $inscriptos->merito }}
+						{{ $inscriptos->otorgamiento }}
 					</p></td>
 					</tr>
 

@@ -94,7 +94,7 @@ class DatosPersonaController extends Controller
      */
     public function store(CrearDatosPersona $request)
     {        
-        //dd($request, $request->consideraciones, $request->familiar);
+    //dd($request->cuil);
         $beca_aux = DB::table('becas')->where('habilitada', "Si")->first(); //Si tiene mas becas habilitada explota adrede y ademas comprobar que no se altero el hidden del form
 
         if ($beca_aux->id==$request->becaid){

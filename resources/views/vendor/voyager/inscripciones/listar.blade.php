@@ -6,8 +6,11 @@
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.0/jquery.min.js"></script>
 @section('content')
 
+
+
 <h1><p align="center">Panel administrativo de inscripciones</p></h1>
 <h3>Bienvenido {{Auth::user()->name}} </h3>
+
 
 {!! Form::open(['action' => 'InscripcionesController@seleccion','method' => 'post'] ) !!}
 

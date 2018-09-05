@@ -14,7 +14,7 @@ return [
         'add_default_role_on_register' => true,
         'default_role'                 => 'user',
         'namespace'                    => App\User::class,
-        'default_avatar'               => 'users/default.png',
+        'default_avatar'               => '/users/user-default.png',
     ],
 
     /*
@@ -189,13 +189,18 @@ return [
 
     // Here you can specify additional assets you would like to be included in the master.blade
     'additional_css' => [
+    '/css/icon.css',
+    '/css/validation.css',
+    '/css/prev.css'
+
         //'css/custom.css',
     ],
 
     'additional_js' => [
+
         //'js/custom.js',
     ],
-
+/*
     'googlemaps' => [
          'key'    => env('GOOGLE_MAPS_KEY', ''),
          'center' => [
@@ -204,5 +209,5 @@ return [
          ],
          'zoom' => env('GOOGLE_MAPS_DEFAULT_ZOOM', 11),
      ],
-
+*/
 ];
