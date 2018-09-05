@@ -46,12 +46,29 @@ Route::resource('selects', 'ProvinciaController');
 
 Route::get('datospersona/localidad/{id}', 'DatosPersonaController@getLocalidades');
 
-Route::post('pdf', 'InscripcionesController@pdf')->name('pdf');//para pdf
+Route::post('administracion/inscripciones/seleccion', 'InscripcionesController@seleccion')->name('seleccion'); //seleccion de beca
 
-Route::post('/administracion/inscripciones/seleccion', 'InscripcionesController@seleccion')->name('seleccion'); //seleccion de beca
-Route::get('administracion/inscripciones/usuarios/datos_usuario/{user_id}', 'InscripcionesController@datos_usuario')->name('datos_usuario'); //VER LOS DATOS INSCRIPTS
+
+Route::get('administracion/inscripciones/seleccion/usuario/datos_usuario/{user_id}', 'InscripcionesController@datos_usuario')->name('datos_usuario'); //VER LOS DATOS INSCRIPTS
+
+
+Route::get('administracion/inscripciones/seleccion/{user_id}/obsevacion', 'InscripcionesController@observacion' )->name('observacion'); //ve la obs
+
+
+Route::post('guarda_observacion', 'InscripcionesController@guarda_observacion' )->name('guarda_observacion'); //ve la obs
+
+
 
 Route::get('storage/{filename}', 'InscripcionesController@getFile')->where('filename', '^[^/]+$');
 
 
 Route::post('administracion/inscripciones/usuarios/datos_usuario', 'DatosPersonaController@revision')->name('rev');//para revision
+
+Route::post('carga', 'InscripcionesController@carga')->name('carga');//para carga postulante y sus valores de revision
+
+
+Route::get('/dar_baja_inscripcion/{id}','InscripcionesController@dar_baja_inscripcion')->name('dar_baja_inscripcion');// Baja postulante
+
+Route::post('administracion/inscripciones/seleccion/otorgadas', 'InscripcionesController@otorgar')->name('otorgar');//para otorgar becas en el listado
+
+Route::get('pdf','InscripcionesController@generarPdf')->name('generate-pdf');

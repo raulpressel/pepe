@@ -5,8 +5,11 @@ namespace App\Http\Controllers;
 use App\Inscripcione;
 use App\User;
 use App\DatosPersona;
+use App\familiar;
+use App\consideracione;
 use Auth;
 use PDF;
+use View;
 use Illuminate\Http\Request;
 use Illuminate\Support\Collection;
 use Illuminate\Support\Facades\DB;
@@ -32,6 +35,7 @@ class InscripcionesController extends Controller
      */
     public function index(Request $request)
     {
+    if( (Auth::user()->role_id == '1') or (Auth::user()->role_id == '3') or (Auth::user()->role_id == '4') ){ 
 
         $dato = DB::table('datos_personas')
         ->join('inscripciones', function ($join){
@@ -46,7 +50,7 @@ class InscripcionesController extends Controller
             })
         ->get();//Devuelvo los que estan inscriptos y son usuarios
 
-        $becas = DB::table('becas')->get();
+        $becas = DB::table('becas')->orderBy('habilitada','desc')->get();
 
 
        //dd($dato,$inscrip);
@@ -58,6 +62,12 @@ class InscripcionesController extends Controller
   */   
         
         return view('vendor.voyager.inscripciones.listar', compact('inscrip','dato','becas'));
+    }
+    else{
+        return view('errors.404');
+    
+    }
+
 
     }
 
@@ -180,217 +190,82 @@ public function store(Request $request)
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-public function edit(Request $request, $id)
-    {
-        $slug = $this->getSlug($request);
 
-        $dataType = Voyager::model('DataType')->where('slug', '=', $slug)->first();
-
-        $relationships = $this->getRelationships($dataType);
-
-        $dataTypeContent = (strlen($dataType->model_name) != 0)
-            ? app($dataType->model_name)->with($relationships)->findOrFail($id)
-            : DB::table($dataType->name)->where('id', $id)->first(); // If Model doest exist, get data from table name
-
-        foreach ($dataType->editRows as $key => $row) {
-            $details = json_decode($row->details);
-            $dataType->editRows[$key]['col_width'] = isset($details->width) ? $details->width : 100;
-        }
-
-        // If a column has a relationship associated with it, we do not want to show that field
-        $this->removeRelationshipField($dataType, 'edit');
-
-        // Check permission
-        $this->authorize('edit', $dataTypeContent);
-
-        // Check if BREAD is Translatable
-        $isModelTranslatable = is_bread_translatable($dataTypeContent);
-
-        $view = 'voyager::bread.edit-add';
-
-        if (view()->exists("voyager::$slug.edit-add")) {
-            $view = "voyager::$slug.edit-add";
-        }
-
-        return Voyager::view($view, compact('dataType', 'dataTypeContent', 'isModelTranslatable'));
-    }
-
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-public function update(Request $request, $id)
-    {
-         $slug = $this->getSlug($request);
-
-        $dataType = Voyager::model('DataType')->where('slug', '=', $slug)->first();
-
-        $data = call_user_func([$dataType->model_name, 'findOrFail'], $id);
-
-        // Check permission
-        $this->authorize('edit', $data);
-
-        // Validate fields with ajax
-        $val = $this->validateBread($request->all(), $dataType->editRows);
-
-        if ($val->fails()) {
-            return response()->json(['errors' => $val->messages()]);
-        }
-
-        if (!$request->ajax()) {
-            $this->insertUpdateData($request, $slug, $dataType->editRows, $data);
-
-            return redirect()
-                ->route("voyager.{$dataType->slug}.index")
-                ->with([
-                    'message'    => __('voyager.generic.successfully_updated')." {$dataType->display_name_singular}",
-                    'alert-type' => 'success',
-                ]);
-        }
-    }
-
-    /**
-     * Remove the specified resource from storage.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function destroy($id)
-    {
-         $slug = $this->getSlug($request);
-
-        $dataType = Voyager::model('DataType')->where('slug', '=', $slug)->first();
-
-        // Check permission
-        $this->authorize('delete', app($dataType->model_name));
-
-        // Init array of IDs
-        $ids = [];
-        if (empty($id)) {
-            // Bulk delete, get IDs from POST
-            $ids = explode(',', $request->ids);
-        } else {
-            // Single item delete, get ID from URL
-            $ids[] = $id;
-        }
-        foreach ($ids as $id) {
-            $data = call_user_func([$dataType->model_name, 'findOrFail'], $id);
-            $this->cleanup($dataType, $data);
-        }
-
-        $displayName = count($ids) > 1 ? $dataType->display_name_plural : $dataType->display_name_singular;
-
-        $data = $data->destroy($ids)
-            ? [
-                'message'    => __('voyager.generic.successfully_deleted')." {$displayName}",
-                'alert-type' => 'success',
-            ]
-            : [
-                'message'    => __('voyager.generic.error_deleting')." {$displayName}",
-                'alert-type' => 'error',
-            ];
-
-        return redirect()->route("voyager.{$dataType->slug}.index")->with($data);
-    }
-protected function cleanup($dataType, $data)
-    {
-        // Delete Translations, if present
-        if (is_bread_translatable($data)) {
-            $data->deleteAttributeTranslations($data->getTranslatableAttributes());
-        }
-
-        // Delete Images
-        $this->deleteBreadImages($data, $dataType->deleteRows->where('type', 'image'));
-
-        // Delete Files
-        foreach ($dataType->deleteRows->where('type', 'file') as $row) {
-            foreach (json_decode($data->{$row->field}) as $file) {
-                $this->deleteFileIfExists($file->download_link);
-            }
-        }
-    }
-
-    /**
-     * Delete all images related to a BREAD item.
-     *
-     * @param \Illuminate\Database\Eloquent\Model $data
-     * @param \Illuminate\Database\Eloquent\Model $rows
-     *
-     * @return void
-     */
-    public function deleteBreadImages($data, $rows)
-    {
-        foreach ($rows as $row) {
-            $this->deleteFileIfExists($data->{$row->field});
-
-            $options = json_decode($row->details);
-
-            if (isset($options->thumbnails)) {
-                foreach ($options->thumbnails as $thumbnail) {
-                    $ext = explode('.', $data->{$row->field});
-                    $extension = '.'.$ext[count($ext) - 1];
-
-                    $path = str_replace($extension, '', $data->{$row->field});
-
-                    $thumb_name = $thumbnail->name;
-
-                    $this->deleteFileIfExists($path.'-'.$thumb_name.$extension);
-                }
-            }
-        }
-    }
-
-
-
-
-    public function pdf(Request $request){
-
-       //return response()->json($request);
-      //  dd($request);
-
-        $inscrip = DB::table('inscripciones')->where('user_id','=',$request->listado)->get();
-
-       // $user = DB::table('datos_personas')->where('user_id',$request->listado)->get();
+    public function generarPdf(Request $request){
+    if($request->pdf == "Si"){
+        $inscrip = DB::table('inscripciones')->join('becas', 'inscripciones.beca_id', '=', 'becas.id')->where('inscripciones.otorgamiento', 'Si')->get(); /*mismas becas*/
+        //dd($inscrip);
         
-         //dd($inscrip);
+         $pdf = PDF::loadView('vendor.voyager.inscripciones.pdfview',['inscrip'=>$inscrip/*, 'user'=>$user*/]);
+   
+        return $pdf->download('pepe.pdf');
+        }
+        elseif ($request->pdf == "No") {
+            $inscrip = DB::table('inscripciones')->join('becas', 'inscripciones.beca_id', '=', 'becas.id')->where('inscripciones.otorgamiento', 'No')->get(); /*mismas becas*/
+        //dd($inscrip);
+        
+
+         $pdf = PDF::loadView('vendor.voyager.inscripciones.pdfview',['inscrip'=>$inscrip/*, 'user'=>$user*/]);
+   
+        return $pdf->download('pepe.pdf');
+        
+            
+        }elseif($request->pdf == "Todos"){
+            $inscrip = DB::table('inscripciones')->join('becas', 'inscripciones.beca_id', '=', 'becas.id')->get(); /*mismas becas*/
+        //dd($inscrip);
+        
+
+         $pdf = PDF::loadView('vendor.voyager.inscripciones.pdfview',['inscrip'=>$inscrip/*, 'user'=>$user*/]);
+   
+        return $pdf->download('pepe.pdf');
+
+        }elseif ($request->pdf == "Suspendida") {
+            $inscrip = DB::table('inscripciones')->join('becas', 'inscripciones.beca_id', '=', 'becas.id')->where('inscripciones.otorgamiento', 'Suspendida')->get(); /*mismas becas*/
+        //dd($inscrip);
+        
+
          $pdf = PDF::loadView('vendor.voyager.inscripciones.pdfview',['inscrip'=>$inscrip/*, 'user'=>$user*/]);
    
         return $pdf->download('pepe.pdf');
 
 
+        }else{
+                    return view('errors.404');
+
+        }
+
 }
-
-
-    public function seleccion(Request $request){
-        //dd($request);
-      
-
-
+    
+    public function seleccion(Request $request)
+    {
+        
+    if( (Auth::user()->role_id == '1') or (Auth::user()->role_id == '3') or (Auth::user()->role_id == '4') ){ 
 
         $inscrip = DB::table('inscripciones')->join('users', function ($join)
         {
             $join->on('inscripciones.user_id','=','users.id');
-        })->where('beca_id','=',$request->beca)/*->simplepaginate(8);*/->get();
-
-
-        //en la vista... {{ $inscrip->appends(request()->input())->render() }}         
-      //  $inscrip->withPath('')->setPath('');
-
+        })->where('beca_id','=',$request->beca)->orderBy('inscripciones.merito','desc')->get();//->paginate(3);
 
         $aux = DB::table('becas')->where('id','=',$request->beca)->select('nombre')->first(); //busco el nombre de la beca
-
+        $aux1 = DB::table('datos_personas')->where('beca_id',$request->beca)->get();//->paginate(3);
        // dd($inscrip, $aux);
         //dd($aux);
 
 
-        return view('vendor.voyager.inscripciones.seleccion', compact('inscrip','aux'));
+        return view::make('vendor.voyager.inscripciones.seleccion', compact('inscrip','aux','aux1'));
+    }    
+    else{
+        return view('errors.404');
+    
+    }
+
  
     }
 
     public function datos_usuario(Request $request, $user_id){
+        if( (Auth::user()->role_id == '1') or (Auth::user()->role_id == '3') or (Auth::user()->role_id == '4') ){ 
+
+
 
         $datos = DB::table('datos_personas')->where('user_id','=',$user_id)->first();
         $condicion = DB::table('condicion')->get();
@@ -399,6 +274,11 @@ protected function cleanup($dataType, $data)
 
 
         return view('vendor.voyager.inscripciones.usuario.datos_usuario', compact('datos','condicion','familiar','consideraciones'));
+            }
+            else{
+        return view('errors.404');
+    
+    }
     }
 
 
@@ -411,6 +291,7 @@ protected function cleanup($dataType, $data)
 
 
     public function se_inscribio(){
+
         
         $user = Auth::user();;
        
@@ -433,6 +314,227 @@ protected function cleanup($dataType, $data)
        // dd($datos_personas);
         return $datos_personas;
         }
+
+
+    public function carga(Request $request){
+       //dd($request);
+
+        try {
+
+            $datos = DatosPersona::where('user_id',$request->id)->first();
+            $fam = Familiar::where('user_id',$request->id)->get();
+            $con = Consideracione::where('user_id',$request->id)->get();
+           
+            if ($datos != null) {
+            
+            if ($request->accion == "acepta") {
+                if ($request->band==0) {
+                    $ms="ERROR! Si los datos no estan chequeados no se puede aceptar el usuario";
+                    } else{
+                         $datos->revision = 1;
+                         $datos->band = $request->band; //correcto o no correcto
+                         $datos->save();
+                         $ms = "Usuario postulado para la beca";
+                     }
+                 } else
+                  if($request->accion == "modifica"){
+                    $datos->band = $request->band; //correcto o no correcto
+                    $datos->revision = 1;
+                    $ms = "Usuario modificado y guardado con exito";
+                    /*Guardar todos los input*/
+                   // dd($request);
+
+
+
+                    $datos->user_apellido = $request->apellido;
+                    //$datos->user_name = $request->nombre;
+                    $datos->user_dni = $request->dni;
+                    $datos->estado_civil = $request->estcivil;
+                    $datos->cumple = $request->cumple;
+                    $datos->domicilio = $request->domi;
+                    //$datos->provincia = $request->provincia; falta q lo deje modificar para que llege como request y guardar
+                    //$datos->localidad = $request->localidad; falta q lo deje modificar para que llege como request y guardar
+                    //$datos->cp = $request->cp; falta q lo deje modificar para que llege como request y guardar
+                    //$datos->nacionalidad = $request->nacionalidad; falta q lo deje modificar para que llege como request y guardar
+                    $datos->cel = $request->cel;
+                    $datos->user_email = $request->email;
+                    $datos->face = $request->face;
+                    $datos->disca_estudiante = $request->discaest;
+                    $datos->condicion_estudiante = $request->cond;
+                    //$datos->carrera_cursa = $request->carrera_cursa; falta q lo deje modificar para que llege como request y guardar
+                    $datos->anio_ingreso = $request->anioingreso;
+                  //  $datos->anio_cursado = $request->aniocursado; falta q lo deje modificar para que llege como request y guardar
+                    $datos->tiene_trabajo = $request->trabaja;
+                    $datos->tipo_trabajo = $request->actlab;
+                    $datos->sueldo = $request->sueldo;
+                    $datos->tiene_beca = $request->beca;
+                    $datos->tiene_progresar = $request->progresar;
+                    $datos->tiene_asig = $request->asig;
+                    $datos->otros_ing = $request->otrosing;
+                    $datos->domi_cursado = $request->domicursa;
+                    $datos->casa_fam = $request->casafam;
+                    $datos->tiene_alq = $request->alq;
+                    $datos->monto_alq = $request->montoalq;
+                    $datos->usa_urbano = $request->urbano;
+                    $datos->cant_viajes = $request->cantviaja;
+                    $datos->usa_media_dist = $request->mediadist;
+                    $datos->cant_viaja_media = $request->cantviajamedia;
+                    $datos->precio_pasaje = $request->preciopasaje;
+                    $datos->es_propietario = $request->propietario;
+                    $datos->alquila = $request->alquila;
+                    $datos->precio_alquiler = $request->precioalquiler;
+                    $datos->prestada = $request->prestada;
+                    $datos->otros_vivienda = $request->otrosvivienda;
+                    $datos->tiene_campo = $request->campo;
+                    $datos->cant_has = $request->has;
+                    $datos->actividad = $request->actividad;
+                    $datos->tiene_terreno = $request->terreno;
+                    $datos->cant_terreno = $request->terrenocant;
+                    $datos->tiene_auto = $request->auto;
+                    $datos->cant_auto = $request->autocant;
+                    $datos->tiene_moto = $request->moto;
+                    $datos->cant_moto = $request->motocant;
+                    //$datos->motivos = $request->motivos; falta q lo deje modificar para que llege como request y guardar
+                    $datos->save();
+/*
+                    if ($con != null){
+            
+                    for ($k=0;$k<count($request->consideraciones);$k++) {
+                    $con->user_id = $request->user_id;
+                    $con->parentesco = $request->consideraciones[$k]['parentesco'];
+                    $con->enfermedad = $request->consideraciones[$k]['enfermedad'];
+                    $con->incapacidad = $request->consideraciones[$k]['incapacidad'];
+                    dd($con);
+                    $con->save();
+                    }
+                    }
+
+                    if ($fam != null){                
+                    for($l=0;$l<count($request->familiar);$l++) {
+                    $fam->user_id = $request->user_id;
+                    $fam->parentesco = $request->familiar[$l]['parentesco'];
+                    $fam->apeynom = $request->familiar[$l]['apeynom'];
+                    $fam->dni = $request->familiar[$l]['dnifam'];
+                    $fam->edad = $request->familiar[$l]['edadfam'];
+                    $fam->ocupacion = $request->familiar[$l]['ocupacionfam'];
+                    $fam->actividad_laboral = $request->familiar[$l]['actlab'];
+                    $fam->ingresos = $request->familiar[$l]['ingresosfam'];
+                    $fam->save();
+                    }
+                    }
+
+*/
+////hasta aca inputs
+
+
+
+
+                }else
+                 if($request->accion=="borra"){
+                    $datos = DatosPersona::where('user_id',$request->id)->first();
+                    $fam = Familiar::where('user_id',$request->id)->get();
+                    $con = Consideracione::where('user_id',$request->id)->get();
+                    $datos->delete();
+                    $fam->delete();
+                    $con->delete();
+          
+                    $ms = "Datos de inscripcion del usuario borrado con exito";
+                }else
+                {echo $ms="Ninguna seleccion";}
+            }
+            
+        return redirect('/administracion/inscripciones')->with('message', $ms);//
+        }
+        catch (Exception $e) {
+            return redirect('administracion/inscripciones')->with('message','Error en la accion con el usuario');
+        }
+
+    }
+
+
+    public function observacion (Request $request, $user_id){
+        if( (Auth::user()->role_id == '1') or (Auth::user()->role_id == '3') or (Auth::user()->role_id == '4') ){ 
+
+    
+        $inscrip = DB::table('inscripciones')->where('user_id', $user_id)->first();
+//        dd($inscrip);     
+        return view('vendor.voyager.inscripciones.observacion',compact('inscrip'));
+    } 
+       else{
+        return view('errors.404');
+    }
+    
+    }
+
+
+    public function guarda_observacion (Request $request){
+   //dd($request->user_id);
+        if($request->obs_new == NULL & $request->meritos_new==NULL & $request->otorgamiento == NULL){
+            return redirect('/administracion/inscripciones')->with('message','No escribiste ninguna modificacion');
+
+
+            }
+        else{
+            try {
+                $inscrip=\App\Inscripcione::findorfail($request->id)->first();
+                //$inscrip=DB::table('inscripcion')->where('user_id',$request->user_id)->first();    
+               // dd($inscrip);
+
+                $inscrip->observacion = $request->obs_new;
+                $inscrip->merito = $request->meritos_new;    
+                $inscrip->otorgamiento = $request->otorgamiento;         
+                $inscrip->save();
+                return redirect('/administracion/inscripciones')->with('message','Se guardaron los cambios de la observacion');
+            }
+            catch(Exception $e){
+                echo $e->getMessage();
+                return redirect('/administracion/inscripciones')->with('message','Error no se guardaron los cambios de la observacion');
+            }
+        }
+    }
+
+
+    public function otorgar(Request $request){
+        $datos_beca = DB::table('inscripciones')
+        ->join('becas', 'inscripciones.beca_id', '=', 'becas.id') /*mismas becas*/
+        ->where('inscripciones.beca_id', '=', $request->beca_id)->orderBy('inscripciones.merito','desc')->get();
+        //dd($datos_beca);
+     if ($datos_beca == null){
+        return redirect('/administracion/inscripciones')->with('message','No se pudo otorgar beca');
+    
+     }else{
+        foreach ($datos_beca as $datos) {//otorgamiento segun meritos obtenido y cant cargada
+            if($datos_beca->count()<$request->cant_otor){
+                return redirect('/administracion/inscripciones')->with('message','Mucha cantidad de becas para pocos postulantes');
+
+            }else{
+            if ($request->cant_otor > 0) {
+                //$d2=DB::table('inscripciones')->where('user_id','=',$datos->user_id)-first();
+
+                $inscrip=DB::Table('inscripciones')->where('user_id','=',$datos->user_id)->update(['otorgamiento'=>'Si', 'observacion'=>'Alta por otorgamiento']);
+                $request->cant_otor = $request->cant_otor-1;
+            }
+            }
+        }
+        return redirect('/administracion/inscripciones')->with('message','See otorgaron las becas a los postulados');
+    }
+}
+
+
+
+    public function dar_baja_inscripcion(Request $request, $id){
+       // dd($request);
+     $inscrip=DB::table('inscripciones')->where('user_id',$id);
+    //if($request->ajax()){
+     $inscrip->delete();
+      //  return response()->json(['msg' =>'Borrado!', 'status'=>'success']);
+    return redirect('/administracion/inscripciones')->with('message','Inscripcon borrada');
+    /* }
+     return response()->json(['msg' =>'Borrado!', 'status'=>'success']);
+    //Response()->json(array('success' =>true,'message' =>'Borrado!'));
+    */}   
+
+
 
 
 

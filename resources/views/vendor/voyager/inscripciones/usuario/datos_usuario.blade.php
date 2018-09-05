@@ -50,17 +50,11 @@
 <h1><p align="center">Panel administrativo de inscripciones</p></h1>
 <h3>Bienvenido {{Auth::user()->name}} </h3>
 
+ {!! Form::open(['route' =>'carga', 'method' => 'post' ]) !!}
 
 
 <div class="form-group">
 
-<form>
-  
-  
-                <input  value="{{$datos->user_name}} {{$datos->user_apellido}}" type="text" class="form-control" name="apellido" required>
-        
-
-</form>
 
 <div class="rwd">
   <h2 align="center"><div class="p-3 mb-2 bg-primary text-white">Datos de {{$datos->user_name}} {{$datos->user_apellido}}</div></h2>
@@ -75,21 +69,22 @@
       <th width="20%">Nombre</th>
   
 
-      <td width="40%"><input readonly value="{{ $datos->user_name}}" type="text"  class="form-control" name="nombre" id="idNombre" required></td><td>asd</td>
+      <td width="40%">
+      <input readonly value="{{ $datos->user_name}}" type="text"  class="form-control" name="nombre" id="idNombre" required></td><td>asd</td>
       <td>
-        <button onclick="quitarReadOnly('idNombre')"class="glyphicon glyphicon-edit"></button>
-        <button onclick="ponerReadOnly('idNombre')" class="glyphicon glyphicon-check"></button>
+       <input type="Button" onclick="quitarReadOnly('idNombre')"  title="Modificar" style="display: inline;" value="Modifcar" class="btn-xs btn-success">
+        <input type="Button" onclick="ponerReadOnly('idNombre')" title="Guardar"  style="display: inline;" value="Guardar" class="btn-xs btn-warning">
       </td>
 
       </tr>
-      <tr>
+  <tr>
       <th width="20%">Apellido</th> 
 
       <td width="40%"><input readonly value="{{$datos->user_apellido}}" type="text" class="form-control" name="apellido" id="idApellido" required></td><td>asd</td>
       
       <td>
-        <button onclick="quitarReadOnly('idApellido')"class="glyphicon glyphicon-edit"></button>
-        <button onclick="ponerReadOnly('idApellido')" class="glyphicon glyphicon-check"></button>
+        <input type="Button" style="display: inline;" onclick="quitarReadOnly('idApellido')"  class="btn-xs btn-success" title="Modificar" value="Modificar">
+        <input type="Button" style="display: inline;" onclick="ponerReadOnly('idApellido')" class="btn-xs btn-warning" title="Guardar" value="Guardar">
       </td>
       </tr>
 
@@ -107,8 +102,8 @@
         </a>
         </td>         
     <td>
-        <button onclick="quitarReadOnly('idDNI')"class="glyphicon glyphicon-edit"></button>
-        <button onclick="ponerReadOnly('idDNI')" class="glyphicon glyphicon-check"></button>
+        <input type="Button" style="display: inline;" onclick="quitarReadOnly('idDNI')" class="btn-xs btn-success" title="Modificar" value="Modificar">
+        <input type="Button" style="display: inline;" onclick="ponerReadOnly('idDNI')" class="btn-xs btn-warning" title="Guardar" value="Guardar">
       </td>
       </tr>
 
@@ -130,8 +125,8 @@
 
       
       <td>
-        <button onclick="quitarReadOnly('idEstcivil')"class="glyphicon glyphicon-edit"></button>
-        <button onclick="ponerReadOnly('idEstcivil')" class="glyphicon glyphicon-check"></button>
+        <input type="Button" style="display: inline;" onclick="quitarReadOnly('idEstcivil')" class="btn-xs btn-success" title="Modificar" value="Modificar">
+        <input type="Button" style="display: inline;" onclick="ponerReadOnly('idEstcivil')" class="btn-xs btn-warning" title="Guardar" value="Guardar">
       </td>
     </tr>
 
@@ -141,8 +136,8 @@
     <td width="40%"><input readonly value="{{$datos->cumple}}" type="date" class="form-control" name="cumple" id="idCumple" required></td><td>asd</td>
       
       <td>
-        <button onclick="quitarReadOnly('idCumple')"class="glyphicon glyphicon-edit"></button>
-        <button onclick="ponerReadOnly('idCumple')" class="glyphicon glyphicon-check"></button>
+        <input type="Button" style="display: inline;" onclick="quitarReadOnly('idCumple')" class="btn-xs btn-success" title="Modificar" value="Modificar">
+        <input type="Button" style="display: inline;" onclick="ponerReadOnly('idCumple')" class="btn-xs btn-warning" title="Guardar" value="Guardar">
       </td>
     </tr>
     
@@ -152,8 +147,8 @@
     <td width="40%"><input readonly value="{{ $datos->domicilio}}" type="text" class="form-control" name="domi" id="idDomi" required></td><td>asd</td>
       
       <td>
-        <button onclick="quitarReadOnly('idDomi')"class="glyphicon glyphicon-edit"></button>
-        <button onclick="ponerReadOnly('idDomi')" class="glyphicon glyphicon-check"></button>
+        <input type="Button" style="display: inline;" onclick="quitarReadOnly('idDomi')" class="btn-xs btn-success" title="Modificar" value="Modificar">
+        <input type="Button" style="display: inline;" onclick="ponerReadOnly('idDomi')" class="btn-xs btn-warning" title="Guardar" value="Guardar">
       </td>
     </tr>
 
@@ -171,8 +166,8 @@
     <td width="40%"><input readonly value="{{ $datos->cel}}" type="text" class="form-control" name="cel" id="idCel" required></td><td>asd</td>
       
       <td>
-        <button onclick="quitarReadOnly('idCel')"class="glyphicon glyphicon-edit"></button>
-        <button onclick="ponerReadOnly('idCel')" class="glyphicon glyphicon-check"></button>
+        <input type="Button" style="display: inline;" onclick="quitarReadOnly('idCel')" class="btn-xs btn-success" title="Modificar" value="Modificar">
+        <input type="Button" style="display: inline;" onclick="ponerReadOnly('idCel')" class="btn-xs btn-warning" title="Guardar" value="Guardar">
       </td>
     </tr>
 
@@ -182,8 +177,8 @@
     <td width="40%"><input readonly value="{{ $datos->user_email }}" type="text" class="form-control" name="email" id="idEmail" required></td><td>asd</td>
       
       <td>
-        <button onclick="quitarReadOnly('idEmail')"class="glyphicon glyphicon-edit"></button>
-        <button onclick="ponerReadOnly('idEmail')" class="glyphicon glyphicon-check"></button>
+        <input type="Button" style="display: inline;" onclick="quitarReadOnly('idEmail')" class="btn-xs btn-success" title="Modificar" value="Modificar">
+        <input type="Button" style="display: inline;" onclick="ponerReadOnly('idEmail')" class="btn-xs btn-warning" title="Guardar" value="Guardar">
       </td>
     </tr>
 
@@ -193,8 +188,8 @@
       <td width="40%"><input readonly value="{{ $datos->face}}" type="text" class="form-control" name="face" id="idFace" required></td><td>asd</td>
       
       <td>
-        <button onclick="quitarReadOnly('idFace')"class="glyphicon glyphicon-edit"></button>
-        <button onclick="ponerReadOnly('idFace')" class="glyphicon glyphicon-check"></button>
+        <input type="Button" style="display: inline;" onclick="quitarReadOnly('idFace')" class="btn-xs btn-success" title="Modificar" value="Modificar">
+        <input type="Button" style="display: inline;" onclick="ponerReadOnly('idFace')" class="btn-xs btn-warning" title="Guardar" value="Guardar">
       </td>
     </tr>
 
@@ -217,8 +212,8 @@
               <img src="{{ action('InscripcionesController@getFile',['filename' => $datos->certificado_discapacidad]) }}" alt="..." class="img-responsive lightbox hide">
           </a></td>
           <td>
-        <button onclick="quitarReadOnly('idDiscaest')"class="glyphicon glyphicon-edit"></button>
-        <button onclick="ponerReadOnly('idDiscaest')" class="glyphicon glyphicon-check"></button>
+        <input type="Button" style="display: inline;" onclick="quitarReadOnly('idDiscaest')" class="btn-xs btn-success" title="Modificar" value="Modificar">
+        <input type="Button" style="display: inline;" onclick="ponerReadOnly('idDiscaest')" class="btn-xs btn-warning" title="Guardar" value="Guardar">
       </td>
       </tr>
 
@@ -261,8 +256,8 @@
         </td>
         
         <td>
-        <button onclick="quitarReadOnly('IdCond')"class="glyphicon glyphicon-edit"></button>
-        <button onclick="ponerReadOnly('IdCond')" class="glyphicon glyphicon-check"></button>
+        <input type="Button" style="display: inline;" onclick="quitarReadOnly('IdCond')" class="btn-xs btn-success" title="Modificar" value="Modificar">
+        <input type="Button" style="display: inline;" onclick="ponerReadOnly('IdCond')" class="btn-xs btn-warning" title="Guardar" value="Guardar">
       </td>
        </tr>
 
@@ -272,8 +267,8 @@
         <td>{{ $datos->carrera_cursa}} <- nombre
         </td><td></td>
         <td>
-        <button onclick="quitarReadOnly('IdCond')"class="glyphicon glyphicon-edit"></button>
-        <button onclick="ponerReadOnly('IdCond')" class="glyphicon glyphicon-check"></button>
+        <input type="Button" style="display: inline;" onclick="quitarReadOnly('IdCond')" class="btn-xs btn-success" title="Modificar" value="Modificar">
+        <input type="Button" style="display: inline;" onclick="ponerReadOnly('IdCond')" class="btn-xs btn-warning" title="Guardar" value="Guardar">
       </td>
        </tr>
 
@@ -337,8 +332,8 @@
                 </select>
         </td><td></td>
         <td>
-          <button onclick="quitarReadOnly('IdAnioingreso')"class="glyphicon glyphicon-edit"></button>
-          <button onclick="ponerReadOnly('IdAnioingreso')" class="glyphicon glyphicon-check"></button>
+          <input type="Button" style="display: inline;" onclick="quitarReadOnly('IdAnioingreso')" class="btn-xs btn-success" title="Modificar" value="Modificar">
+          <input type="Button" style="display: inline;" onclick="ponerReadOnly('IdAnioingreso')" class="btn-xs btn-warning" title="Guardar" value="Guardar">
         </td>
         </tr>
 
@@ -368,8 +363,8 @@
             <td>
             </td>
             <td>
-              <button onclick="quitarReadOnly('Idtrabaja')"class="glyphicon glyphicon-edit"></button>
-              <button onclick="ponerReadOnly('Idtrabaja')" class="glyphicon glyphicon-check"></button>
+              <input type="Button" style="display: inline;" onclick="quitarReadOnly('Idtrabaja')" class="btn-xs btn-success" title="Modificar" value="Modificar">
+              <input type="Button" style="display: inline;" onclick="ponerReadOnly('Idtrabaja')" class="btn-xs btn-warning" title="Guardar" value="Guardar">
             </td>
           </tr>
 
@@ -385,8 +380,8 @@
             <td>  
             </td>
             <td>
-              <button onclick="quitarReadOnly('IdActlab')"class="glyphicon glyphicon-edit"></button>
-              <button onclick="ponerReadOnly('IdActlab')" class="glyphicon glyphicon-check"></button>
+              <input type="Button" style="display: inline;" onclick="quitarReadOnly('IdActlab')" class="btn-xs btn-success" title="Modificar" value="Modificar">
+              <input type="Button" style="display: inline;" onclick="ponerReadOnly('IdActlab')" class="btn-xs btn-warning" title="Guardar" value="Guardar">
             </td>
           </tr>
 
@@ -399,8 +394,8 @@
               </a>
             </td>
             <td>
-              <button onclick="quitarReadOnly('idSueldo')"class="glyphicon glyphicon-edit"></button>
-              <button onclick="ponerReadOnly('idSueldo')" class="glyphicon glyphicon-check"></button>
+              <input type="Button" style="display: inline;" onclick="quitarReadOnly('idSueldo')" class="btn-xs btn-success" title="Modificar" value="Modificar">
+              <input type="Button" style="display: inline;" onclick="ponerReadOnly('idSueldo')" class="btn-xs btn-warning" title="Guardar" value="Guardar">
             </td>
           </tr>
 
@@ -418,8 +413,8 @@
             <td>
             </td>
             <td>
-              <button onclick="quitarReadOnly('IdBeca')"class="glyphicon glyphicon-edit"></button>
-              <button onclick="ponerReadOnly('IdBeca')" class="glyphicon glyphicon-check"></button>
+              <input type="Button" style="display: inline;" onclick="quitarReadOnly('IdBeca')" class="btn-xs btn-success" title="Modificar" value="Modificar">
+              <input type="Button" style="display: inline;" onclick="ponerReadOnly('IdBeca')" class="btn-xs btn-warning" title="Guardar" value="Guardar">
             </td>
           </tr>
 
@@ -436,8 +431,8 @@
             <td>
             </td>
             <td>
-              <button onclick="quitarReadOnly('IdProgresar')"class="glyphicon glyphicon-edit"></button>
-              <button onclick="ponerReadOnly('IdProgresar')" class="glyphicon glyphicon-check"></button>
+              <input type="Button" style="display: inline;" onclick="quitarReadOnly('IdProgresar')" class="btn-xs btn-success" title="Modificar" value="Modificar">
+              <input type="Button" style="display: inline;" onclick="ponerReadOnly('IdProgresar')" class="btn-xs btn-warning" title="Guardar" value="Guardar">
             </td>
           </tr>
 
@@ -454,8 +449,8 @@
             <td>
             </td>
             <td>
-              <button onclick="quitarReadOnly('idPasan')"class="glyphicon glyphicon-edit"></button>
-              <button onclick="ponerReadOnly('idPasan')" class="glyphicon glyphicon-check"></button>
+              <input type="Button" style="display: inline;" onclick="quitarReadOnly('idPasan')" class="btn-xs btn-success" title="Modificar" value="Modificar">
+              <input type="Button" style="display: inline;" onclick="ponerReadOnly('idPasan')" class="btn-xs btn-warning" title="Guardar" value="Guardar">
             </td>
           </tr>
 
@@ -473,8 +468,8 @@
             <td>
             </td>
             <td>
-              <button onclick="quitarReadOnly('idAsig')"class="glyphicon glyphicon-edit"></button>
-              <button onclick="ponerReadOnly('idAsig')" class="glyphicon glyphicon-check"></button>
+              <input type="Button" style="display: inline;" onclick="quitarReadOnly('idAsig')" class="btn-xs btn-success" title="Modificar" value="Modificar">
+              <input type="Button" style="display: inline;" onclick="ponerReadOnly('idAsig')" class="btn-xs btn-warning" title="Guardar" value="Guardar">
             </td>
           </tr>
 
@@ -485,8 +480,8 @@
               <input readonly value="{{ $datos->otros_ing }}" type="text-area" class="form-control" name="otrosing" id="idOtrosing">
             </td><td></td>
             <td>
-              <button onclick="quitarReadOnly('idOtrosing')"class="glyphicon glyphicon-edit"></button>
-              <button onclick="ponerReadOnly('idOtrosing')" class="glyphicon glyphicon-check"></button>
+              <input type="Button" style="display: inline;" onclick="quitarReadOnly('idOtrosing')" class="btn-xs btn-success" title="Modificar" value="Modificar">
+              <input type="Button" style="display: inline;" onclick="ponerReadOnly('idOtrosing')" class="btn-xs btn-warning" title="Guardar" value="Guardar">
             </td>
           </tr>
         
@@ -509,8 +504,8 @@
               <input readonly value="{{ $datos->domi_cursado }}" type="text-area" class="form-control" name="domicursa" id="idDomicursa">
             </td><td></td>
             <td>
-              <button onclick="quitarReadOnly('idDomicursa')"class="glyphicon glyphicon-edit"></button>
-              <button onclick="ponerReadOnly('idDomicursa')" class="glyphicon glyphicon-check"></button>
+              <input type="Button" style="display: inline;" onclick="quitarReadOnly('idDomicursa')" class="btn-xs btn-success" title="Modificar" value="Modificar">
+              <input type="Button" style="display: inline;" onclick="ponerReadOnly('idDomicursa')" class="btn-xs btn-warning" title="Guardar" value="Guardar">
             </td>
           </tr>
 
@@ -525,8 +520,8 @@
             </td>
                 <td></td>
             <td>
-              <button onclick="quitarReadOnly('idCasafam')"class="glyphicon glyphicon-edit"></button>
-              <button onclick="ponerReadOnly('idCasafam')" class="glyphicon glyphicon-check"></button>
+              <input type="Button" style="display: inline;" onclick="quitarReadOnly('idCasafam')" class="btn-xs btn-success" title="Modificar" value="Modificar">
+              <input type="Button" style="display: inline;" onclick="ponerReadOnly('idCasafam')" class="btn-xs btn-warning" title="Guardar" value="Guardar">
             </td>
           </tr>
           
@@ -543,8 +538,8 @@
             </td>
                 <td></td>
             <td>
-              <button onclick="quitarReadOnly('idAlq')"class="glyphicon glyphicon-edit"></button>
-              <button onclick="ponerReadOnly('idAlq')" class="glyphicon glyphicon-check"></button>
+              <input type="Button" style="display: inline;" onclick="quitarReadOnly('idAlq')" class="btn-xs btn-success" title="Modificar" value="Modificar">
+              <input type="Button" style="display: inline;" onclick="ponerReadOnly('idAlq')" class="btn-xs btn-warning" title="Guardar" value="Guardar">
             </td>
               
           </tr>
@@ -562,8 +557,8 @@
               </a>
             </td>
             <td>
-              <button onclick="quitarReadOnly('idMontoalq')"class="glyphicon glyphicon-edit"></button>
-              <button onclick="ponerReadOnly('idMontoalq')" class="glyphicon glyphicon-check"></button>
+              <input type="Button" style="display: inline;" onclick="quitarReadOnly('idMontoalq')" class="btn-xs btn-success" title="Modificar" value="Modificar">
+              <input type="Button" style="display: inline;" onclick="ponerReadOnly('idMontoalq')" class="btn-xs btn-warning" title="Guardar" value="Guardar">
             </td>
               
           </tr>
@@ -592,8 +587,8 @@
             </td>
             <td></td>
             <td>
-              <button onclick="quitarReadOnly('idUrbano')"class="glyphicon glyphicon-edit"></button>
-              <button onclick="ponerReadOnly('idUrbano')" class="glyphicon glyphicon-check"></button>
+              <input type="Button" style="display: inline;" onclick="quitarReadOnly('idUrbano')" class="btn-xs btn-success" title="Modificar" value="Modificar">
+              <input type="Button" style="display: inline;" onclick="ponerReadOnly('idUrbano')" class="btn-xs btn-warning" title="Guardar" value="Guardar">
             </td>
           </tr>
 
@@ -657,8 +652,8 @@
             </td>
             <td></td>
             <td>
-              <button onclick="quitarReadOnly('idCantviaja')"class="glyphicon glyphicon-edit"></button>
-              <button onclick="ponerReadOnly('idCantviaja')" class="glyphicon glyphicon-check"></button>
+              <input type="Button" style="display: inline;" onclick="quitarReadOnly('idCantviaja')" class="btn-xs btn-success" title="Modificar" value="Modificar">
+              <input type="Button" style="display: inline;" onclick="ponerReadOnly('idCantviaja')" class="btn-xs btn-warning" title="Guardar" value="Guardar">
             </td>
           </tr>
   
@@ -674,8 +669,8 @@
             <td>  
             </td>
             <td>
-              <button onclick="quitarReadOnly('idMediadist')"class="glyphicon glyphicon-edit"></button>
-              <button onclick="ponerReadOnly('idMediadist')" class="glyphicon glyphicon-check"></button>
+              <input type="Button" style="display: inline;" onclick="quitarReadOnly('idMediadist')" class="btn-xs btn-success" title="Modificar" value="Modificar">
+              <input type="Button" style="display: inline;" onclick="ponerReadOnly('idMediadist')" class="btn-xs btn-warning" title="Guardar" value="Guardar">
             </td>
           </tr>
 
@@ -720,8 +715,8 @@
             </td>
             <td></td>
             <td>
-              <button onclick="quitarReadOnly('idCantviajamedia')"class="glyphicon glyphicon-edit"></button>
-              <button onclick="ponerReadOnly('idCantviajamedia')" class="glyphicon glyphicon-check"></button>
+              <input type="Button" style="display: inline;" onclick="quitarReadOnly('idCantviajamedia')" class="btn-xs btn-success" title="Modificar" value="Modificar">
+              <input type="Button" style="display: inline;" onclick="ponerReadOnly('idCantviajamedia')" class="btn-xs btn-warning" title="Guardar" value="Guardar">
             </td>
           </tr>
 
@@ -737,8 +732,8 @@
               </a>
             </td>
             <td>
-              <button onclick="quitarReadOnly('idPreciopasaje')"class="glyphicon glyphicon-edit"></button>
-              <button onclick="ponerReadOnly('idPreciopasaje')" class="glyphicon glyphicon-check"></button>
+              <input type="Button" style="display: inline;" onclick="quitarReadOnly('idPreciopasaje')" class="btn-xs btn-success" title="Modificar" value="Modificar">
+              <input type="Button" style="display: inline;" onclick="ponerReadOnly('idPreciopasaje')" class="btn-xs btn-warning" title="Guardar" value="Guardar">
             </td>
           </tr>
 
@@ -761,8 +756,8 @@
              </td>   
             <td></td>
             <td>
-              <button onclick="quitarReadOnly('idPropietario')"class="glyphicon glyphicon-edit"></button>
-              <button onclick="ponerReadOnly('idPropietario')" class="glyphicon glyphicon-check"></button>
+              <input type="Button" style="display: inline;" onclick="quitarReadOnly('idPropietario')" class="btn-xs btn-success" title="Modificar" value="Modificar">
+              <input type="Button" style="display: inline;" onclick="ponerReadOnly('idPropietario')" class="btn-xs btn-warning" title="Guardar" value="Guardar">
             </td>
 
           </tr>
@@ -780,8 +775,8 @@
              
             </td>
             <td>
-              <button onclick="quitarReadOnly('idAlquila')"class="glyphicon glyphicon-edit"></button>
-              <button onclick="ponerReadOnly('idAlquila')" class="glyphicon glyphicon-check"></button>
+              <input type="Button" style="display: inline;" onclick="quitarReadOnly('idAlquila')" class="btn-xs btn-success" title="Modificar" value="Modificar">
+              <input type="Button" style="display: inline;" onclick="ponerReadOnly('idAlquila')" class="btn-xs btn-warning" title="Guardar" value="Guardar">
             </td>
           </tr>
 
@@ -797,8 +792,8 @@
               </a>
             </td>
             <td>
-              <button onclick="quitarReadOnly('idReciboalqfam')"class="glyphicon glyphicon-edit"></button>
-              <button onclick="ponerReadOnly('idReciboalqfam')" class="glyphicon glyphicon-check"></button>
+              <input type="Button" style="display: inline;" onclick="quitarReadOnly('idReciboalqfam')" class="btn-xs btn-success" title="Modificar" value="Modificar">
+              <input type="Button" style="display: inline;" onclick="ponerReadOnly('idReciboalqfam')" class="btn-xs btn-warning" title="Guardar" value="Guardar">
             </td>
           </tr>
 
@@ -814,8 +809,8 @@
           </td>            
             <td></td>
             <td>
-              <button onclick="quitarReadOnly('idPrestada')"class="glyphicon glyphicon-edit"></button>
-              <button onclick="ponerReadOnly('idPrestada')" class="glyphicon glyphicon-check"></button>
+              <input type="Button" style="display: inline;" onclick="quitarReadOnly('idPrestada')" class="btn-xs btn-success" title="Modificar" value="Modificar">
+              <input type="Button" style="display: inline;" onclick="ponerReadOnly('idPrestada')" class="btn-xs btn-warning" title="Guardar" value="Guardar">
             </td>
 
           </tr>
@@ -827,8 +822,8 @@
             </td>
             <td></td>
             <td>
-              <button onclick="quitarReadOnly('idOtrosvivienda')"class="glyphicon glyphicon-edit"></button>
-              <button onclick="ponerReadOnly('idOtrosvivienda')" class="glyphicon glyphicon-check"></button>
+              <input type="Button" style="display: inline;" onclick="quitarReadOnly('idOtrosvivienda')" class="btn-xs btn-success" title="Modificar" value="Modificar">
+              <input type="Button" style="display: inline;" onclick="ponerReadOnly('idOtrosvivienda')" class="btn-xs btn-warning" title="Guardar" value="Guardar">
             </td>
           </tr>
 
@@ -842,8 +837,8 @@
             </td>
             <td></td>
             <td>
-              <button onclick="quitarReadOnly('idCampo')"class="glyphicon glyphicon-edit"></button>
-              <button onclick="ponerReadOnly('idCampo')" class="glyphicon glyphicon-check"></button>
+              <input type="Button" style="display: inline;" onclick="quitarReadOnly('idCampo')" class="btn-xs btn-success" title="Modificar" value="Modificar">
+              <input type="Button" style="display: inline;" onclick="ponerReadOnly('idCampo')" class="btn-xs btn-warning" title="Guardar" value="Guardar">
             </td>
           </tr>
 
@@ -854,8 +849,8 @@
               <input readonly value="{{ $datos->cant_has}}"  type="number" min="0" class="form-control" name="has" id="idHas" required>
             </td><td></td>
             <td>
-              <button onclick="quitarReadOnly('idHas')"class="glyphicon glyphicon-edit"></button>
-              <button onclick="ponerReadOnly('idHas')" class="glyphicon glyphicon-check"></button>
+              <input type="Button" style="display: inline;" onclick="quitarReadOnly('idHas')" class="btn-xs btn-success" title="Modificar" value="Modificar">
+              <input type="Button" style="display: inline;" onclick="ponerReadOnly('idHas')" class="btn-xs btn-warning" title="Guardar" value="Guardar">
             </td>
           </tr>
 
@@ -866,8 +861,8 @@
             </td>
             <td></td>
             <td>
-              <button onclick="quitarReadOnly('idActividad')"class="glyphicon glyphicon-edit"></button>
-              <button onclick="ponerReadOnly('idActividad')" class="glyphicon glyphicon-check"></button>
+              <input type="Button" style="display: inline;" onclick="quitarReadOnly('idActividad')" class="btn-xs btn-success" title="Modificar" value="Modificar">
+              <input type="Button" style="display: inline;" onclick="ponerReadOnly('idActividad')" class="btn-xs btn-warning" title="Guardar" value="Guardar">
             </td>
           </tr>
 
@@ -881,8 +876,8 @@
             </td>
             <td></td>
             <td>
-              <button onclick="quitarReadOnly('idTerreno')"class="glyphicon glyphicon-edit"></button>
-              <button onclick="ponerReadOnly('idTerreno')" class="glyphicon glyphicon-check"></button>
+              <input type="Button" style="display: inline;" onclick="quitarReadOnly('idTerreno')" class="btn-xs btn-success" title="Modificar" value="Modificar">
+              <input type="Button" style="display: inline;" onclick="ponerReadOnly('idTerreno')" class="btn-xs btn-warning" title="Guardar" value="Guardar">
             </td>
           </tr>
 
@@ -893,8 +888,8 @@
             </td>
             <td></td>
             <td>
-              <button onclick="quitarReadOnly('idTerrenocant')"class="glyphicon glyphicon-edit"></button>
-              <button onclick="ponerReadOnly('idTerrenocant')" class="glyphicon glyphicon-check"></button>
+              <input type="Button" style="display: inline;" onclick="quitarReadOnly('idTerrenocant')" class="btn-xs btn-success" title="Modificar" value="Modificar">
+              <input type="Button" style="display: inline;" onclick="ponerReadOnly('idTerrenocant')" class="btn-xs btn-warning" title="Guardar" value="Guardar">
             </td>
           </tr>
 
@@ -908,8 +903,8 @@
             </td>
             <td></td>
             <td>
-              <button onclick="quitarReadOnly('idAuto')"class="glyphicon glyphicon-edit"></button>
-              <button onclick="ponerReadOnly('idAuto')" class="glyphicon glyphicon-check"></button>
+              <input type="Button" style="display: inline;" onclick="quitarReadOnly('idAuto')" class="btn-xs btn-success" title="Modificar" value="Modificar">
+              <input type="Button" style="display: inline;" onclick="ponerReadOnly('idAuto')" class="btn-xs btn-warning" title="Guardar" value="Guardar">
             </td>
           </tr>
 
@@ -920,8 +915,8 @@
             </td>
             <td></td>
             <td>
-              <button onclick="quitarReadOnly('idAutocant')"class="glyphicon glyphicon-edit"></button>
-              <button onclick="ponerReadOnly('idAutocant')" class="glyphicon glyphicon-check"></button>
+              <input type="Button" style="display: inline;" onclick="quitarReadOnly('idAutocant')" class="btn-xs btn-success" title="Modificar" value="Modificar">
+              <input type="Button" style="display: inline;" onclick="ponerReadOnly('idAutocant')" class="btn-xs btn-warning" title="Guardar" value="Guardar">
             </td>
           </tr>
 
@@ -935,8 +930,8 @@
             </td>
             <td></td>
             <td>
-              <button onclick="quitarReadOnly('idMoto')"class="glyphicon glyphicon-edit"></button>
-              <button onclick="ponerReadOnly('idMoto')" class="glyphicon glyphicon-check"></button>
+              <input type="Button" style="display: inline;" onclick="quitarReadOnly('idMoto')" class="btn-xs btn-success" title="Modificar" value="Modificar">
+              <input type="Button" style="display: inline;" onclick="ponerReadOnly('idMoto')" class="btn-xs btn-warning" title="Guardar" value="Guardar">
             </td>
           </tr>
 
@@ -947,8 +942,8 @@
             </td>
             <td></td>
             <td>
-              <button onclick="quitarReadOnly('idMotocant')"class="glyphicon glyphicon-edit"></button>
-              <button onclick="ponerReadOnly('idMotocant')" class="glyphicon glyphicon-check"></button>
+              <input type="Button" style="display: inline;" onclick="quitarReadOnly('idMotocant')" class="btn-xs btn-success" title="Modificar" value="Modificar">
+              <input type="Button" style="display: inline;" onclick="ponerReadOnly('idMotocant')" class="btn-xs btn-warning" title="Guardar" value="Guardar">
             </td>
           </tr>
 
@@ -981,8 +976,8 @@
             <td></td>
 
            <td>
-              <button onclick="quitarReadOnly('familiar{{ $i }}idParentesco')"class="glyphicon glyphicon-edit"></button>
-              <button onclick="ponerReadOnly('familiar{{ $i }}idParentesco')" class="glyphicon glyphicon-check"></button>
+              <input type="Button" style="display: inline;" onclick="quitarReadOnly('familiar{{ $i }}idParentesco')" class="btn-xs btn-success" title="Modificar" value="Modificar">
+              <input type="Button" style="display: inline;" onclick="ponerReadOnly('familiar{{ $i }}idParentesco')" class="btn-xs btn-warning" title="Guardar" value="Guardar">
             </td> 
 
           </tr>
@@ -994,8 +989,8 @@
             <td></td>
 
            <td>
-              <button onclick="quitarReadOnly('familiar{{ $i }}idApeynom')"class="glyphicon glyphicon-edit"></button>
-              <button onclick="ponerReadOnly('familiar{{ $i }}idApeynom')" class="glyphicon glyphicon-check"></button>
+              <input type="Button" style="display: inline;" onclick="quitarReadOnly('familiar{{ $i }}idApeynom')" class="btn-xs btn-success" title="Modificar" value="Modificar">
+              <input type="Button" style="display: inline;" onclick="ponerReadOnly('familiar{{ $i }}idApeynom')" class="btn-xs btn-warning" title="Guardar" value="Guardar">
             </td> 
 
           </tr>
@@ -1016,8 +1011,8 @@
             </td>
 
            <td>
-              <button onclick="quitarReadOnly('familiar{{ $i }}dnifam')"class="glyphicon glyphicon-edit"></button>
-              <button onclick="ponerReadOnly('familiar{{ $i }}dnifam')" class="glyphicon glyphicon-check"></button>
+              <input type="Button" style="display: inline;" onclick="quitarReadOnly('familiar{{ $i }}dnifam')" class="btn-xs btn-success" title="Modificar" value="Modificar">
+              <input type="Button" style="display: inline;" onclick="ponerReadOnly('familiar{{ $i }}dnifam')" class="btn-xs btn-warning" title="Guardar" value="Guardar">
             </td> 
 
           </tr>
@@ -1030,8 +1025,8 @@
             <td></td>
 
            <td>
-              <button onclick="quitarReadOnly('familiar{{ $i }}edadfam')"class="glyphicon glyphicon-edit"></button>
-              <button onclick="ponerReadOnly('familiar{{ $i }}edadfam')" class="glyphicon glyphicon-check"></button>
+              <input type="Button" style="display: inline;" onclick="quitarReadOnly('familiar{{ $i }}edadfam')" class="btn-xs btn-success" title="Modificar" value="Modificar">
+              <input type="Button" style="display: inline;" onclick="ponerReadOnly('familiar{{ $i }}edadfam')" class="btn-xs btn-warning" title="Guardar" value="Guardar">
             </td> 
 
           </tr>
@@ -1043,8 +1038,8 @@
             <td></td>
 
            <td>
-              <button onclick="quitarReadOnly('familiar{{ $i }}ocupacionfam')"class="glyphicon glyphicon-edit"></button>
-              <button onclick="ponerReadOnly('familiar{{ $i }}ocupacionfam')" class="glyphicon glyphicon-check"></button>
+              <input type="Button" style="display: inline;" onclick="quitarReadOnly('familiar{{ $i }}ocupacionfam')" class="btn-xs btn-success" title="Modificar" value="Modificar">
+              <input type="Button" style="display: inline;" onclick="ponerReadOnly('familiar{{ $i }}ocupacionfam')" class="btn-xs btn-warning" title="Guardar" value="Guardar">
             </td> 
 
           </tr>
@@ -1063,8 +1058,8 @@
             <td></td>
 
            <td>
-              <button onclick="quitarReadOnly('familiar{{ $i }}actlab')"class="glyphicon glyphicon-edit"></button>
-              <button onclick="ponerReadOnly('familiar{{ $i }}actlab')" class="glyphicon glyphicon-check"></button>
+              <input type="Button" style="display: inline;" onclick="quitarReadOnly('familiar{{ $i }}actlab')" class="btn-xs btn-success" title="Modificar" value="Modificar">
+              <input type="Button" style="display: inline;" onclick="ponerReadOnly('familiar{{ $i }}actlab')" class="btn-xs btn-warning" title="Guardar" value="Guardar">
             </td> 
 
           </tr>
@@ -1096,8 +1091,8 @@
             </td>
 
            <td>
-              <button onclick="quitarReadOnly('familiar{{ $i }}ocupacionfam')"class="glyphicon glyphicon-edit"></button>
-              <button onclick="ponerReadOnly('familiar{{ $i }}ocupacionfam')" class="glyphicon glyphicon-check"></button>
+              <input type="Button" style="display: inline;" onclick="quitarReadOnly('familiar{{ $i }}ocupacionfam')" class="btn-xs btn-success" title="Modificar" value="Modificar">
+              <input type="Button" style="display: inline;" onclick="ponerReadOnly('familiar{{ $i }}ocupacionfam')" class="btn-xs btn-warning" title="Guardar" value="Guardar">
             </td> 
 
           </tr>
@@ -1141,8 +1136,8 @@
             <td></td>
 
            <td>
-              <button onclick="quitarReadOnly('consideraciones{{ $i }}idParentesco')"class="glyphicon glyphicon-edit"></button>
-              <button onclick="ponerReadOnly('consideraciones{{ $i }}idParentesco')" class="glyphicon glyphicon-check"></button>
+              <input type="Button" style="display: inline;" onclick="quitarReadOnly('consideraciones{{ $i }}idParentesco')" class="btn-xs btn-success" title="Modificar" value="Modificar">
+              <input type="Button" style="display: inline;" onclick="ponerReadOnly('consideraciones{{ $i }}idParentesco')" class="btn-xs btn-warning" title="Guardar" value="Guardar">
             </td> 
 
           </tr>
@@ -1154,8 +1149,8 @@
             <td></td>
 
            <td>
-              <button onclick="quitarReadOnly('consideraciones{{ $i }}idEnfermedad')"class="glyphicon glyphicon-edit"></button>
-              <button onclick="ponerReadOnly('consideraciones{{ $i }}idEnfermedad')" class="glyphicon glyphicon-check"></button>
+              <input type="Button" style="display: inline;" onclick="quitarReadOnly('consideraciones{{ $i }}idEnfermedad')" class="btn-xs btn-success" title="Modificar" value="Modificar">
+              <input type="Button" style="display: inline;" onclick="ponerReadOnly('consideraciones{{ $i }}idEnfermedad')" class="btn-xs btn-warning" title="Guardar" value="Guardar">
             </td> 
 
           </tr>
@@ -1172,8 +1167,8 @@
             </td>
 
            <td>
-              <button onclick="quitarReadOnly('consideraciones{{ $i }}idIncapacidad')"class="glyphicon glyphicon-edit"></button>
-              <button onclick="ponerReadOnly('consideraciones{{ $i }}idIncapacidad')" class="glyphicon glyphicon-check"></button>
+              <input type="Button" style="display: inline;" onclick="quitarReadOnly('consideraciones{{ $i }}idIncapacidad')" class="btn-xs btn-success" title="Modificar" value="Modificar">
+              <input type="Button" style="display: inline;" onclick="ponerReadOnly('consideraciones{{ $i }}idIncapacidad')" class="btn-xs btn-warning" title="Guardar" value="Guardar">
             </td> 
 
           </tr>
@@ -1203,6 +1198,46 @@
 
 
 
+  <h3 align="center" class="">Conformacion del puntaje del <strong>postulante</strong></h3>
+    <table align="center" border="3" class=""> 
+        <tr><th class="bg-success"><td class="bg-success" align="center">Puntaje</td> </th></tr>
+
+          <tr>
+            <th>puntaje 1</th>
+            <td align="center"> <input readonly value="{{ $datos->cant_terreno}}"  type="text" class="form-control" name="punt_1" id="punt_1" required> 
+            </td>
+            
+          </tr>
+
+          <tr>
+            <th>Puntaje 2</th>
+            <td align="center"> <input readonly value="{{ $datos->cant_terreno}}"  type="text" class="form-control" name="punt_2" id="punt_2" required>              
+            </td>
+
+          </tr>
+          
+          
+          <tr>
+            <th>Puntaje 3</th>
+            <td align="center"> <input readonly value="{{ $datos->cant_terreno}}"  type="text" class="form-control" name="punt_3" id="punt_3" required>              
+            </td>
+          </tr>
+         
+          <tr align="center">
+            <th align="center"><font color="red"><strong>Total</strong></font></th>
+            <td class="" align="center"> <input readonly value="{{ $datos->cant_terreno}}"  type="text" class="form-control" name="punt_3" id="punt_3" required align="center">              
+            </td>
+
+          </tr>
+
+
+          </tr>
+
+
+  
+    </table>
+
+
    
 
 
@@ -1226,43 +1261,35 @@
 <br><br><br>
 <div align="center">
 
+
+ 
+
   @if(  $datos->revision==0  )
 
-  {!! Form::open(['route' =>'rev', 'method' => 'post' ]) !!}
+<strong>Los datos que se observan del postulante son correctos?.</strong><br> Tener en cuenta que al ser correctos, y aceptar los datos se incluira el postulante en la orden de meritos<br>
+  <input type="radio" name="band" value="0" {{ ($datos->band) == '0' ? 'checked': ''}}/> Datos incompletos o no correctos!<br>         
+ <input type="radio" name="band" value="1" {{ ($datos->band) =='1' ? 'checked': ''}}/> Datos correctos!<br>
 
-    <h4 class="p-3 mb-2 bg-warning text-warning">Aceptar los datos cargados</h4>
+    <h4 class="p-3 mb-2 bg-warning text-warning">Establecer revision sobre postulante</h4>
 
-    <select name = 'aceptar'>
+    <select name = 'accion'>
       <option value=""> Seleccione una opcion</option>
-      <option value="acepta"> Aceptar datos cargados</option>
-      <option value="modifica"> Modificar datos</option>
+      <option value="acepta"> Aceptar datos cargados (no guarda modificaciones)</option>
+      <option value="modifica">Guardar modificaciones y Aceptar</option>
       <option value="borra"> Borrar datos de la inscripcion del usuario</option>
-      <option value="acepta-go"> Aceptar datos cargados e ir al siguiente</option>
     </select>
 
-<div class="modal fade" id="miModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
-  <div class="modal-dialog" role="document">
-    <div class="modal-content">
-      <div class="modal-header">
-        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-          <span aria-hidden="true">&times;</span>
-        </button>
-        <h4 class="modal-title" id="myModalLabel">Ir</h4>
-      </div>
-      <div class="modal-body">
-        Esta seguro q desea ele
-      </div>
-    </div>
-  </div>
-</div>
 
-<button type="button" class="btn btn-primary btn-lg" data-toggle="modal" data-target="#miModal">
+<button type="Submit" name="id" value="{{$datos->user_id}}" class="btn btn-primary btn-lg">
  Ir
 </button>
-{{Form::submit('Go')}}
 
 @else
-<h4 class="p-3 mb-2 bg-primary text-white">Usuario ya chequeado los datos!! (siga con el proximo)</h4>
+
+<h3 class="p-3 mb-2 bg-primary text-white">Usuario ya incorporado en la orden de meritos - <i>(siga con el proximo)</i>
+{{ link_to(('/administracion/inscripciones'), 'Volver!', ['class' => 'secondary button']) }}
+</h4>
+
 @endif
 
 {!! Form::close() !!}

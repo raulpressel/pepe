@@ -30,7 +30,7 @@ class CrearDatosPersona extends FormRequest
         'dni' => 'required|numeric|min:0|max:100000000',
       //  'imagen_dni' => 'required|mimes:jpeg,bmp,png,jpg', //ver de agregar tamaño a todas las img, y si se agrega pdf
         //'anses'=> 'mimes:jpeg,bmp,png,jpg|required',
-        'cuil' => 'required|numeric|min:0|max:100000000000',
+        //'cuil' => 'required|numeric',
         'estcivil' => 'required|string',
         'cumple' => 'date_format:Y-m-d|required',
         'domi' => 'required|max:256',

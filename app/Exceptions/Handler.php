@@ -2,6 +2,8 @@
 
 namespace App\Exceptions;
 
+
+use Symfony\Component\Debug\Exception\FlattenException;
 use Exception;
 use Illuminate\Foundation\Exceptions\Handler as ExceptionHandler;
 
@@ -46,8 +48,22 @@ class Handler extends ExceptionHandler
      * @param  \Exception  $exception
      * @return \Illuminate\Http\Response
      */
-    public function render($request, Exception $exception)
+   /** public function render($request, Exception $exception)
     {
         return parent::render($request, $exception);
+    }*/
+    public function render($request, Exception $e)
+    {
+        $exception =  FlattenException::create($e);
+        dd($e);
+        
+        $statusCode = $exception->getStatusCode($exception);
+
+        if ($statusCode === 404 or $statusCode === 500 or $statusCode === 401 or $statusCode === 403 or $statusCode === 503) {
+            return response()->view('errors.' . $statusCode, [], $statusCode);
+        }
+        return parent::render($request, $exception);
     }
+
 }
+
