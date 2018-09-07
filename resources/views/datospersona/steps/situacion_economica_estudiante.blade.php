@@ -258,23 +258,32 @@ else{
             
 
           $(document).ready(function() {
-
-        $('.input-group input').on('change', function() {
-        
+        $('.input-group input[required], .input-group textarea[required], .input-group select[required], input-group radio[required]').on('change', function() {
         var $form = $(this).closest('form'),
         $group = $(this).closest('.input-group'),
         $addon = $group.find('.input-group-addon'),
         $icon = $addon.find('span'),
         state = false;
 
+        console.log($(this).val());
+
         if (!$group.data('validate')) {
         state = $(this).val() ? true : false;
+        }else if ($group.data('validate') == "email") {
+        state = /^([a-zA-Z0-9_\.\-])+\@(([a-zA-Z0-9\-])+\.)+([a-zA-Z0-9]{2,4})+$/.test($(this).val())
+        }else if($group.data('validate') == 'phone') {
+        state = /^[(]{0,1}[0-9]{3}[)]{0,1}[-\s\.]{0,1}[0-9]{3}[-\s\.]{0,1}[0-9]{4}$/.test($(this).val())
+        }else if ($group.data('validate') == "length") {
+        state = $(this).val().length >= $group.data('length') ? true : false;
         }else if ($group.data('validate') == "number") {
         state = !isNaN(parseFloat($(this).val())) && isFinite($(this).val());}
+        else if ($group.data('validate') == "date") {
+        state = /^([0-9]{4})-(1[0-2]|0[1-9])-(3[0-1]|0[1-9]|[1-2][0-9])$/.test($(this).val())
+        }
+        else if ($group.data('validate') == "letras") {
+        state = /^([a-zñA-ZÑ]+(\s*[a-zñA-ZÑ]*)*[a-zñA-ZÑ])+$/.test($(this).val())
+                }
         
-        
-
-
         if (state) {
         $addon.removeClass('danger');
         $addon.addClass('success');
@@ -290,11 +299,12 @@ else{
         }else{
         $form.find('[type="submit"]').prop('disabled', true);
         }
-        });  //cierra div change key up
+        });
 
-        $('.input-group input[required]').trigger('change');
+        $('.input-group input[required], .input-group textarea[required], .input-group select[required]').trigger('change');
+
                
-        }); //cierra div document ready
+        });
 
          
   
