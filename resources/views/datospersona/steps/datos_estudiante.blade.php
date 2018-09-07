@@ -402,6 +402,8 @@ $('#imagendiscaestdiv').hide();
         else if ($group.data('validate') == "letras") {
         state = /^([a-zñA-ZÑ]+(\s*[a-zñA-ZÑ]*)*[a-zñA-ZÑ])+$/.test($(this).val())
                 }
+
+                
         
         if (state) {
         $addon.removeClass('danger');
