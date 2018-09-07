@@ -75,6 +75,14 @@
           </div>
         </div>  
 
+        <div style="display:none;" id="cantkmdiv" class="form-group">
+          <label for="validate-number">Cantidad de kilometros:</label>
+          <div class="input-group" data-validate="number">
+            <input value="{{ old('cantkilometros') }}"  type="number" min="0" max="500" class="form-control" name="cantkm" id="cantkm" placeholder="Ingrese solo numeros" required>
+            <span class="input-group-addon danger"><span class="glyphicon glyphicon-remove"></span></span>
+          </div>
+        </div>
+
     <ul class="list-inline pull-right">
         <li><button type="button" class="btn btn-default prev-step">Anterior</button></li>
         <li><button type="button" class="btn btn-primary next-step">Siguiente</button></li>
@@ -123,7 +131,9 @@ var selected = $(this).val();
 if (selected === "") {
 $('#cantviajamediadiv').hide();
 $('#recibopasajdiv').hide(); 
-$('#preciopasajediv').hide(); 
+$('#preciopasajediv').hide();
+$('#cantkm ').hide();
+
 
 }
 else{
@@ -132,11 +142,13 @@ if(selected === "Si") {
 $('#cantviajamediadiv').show();
 $('#recibopasajdiv').show(); 
 $('#preciopasajediv').show(); 
+$('#cantkm ').show();
  }
 else if(selected === "No") {
 $('#cantviajamediadiv').hide();
 $('#recibopasajdiv').hide(); 
 $('#preciopasajediv').hide(); 
+$('#cantkm ').show();
 }
 }
 

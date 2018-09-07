@@ -50,8 +50,10 @@
             <input type="file" id="imagen_frente" name="imagen_frente" class="form-control" accept=".jpg, .jpeg, .png" required>
             <span class="input-group-addon danger"><span class="glyphicon glyphicon-remove"></span></span>
           </div>
+        </div>
+          <div id='list-imagen_frente-1' style='display:none;' class='form-group'>
         <div class="input-group">
-            <output id="list-imagen_frente"></output>
+            <img class="thumb" id="list-imagen_frente" />
         </div>
         </div>
 
@@ -61,8 +63,10 @@
             <input type="file" id="imagen_dorso" name="imagen_dorso" class="form-control" accept=".jpg, .jpeg, .png" required>
             <span class="input-group-addon danger"><span class="glyphicon glyphicon-remove"></span></span>
           </div>
+        </div>
+        <div id='list-imagen_dorso-1' style='display:none;' class='form-group'>
         <div class="input-group">
-            <output id="list-imagen_dorso"></output>
+            <img class="thumb" id="list-imagen_dorso" />
         </div>
         </div>
 
@@ -73,8 +77,10 @@
             <input type="file" id="anses" name="anses" class="form-control" accept=".jpg, .jpeg, .png, .pdf" required>
             <span class="input-group-addon danger"><span class="glyphicon glyphicon-remove"></span></span>
           </div>
+        </div>
+        <div id='list-anses-1' style='display:none;' class='form-group'>
         <div class="input-group">
-            <output id="list-anses"></output>
+            <img class="thumb" id="list-anses" />
         </div>
         </div>
 
@@ -228,16 +234,20 @@
         
           
           
-            <label for="validate-number">Imagen Certificado:</label>
+            <label for="validate-number" class="label label-info">Imagen Certificado:</label>
             <div class="input-group">
               <input  type="file" id="imagendiscaest" name="imagendiscaest" class="form-control" accept=".jpg, .jpeg, .png, .pdf" required>
                 <span class="input-group-addon danger"><span class="glyphicon glyphicon-remove"></span></span>
               </div>
-              <div class="input-group">
-                <output id="list-imagendiscaest"></output>
-              </div>
+              
           
             </div>
+            <div id="list-imagendiscaest-1" style="display:none;" class="form-group">
+            <div  class="input-group">
+                <output id="list-imagendiscaest"></output>
+
+              </div>
+            </div>  
           </div>
           
 
@@ -316,134 +326,15 @@
     
         
 
-<script>
- $(document).one('click', 'input[id="imagen_frente"]' , function(evt) {
-     let idd = this.id;
-            
-  function handleFileSelect(evt) {
-    var files = evt.target.files; // FileList object
-    
-      $('#list-'+ idd).html("");      
-          
-    // Loop through the FileList and render image files as thumbnails.
-    for (var i = 0, f; f = files[i]; i++) {
- 
-      // Only process image files.
-      if (!f.type.match('image.*')) {
-        continue;
-      }
- 
-      var reader = new FileReader();
- 
-      // Closure to capture the file information.
-      reader.onload = (function(theFile) {
-        return function(e) {
-          // Render thumbnail.
-          var span = document.createElement('span');
-          span.innerHTML = ['Nombre: ', escape(theFile.name), ' || Tamanio: ', escape(theFile.size), ' bytes || type: ', escape(theFile.type), '<br /><img class="thumb" src="', e.target.result,'" title="', escape(theFile.name), '"/><br />'].join('');
-          document.getElementById('list-'+ idd).insertBefore(span, null);
-        };
-      })(f);
- 
-      // Read in the image file as a data URL.
-      reader.readAsDataURL(f);
-    }
-  
-    }
-  document.getElementById(idd).addEventListener('change', handleFileSelect, false);
-  
-  });
 
 
-</script>
-
-<script >
-    
-    $(document).one('click', 'input[id="imagen_dorso"]' , function(evt) {
-    let idd = this.id;
-
-  function handleFileSelect(evt) {
-    var files = evt.target.files; // FileList object
-    
-      $('#list-'+ idd).html("");      
-          
-    // Loop through the FileList and render image files as thumbnails.
-    for (var i = 0, f; f = files[i]; i++) {
- 
-      // Only process image files.
-      if (!f.type.match('image.*')) {
-        continue;
-      }
- 
-      var reader = new FileReader();
- 
-      // Closure to capture the file information.
-      reader.onload = (function(theFile) {
-        return function(e) {
-          // Render thumbnail.
-          var span = document.createElement('span');
-          span.innerHTML = ['Nombre: ', escape(theFile.name), ' || Tamanio: ', escape(theFile.size), ' bytes || type: ', escape(theFile.type), '<br /><img class="thumb" src="', e.target.result,'" title="', escape(theFile.name), '"/><br />'].join('');
-          document.getElementById('list-'+ idd).insertBefore(span, null);
-        };
-      })(f);
- 
-      // Read in the image file as a data URL.
-      reader.readAsDataURL(f);
-    }
-  
-    }
-  document.getElementById(idd).addEventListener('change', handleFileSelect, false);
-  
-  });
-
-</script>
-
-<script >
-    
-    $(document).one('click', 'input[id="anses"]' , function(evt) {
-    let idd = this.id;
-
-  function handleFileSelect(evt) {
-    var files = evt.target.files; // FileList object
-    
-      $('#list-'+ idd).html("");      
-          
-    // Loop through the FileList and render image files as thumbnails.
-    for (var i = 0, f; f = files[i]; i++) {
- 
-      // Only process image files.
-      if (!f.type.match('image.*')) {
-        continue;
-      }
- 
-      var reader = new FileReader();
- 
-      // Closure to capture the file information.
-      reader.onload = (function(theFile) {
-        return function(e) {
-          // Render thumbnail.
-          var span = document.createElement('span');
-          span.innerHTML = ['Nombre: ', escape(theFile.name), ' || Tamanio: ', escape(theFile.size), ' bytes || type: ', escape(theFile.type), '<br /><img class="thumb" src="', e.target.result,'" title="', escape(theFile.name), '"/><br />'].join('');
-          document.getElementById('list-'+ idd).insertBefore(span, null);
-        };
-      })(f);
- 
-      // Read in the image file as a data URL.
-      reader.readAsDataURL(f);
-    }
-  
-    }
-  document.getElementById(idd).addEventListener('change', handleFileSelect, false);
-  
-  });
-
-</script>
-
+<div class="col-sm-offset-2 col-sm-6">
 
 <ul class="list-unstyled pull-right">
           <li><button type="button" class="btn btn-primary next-step">Siguiente</button></li>
         </ul>
       
+      </div>
             
     <!-- div cierra columna -->
   </div>
@@ -481,28 +372,37 @@ $('#imagendiscaestdiv').hide();
           $('#imagendiscaestdiv').html('');
 
           
-          $('#imagendiscaestdiv').html("<div class='bordes'> <label for='validate-number'>Imagen Certificado:</label> <div class='input-group'>   <input  type='file' id='imagendiscaest' name='imagendiscaest' class='form-control' accept='.jpg, .jpeg, .png, .pdf' required><span class='input-group-addon danger'><span class='glyphicon glyphicon-remove'></span></span>              </div><div class='input-group'>       <output id='list-imagendiscaest'></output>   </div></div></div>");
+          $('#imagendiscaestdiv').html(" <label class='label label-warning' for='validate-number'>Imagen Certificado</label> <div class='input-group'>   <input  type='file' id='imagendiscaest' name='imagendiscaest' class='form-control' accept='.jpg, .jpeg, .png, .pdf' required><span class='input-group-addon danger'><span class='glyphicon glyphicon-remove'></span></span>              </div></div> <div id='list-imagendiscaest-1' style='display:none;' class='form-group'><div class='input-group'>       <img class='thumb' id='list-imagendiscaest' />   </div></div>");
           
           
 
-          $(document).ready(function() {
-
-        $('.input-group input[required]').on('change', function() {
-        
+         $(document).ready(function() {
+        $('.input-group input[required], .input-group textarea[required], .input-group select[required], input-group radio[required]').on('change', function() {
         var $form = $(this).closest('form'),
         $group = $(this).closest('.input-group'),
         $addon = $group.find('.input-group-addon'),
         $icon = $addon.find('span'),
         state = false;
 
+        console.log($(this).val());
+
         if (!$group.data('validate')) {
         state = $(this).val() ? true : false;
+        }else if ($group.data('validate') == "email") {
+        state = /^([a-zA-Z0-9_\.\-])+\@(([a-zA-Z0-9\-])+\.)+([a-zA-Z0-9]{2,4})+$/.test($(this).val())
+        }else if($group.data('validate') == 'phone') {
+        state = /^[(]{0,1}[0-9]{3}[)]{0,1}[-\s\.]{0,1}[0-9]{3}[-\s\.]{0,1}[0-9]{4}$/.test($(this).val())
+        }else if ($group.data('validate') == "length") {
+        state = $(this).val().length >= $group.data('length') ? true : false;
         }else if ($group.data('validate') == "number") {
         state = !isNaN(parseFloat($(this).val())) && isFinite($(this).val());}
+        else if ($group.data('validate') == "date") {
+        state = /^([0-9]{4})-(1[0-2]|0[1-9])-(3[0-1]|0[1-9]|[1-2][0-9])$/.test($(this).val())
+        }
+        else if ($group.data('validate') == "letras") {
+        state = /^([a-zñA-ZÑ]+(\s*[a-zñA-ZÑ]*)*[a-zñA-ZÑ])+$/.test($(this).val())
+                }
         
-        
-
-
         if (state) {
         $addon.removeClass('danger');
         $addon.addClass('success');
@@ -518,51 +418,36 @@ $('#imagendiscaestdiv').hide();
         }else{
         $form.find('[type="submit"]').prop('disabled', true);
         }
-        });  //cierra div change key up
+        });
 
-        $('.input-group input[required]').trigger('change');
+        $('.input-group input[required], .input-group textarea[required], .input-group select[required]').trigger('change');
+
                
-        }); //cierra div document ready
+        });
+
 
          
-$(document).one('click', 'input[id="imagendiscaest"]' , function(evt) {
-    let idd = this.id;
 
-  function handleFileSelect(evt) {
-    var files = evt.target.files; // FileList object
-    
-      $('#list-'+ idd).html("");      
-          
-    // Loop through the FileList and render image files as thumbnails.
-    for (var i = 0, f; f = files[i]; i++) {
- 
-      // Only process image files.
-      if (!f.type.match('image.*')) {
-        continue;
-      }
- 
-      var reader = new FileReader();
- 
-      // Closure to capture the file information.
-      reader.onload = (function(theFile) {
-        return function(e) {
-          // Render thumbnail.
-          var span = document.createElement('span');
-          span.innerHTML = ['Nombre: ', escape(theFile.name), ' || Tamanio: ', escape(theFile.size), ' bytes || type: ', escape(theFile.type), '<br /><img class="thumb" src="', e.target.result,'" title="', escape(theFile.name), '"/><br />'].join('');
-          document.getElementById('list-'+ idd).insertBefore(span, null);
-        };
-      })(f);
- 
-      // Read in the image file as a data URL.
-      reader.readAsDataURL(f);
-    }
-  
-    }
-  document.getElementById(idd).addEventListener('change', handleFileSelect, false);
-  
-  });
 
    }) 
        })
 </script>
 
+<script type="text/javascript">
+  $(document).on("click", "input[type='file']", function(evt) {
+          let idd = this.id;
+
+ 
+          document.getElementById(idd).onchange = function () {
+           var reader = new FileReader(); reader.onload = function (e) {
+            document.getElementById("list-" + idd).src = e.target.result;    
+            document.getElementById("list-" + idd+ "-1").style.display = "inline";
+          }; 
+          reader.readAsDataURL(this.files[0]); 
+        }; 
+      });        
+</script>
+
+
+
+  

@@ -84,7 +84,7 @@
             </div>
           </div>
 
-          <div class="form-group">
+          <div style="display:none;" id="divcantmat"class="form-group">
               <label for="validate-letras">Cantidad de materias aprobadas:</label>
                 <div class="input-group">
                   <select value="{{ old('cantmaterias') }}" class="form-control" name="cantmaterias" id="cantmaterias" placeholder="Seleccione una opción" required>
@@ -92,6 +92,14 @@
                 <span class="input-group-addon danger"><span class="glyphicon glyphicon-remove"></span></span>
             </div>
           </div>
+
+          <div style="display:none;" id="divpromedio" class="form-group">
+          <label for="validate-number">Promedio general:</label>
+          <div class="input-group" data-validate="number">
+            <input value="{{ old('promedio') }}" type="number" min="0" max="10" class="form-control" name="promedio" id="promedio" placeholder="Ingrese solo numeros" required>
+            <span class="input-group-addon danger"><span class="glyphicon glyphicon-remove"></span></span>
+          </div>
+        </div>             
           
 
 
@@ -144,9 +152,9 @@
 
           $('#div2').html('');
 
-          $('#div').html("<label style='display:none;' id='ing' for='validate-number'>Ingrese Constancia de inscripción a la Universidad:</label><label style='display:none;' id='res' for='validate-number'>Ingrese Constancia de alumno regular:</label><div class='input-group'><input  type='file' id='constancia' name='constancia' class='form-control' accept='.jpg, .jpeg, .png, .pdf' required><span class='input-group-addon danger'><span class='glyphicon glyphicon-remove'></span></span></div><div class='input-group'><output id='list-constancia'></output></div>");
+          $('#div').html("<label style='display:none;' id='ing' for='validate-number'>Ingrese Constancia de inscripción a la Universidad:</label><label style='display:none;' id='res' for='validate-number'>Ingrese Constancia de alumno regular:</label><div class='input-group'><input  type='file' id='constancia' name='constancia' class='form-control' accept='.jpg, .jpeg, .png, .pdf' required><span class='input-group-addon danger'><span class='glyphicon glyphicon-remove'></span></span></div></div><div id='list-constancia-1' style='display:none;' class='form-group'><div class='input-group'><img class='thumb' id='list-constancia' /></div>");
 
-          $('#div2').html("<label style='display:none;' id='ing2' for='validate-number'>Ingrese Título Secundario Certificado de finalización con promedio general:</label><label style='display:none;' id='res2' for='validate-number'>Ingrese Analítico de materias aprobadas:</label><div class='input-group'><input  type='file' id='certificado' name='certificado[]' class='form-control' accept='.jpg, .jpeg, .png, .pdf' required><span class='input-group-addon danger'><span class='glyphicon glyphicon-remove'></span></span></div><div class='input-group'><output id='list-certificado'></output></div>");
+          $('#div2').html("<label style='display:none;' id='ing2' for='validate-number'>Ingrese Título Secundario Certificado de finalización con promedio general:</label><label style='display:none;' id='res2' for='validate-number'>Ingrese Analítico de materias aprobadas:</label><div class='input-group'><input  type='file' id='certificado' name='certificado[]' class='form-control' accept='.jpg, .jpeg, .png, .pdf' required><span class='input-group-addon danger'><span class='glyphicon glyphicon-remove'></span></span></div></div><div id='list-certificado-1' style='display:none;' class='form-group'><div class='input-group'><img class='thumb' id='list-certificado' /></div>");
 
           $(document).ready(function() {
 
@@ -188,80 +196,9 @@
         }); //cierra div document ready
 
          
+         
 
-         $(document).one('click', 'input[id="certificado"]' , function(evt) {
-    let idd = this.id;
-
-  function handleFileSelect(evt) {
-    var files = evt.target.files; // FileList object
-    
-      $('#list-'+ idd).html("");      
-          
-    // Loop through the FileList and render image files as thumbnails.
-    for (var i = 0, f; f = files[i]; i++) {
- 
-      // Only process image files.
-      if (!f.type.match('image.*')) {
-        continue;
-      }
- 
-      var reader = new FileReader();
- 
-      // Closure to capture the file information.
-      reader.onload = (function(theFile) {
-        return function(e) {
-          // Render thumbnail.
-          var span = document.createElement('span');
-          span.innerHTML = ['Nombre: ', escape(theFile.name), ' || Tamanio: ', escape(theFile.size), ' bytes || type: ', escape(theFile.type), '<br /><img class="thumb" src="', e.target.result,'" title="', escape(theFile.name), '"/><br />'].join('');
-          document.getElementById('list-'+ idd).insertBefore(span, null);
-        };
-      })(f);
- 
-      // Read in the image file as a data URL.
-      reader.readAsDataURL(f);
-    }
-  
-    }
-  document.getElementById(idd).addEventListener('change', handleFileSelect, false);
-  
-  });
-
-    $(document).one('click', 'input[id="constancia"]' , function(evt) {
-    let idd = this.id;
-
-  function handleFileSelect(evt) {
-    var files = evt.target.files; // FileList object
-    
-      $('#list-'+ idd).html("");      
-          
-    // Loop through the FileList and render image files as thumbnails.
-    for (var i = 0, f; f = files[i]; i++) {
- 
-      // Only process image files.
-      if (!f.type.match('image.*')) {
-        continue;
-      }
- 
-      var reader = new FileReader();
- 
-      // Closure to capture the file information.
-      reader.onload = (function(theFile) {
-        return function(e) {
-          // Render thumbnail.
-          var span = document.createElement('span');
-          span.innerHTML = ['Nombre: ', escape(theFile.name), ' || Tamanio: ', escape(theFile.size), ' bytes || type: ', escape(theFile.type), '<br /><img class="thumb" src="', e.target.result,'" title="', escape(theFile.name), '"/><br />'].join('');
-          document.getElementById('list-'+ idd).insertBefore(span, null);
-        };
-      })(f);
- 
-      // Read in the image file as a data URL.
-      reader.readAsDataURL(f);
-    }
-  
-    }
-  document.getElementById(idd).addEventListener('change', handleFileSelect, false);
-  
-  });
+       
 
    }) 
        })
@@ -285,22 +222,27 @@ if(selected === "Ingresante") {
 
 $('#ing').show(); 
 $('#ing2').show(); 
+$('#divpromedio').show(); 
+
 }
 else {
 $('#ing').hide(); 
 $('#ing2').hide(); 
+$('#divpromedio').hide(); 
 
 }
 
 if((selected === "Renovante") || (selected === "Nuevo") || (selected === "Condicional") ) {
 
 $('#res').show(); 
-$('#res2').show(); 
+$('#res2').show();
+$('#divcantmat').show();
+ 
 }
 else {
 $('#res').hide(); 
 $('#res2').hide();
-
+$('#divcantmat').hide();
 }
 
 }

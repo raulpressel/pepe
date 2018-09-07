@@ -45,7 +45,7 @@
                 <span class="input-group-addon danger"><span class="glyphicon glyphicon-remove"></span></span>
               </div>
               <div class="input-group">
-                <output id="list-comping1"></output>
+                <img class="thumb" id="list-comping1" />
               </div>
 
               </div>
@@ -247,10 +247,11 @@ else{
           $('#comprobanteIngresos').html('');
 
           
-          $('#comprobanteIngresos').html("<div class='form-group'><label style='display:none;' id='recibo' for='validate-number'>Últimos tres recibos de sueldo:</label><label style='display:none;' id='afip' for='validate-number'>Comrpobante de AFIP/pago monotributo:</label><label style='display:none;' id='jurada' for='validate-number'>Declaración jurada especificando actividad laboral e ingresos mensuales:</label><div class='input-group'><input type='file' id='comping1' name='comping1' multiple accept='.jpg, .jpeg, .png, .pdf' class='form-control' required><span class='input-group-addon danger'><span class='glyphicon glyphicon-remove'></span></span></div><div class='input-group'><output id='list-comping1'></output>              </div></div><div style='display:none;' id='comprobanteIngresos2' class='form-group'><div class='input-group'><input  type='file' id='comping2' name='comping2' multiple accept='.jpg, .jpeg, .png, .pdf' class='form-control'><span class='input-group-addon danger'><span class='glyphicon glyphicon-remove'></span></span></div><div class='input-group'><output id='list-comping2'></output>              </div></div><div style='display:none;' id='comprobanteIngresos3' class='form-group'><div  class='input-group'><input type='file' id='comping3' name='comping3' multiple accept='.jpg, .jpeg, .png, .pdf' class='form-control' ><span class='input-group-addon danger'><span class='glyphicon glyphicon-remove'></span></span></div><div class='input-group'><output id='list-comping3'></output>             </div></div>");
+          $('#comprobanteIngresos').html("<div class='form-group'><label style='display:none;' id='recibo' for='validate-number'>Últimos tres recibos de sueldo:</label><label style='display:none;' id='afip' for='validate-number'>Comrpobante de AFIP/pago monotributo:</label><label style='display:none;' id='jurada' for='validate-number'>Declaración jurada especificando actividad laboral e ingresos mensuales:</label><div class='input-group'><input type='file' id='comping1' name='comping1' accept='.jpg, .jpeg, .png' class='form-control' required><span class='input-group-addon danger'><span class='glyphicon glyphicon-remove'></span></span></div></div><div id='list-comping1-1' style='display:none;' class='form-group'><div class='input-group'><img class='thumb' id='list-comping1' />              </div></div><div style='display:none;' id='comprobanteIngresos2' class='form-group'><div class='input-group'><input  type='file' id='comping2' name='comping2'  accept='.jpg, .jpeg, .png' class='form-control'><span class='input-group-addon danger'><span class='glyphicon glyphicon-remove'></span></span></div></div><div id='list-comping2-1' style='display:none;' class='form-group'><div class='input-group'><img class='thumb' id='list-comping2' />              </div></div><div style='display:none;' id='comprobanteIngresos3' class='form-group'><div  class='input-group'><input type='file' id='comping3' name='comping3'  accept='.jpg, .jpeg, .png' class='form-control' ><span class='input-group-addon danger'><span class='glyphicon glyphicon-remove'></span></span></div></div><div id='list-comping3-1' style='display:none;' class='form-group'><div class='input-group'><img class='thumb' id='list-comping3' />             </div></div>");
 
           
           
+            
 
           $(document).ready(function() {
 
@@ -292,118 +293,7 @@ else{
         }); //cierra div document ready
 
          
-    $(document).one('click', 'input[id="comping1"]' , function(evt) {
-    let idd = this.id;
-
-  function handleFileSelect(evt) {
-    var files = evt.target.files; // FileList object
-    
-      $('#list-'+ idd).html("");      
-          
-    // Loop through the FileList and render image files as thumbnails.
-    for (var i = 0, f; f = files[i]; i++) {
- 
-      // Only process image files.
-      if (!f.type.match('image.*')) {
-        continue;
-      }
- 
-      var reader = new FileReader();
- 
-      // Closure to capture the file information.
-      reader.onload = (function(theFile) {
-        return function(e) {
-          // Render thumbnail.
-          var span = document.createElement('span');
-          span.innerHTML = ['Nombre: ', escape(theFile.name), ' || Tamanio: ', escape(theFile.size), ' bytes || type: ', escape(theFile.type), '<br /><img class="thumb" src="', e.target.result,'" title="', escape(theFile.name), '"/><br />'].join('');
-          document.getElementById('list-'+ idd).insertBefore(span, null);
-        };
-      })(f);
- 
-      // Read in the image file as a data URL.
-      reader.readAsDataURL(f);
-    }
   
-    }
-  document.getElementById(idd).addEventListener('change', handleFileSelect, false);
-  
-  });
-
-
-    $(document).one('click', 'input[id="comping2"]' , function(evt) {
-    let idd = this.id;
-
-  function handleFileSelect(evt) {
-    var files = evt.target.files; // FileList object
-    
-      $('#list-'+ idd).html("");      
-          
-    // Loop through the FileList and render image files as thumbnails.
-    for (var i = 0, f; f = files[i]; i++) {
- 
-      // Only process image files.
-      if (!f.type.match('image.*')) {
-        continue;
-      }
- 
-      var reader = new FileReader();
- 
-      // Closure to capture the file information.
-      reader.onload = (function(theFile) {
-        return function(e) {
-          // Render thumbnail.
-          var span = document.createElement('span');
-          span.innerHTML = ['Nombre: ', escape(theFile.name), ' || Tamanio: ', escape(theFile.size), ' bytes || type: ', escape(theFile.type), '<br /><img class="thumb" src="', e.target.result,'" title="', escape(theFile.name), '"/><br />'].join('');
-          document.getElementById('list-'+ idd).insertBefore(span, null);
-        };
-      })(f);
- 
-      // Read in the image file as a data URL.
-      reader.readAsDataURL(f);
-    }
-  
-    }
-  document.getElementById(idd).addEventListener('change', handleFileSelect, false);
-  
-  });
-
-    
-  $(document).one('click', 'input[id="comping3"]' , function(evt) {
-    let idd = this.id;
-
-  function handleFileSelect(evt) {
-    var files = evt.target.files; // FileList object
-    
-      $('#list-'+ idd).html("");      
-          
-    // Loop through the FileList and render image files as thumbnails.
-    for (var i = 0, f; f = files[i]; i++) {
- 
-      // Only process image files.
-      if (!f.type.match('image.*')) {
-        continue;
-      }
- 
-      var reader = new FileReader();
- 
-      // Closure to capture the file information.
-      reader.onload = (function(theFile) {
-        return function(e) {
-          // Render thumbnail.
-          var span = document.createElement('span');
-          span.innerHTML = ['Nombre: ', escape(theFile.name), ' || Tamanio: ', escape(theFile.size), ' bytes || type: ', escape(theFile.type), '<br /><img class="thumb" src="', e.target.result,'" title="', escape(theFile.name), '"/><br />'].join('');
-          document.getElementById('list-'+ idd).insertBefore(span, null);
-        };
-      })(f);
- 
-      // Read in the image file as a data URL.
-      reader.readAsDataURL(f);
-    }
-  
-    }
-  document.getElementById(idd).addEventListener('change', handleFileSelect, false);
-  
-  });
 
 
    }) 
