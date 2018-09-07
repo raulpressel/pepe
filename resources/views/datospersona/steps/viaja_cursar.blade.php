@@ -132,7 +132,7 @@ if (selected === "") {
 $('#cantviajamediadiv').hide();
 $('#recibopasajdiv').hide(); 
 $('#preciopasajediv').hide();
-$('#cantkm ').hide();
+$('#cantkmdiv').hide();
 
 
 }
@@ -142,13 +142,13 @@ if(selected === "Si") {
 $('#cantviajamediadiv').show();
 $('#recibopasajdiv').show(); 
 $('#preciopasajediv').show(); 
-$('#cantkm ').show();
+$('#cantkmdiv').show();
  }
 else if(selected === "No") {
 $('#cantviajamediadiv').hide();
 $('#recibopasajdiv').hide(); 
 $('#preciopasajediv').hide(); 
-$('#cantkm ').show();
+$('#cantkmdiv').hide();
 }
 }
 
@@ -164,7 +164,7 @@ $('#cantkm ').show();
           $('#recibopasajdiv').html('');
 
           
-          $('#recibopasajdiv').html("<label for='validate-number'>Recibo Pasaje de transporte:</label>        <div class='input-group'><input  type='file' id='recibopasaj' name='recibopasaj' accept='.jpg, .jpeg, .png, .pdf' class='form-control' required>   <span class='input-group-addon danger'><span class='glyphicon glyphicon-remove'></span></span> </div> <div class='input-group'>              <output id='list-recibopasaj'></output></div>");
+          $('#recibopasajdiv').html("<label for='validate-number'>Recibo Pasaje de transporte:</label>        <div class='input-group'><input  type='file' id='recibopasaj' name='recibopasaj' accept='.jpg, .jpeg, .png, .pdf' class='form-control' required>   <span class='input-group-addon danger'><span class='glyphicon glyphicon-remove'></span></span> </div> </div><div id='list-recibopasaj-1' style='display:none;' class='form-group'><div class='input-group'>              <img class='thumb' id='list-recibopasaj' /></div>");
 
 
           $(document).ready(function() {
@@ -206,43 +206,6 @@ $('#cantkm ').show();
                
         }); //cierra div document ready
 
-         
-$(document).one('click', 'input[id="recibopasaj"]' , function(evt) {
-    let idd = this.id;
-
-  function handleFileSelect(evt) {
-    var files = evt.target.files; // FileList object
-    
-      $('#list-'+ idd).html("");      
-          
-    // Loop through the FileList and render image files as thumbnails.
-    for (var i = 0, f; f = files[i]; i++) {
- 
-      // Only process image files.
-      if (!f.type.match('image.*')) {
-        continue;
-      }
- 
-      var reader = new FileReader();
- 
-      // Closure to capture the file information.
-      reader.onload = (function(theFile) {
-        return function(e) {
-          // Render thumbnail.
-          var span = document.createElement('span');
-          span.innerHTML = ['Nombre: ', escape(theFile.name), ' || Tamanio: ', escape(theFile.size), ' bytes || type: ', escape(theFile.type), '<br /><img class="thumb" src="', e.target.result,'" title="', escape(theFile.name), '"/><br />'].join('');
-          document.getElementById('list-'+ idd).insertBefore(span, null);
-        };
-      })(f);
- 
-      // Read in the image file as a data URL.
-      reader.readAsDataURL(f);
-    }
-  
-    }
-  document.getElementById(idd).addEventListener('change', handleFileSelect, false);
-  
-  });
 
    }) 
        })

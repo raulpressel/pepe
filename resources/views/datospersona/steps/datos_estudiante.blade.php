@@ -436,8 +436,7 @@ $('#imagendiscaestdiv').hide();
 <script type="text/javascript">
   $(document).on("click", "input[type='file']", function(evt) {
           let idd = this.id;
-
- 
+            
           document.getElementById(idd).onchange = function () {
            var reader = new FileReader(); reader.onload = function (e) {
             document.getElementById("list-" + idd).src = e.target.result;    
@@ -445,6 +444,7 @@ $('#imagendiscaestdiv').hide();
           }; 
           reader.readAsDataURL(this.files[0]); 
         }; 
+    
       });        
 </script>
 

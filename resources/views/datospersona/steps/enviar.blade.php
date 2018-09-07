@@ -7,7 +7,7 @@
         <h3>Enviar</h3>
       </div>
 
-        <div class="col-sm-offset-2 col-sm-5">
+<div class="col-sm-offset-2 col-sm-6">
         	<h4>Consigne los motivos por los cuales necesitaría obtener la beca</h4>		
           <div class="form-group">
               <label for="validate-letras">Motivos:</label>

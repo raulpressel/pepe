@@ -1,4 +1,5 @@
 @include ('layout')
+    	
 
 <div align="center"><h1>
 <a href="datospersona/create">Inscribite!</a>

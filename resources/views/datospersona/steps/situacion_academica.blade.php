@@ -19,10 +19,13 @@
                 <span class="input-group-addon danger"><span class="glyphicon glyphicon-remove"></span></span>               
               </div>
           </div>
+        </div>
+
+        <div class="col-sm-offset-3 col-sm-4">
 
           <div style="display:none;" id="div" class="form-group">
-            <label style="display:none;" id="ing" for="validate-number">Ingrese Constancia de inscripción a la Universidad:</label>
-            <label style="display:none;" id="res" for="validate-number">Ingrese Constancia de alumno regular:</label>
+            <label style="display:none;" class="label label-info" id="ing" for="validate-number">Ingrese Constancia de inscripción a la Universidad:</label>
+            <label style="display:none;" class="label label-info" id="res" for="validate-number">Ingrese Constancia de alumno regular:</label>
             <div class="input-group">
               <input  type="file" id="constancia" name="constancia" class="form-control" accept=".jpg, .jpeg, .png, .pdf" required>
                 <span class="input-group-addon danger"><span class="glyphicon glyphicon-remove"></span></span>
@@ -37,8 +40,8 @@
         
         
         <div style="display:none;" id="div2" class="form-group">
-          <label style="display:none;" id="ing2" for="validate-number">Ingrese Título Secundario Certificado de finalización con promedio general:</label>
-          <label style="display:none;" id="res2" for="validate-number">Ingrese Analítico de materias aprobadas:</label>
+          <label style="display:none;" class="label label-info" id="ing2" for="validate-number">Ingrese Título Secundario con promedio general:</label>
+          <label style="display:none;" class="label label-info" id="res2" for="validate-number">Ingrese Analítico de materias aprobadas:</label>
           <div class="input-group">
             <input  type="file" id="certificado" name="certificado[]" multiple class="form-control" accept=".jpg, .jpeg, .png, .pdf" required>
             <span class="input-group-addon danger"><span class="glyphicon glyphicon-remove"></span></span>
@@ -47,6 +50,11 @@
                 <output id="list-certificado"></output>
           </div>
         </div>
+
+      </div>
+
+              <div class="col-sm-offset-2 col-sm-6">
+
           
           <div class="form-group">
               <label for="validate-letras">Carrera que cursa:</label>
@@ -152,9 +160,9 @@
 
           $('#div2').html('');
 
-          $('#div').html("<label style='display:none;' id='ing' for='validate-number'>Ingrese Constancia de inscripción a la Universidad:</label><label style='display:none;' id='res' for='validate-number'>Ingrese Constancia de alumno regular:</label><div class='input-group'><input  type='file' id='constancia' name='constancia' class='form-control' accept='.jpg, .jpeg, .png, .pdf' required><span class='input-group-addon danger'><span class='glyphicon glyphicon-remove'></span></span></div></div><div id='list-constancia-1' style='display:none;' class='form-group'><div class='input-group'><img class='thumb' id='list-constancia' /></div>");
+          $('#div').html("<label style='display:none;' class='label label-info' id='ing' for='validate-number'>Ingrese Constancia de inscripción a la Universidad</label><label style='display:none;' id='res' for='validate-number' class='label label-info'>Ingrese Constancia de alumno regular:</label><div class='input-group'><input  type='file' id='constancia' name='constancia' class='form-control' accept='.jpg, .jpeg, .png, .pdf' required><span class='input-group-addon danger'><span class='glyphicon glyphicon-remove'></span></span></div></div><div id='list-constancia-1' style='display:none;' class='form-group'><div class='input-group'><img class='thumb' id='list-constancia' /></div>");
 
-          $('#div2').html("<label style='display:none;' id='ing2' for='validate-number'>Ingrese Título Secundario Certificado de finalización con promedio general:</label><label style='display:none;' id='res2' for='validate-number'>Ingrese Analítico de materias aprobadas:</label><div class='input-group'><input  type='file' id='certificado' name='certificado[]' class='form-control' accept='.jpg, .jpeg, .png, .pdf' required><span class='input-group-addon danger'><span class='glyphicon glyphicon-remove'></span></span></div></div><div id='list-certificado-1' style='display:none;' class='form-group'><div class='input-group'><img class='thumb' id='list-certificado' /></div>");
+          $('#div2').html("<label style='display:none;' class='label label-info' id='ing2' for='validate-number'>Ingrese Título Secundario con promedio general</label><label class='label label-info' style='display:none;' id='res2' for='validate-number'>Ingrese Analítico de materias aprobadas:</label><div class='input-group'><input  type='file' id='certificado' name='certificado[]' class='form-control' accept='.jpg, .jpeg, .png, .pdf' required><span class='input-group-addon danger'><span class='glyphicon glyphicon-remove'></span></span></div></div><div id='list-certificado-1' style='display:none;' class='form-group'><div class='input-group'><img class='thumb' id='list-certificado' /></div>");
 
           $(document).ready(function() {
 

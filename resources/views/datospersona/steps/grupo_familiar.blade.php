@@ -11,7 +11,7 @@
           
           <div id="tab_logic"> 
 
-          <div id='addr0'> 
+         <!-- <div id='addr0'> 
             <div class="panel panel-default">
             <div class="panel-heading">
                 <h4 class="panel-title">
@@ -213,18 +213,18 @@
               </div>
 
 
-      </div> <!--  cierra div addr -->
+      </div>   cierra div addr -->
     
       
-      <div id='addr1'>
+      <div id='addr0'>
       </div> 
-      <div id='addrscriptselect1'>
+      <div id='addrscriptselect0'>
       </div>
-      <div id='addrscriptotroselect1'>
+      <div id='addrscriptotroselect0'>
       </div> 
-      <div id='addrscriptvalidate1'>
+      <div id='addrscriptvalidate0'>
       </div> 
-      <div id='addrscriptfrente1'>
+      <div id='addrscriptfrente0'>
       </div> 
       
     
@@ -389,113 +389,7 @@ else{
 });
 </script>
 
-<script >
-    
-    $(document).one('click', 'input[id="familiar[0][dorso]"]' , function(evt) {
-    let idd = this.id;
 
-  function handleFileSelect(evt) {
-    var files = evt.target.files; // FileList object
-    
-      $('#list-familiar0dorso').html("");      
-          
-    // Loop through the FileList and render image files as thumbnails.
-    for (var i = 0, f; f = files[i]; i++) {
- 
-      // Only process image files.
-      if (!f.type.match('image.*')) {
-        continue;
-      }
- 
-      var reader = new FileReader();
- 
-      // Closure to capture the file information.
-      reader.onload = (function(theFile) {
-        return function(e) {
-          // Render thumbnail.
-          var span = document.createElement('span');
-          span.innerHTML = ['Nombre: ', escape(theFile.name), ' || Tamanio: ', escape(theFile.size), ' bytes || type: ', escape(theFile.type), '<br /><img class="thumb" src="', e.target.result,'" title="', escape(theFile.name), '"/><br />'].join('');
-          document.getElementById('list-familiar0dorso').insertBefore(span, null);
-        };
-      })(f);
- 
-      // Read in the image file as a data URL.
-      reader.readAsDataURL(f);
-    }
-  
-    }
-  document.getElementById(idd).addEventListener('change', handleFileSelect, false);
-  
-  });
-
-</script>
-
-<script >
-    //$(document).ready(function() { $('input[id="familiar[0][frente]"]').one('click', function(evt) {
-      
-      $(document).ready(function() { $('[id="familiar[0][frente]"]').one('click', function(evt) {
-
-    let idd = this.id;
-
-    document.getElementById(idd).onchange = function () {
-    var reader = new FileReader();
-
-    reader.onload = function (e) {
-        // get loaded data and render thumbnail.
-        document.getElementById("list-familiar0frente").src = e.target.result;
-    };
-
-    // read the image file as a data URL.
-    reader.readAsDataURL(this.files[0]);
-};
-
-
-    });
-    });
-
-
-</script>
-
-<script >
-    
-    $(document).one('click', 'input[id="familiar[0][ansesfam]"]' , function(evt) {
-    let idd = this.id;
-
-  function handleFileSelect(evt) {
-    var files = evt.target.files; // FileList object
-    
-      $('#list-familiar0ansesfam').html("");      
-          
-    // Loop through the FileList and render image files as thumbnails.
-    for (var i = 0, f; f = files[i]; i++) {
- 
-      // Only process image files.
-      if (!f.type.match('image.*')) {
-        continue;
-      }
- 
-      var reader = new FileReader();
- 
-      // Closure to capture the file information.
-      reader.onload = (function(theFile) {
-        return function(e) {
-          // Render thumbnail.
-          var span = document.createElement('span');
-          span.innerHTML = ['Nombre: ', escape(theFile.name), ' || Tamanio: ', escape(theFile.size), ' bytes || type: ', escape(theFile.type), '<br /><img class="thumb" src="', e.target.result,'" title="', escape(theFile.name), '"/><br />'].join('');
-          document.getElementById('list-familiar0ansesfam').insertBefore(span, null);
-        };
-      })(f);
- 
-      // Read in the image file as a data URL.
-      reader.readAsDataURL(f);
-    }
-  
-    }
-  document.getElementById(idd).addEventListener('change', handleFileSelect, false);
-  
-  });
-
-</script>
 
 <script type="text/javascript">
   $(document).ready(function(){
@@ -759,10 +653,10 @@ else{
 <script>
          $(document).ready(function(){
           
-          var i=1;
+          var i=0;
           
          $("#add_div").click(function(){
-          $('#addr'+i).html("<div class='panel panel-default'><div class='panel-heading'><h4 class='panel-title'><a data-toggle='collapse' data-parent='#proposalAcoordion"+(i+1)+"' href='#collapseContact"+(i+1)+"'>Familiar"+(i+1)+"</a> </h4>            </div><div id='collapseContact"+(i+1)+"' class='panel-collapse collapse in'><div class='panel-body'><div class='form-group' ><label for='validate-letras'>Parentesco:</label><div class='input-group'>  <select class='form-control' name='familiar["+i+"][parentesco]' id='familiar["+i+"].parentesco' placeholder='Seleccione una opción' required> <option value=''>Seleccione una opción</option><option value='Abuelo'>Abuelo/a</option><option value='Concubino'>Concubino/a</option>  <option value='Conyuge'>Cónyuge</option> <option value='Cuniado'>Cuñado/a</option>  <option value='Hermano'>Hermano/a</option>     <option value='Hijo'>Hijo/a</option>  <option value='madre'>Madre</option>   <option value='padre'>Padre</option>     <option value='Nieto'>Nieto/a</option>   <option value='novio'>Novio/a</option>   <option value='Nuera'>Nuera</option> <option value='Otro'>Otro</option> <option value='Primo'>Primo/a</option>  <option value='Sobrino'>Sobrino/a</option> <option value='Tio'>Tio/a</option> <option value='Yerno'>Yerno</option>  </select>    <span class='input-group-addon danger'><span class='glyphicon glyphicon-remove'></span></span> </div> </div>  <div class='form-group'> <label for='validate-letras'>Apellidos y Nombres:</label>   <div class='input-group' data-validate='letras'>            <input  type='text' class='form-control' name='familiar["+i+"][apeynom]' id='familiar["+i+"].apeynom' placeholder='Ingrese solo letras' required>            <span class='input-group-addon danger'><span class='glyphicon glyphicon-remove'></span></span>        </div>  </div> <div class='form-group'> <label for='validate-number'>DNI:</label>            <div class='input-group' data-validate='number'>  <input  type='text' class='form-control' name='familiar["+i+"][dnifam]' id='familiar["+i+"].dnifam' placeholder='Ingrese solo numeros' required><span class='input-group-addon danger'><span class='glyphicon glyphicon-remove'></span></span> </div>  </div><div class='form-group'> <label for='validate-number'>Ingresa fotos de frente y dorso del DNI</label>   </div><div class='form-group'>  <label for='validate-number'>  Solo frente</label>          <div class='input-group'>   <input type='file' id='familiar["+i+"][frente]' name='familiar["+i+"][frente]' class='form-control' accept='.jpg, .jpeg, .png' required> <span class='input-group-addon danger'><span class='glyphicon glyphicon-remove'></span></span></div>  </div><div id='list-familiar["+i+"][frente]-1' style='display:none;' class='form-group'> <div class='input-group'><img class='thumb' id='list-familiar["+i+"][frente]' /> </div></div><div class='form-group'>          <label for='validate-number'>  Solo dorso</label> <div class='input-group'> <input type='file' id='familiar["+i+"][dorso]' name='familiar["+i+"][dorso]' class='form-control' accept='.jpg, .jpeg, .png' required> <span class='input-group-addon danger'><span class='glyphicon glyphicon-remove'></span></span> </div>    </div><div id='list-familiar["+i+"][dorso]-1' style='display:none;' class='form-group'>    <div class='input-group'>  <img class='thumb' id='list-familiar["+i+"][dorso]'></output> </div></div> <div class='form-group'>   <label for='validate-number'>Edad:</label> <div class='input-group' data-validate='number'>  <input   type='text' class='form-control' name='familiar["+i+"][edadfam]' id='familiar["+i+"].edadfam' placeholder='Ingrese solo numeros' required> <span class='input-group-addon danger'><span class='glyphicon glyphicon-remove'></span></span> </div>  </div>   <div class='form-group'> <label for='validate-letras'>Ocupación:</label> <div class='input-group' data-validate='letras'> <input  type='text' class='form-control' name='familiar["+i+"][ocupacionfam]' id='familiar["+i+"].ocupacionfam' placeholder='Ingrese solo letras' required> <span class='input-group-addon danger'><span class='glyphicon glyphicon-remove'></span></span>  </div></div> <div class='form-group'> <label for='validate-letras'>Trabaja:</label> <div class='input-group'><select class='form-control' name='familiar["+i+"][trabaja]' id='familiartrabaja"+i+"' placeholder='Seleccione una opción' required>  <option value=''>Seleccione una opción</option><option value='Si'>Si</option><option value='No'>No</option>                </select>    <span class='input-group-addon danger'><span class='glyphicon glyphicon-remove'></span></span>       </div>          </div><div style='display:none;' id='actlabfamdiv"+i+"' class='form-group'>  <label for='validate-letras'>Actividad laboral:</label>   <div class='input-group'>  <select class='form-control' name='familiar["+i+"][actlab]' id='familiaractlab"+i+"' placeholder='Seleccione una opción' required> <option value=''>Seleccione una opción</option><option value='activosfam"+i+"'>Empleados Activos o Jubilados</option>  <option value='monotrifam"+i+"'>Autónomos y Monotributistas</option> <option value='informalfam"+i+"'>Trabajadores Informales</option></select><span class='input-group-addon danger'><span class='glyphicon glyphicon-remove'></span></span>  </div>          </div>     <div style='display:none;' id='comprobanteIngresosfam"+i+"' >   <div class='form-group'>  <label style='display:none;' id='recibofam"+i+"' for='validate-number'>Últimos tres recibos de sueldo</label>  <label style='display:none;' id='afipfam0' for='validate-number'>Comrpobante de AFIP/pago monotributo</label>    <label style='display:none;' id='juradafam"+i+"' for='validate-number'>Declaración jurada especificando actividad laboral e ingresos mensuales</label> <div style='display:none;' id='imag"+(i+1)+"1' > <label for='validate-number'>Comprobante:</label>   <div class='input-group'>  <input  type='file' id='familiar["+i+"][comping1]' name='familiar["+i+"][comping1]' accept='.jpg, .jpeg, .png, .pdf' class='form-control' required> <span class='input-group-addon danger'><span class='glyphicon glyphicon-remove'></span></span> </div> </div><div id='list-familiar["+i+"][comping1]-1' style='display:none;' class='form-group'><div class='input-group'><img class='thumb' id='list-familiar["+i+"][comping1]' />   </div> </div></div><div style='display:none;' id='imag"+(i+1)+"2' > <label for='validate-number'>Comprobante:</label> <div class='input-group'><input  type='file' id='familiar["+i+"][comping2]' name='familiar["+i+"][comping2]' accept='.jpg, .jpeg, .png, .pdf' class='form-control' required><span class='input-group-addon danger'><span class='glyphicon glyphicon-remove'></span></span>      </div></div><div id='list-familiar["+i+"][comping2]-1' style='display:none;' class='form-group'><div class='input-group'> <img class='thumb' id='list-familiar["+i+"][comping2]' /></div></div><div style='display:none;' id='imag"+(i+1)+"3' ><label for='validate-number'>Comprobante:</label><div class='input-group'>  <input  type='file' id='familiar["+i+"][comping3]' name='familiar["+i+"][comping3]' accept='.jpg, .jpeg, .png, .pdf'  class='form-control' required>  <span class='input-group-addon danger'><span class='glyphicon glyphicon-remove'></span></span></div></div><div id='list-familiar["+i+"][comping3]-1' style='display:none;' class='form-group'><div class='input-group'><img class='thumb' id='list-familiar["+i+"][comping3]' /></div> </div></div> <div style='display:none;' id='ingresosfamdiv"+i+"' class='form-group'> <label for='validate-number'>Ingresos:</label>   <div class='input-group' data-validate='number'><input   type='text' class='form-control' name='familiar["+i+"][ingresosfam]' id='familiar["+i+"].ingresosfam' placeholder='Ingrese solo numeros' required><span class='input-group-addon danger'><span class='glyphicon glyphicon-remove'></span></span>  </div></div> <div class='form-group'><label for='validate-number'>Certificación Negativa ANSES:</label><div class='input-group'> <input type='file' id='familiar["+i+"][ansesfam]' name='familiar["+i+"][ansesfam]' accept='.jpg, .jpeg, .png, .pdf' class='form-control' required>   <span class='input-group-addon danger'><span class='glyphicon glyphicon-remove'></span></span> </div> </div><div id='list-familiar["+i+"][ansesfam]-1' style='display:none;' class='form-group'><div class='input-group'> <img class='thumb' id='list-familiar["+i+"][ansesfam]'/></div></div></div></div>  </div></div>  <script type='text/javascript'> var toogle = (function () {    return {        init: function(buttonId, accordionId) {    var that = this;            $(buttonId).click(function() {   that.togglePanels(accordionId, $(buttonId));   });   }, togglePanels : function(accordionId, buttonContainer){ var onButton = $(buttonContainer).children('.onToggle').eq(0); var offButton = $(buttonContainer).children('.offToggle').eq(0); if (onButton.hasClass('hideToggleButton')){        this.openAllPanels(accordionId);  offButton.addClass('hideToggleButton');        offButton.removeClass('showToggleButton');        onButton.removeClass('hideToggleButton');       onButton.addClass('showToggleButton');      }      else{        this.closeAllPanels(accordionId);        onButton.addClass('hideToggleButton');        onButton.removeClass('showToggleButton');        offButton.addClass('showToggleButton');        offButton.removeClass('hideToggleButton');      }              },        openAllPanels : function(aId) {        $(aId + ' .panel-collapse:not(.in)').collapse('show');    },    closeAllPanels : function(aId) {      $(aId + ' .panel-collapse.in').collapse('hide');    }   }}) (); $(function () {    toogle.init('#toogleButton', '#proposalAccordion"+(i+1)+"');}); ");
+          $('#addr'+i).html("<div class='panel panel-default'><div class='panel-heading'><h4 class='panel-title'><a data-toggle='collapse' data-parent='#proposalAcoordion"+(i+1)+"' href='#collapseContact"+(i+1)+"'>Familiar "+(i+1)+"</a> </h4>            </div><div id='collapseContact"+(i+1)+"' class='panel-collapse collapse in'><div class='panel-body'><div class='form-group' ><label for='validate-letras'>Parentesco:</label><div class='input-group'>  <select class='form-control' name='familiar["+i+"][parentesco]' id='familiar["+i+"].parentesco' placeholder='Seleccione una opción' required> <option value=''>Seleccione una opción</option><option value='Abuelo'>Abuelo/a</option><option value='Concubino'>Concubino/a</option>  <option value='Conyuge'>Cónyuge</option> <option value='Cuniado'>Cuñado/a</option>  <option value='Hermano'>Hermano/a</option>     <option value='Hijo'>Hijo/a</option>  <option value='madre'>Madre</option>   <option value='padre'>Padre</option>     <option value='Nieto'>Nieto/a</option>   <option value='novio'>Novio/a</option>   <option value='Nuera'>Nuera</option> <option value='Otro'>Otro</option> <option value='Primo'>Primo/a</option>  <option value='Sobrino'>Sobrino/a</option> <option value='Tio'>Tio/a</option> <option value='Yerno'>Yerno</option>  </select>    <span class='input-group-addon danger'><span class='glyphicon glyphicon-remove'></span></span> </div> </div>  <div class='form-group'> <label for='validate-letras'>Apellidos y Nombres:</label>   <div class='input-group' data-validate='letras'>            <input  type='text' class='form-control' name='familiar["+i+"][apeynom]' id='familiar["+i+"].apeynom' placeholder='Ingrese solo letras' required>            <span class='input-group-addon danger'><span class='glyphicon glyphicon-remove'></span></span>        </div>  </div> <div class='form-group'> <label for='validate-number'>DNI:</label>            <div class='input-group' data-validate='number'>  <input  type='text' class='form-control' name='familiar["+i+"][dnifam]' id='familiar["+i+"].dnifam' placeholder='Ingrese solo numeros' required><span class='input-group-addon danger'><span class='glyphicon glyphicon-remove'></span></span> </div>  </div><div class='form-group'> <label for='validate-number'>Ingresa fotos de frente y dorso del DNI</label>   </div><div class='form-group'>  <label for='validate-number'>  Solo frente</label>          <div class='input-group'>   <input type='file' id='familiar["+i+"][frente]' name='familiar["+i+"][frente]' class='form-control' accept='.jpg, .jpeg, .png' required> <span class='input-group-addon danger'><span class='glyphicon glyphicon-remove'></span></span></div>  </div><div id='list-familiar["+i+"][frente]-1' style='display:none;' class='form-group'> <div class='input-group'><img class='thumb' id='list-familiar["+i+"][frente]' /> </div></div><div class='form-group'>          <label for='validate-number'>  Solo dorso</label> <div class='input-group'> <input type='file' id='familiar["+i+"][dorso]' name='familiar["+i+"][dorso]' class='form-control' accept='.jpg, .jpeg, .png' required> <span class='input-group-addon danger'><span class='glyphicon glyphicon-remove'></span></span> </div>    </div><div id='list-familiar["+i+"][dorso]-1' style='display:none;' class='form-group'>    <div class='input-group'>  <img class='thumb' id='list-familiar["+i+"][dorso]'></output> </div></div> <div class='form-group'>   <label for='validate-number'>Edad:</label> <div class='input-group' data-validate='number'>  <input   type='text' class='form-control' name='familiar["+i+"][edadfam]' id='familiar["+i+"].edadfam' placeholder='Ingrese solo numeros' required> <span class='input-group-addon danger'><span class='glyphicon glyphicon-remove'></span></span> </div>  </div>   <div class='form-group'> <label for='validate-letras'>Ocupación:</label> <div class='input-group' data-validate='letras'> <input  type='text' class='form-control' name='familiar["+i+"][ocupacionfam]' id='familiar["+i+"].ocupacionfam' placeholder='Ingrese solo letras' required> <span class='input-group-addon danger'><span class='glyphicon glyphicon-remove'></span></span>  </div></div> <div class='form-group'> <label for='validate-letras'>Trabaja:</label> <div class='input-group'><select class='form-control' name='familiar["+i+"][trabaja]' id='familiartrabaja"+i+"' placeholder='Seleccione una opción' required>  <option value=''>Seleccione una opción</option><option value='Si'>Si</option><option value='No'>No</option>                </select>    <span class='input-group-addon danger'><span class='glyphicon glyphicon-remove'></span></span>       </div>          </div><div style='display:none;' id='actlabfamdiv"+i+"' class='form-group'>  <label for='validate-letras'>Actividad laboral:</label>   <div class='input-group'>  <select class='form-control' name='familiar["+i+"][actlab]' id='familiaractlab"+i+"' placeholder='Seleccione una opción' required> <option value=''>Seleccione una opción</option><option value='activosfam"+i+"'>Empleados Activos o Jubilados</option>  <option value='monotrifam"+i+"'>Autónomos y Monotributistas</option> <option value='informalfam"+i+"'>Trabajadores Informales</option></select><span class='input-group-addon danger'><span class='glyphicon glyphicon-remove'></span></span>  </div>          </div>     <div style='display:none;' id='comprobanteIngresosfam"+i+"' >   <div class='form-group'>  <label style='display:none;' id='recibofam"+i+"' for='validate-number'>Últimos tres recibos de sueldo</label>  <label style='display:none;' id='afipfam0' for='validate-number'>Comrpobante de AFIP/pago monotributo</label>    <label style='display:none;' id='juradafam"+i+"' for='validate-number'>Declaración jurada especificando actividad laboral e ingresos mensuales</label> <div style='display:none;' id='imag"+(i+1)+"1' > <label for='validate-number'>Comprobante:</label>   <div class='input-group'>  <input  type='file' id='familiar["+i+"][comping1]' name='familiar["+i+"][comping1]' accept='.jpg, .jpeg, .png, .pdf' class='form-control' required> <span class='input-group-addon danger'><span class='glyphicon glyphicon-remove'></span></span> </div> </div><div id='list-familiar["+i+"][comping1]-1' style='display:none;' class='form-group'><div class='input-group'><img class='thumb' id='list-familiar["+i+"][comping1]' />   </div> </div></div><div style='display:none;' id='imag"+(i+1)+"2' > <label for='validate-number'>Comprobante:</label> <div class='input-group'><input  type='file' id='familiar["+i+"][comping2]' name='familiar["+i+"][comping2]' accept='.jpg, .jpeg, .png, .pdf' class='form-control' required><span class='input-group-addon danger'><span class='glyphicon glyphicon-remove'></span></span>      </div></div><div id='list-familiar["+i+"][comping2]-1' style='display:none;' class='form-group'><div class='input-group'> <img class='thumb' id='list-familiar["+i+"][comping2]' /></div></div><div style='display:none;' id='imag"+(i+1)+"3' ><label for='validate-number'>Comprobante:</label><div class='input-group'>  <input  type='file' id='familiar["+i+"][comping3]' name='familiar["+i+"][comping3]' accept='.jpg, .jpeg, .png, .pdf'  class='form-control' required>  <span class='input-group-addon danger'><span class='glyphicon glyphicon-remove'></span></span></div></div><div id='list-familiar["+i+"][comping3]-1' style='display:none;' class='form-group'><div class='input-group'><img class='thumb' id='list-familiar["+i+"][comping3]' /></div> </div></div> <div style='display:none;' id='ingresosfamdiv"+i+"' class='form-group'> <label for='validate-number'>Ingresos:</label>   <div class='input-group' data-validate='number'><input   type='text' class='form-control' name='familiar["+i+"][ingresosfam]' id='familiar["+i+"].ingresosfam' placeholder='Ingrese solo numeros' required><span class='input-group-addon danger'><span class='glyphicon glyphicon-remove'></span></span>  </div></div> <div class='form-group'><label for='validate-number'>Certificación Negativa ANSES:</label><div class='input-group'> <input type='file' id='familiar["+i+"][ansesfam]' name='familiar["+i+"][ansesfam]' accept='.jpg, .jpeg, .png, .pdf' class='form-control' required>   <span class='input-group-addon danger'><span class='glyphicon glyphicon-remove'></span></span> </div> </div><div id='list-familiar["+i+"][ansesfam]-1' style='display:none;' class='form-group'><div class='input-group'> <img class='thumb' id='list-familiar["+i+"][ansesfam]'/></div></div></div></div>  </div></div>  <script type='text/javascript'> var toogle = (function () {    return {        init: function(buttonId, accordionId) {    var that = this;            $(buttonId).click(function() {   that.togglePanels(accordionId, $(buttonId));   });   }, togglePanels : function(accordionId, buttonContainer){ var onButton = $(buttonContainer).children('.onToggle').eq(0); var offButton = $(buttonContainer).children('.offToggle').eq(0); if (onButton.hasClass('hideToggleButton')){        this.openAllPanels(accordionId);  offButton.addClass('hideToggleButton');        offButton.removeClass('showToggleButton');        onButton.removeClass('hideToggleButton');       onButton.addClass('showToggleButton');      }      else{        this.closeAllPanels(accordionId);        onButton.addClass('hideToggleButton');        onButton.removeClass('showToggleButton');        offButton.addClass('showToggleButton');        offButton.removeClass('hideToggleButton');      }              },        openAllPanels : function(aId) {        $(aId + ' .panel-collapse:not(.in)').collapse('show');    },    closeAllPanels : function(aId) {      $(aId + ' .panel-collapse.in').collapse('hide');    }   }}) (); $(function () {    toogle.init('#toogleButton', '#proposalAccordion"+(i+1)+"');}); ");
 
       $('#addrscriptselect'+i).html(" <script type='text/javascript'> $('#familiartrabaja"+i+"').on('change',function(){var selected = $(this).val();$('#comprobanteIngresosfam"+i+"').hide(); if (selected === '') {$('#actlabfamdiv"+i+"').hide();$('#ingresosfamdiv"+i+"').hide();$('#comprobanteIngresosfam"+i+"').hide();} else{ if(selected === 'Si') {$('#comprobanteIngresosfam"+i+"').show();$('#actlabfamdiv"+i+"').show(); $('#ingresosfamdiv"+i+"').show(); } else if(selected === 'No') {$('#comprobanteIngresosfam"+i+"').hide();$('#actlabfamdiv"+i+"').hide(); $('#ingresosfamdiv"+i+"').hide();}}}); ");
 
@@ -796,7 +690,7 @@ else{
             });    
           
           $("#delete_div").click(function(){
-           if(i>1){
+           if(i>0){
          $("#addr"+(i-1)).html('');
          $("#addrscriptselect"+(i-1)).html('');
          $("#addrscriptotroselect"+(i-1)).html('');

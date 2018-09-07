@@ -17,7 +17,9 @@
                 <span class="input-group-addon danger"><span class="glyphicon glyphicon-remove"></span></span>
             </div>
           </div>
+        </div>
    
+                  <div class="col-sm-offset-3 col-sm-4">
 
         <div style="display:none;" id="actividad" class="form-group">
               <label for="validate-letras">Actividad laboral:</label>
@@ -81,9 +83,11 @@
             <input value="{{ old('sueldo') }}" type="number" min="0" class="form-control" name="sueldo" id="sueldo" placeholder="Ingrese solo numeros" required>
             <span class="input-group-addon danger"><span class="glyphicon glyphicon-remove"></span></span>
           </div>
-        </div>             
-        
+        </div>  
 
+        </div>
+
+            <div class="col-sm-offset-2 col-sm-6" >
         <div class="form-group">
               <label for="validate-letras">Tiene Becas:</label>
                 <div class="input-group">
@@ -247,7 +251,7 @@ else{
           $('#comprobanteIngresos').html('');
 
           
-          $('#comprobanteIngresos').html("<div class='form-group'><label style='display:none;' id='recibo' for='validate-number'>Últimos tres recibos de sueldo:</label><label style='display:none;' id='afip' for='validate-number'>Comrpobante de AFIP/pago monotributo:</label><label style='display:none;' id='jurada' for='validate-number'>Declaración jurada especificando actividad laboral e ingresos mensuales:</label><div class='input-group'><input type='file' id='comping1' name='comping1' accept='.jpg, .jpeg, .png' class='form-control' required><span class='input-group-addon danger'><span class='glyphicon glyphicon-remove'></span></span></div></div><div id='list-comping1-1' style='display:none;' class='form-group'><div class='input-group'><img class='thumb' id='list-comping1' />              </div></div><div style='display:none;' id='comprobanteIngresos2' class='form-group'><div class='input-group'><input  type='file' id='comping2' name='comping2'  accept='.jpg, .jpeg, .png' class='form-control'><span class='input-group-addon danger'><span class='glyphicon glyphicon-remove'></span></span></div></div><div id='list-comping2-1' style='display:none;' class='form-group'><div class='input-group'><img class='thumb' id='list-comping2' />              </div></div><div style='display:none;' id='comprobanteIngresos3' class='form-group'><div  class='input-group'><input type='file' id='comping3' name='comping3'  accept='.jpg, .jpeg, .png' class='form-control' ><span class='input-group-addon danger'><span class='glyphicon glyphicon-remove'></span></span></div></div><div id='list-comping3-1' style='display:none;' class='form-group'><div class='input-group'><img class='thumb' id='list-comping3' />             </div></div>");
+          $('#comprobanteIngresos').html("<div class='form-group'><label style='display:none;' id='recibo' for='validate-number'>Últimos tres recibos de sueldo:</label><label style='display:none;' id='afip' for='validate-number'>Comrpobante de AFIP/pago monotributo:</label><label style='display:none;' id='jurada' for='validate-number'>Declaración jurada especificando actividad laboral e ingresos mensuales:</label><div> <label >Comprobante:</label> </div><div class='input-group'><input type='file' id='comping1' name='comping1' accept='.jpg, .jpeg, .png' class='form-control' required><span class='input-group-addon danger'><span class='glyphicon glyphicon-remove'></span></span></div></div><div id='list-comping1-1' style='display:none;' class='form-group'><div class='input-group'><img class='thumb' id='list-comping1' />              </div></div><div style='display:none;' id='comprobanteIngresos2' class='form-group'><div> <label >Comprobante:</label> </div><div class='input-group'><input  type='file' id='comping2' name='comping2'  accept='.jpg, .jpeg, .png' class='form-control'><span class='input-group-addon danger'><span class='glyphicon glyphicon-remove'></span></span></div></div><div id='list-comping2-1' style='display:none;' class='form-group'><div class='input-group'><img class='thumb' id='list-comping2' />              </div></div><div style='display:none;' id='comprobanteIngresos3' class='form-group'><div> <label >Comprobante:</label> </div><div  class='input-group'><input type='file' id='comping3' name='comping3'  accept='.jpg, .jpeg, .png' class='form-control' ><span class='input-group-addon danger'><span class='glyphicon glyphicon-remove'></span></span></div></div><div id='list-comping3-1' style='display:none;' class='form-group'><div class='input-group'><img class='thumb' id='list-comping3' />             </div></div>");
 
           
           

@@ -161,8 +161,8 @@
 			        </div>
 	      
 	      <ul class="list-inline pull-right">
-            	<li><button type="button" class="btn btn-default prev-step">anterior</button></li>
-            	<li><button type="button" class="btn btn-primary next-step">siguiente</button></li>
+            	<li><button type="button" class="btn btn-default prev-step">Anterior</button></li>
+            	<li><button type="button" class="btn btn-primary next-step">Siguiente</button></li>
             </ul>
 
 	      </div>
@@ -184,16 +184,19 @@ var selected = $(this).val();
 if (selected === "") {
 $('#precioalqdiv').hide(); 
 $('#reciboalqfamdiv').hide(); 
+
 }
 else{
 
 if(selected === "Si") {
 $('#precioalqdiv').show();
 $('#reciboalqfamdiv').show();   
+
 }
 else if(selected === "No") {
 $('#precioalqdiv').hide();
 $('#reciboalqfamdiv').hide();  
+
 }
 }
 
@@ -301,7 +304,7 @@ $('#motocantdiv').hide();
           $('#reciboalqfamdiv').html('');
 
           
-          $('#reciboalqfamdiv').html("<label for='validate-number'>Recibo de Alquiler:</label><div class='input-group'> <input  type='file' id='reciboalqfam' name='reciboalqfam' accept='.jpg, .jpeg, .png' class='form-control' required> <span class='input-group-addon danger'><span class='glyphicon glyphicon-remove'></span></span></div><div class='input-group'>                <output id='list-reciboalqfam'></output> </div>  </div>");
+          $('#reciboalqfamdiv').html("<label for='validate-number'>Recibo de Alquiler:</label><div class='input-group'> <input  type='file' id='reciboalqfam' name='reciboalqfam' accept='.jpg, .jpeg, .png' class='form-control' required> <span class='input-group-addon danger'><span class='glyphicon glyphicon-remove'></span></span></div></div> <div id='list-reciboalqfam-1' style='display:none;' class='form-group'><div class='input-group'>       <img class='thumb' id='list-reciboalqfam' /> </div>  </div>");
 
 
           $(document).ready(function() {
@@ -343,43 +346,7 @@ $('#motocantdiv').hide();
                
         }); //cierra div document ready
 
-         
-$(document).one('click', 'input[id="reciboalqfam"]' , function(evt) {
-    let idd = this.id;
 
-  function handleFileSelect(evt) {
-    var files = evt.target.files; // FileList object
-    
-      $('#list-'+ idd).html("");      
-          
-    // Loop through the FileList and render image files as thumbnails.
-    for (var i = 0, f; f = files[i]; i++) {
- 
-      // Only process image files.
-      if (!f.type.match('image.*')) {
-        continue;
-      }
- 
-      var reader = new FileReader();
- 
-      // Closure to capture the file information.
-      reader.onload = (function(theFile) {
-        return function(e) {
-          // Render thumbnail.
-          var span = document.createElement('span');
-          span.innerHTML = ['Nombre: ', escape(theFile.name), ' || Tamanio: ', escape(theFile.size), ' bytes || type: ', escape(theFile.type), '<br /><img class="thumb" src="', e.target.result,'" title="', escape(theFile.name), '"/><br />'].join('');
-          document.getElementById('list-'+ idd).insertBefore(span, null);
-        };
-      })(f);
- 
-      // Read in the image file as a data URL.
-      reader.readAsDataURL(f);
-    }
-  
-    }
-  document.getElementById(idd).addEventListener('change', handleFileSelect, false);
-  
-  });
 
    }) 
        })
