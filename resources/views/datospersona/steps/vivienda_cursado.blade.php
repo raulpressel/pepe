@@ -154,7 +154,7 @@ $('#reciboalqdiv').hide();
         }
         });  //cierra div change key up
 
-        $('.input-group input[required]').trigger('change');
+        $('#montoalq, #reciboalq').trigger('change');
                
         }); //cierra div document ready
 

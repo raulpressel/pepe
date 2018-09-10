@@ -71,7 +71,7 @@
             <label for="validate-number">Recibo Pasaje de transporte:</label>
             
             <div class="input-group">
-              <input  type="file" id="recibopasaj" name="recibopasaj" accept=".jpg, .jpeg, .png" class="form-control">
+              <input  type="file" id="recibopasaj" name="recibopasaj" accept=".jpg, .jpeg, .png" class="form-control" required>
                 <span class="input-group-addon info"><span class="glyphicon glyphicon-asterisk"></span></span>
               </div>
               <div class="input-group">

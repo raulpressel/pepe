@@ -48,7 +48,7 @@
 		        <div style="display:none;" id="precioalqdiv" class="form-group">
 			          <label for="validate-number">Monto  $:</label>
 			          <div class="input-group" data-validate="number">
-			            <input value="{{ old('precioalquiler') }}" type="number" min="0" class="form-control" name="precioalquiler" id="precioalquiler" placeholder="Ingrese solo numeros">
+			            <input value="{{ old('precioalquiler') }}" type="number" min="0" class="form-control" name="precioalquiler" id="precioalquiler" placeholder="Ingrese solo numeros" required>
 			            <span class="input-group-addon danger"><span class="glyphicon glyphicon-remove"></span></span>
 		          	</div>
 		        </div>             
