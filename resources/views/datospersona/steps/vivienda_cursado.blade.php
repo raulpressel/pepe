@@ -38,25 +38,33 @@
                 <span class="input-group-addon danger"><span class="glyphicon glyphicon-remove"></span></span>
             </div>
           </div>
-        
+        </div>
+
+                <div class="col-sm-offset-3 col-sm-4">
+
         <div style="display:none;" id="reciboalqdiv" class="form-group">
 
             </div>
    
         <div style="display:none;" id="montoalqdiv" class="form-group">
-          <label for="validate-number">Monto  $:</label>
+          <label class="label label-info" for="validate-number">Monto  $</label>
           <div class="input-group" data-validate="number">
             <input value="{{ old('montoalq') }}" type="number" class="form-control" name="montoalq" id="montoalq" placeholder="Ingrese solo numeros" required>
             <span class="input-group-addon danger"><span class="glyphicon glyphicon-remove"></span></span>
           </div>
         </div>             
         
+      </div>
+
+      <div class="col-sm-offset-2 col-sm-6">
+
 
     <ul class="list-inline pull-right">
         <li><button type="button" class="btn btn-default prev-step">Anterior</button></li>
         <li><button type="button" class="btn btn-primary next-step">Siguiente</button></li>
     </ul>
   </div>
+  
 
 </div>
 </div>
@@ -103,7 +111,7 @@ $('#reciboalqdiv').hide();
           $('#reciboalqdiv').html('');
 
           
-          $('#reciboalqdiv').html("<label for='validate-number'>Recibo de Alquiler:</label><div class='input-group'> <input  type='file' id='reciboalq' name='reciboalq' accept='.jpg, .jpeg, .png, .pdf' class='form-control' required>  <span class='input-group-addon danger'><span class='glyphicon glyphicon-remove'></span></span> </div> </div><div id='list-reciboalq-1' style='display:none;' class='form-group'><div class='input-group'> <img class='thumb' id='list-reciboalq' />  </div>");
+          $('#reciboalqdiv').html("<label class='label label-info' for='validate-number'>Recibo de Alquiler</label><div class='input-group'> <input  type='file' id='reciboalq' name='reciboalq' accept='.jpg, .jpeg, .png' class='form-control' required>  <span class='input-group-addon danger'><span class='glyphicon glyphicon-remove'></span></span> </div> </div><div id='list-reciboalq-1' style='display:none;' class='form-group'><div class='input-group'> <img class='thumb' id='list-reciboalq' />  </div>");
 
           
 
@@ -113,7 +121,7 @@ $('#reciboalqdiv').hide();
 
           $(document).ready(function() {
 
-        $('.input-group input[required]').on('change', function() {
+        $('#montoalq, #reciboalq').on('change', function() {
         
         var $form = $(this).closest('form'),
         $group = $(this).closest('.input-group'),

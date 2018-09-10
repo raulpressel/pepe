@@ -258,7 +258,7 @@ else{
             
 
           $(document).ready(function() {
-        $('.input-group input[required], .input-group textarea[required], .input-group select[required], input-group radio[required]').on('change', function() {
+        $('#sueldo, #comping1, #comping2, #comping3').on('change', function() {
         var $form = $(this).closest('form'),
         $group = $(this).closest('.input-group'),
         $addon = $group.find('.input-group-addon'),
@@ -301,7 +301,7 @@ else{
         }
         });
 
-        $('.input-group input[required], .input-group textarea[required], .input-group select[required]').trigger('change');
+        $('#sueldo, #comping1, #comping2, #comping3').trigger('change');
 
                
         });

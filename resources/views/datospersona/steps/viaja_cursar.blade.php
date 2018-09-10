@@ -18,6 +18,10 @@
                 <span class="input-group-addon danger"><span class="glyphicon glyphicon-remove"></span></span>
             </div>
           </div>
+          </div>
+
+         <div class="col-sm-offset-3 col-sm-4">
+
     
       <div style="display:none;" id="cantviajadiv" class="form-group">
               <label for="validate-letras">Cantidad de veces que viaja por semana:</label>
@@ -30,7 +34,10 @@
             </div>
           </div>
 
-       
+       </div>
+        <div class="col-sm-offset-2 col-sm-6">
+
+
           <div class="form-group">
               <label for="validate-letras">Utiliza colectivos de Media Distancia:</label>
                 <div class="input-group">
@@ -41,7 +48,12 @@
                 <span class="input-group-addon danger"><span class="glyphicon glyphicon-remove"></span></span>
             </div>
           </div>
+        </div>
   
+
+           <div class="col-sm-offset-3 col-sm-4">
+
+
   <div style="display:none;" id="cantviajamediadiv" class="form-group">
               <label for="validate-letras">Cantidad de veces que viaja por semana:</label>
                 <div class="input-group">
@@ -59,7 +71,7 @@
             <label for="validate-number">Recibo Pasaje de transporte:</label>
             
             <div class="input-group">
-              <input  type="file" id="recibopasaj" name="recibopasaj" accept=".jpg, .jpeg, .png, .pdf" class="form-control">
+              <input  type="file" id="recibopasaj" name="recibopasaj" accept=".jpg, .jpeg, .png" class="form-control">
                 <span class="input-group-addon info"><span class="glyphicon glyphicon-asterisk"></span></span>
               </div>
               <div class="input-group">
@@ -82,6 +94,11 @@
             <span class="input-group-addon danger"><span class="glyphicon glyphicon-remove"></span></span>
           </div>
         </div>
+
+      </div>
+
+              <div class="col-sm-offset-2 col-sm-6">
+
 
     <ul class="list-inline pull-right">
         <li><button type="button" class="btn btn-default prev-step">Anterior</button></li>
@@ -164,12 +181,12 @@ $('#cantkmdiv').hide();
           $('#recibopasajdiv').html('');
 
           
-          $('#recibopasajdiv').html("<label for='validate-number'>Recibo Pasaje de transporte:</label>        <div class='input-group'><input  type='file' id='recibopasaj' name='recibopasaj' accept='.jpg, .jpeg, .png, .pdf' class='form-control' required>   <span class='input-group-addon danger'><span class='glyphicon glyphicon-remove'></span></span> </div> </div><div id='list-recibopasaj-1' style='display:none;' class='form-group'><div class='input-group'>              <img class='thumb' id='list-recibopasaj' /></div>");
+          $('#recibopasajdiv').html("<label for='validate-number'>Recibo Pasaje de transporte:</label>        <div class='input-group'><input  type='file' id='recibopasaj' name='recibopasaj' accept='.jpg, .jpeg, .png' class='form-control' required>   <span class='input-group-addon danger'><span class='glyphicon glyphicon-remove'></span></span> </div> </div><div id='list-recibopasaj-1' style='display:none;' class='form-group'><div class='input-group'>              <img class='thumb' id='list-recibopasaj' /></div>");
 
 
           $(document).ready(function() {
 
-        $('.input-group input[required]').on('change', function() {
+        $('#cantviajamedia, #recibopasaj, #preciopasaje, #cantkm').on('change', function() {
         
         var $form = $(this).closest('form'),
         $group = $(this).closest('.input-group'),
@@ -202,7 +219,7 @@ $('#cantkmdiv').hide();
         }
         });  //cierra div change key up
 
-        $('.input-group input[required]').trigger('change');
+        $('cantviajamedia, #recibopasaj, #preciopasaje, #cantkm').trigger('change');
                
         }); //cierra div document ready
 

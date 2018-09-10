@@ -29,12 +29,15 @@
                 <span class="input-group-addon danger"><span class="glyphicon glyphicon-remove"></span></span>
             </div>
           </div>
+          </div>
+          
+          <div class="col-sm-offset-3 col-sm-4">
 
           <div style="display:none;" id="reciboalqfamdiv" class="form-group">
             <label for="validate-number">Recibo de Alquiler:</label>
             
             <div class="input-group">
-              <input  type="file" id="reciboalqfam" name="reciboalqfam" accept=".jpg, .jpeg, .png, .pdf" class="form-control" required>
+              <input  type="file" id="reciboalqfam" name="reciboalqfam" accept=".jpg, .jpeg, .png" class="form-control" required>
                 <span class="input-group-addon danger"><span class="glyphicon glyphicon-remove"></span></span>
               </div>
               <div class="input-group">
@@ -51,6 +54,9 @@
 		        </div>             
 		        
 				
+          </div>
+
+          <div class="col-sm-offset-2 col-sm-6">
 
 		          <div class="form-group">
               <label for="validate-letras">Prestada:</label>
@@ -309,7 +315,7 @@ $('#motocantdiv').hide();
 
           $(document).ready(function() {
 
-        $('.input-group input[required]').on('change', function() {
+        $('#reciboalqfam, #precioalquiler').on('change', function() {
         
         var $form = $(this).closest('form'),
         $group = $(this).closest('.input-group'),
@@ -342,7 +348,7 @@ $('#motocantdiv').hide();
         }
         });  //cierra div change key up
 
-        $('.input-group input[required]').trigger('change');
+        $('#reciboalqfam, #precioalquiler').trigger('change');
                
         }); //cierra div document ready
 

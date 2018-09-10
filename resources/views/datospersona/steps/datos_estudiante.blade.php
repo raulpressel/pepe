@@ -307,27 +307,6 @@
 
         </script>
 
-
-        
-        <script language="javascript">
-            $("#provincia").change(function (event) {
-             
-              $("#localidad").empty();
-              $("#localidad").append("<option value='' selected>Seleccione una localidad </option>");
-              $.get("localidad/"+event.target.value+"", function(response, state) {
-              
-              for(i=0; i<response.length; i++){
-              $("#localidad").append("<option value='"+response[i].localidad+"'>"+response[i].localidad+" </option>");
-            }
-            });
-        });
-        </script> 
-
-    
-        
-
-
-
 <div class="col-sm-offset-2 col-sm-6">
 
 <ul class="list-unstyled pull-right">
@@ -374,15 +353,15 @@ $('#imagendiscaestdiv').hide();
           
           $('#imagendiscaestdiv').html(" <label class='label label-warning' for='validate-number'>Imagen Certificado</label> <div class='input-group'>   <input  type='file' id='imagendiscaest' name='imagendiscaest' class='form-control' accept='.jpg, .jpeg, .png, .pdf' required><span class='input-group-addon danger'><span class='glyphicon glyphicon-remove'></span></span>              </div></div> <div id='list-imagendiscaest-1' style='display:none;' class='form-group'><div class='input-group'>       <img class='thumb' id='list-imagendiscaest' />   </div></div>");
           
-          
 
-         $(document).ready(function() {
-        $('.input-group input[required], .input-group textarea[required], .input-group select[required], input-group radio[required]').on('change', function() {
-        var $form = $(this).closest('form'),
-        $group = $(this).closest('.input-group'),
-        $addon = $group.find('.input-group-addon'),
-        $icon = $addon.find('span'),
-        state = false;
+        $(document).ready(function() {
+       
+        $('#imagendiscaest').on('change', function() {
+            var $form = $(this).closest('form'),
+            $group = $(this).closest('.input-group'),
+            $addon = $group.find('.input-group-addon'),
+            $icon = $addon.find('span'),
+            state = false;
 
         console.log($(this).val());
 
@@ -422,17 +401,29 @@ $('#imagendiscaestdiv').hide();
         }
         });
 
-        $('.input-group input[required], .input-group textarea[required], .input-group select[required]').trigger('change');
+        
+        $('#imagendiscaest').trigger('change');
 
                
+         });
+
+        
+  }) 
+      
+           
+       
+$("#provincia").change(function (event) {
+             
+              $("#localidad").empty();
+              $("#localidad").append("<option value='' selected>Seleccione una localidad </option>");
+              $.get("localidad/"+event.target.value+"", function(response, state) {
+              
+              for(i=0; i<response.length; i++){
+              $("#localidad").append("<option value='"+response[i].localidad+"'>"+response[i].localidad+" </option>");
+            }
+            });
         });
-
-
-         
-
-
-   }) 
-       })
+     })
 </script>
 
 <script type="text/javascript">
