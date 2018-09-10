@@ -10,7 +10,7 @@
         <div class="form-group">
         <label for="validate-text">Domicilio durante el cursado:</label>
         <div class="input-group">
-        <input value="{{ old('domicursa') }}" type="text" class="form-control" name="domicursa" id="domicursa" placeholder="Ingrese letras y numeros" required>
+        <input value="{{ old('domicursa') }}" type="text" class="form-control" name="domicursa" id="domicursa" placeholder="Ingrese letras y numeros" >
         <span class="input-group-addon danger"><span class="glyphicon glyphicon-remove"></span></span>
         </div>
         </div>
@@ -19,7 +19,7 @@
           <div class="form-group">
               <label for="validate-letras">Casa de Familiares:</label>
                 <div class="input-group">
-                  <select value="{{ old('casafam') }}" class="form-control" name="casafam" id="casafam" placeholder="Seleccione una opción" required>
+                  <select value="{{ old('casafam') }}" class="form-control" name="casafam" id="casafam" placeholder="Seleccione una opción" >
                     <option value="">Seleccione una opción</option>
                     <option value="Si">Si</option><option value="No">No</option>
                 </select>
@@ -31,7 +31,7 @@
           <div  class="form-group">
               <label for="validate-letras">Alquila:</label>
                 <div class="input-group">
-                  <select value="{{ old('urbano') }}" class="form-control" name="alq" id="alq" placeholder="Seleccione una opción" required>
+                  <select value="{{ old('urbano') }}" class="form-control" name="alq" id="alq" placeholder="Seleccione una opción" >
                     <option value="">Seleccione una opción</option>
                     <option value="Si">Si</option><option value="No">No</option>
                 </select>
@@ -49,7 +49,7 @@
         <div style="display:none;" id="montoalqdiv" class="form-group">
           <label class="label label-info" for="validate-number">Monto  $</label>
           <div class="input-group" data-validate="number">
-            <input value="{{ old('montoalq') }}" type="number" class="form-control" name="montoalq" id="montoalq" placeholder="Ingrese solo numeros" required>
+            <input value="{{ old('montoalq') }}" type="number" class="form-control" name="montoalq" id="montoalq" placeholder="Ingrese solo numeros" >
             <span class="input-group-addon danger"><span class="glyphicon glyphicon-remove"></span></span>
           </div>
         </div>             
@@ -111,7 +111,7 @@ $('#reciboalqdiv').hide();
           $('#reciboalqdiv').html('');
 
           
-          $('#reciboalqdiv').html("<label class='label label-info' for='validate-number'>Recibo de Alquiler</label><div class='input-group'> <input  type='file' id='reciboalq' name='reciboalq' accept='.jpg, .jpeg, .png' class='form-control' required>  <span class='input-group-addon danger'><span class='glyphicon glyphicon-remove'></span></span> </div> </div><div id='list-reciboalq-1' style='display:none;' class='form-group'><div class='input-group'> <img class='thumb' id='list-reciboalq' />  </div>");
+          $('#reciboalqdiv').html("<label class='label label-info' for='validate-number'>Recibo de Alquiler</label><div class='input-group'> <input  type='file' id='reciboalq' name='reciboalq' accept='.jpg, .jpeg, .png' class='form-control' >  <span class='input-group-addon danger'><span class='glyphicon glyphicon-remove'></span></span> </div> </div><div id='list-reciboalq-1' style='display:none;' class='form-group'><div class='input-group'> <img class='thumb' id='list-reciboalq' />  </div>");
 
           
 

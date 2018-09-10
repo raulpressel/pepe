@@ -16,3 +16,5 @@ database/
 composer\.lock
 
 composer\.json
+resources/views/datospersona/steps/datos_estudiante.blade_.php
+resources/views/datospersona/steps/consideraciones_particulares.blade_.php
