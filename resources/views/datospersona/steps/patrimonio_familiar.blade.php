@@ -49,7 +49,7 @@
 			          <label for="validate-number">Monto  $:</label>
 			          <div class="input-group" data-validate="number">
 			            <input value="{{ old('precioalquiler') }}" type="number" min="0" class="form-control" name="precioalquiler" id="precioalquiler" placeholder="Ingrese solo numeros">
-			            <span class="input-group-addon info"><span class="glyphicon glyphicon-asterisk"></span></span>
+			            <span class="input-group-addon danger"><span class="glyphicon glyphicon-remove"></span></span>
 		          	</div>
 		        </div>             
 		        
