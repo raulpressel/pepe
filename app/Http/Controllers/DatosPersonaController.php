@@ -367,6 +367,7 @@ class DatosPersonaController extends Controller
                     $con->cert_incapacidad = $request->dni.'/'.$nombre;
                     }
                 }
+                dd($con, $img, $rutas, $con->cert_incapacidad);
                 $con->save();
             
             }

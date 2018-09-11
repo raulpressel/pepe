@@ -1266,6 +1266,15 @@
     </div>
 </div>
 
+	  <tr>
+	  <th>Cumpleaños</th>
+	  <td>{{ $datos->cumple}}</td><td></td>
+	  </tr>
+	  
+	  <tr>
+	  <th>Domicilio</th>
+	  <td>{{ $datos->domicilio}}</td> <td></td>
+	  </tr>
 
  
 
