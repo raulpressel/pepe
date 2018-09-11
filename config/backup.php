@@ -8,7 +8,7 @@ return [
          * The name of this application. You can use this name to monitor
          * the backups.
          */
-        'name' => config('app.name'),
+        'name' => 'SIGAB-Backup',
 
         'source' => [
 
@@ -137,7 +137,7 @@ return [
      */
     'monitorBackups' => [
         [
-            'name' => config('app.name'),
+            'name' => 'SIGAB-Backup',
             'disks' => ['local'],
             'newestBackupsShouldNotBeOlderThanDays' => 1,
             'storageUsedMayNotBeHigherThanMegabytes' => 5000,

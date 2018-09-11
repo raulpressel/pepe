@@ -38,7 +38,7 @@ class Inscripcione extends Model
 
     public function Inscribir($request){
         //echo "HOLAAAAAAAAAA estamos en Inscripcione.php";
-        dd($request);
+   //     dd($request);
         $aux_beca =  DB::table('becas')->where('habilitada', "Si")->first(); //Si tiene mas becas habilitada  ardeee!
         //dd($aux_beca);
         $inscripto = new Inscripcione();
@@ -52,7 +52,7 @@ class Inscripcione extends Model
             /////////////////////////////////////////////////    
             */
 
-            //$procedencia?========??????????????========???;
+            //$procedencia?========??? desde donde cursa 501 km
 
 
             /*
@@ -60,12 +60,15 @@ class Inscripcione extends Model
                 PUNTAJE TOTAL DE INGRESOS CON LOS FAMILIARES
             /////////////////////////////////////////////////    
             */
-            
-            $cant_grupo_familiar = ;//sumar todos los familiares
+
+
+/*
+            $cant_grupo_familiar = ;//sumar todos los familiares+ inclusive el el minimo es 1
             $ingreso_total_familiar =; //sumar todos los sueldos de los fam mas 1(estudiante)
-            $alquiler_mensual = ;//mensual postulante o mensual familiar?
+            $alquiler_mensual = ;//mensual postulante o mensual familiar? el que tenga cargado capa q los 2... que gasto tienen
             $transporte_mensual =; //suma de todos los viajes*cant viajes?
-            $otros_gastos = ;   //que gastos?
+            //sesuman todos los gastos de transporte sea media distancia por el ticket o si es por corta distancia se evalua por la sube el gasto... y todo va por mes ()*4
+            $otros_gastos = ;   //que pida cargar otro gastos un numero.... numerico y valor...cual es por denominacion y por numero la plata que significa
 
             $total_ingreso_por_persona=($ingreso_total_familiar-$alquiler_mensual-$transporte_mensual-$otros_gastos)/$cant_grupo_familiar;
 
@@ -78,14 +81,14 @@ class Inscripcione extends Model
                     $puntaje_total_ingresos=0;
                 }
             }
-
+*/
 
             /*
             /////////////////////////////////////////////////
                 PUNTAJE POR ENFERMEDADES
             /////////////////////////////////////////////////
             */
-
+/*
             if($disca_estudiante == "Si"){      //estudiante tiene discapacidad
                 $discapacidad = 20;
             }else{
@@ -101,14 +104,14 @@ class Inscripcione extends Model
                 }
             }
             
-            $total_discapacidad=$discapacidad+$discapacidad_fam; //corresponde???
-
+            $total_discapacidad=$discapacidad+$discapacidad_fam; //corresponde??? si corresponde las 2 suma las 2 discapacidades no importa si tiene 10 enfermos
+*/
             /*
             /////////////////////////////////////////////////
                 PUNTAJE POR SITUACION ACADEMICA
             /////////////////////////////////////////////////    
             */
-
+/*
             if($condicion_estudiante=="Ingresante"){
                 if($promedio=<6){           //agregar promedio al form
                     $promedio_secundaria=0;
@@ -128,6 +131,7 @@ class Inscripcione extends Model
                     }
                 }
                 else{
+                    //sacar condicional...
                     if($condicion_estudiante=="Renovante" or $condicion_estudiante=="Nuevo" or $condicion_estudiante=="Condicional"){
                         if($corresponde==""){       //que es corresponde?
                             $academico=0;
@@ -147,7 +151,7 @@ class Inscripcione extends Model
 
             $merito=$total_academico+$total_discapacidad+$total_ingreso_por_persona;
 
-
+*/
 
 
 

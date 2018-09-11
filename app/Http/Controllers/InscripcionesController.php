@@ -316,8 +316,8 @@ public function store(Request $request)
         }
 
 
-    public function carga(Request $request){
-       //dd($request);
+    public function carga($id, $dato){
+       dd($id,$dato);
 
         try {
 

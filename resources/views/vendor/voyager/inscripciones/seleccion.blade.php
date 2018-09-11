@@ -29,12 +29,12 @@
 {!! Form::open(['route' => 'otorgar', 'method' => 'post' ]) !!}
 
 
-<div class= "table-responsive" id="lista">
-	<table class= "table table-bordered table-striped" id="mytable" style="font-size:15px" width="100%" border="0" cellspacing="0" cellpadding="0">
+<div class="table-dark table-bordered table-hover table-responsive" id="lista">
+	<table class="" id="mytable" style="font-size:15px" width="100%" border="0" cellspacing="0" cellpadding="0">
 		<thead>
 			<tr>
 				<th class="col-md-1" height="150%">Seleccionar</th>
-				<th class="col-md-1">Nombre del inscripto</th>
+				<th class="col-md-1" height="2000%">Nombre del inscripto</th>
 				<th class="col-md-1">Dni/Pasaporte</th>
 				<th class="col-md-1">Facultad</th>
 				<th class="col-md-1">Meritos</th>
@@ -44,13 +44,23 @@
 			</tr>
 		</thead>
 		@foreach($inscrip as $inscriptos)
-			<tr>
+
+<?php if ($inscriptos->otorgamiento == "No"): ?>
+			<tr class="bg-danger">
+<?php endif; ?>
+<?php if ($inscriptos->otorgamiento == "Suspendida"): ?>
+			<tr class="bg-warning">
+<?php endif; ?>
+<?php if ($inscriptos->otorgamiento == "Si"): ?>
+			<tr class="bg-success">
+<?php endif; ?>
 				<td><p>
-				{{$loop->index + 1}} -  <input type="checkbox" name="listado[]" value="{{$inscriptos->user_id}}" >
+				{{$loop->index + 1}} - <!--esto??? <input type="checkbox" name="listado[]" value="{{$inscriptos->user_id}}" -->
 				<input type="hidden" name="user_id" value="{{$inscriptos->user_id}}">
 				<input type="hidden" name="beca_id" value="{{$inscriptos->beca_id}}">
 
 				</p></td>
+
 
 				<td><p>
 					{{ $inscriptos->user_nombre }}
@@ -75,9 +85,7 @@
 
 
 				<td><p>
-				
-			{{ $inscriptos->observacion }}
-				
+					{{ $inscriptos->observacion }}
 				</p></td>
 
 
@@ -93,16 +101,13 @@
                                     <li><a href="/administracion/users/{{$inscriptos->user_id}}">Datos del Usuario</a></li>
                             </ul>
                             </div>
-
- @if( (Auth::user()->role_id == '1') or (Auth::user()->role_id == '3') )
-      
-                            {!! link_to_route('dar_baja_inscripcion', 'Eliminar', ['user_id' => $inscriptos->user_id], ['class'=>'btn btn-danger btn-xs'] ) !!}
-      @endif              
+	 							@if( (Auth::user()->role_id == '1') or (Auth::user()->role_id == '3') )
+	                            {!! link_to_route('dar_baja_inscripcion', 'Eliminar', ['user_id' => $inscriptos->user_id], ['class'=>'btn btn-danger btn-xs'] ) !!}
+	      						@endif              
                    
-                </div>
+                	</div>
 				</p></td>
 			</tr>
-
 		@endforeach
 		</table>
 </div>

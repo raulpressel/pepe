@@ -70,17 +70,21 @@
   
 
       <td width="40%">
-      <input readonly value="{{ $datos->user_name}}" type="text"  class="form-control" name="nombre" id="idNombre" required></td><td>asd</td>
+      <input readonly value="{{ $datos->user_name}}" type="text"  class="form-control" name="nombre" id="idNombre" required></td><td></td>
       <td>
        <input type="Button" onclick="quitarReadOnly('idNombre')"  title="Modificar" style="display: inline;" value="Modifcar" class="btn-xs btn-success">
         <input type="Button" onclick="ponerReadOnly('idNombre')" title="Guardar"  style="display: inline;" value="Guardar" class="btn-xs btn-warning">
+        <a class="btn btn-xs btn-danger" data-button-type="delete"
+        
+                                  <a href="{{ route('modif-dato',['id'=>$datos->user_id,'dato'=>'nombre']) }}"><i class="fa fa-trash-o"></i>
+                                    Eliminar</a>
       </td>
 
       </tr>
   <tr>
       <th width="20%">Apellido</th> 
 
-      <td width="40%"><input readonly value="{{$datos->user_apellido}}" type="text" class="form-control" name="apellido" id="idApellido" required></td><td>asd</td>
+      <td width="40%"><input readonly value="{{$datos->user_apellido}}" type="text" class="form-control" name="apellido" id="idApellido" required></td><td></td>
       
       <td>
         <input type="Button" style="display: inline;" onclick="quitarReadOnly('idApellido')"  class="btn-xs btn-success" title="Modificar" value="Modificar">
@@ -120,7 +124,7 @@
                   <option value="viudo" {{ ($datos->estado_civil) == 'viudo' ? 'selected' : '' }}>Viudo</option>
                 </select>
                 </td>
-      <td>asd          
+      <td>          
       </td>
 
       
@@ -133,7 +137,7 @@
     <tr>
     <th>Cumpleaños</th>
     
-    <td width="40%"><input readonly value="{{$datos->cumple}}" type="date" class="form-control" name="cumple" id="idCumple" required></td><td>asd</td>
+    <td width="40%"><input readonly value="{{$datos->cumple}}" type="date" class="form-control" name="cumple" id="idCumple" required></td><td></td>
       
       <td>
         <input type="Button" style="display: inline;" onclick="quitarReadOnly('idCumple')" class="btn-xs btn-success" title="Modificar" value="Modificar">
@@ -144,7 +148,7 @@
     <tr>
     <th>Domicilio</th>
     
-    <td width="40%"><input readonly value="{{ $datos->domicilio}}" type="text" class="form-control" name="domi" id="idDomi" required></td><td>asd</td>
+    <td width="40%"><input readonly value="{{ $datos->domicilio}}" type="text" class="form-control" name="domi" id="idDomi" required></td><td></td>
       
       <td>
         <input type="Button" style="display: inline;" onclick="quitarReadOnly('idDomi')" class="btn-xs btn-success" title="Modificar" value="Modificar">
@@ -163,7 +167,7 @@
     <tr>
     <th>Celurar</th>
     
-    <td width="40%"><input readonly value="{{ $datos->cel}}" type="text" class="form-control" name="cel" id="idCel" required></td><td>asd</td>
+    <td width="40%"><input readonly value="{{ $datos->cel}}" type="text" class="form-control" name="cel" id="idCel" required></td><td></td>
       
       <td>
         <input type="Button" style="display: inline;" onclick="quitarReadOnly('idCel')" class="btn-xs btn-success" title="Modificar" value="Modificar">
@@ -174,7 +178,7 @@
     <tr>
     <th>E-Mail</th>
     
-    <td width="40%"><input readonly value="{{ $datos->user_email }}" type="text" class="form-control" name="email" id="idEmail" required></td><td>asd</td>
+    <td width="40%"><input readonly value="{{ $datos->user_email }}" type="text" class="form-control" name="email" id="idEmail" required></td><td></td>
       
       <td>
         <input type="Button" style="display: inline;" onclick="quitarReadOnly('idEmail')" class="btn-xs btn-success" title="Modificar" value="Modificar">
@@ -185,7 +189,7 @@
     <tr>
       <th>Facebook</th>
       
-      <td width="40%"><input readonly value="{{ $datos->face}}" type="text" class="form-control" name="face" id="idFace" required></td><td>asd</td>
+      <td width="40%"><input readonly value="{{ $datos->face}}" type="text" class="form-control" name="face" id="idFace" required></td><td></td>
       
       <td>
         <input type="Button" style="display: inline;" onclick="quitarReadOnly('idFace')" class="btn-xs btn-success" title="Modificar" value="Modificar">
@@ -264,7 +268,7 @@
 
        <tr>
         <th>Carrera que cursa</th>
-        <td>{{ $datos->carrera_cursa}} <- nombre
+        <td>{{ $datos->carrera_cursa}} 
         </td><td></td>
         <td>
         <input type="Button" style="display: inline;" onclick="quitarReadOnly('IdCond')" class="btn-xs btn-success" title="Modificar" value="Modificar">
@@ -390,7 +394,7 @@
             <td width="40%"><input readonly value="{{$datos->sueldo}}" type="text" class="form-control" name="sueldo" id="idSueldo" required></td><td>
               <a href="#" class="thumbnail" data-toggle="modal" data-target="#lightbox"> 
               Comprobante de ingresos
-               <img src="{{ action('InscripcionesController@getFile',['filename' => $datos->comprobante_ingresos]) }}" alt="..." class="img-responsive lightbox hide">
+               <img src="{{ action('InscripcionesController@getFile',['filename' => $datos->comprobante_ingresos_1]) }}" alt="..." class="img-responsive lightbox hide">
               </a>
             </td>
             <td>
@@ -1203,14 +1207,14 @@
         <tr><th class="bg-success"><td class="bg-success" align="center">Puntaje</td> </th></tr>
 
           <tr>
-            <th>puntaje 1</th>
+            <th>Puntaje procedencia</th>
             <td align="center"> <input readonly value="{{ $datos->cant_terreno}}"  type="text" class="form-control" name="punt_1" id="punt_1" required> 
             </td>
             
           </tr>
 
           <tr>
-            <th>Puntaje 2</th>
+            <th>Puntaje por discapacidad</th>
             <td align="center"> <input readonly value="{{ $datos->cant_terreno}}"  type="text" class="form-control" name="punt_2" id="punt_2" required>              
             </td>
 
@@ -1218,11 +1222,17 @@
           
           
           <tr>
-            <th>Puntaje 3</th>
+            <th>Puntaje por situacion academcia</th>
             <td align="center"> <input readonly value="{{ $datos->cant_terreno}}"  type="text" class="form-control" name="punt_3" id="punt_3" required>              
             </td>
           </tr>
          
+          <tr>
+            <th>Puntaje por ingresos con los Familiares</th>
+            <td align="center"> <input readonly value="{{ $datos->cant_terreno}}"  type="text" class="form-control" name="punt_3" id="punt_3" required>              
+            </td>
+          </tr>
+
           <tr align="center">
             <th align="center"><font color="red"><strong>Total</strong></font></th>
             <td class="" align="center"> <input readonly value="{{ $datos->cant_terreno}}"  type="text" class="form-control" name="punt_3" id="punt_3" required align="center">              
@@ -1257,16 +1267,11 @@
 </div>
 
 
-
-<br><br><br>
-<div align="center">
-
-
  
 
   @if(  $datos->revision==0  )
 
-<strong>Los datos que se observan del postulante son correctos?.</strong><br> Tener en cuenta que al ser correctos, y aceptar los datos se incluira el postulante en la orden de meritos<br>
+<strong><font color="red">Los datos que se observan del postulante son correctos?.</font></strong><br> Tener en cuenta que al ser correctos, y aceptar los datos se incluira el postulante en la orden de meritos<br>
   <input type="radio" name="band" value="0" {{ ($datos->band) == '0' ? 'checked': ''}}/> Datos incompletos o no correctos!<br>         
  <input type="radio" name="band" value="1" {{ ($datos->band) =='1' ? 'checked': ''}}/> Datos correctos!<br>
 
@@ -1274,9 +1279,11 @@
 
     <select name = 'accion'>
       <option value=""> Seleccione una opcion</option>
-      <option value="acepta"> Aceptar datos cargados (no guarda modificaciones)</option>
+      <option value="acepta"> Aceptar datos cargados <strong>(no guarda modificaciones)</strong></option>
       <option value="modifica">Guardar modificaciones y Aceptar</option>
-      <option value="borra"> Borrar datos de la inscripcion del usuario</option>
+ @if( (Auth::user()->role_id == '1') or (Auth::user()->role_id == '3') )
+      <option value="borra"> Borrar datos de la <strong>inscripcion</strong> del usuario</option>
+    @endif
     </select>
 
 

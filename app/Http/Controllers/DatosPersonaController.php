@@ -85,6 +85,15 @@ class DatosPersonaController extends Controller
             return response()->json($localidad);
         }
     }
+    public function getCarreras(Request $request, $id)
+    {
+        if($request->ajax()){
+            
+            $carrera = DB::table('carreras')->where('id',$id)->get();
+            
+            return response()->json($carrera);
+        }
+    }
 
     /**
      * Store a newly created resource in storage.
@@ -93,21 +102,71 @@ class DatosPersonaController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function store(CrearDatosPersona $request)
-    {        
-    //dd($request->cuil);
+    {       
         $beca_aux = DB::table('becas')->where('habilitada', "Si")->first(); //Si tiene mas becas habilitada explota adrede y ademas comprobar que no se altero el hidden del form
 
         if ($beca_aux->id==$request->becaid){
 
          try{
+            //dd($request->familiar,$request->consideraciones,$request); 
+    
             $datos = new DatosPersona;
             $datos->beca_id = $request->becaid;
             $datos->user_id = $request->user_id;
             $datos->user_apellido = $request->apellido;
             $datos->user_name = $request->nombre;
             $datos->user_dni = $request->dni;
-           // $datos->imagen_dni = $request->file('files');
-            
+            $datos->cuil = $request->cuil;
+            $datos->estado_civil = $request->estcivil;
+            $datos->cumple = $request->cumple;
+            $datos->domicilio = $request->domi;
+            $datos->provincia = $request->provincia;
+            $datos->localidad = $request->localidad;
+            $datos->cp = $request->cp;
+            $datos->nacionalidad = $request->nacionalidad;
+            $datos->cel = $request->cel;
+            $datos->user_email = $request->email;
+            $datos->face = $request->face;
+            $datos->disca_estudiante = $request->discaest;
+            $datos->condicion_estudiante = $request->cond;
+            $datos->carrera_cursa = $request->carrera_cursa;
+            $datos->anio_ingreso = $request->anioingreso;
+            $datos->anio_cursado = $request->aniocursado;
+            $datos->cant_materia = $request->cantmaterias;
+            $datos->promedio = $request->promedio;
+            $datos->tiene_trabajo = $request->trabaja;
+            $datos->tipo_trabajo = $request->actlab;
+            $datos->sueldo = $request->sueldo;
+            $datos->tiene_beca = $request->beca;
+            $datos->tiene_progresar = $request->progresar;
+            $datos->tiene_asig = $request->asig;
+            $datos->otros_ing = $request->otrosing;
+            $datos->domi_cursado = $request->domicursa;
+            $datos->casa_fam = $request->casafam;
+            $datos->tiene_alq = $request->alq;        
+            $datos->monto_alq = $request->montoalq;
+            $datos->usa_urbano = $request->urbano;
+            $datos->cant_viajes = $request->cantviaja;
+            $datos->usa_media_dist = $request->mediadist;
+            $datos->cant_viaja_media = $request->cantviajamedia;
+            $datos->precio_pasaje = $request->preciopasaje;
+            $datos->cant_km = $request->cantkm;
+            $datos->es_propietario = $request->propietario;
+            $datos->alquila = $request->alquila;
+            $datos->precio_alquiler = $request->precioalquiler;
+            $datos->prestada = $request->prestada;
+            $datos->otros_vivienda = $request->otrosvivienda;
+            $datos->tiene_campo = $request->campo;
+            $datos->cant_has = $request->has;
+            $datos->actividad = $request->actividad;
+            $datos->tiene_terreno = $request->terreno;
+            $datos->cant_terreno = $request->terrenocant;
+            $datos->tiene_auto = $request->auto;
+            $datos->cant_auto = $request->autocant;
+            $datos->tiene_moto = $request->moto;
+            $datos->cant_moto = $request->motocant;
+            $datos->motivos = $request->motivos;
+              
 
             Storage::makeDirectory($request->dni); //creo el directorio con el dni, para guardar las imagenes
             
@@ -143,19 +202,7 @@ class DatosPersonaController extends Controller
 
                 }
 
-            $datos->cuil = $request->cuil;
-            $datos->estado_civil = $request->estcivil;
-            $datos->cumple = $request->cumple;
-            $datos->domicilio = $request->domi;
-            $datos->provincia = $request->provincia;
-            $datos->localidad = $request->localidad;
-            $datos->cp = $request->cp;
-            $datos->nacionalidad = $request->nacionalidad;
-            $datos->cel = $request->cel;
-            $datos->user_email = $request->email;
-            $datos->face = $request->face;
 
-            $datos->disca_estudiante = $request->discaest;//agregada hasta el prox //
             
             if ( $request->hasFile('imagendiscaest') ){     
                 $img = $request->file('imagendiscaest');
@@ -167,7 +214,6 @@ class DatosPersonaController extends Controller
                 }
 
 
-            $datos->condicion_estudiante = $request->cond;
 
             if ($request->hasFile('constancia')){     
                 $img = $request->file('constancia');
@@ -199,40 +245,64 @@ class DatosPersonaController extends Controller
                 }
             }
 
-            $datos->carrera_cursa = $request->carrera_cursa;
-            $datos->anio_ingreso = $request->anioingreso;
-            $datos->anio_cursado = $request->aniocursado;
-            $datos->tiene_trabajo = $request->trabaja;
-            $datos->tipo_trabajo = $request->actlab;
-
-            if ( $request->hasFile('comping') ){     
-                $img = $request->file('comping');
+            if ( $request->hasFile('comping1') ){     
+                $img = $request->file('comping1');
                 $g=0; 
                 $rutas = [];
                 if(is_array($img)){ 
                     foreach ($img as $contador=>$imagen) {
                         $ext=$imagen->getClientOriginalExtension();
-                        $nombre='comprobante_ingresos-'.$g.time().'.'.$ext;
+                        $nombre='comprobante_ingresos-1'.$g.time().'.'.$ext;
                         $rutas[]=$imagen->storeAs($request->dni,$nombre);
-                        $datos->comprobante_ingresos = collect($rutas)->implode(' - ');
+                        $datos->comprobante_ingresos_1 = collect($rutas)->implode(' - ');
                         $g++;
                     }
                 }
                 else{
-                    $nombre='comprobante_ingresos'.time().'.'.$img->getClientOriginalExtension();
+                    $nombre='comprobante_ingresos-1'.time().'.'.$img->getClientOriginalExtension();
                     $img->storeAs($request->dni,$nombre);
-                    $datos->comprobante_ingresos = $request->dni.'/'.$nombre;
+                    $datos->comprobante_ingresos_1 = $request->dni.'/'.$nombre;
+                }
+            }
+             if ( $request->hasFile('comping2') ){     
+                $img = $request->file('comping2');
+                $g=0; 
+                $rutas = [];
+                if(is_array($img)){ 
+                    foreach ($img as $contador=>$imagen) {
+                        $ext=$imagen->getClientOriginalExtension();
+                        $nombre='comprobante_ingresos-2'.$g.time().'.'.$ext;
+                        $rutas[]=$imagen->storeAs($request->dni,$nombre);
+                        $datos->comprobante_ingresos_2 = collect($rutas)->implode(' - ');
+                        $g++;
+                    }
+                }
+                else{
+                    $nombre='comprobante_ingresos-2'.time().'.'.$img->getClientOriginalExtension();
+                    $img->storeAs($request->dni,$nombre);
+                    $datos->comprobante_ingresos_2 = $request->dni.'/'.$nombre;
                 }
             }
 
-            $datos->sueldo = $request->sueldo;
-            $datos->tiene_beca = $request->beca;
-            $datos->tiene_progresar = $request->progresar;
-            $datos->tiene_asig = $request->asig;
-            $datos->otros_ing = $request->otrosing;
-            $datos->domi_cursado = $request->domicursa;
-            $datos->casa_fam = $request->casafam;
-            $datos->tiene_alq = $request->alq;
+             if ( $request->hasFile('comping3') ){     
+                $img = $request->file('comping3');
+                $g=0; 
+                $rutas = [];
+                if(is_array($img)){ 
+                    foreach ($img as $contador=>$imagen) {
+                        $ext=$imagen->getClientOriginalExtension();
+                        $nombre='comprobante_ingresos-3'.$g.time().'.'.$ext;
+                        $rutas[]=$imagen->storeAs($request->dni,$nombre);
+                        $datos->comprobante_ingresos_3 = collect($rutas)->implode(' - ');
+                        $g++;
+                    }
+                }
+                else{
+                    $nombre='comprobante_ingresos-3'.time().'.'.$img->getClientOriginalExtension();
+                    $img->storeAs($request->dni,$nombre);
+                    $datos->comprobante_ingresos_3 = $request->dni.'/'.$nombre;
+                }
+            }
 
             if ( $request->hasFile('reciboalq') ){     
                 $img = $request->file('reciboalq');
@@ -244,14 +314,7 @@ class DatosPersonaController extends Controller
             else{
             }
 
-            $datos->monto_alq = $request->montoalq;
-            $datos->usa_urbano = $request->urbano;
-            $datos->cant_viajes = $request->cantviaja;
-            $datos->usa_media_dist = $request->mediadist;
-            $datos->cant_viaja_media = $request->cantviajamedia;
-            
-            //return response()->json($request);
-
+    
             
             if ( $request->hasFile('recibopasaj') ){     
                 $img = $request->file('recibopasaj'); 
@@ -263,10 +326,6 @@ class DatosPersonaController extends Controller
                 else{
                 }
 
-            $datos->precio_pasaje = $request->preciopasaje;
-            $datos->es_propietario = $request->propietario;
-            $datos->alquila = $request->alquila;
-
             if ( $request->hasFile('reciboalqfam') ){     
                 $img = $request->file('reciboalqfam'); 
                 $nombre='recibo_alquiler_familiar'.time().'.'.$img->getClientOriginalExtension();
@@ -277,19 +336,6 @@ class DatosPersonaController extends Controller
                 }
     
 
-            $datos->precio_alquiler = $request->precioalquiler;
-            $datos->prestada = $request->prestada;
-            $datos->otros_vivienda = $request->otrosvivienda;
-            $datos->tiene_campo = $request->campo;
-            $datos->cant_has = $request->has;
-            $datos->actividad = $request->actividad;
-            $datos->tiene_terreno = $request->terreno;
-            $datos->cant_terreno = $request->terrenocant;
-            $datos->tiene_auto = $request->auto;
-            $datos->cant_auto = $request->autocant;
-            $datos->tiene_moto = $request->moto;
-            $datos->cant_moto = $request->motocant;
-            $datos->motivos = $request->motivos;
             $datos->save();
 
             for ($k=0;$k<count($request->consideraciones);$k++) {
@@ -321,9 +367,6 @@ class DatosPersonaController extends Controller
                     $con->cert_incapacidad = $request->dni.'/'.$nombre;
                     }
                 }
-                
-
-
                 $con->save();
             
             }
@@ -331,14 +374,18 @@ class DatosPersonaController extends Controller
             
             for($l=0;$l<count($request->familiar);$l++) {
                 $fam = new familiar;
+                Storage::makeDirectory($request->dni."/familiar-".$l);
+                 $ruta= $request->dni."/familiar-".$l;
+                
                 $fam->user_id = $request->user_id;
                 $fam->parentesco = $request->familiar[$l]['parentesco'];
                 $fam->apeynom = $request->familiar[$l]['apeynom'];
                 $fam->dni = $request->familiar[$l]['dnifam'];
-
-                Storage::makeDirectory($request->dni."/familiar");
-                 $ruta= $request->dni."/familiar";
-
+                $fam->edad = $request->familiar[$l]['edadfam'];
+                $fam->ocupacion = $request->familiar[$l]['ocupacionfam'];
+                $fam->actividad_laboral = $request->familiar[$l]['actlab'];
+                $fam->ingresos = $request->familiar[$l]['ingresosfam'];
+                
                 if ( $request->hasFile('familiar.*.frente') ){ 
                     $img = $request->file('familiar.*.frente'); 
                     $con=0;
@@ -361,31 +408,28 @@ class DatosPersonaController extends Controller
                 }
                 
 
-                if ( $request->hasFile('familiar.*.dorso') ){     
+                if ( $request->hasFile('familiar.*.dorso') ){ 
                     $img = $request->file('familiar.*.dorso'); 
-                    $con1=0;
+                    $con=0;
                     $rutas = [];
                     if(is_array($img)){ 
                     foreach ($img as $contador=>$imagen) {
                         $ext=$imagen->getClientOriginalExtension();
-                        $nombre='imagen_dni_familiar-dorso-'.$con1.time().'.'.$ext;
+                        $nombre='imagen_dni_familiar-dorso-'.$con.time().'.'.$ext;
                         $rutas[]=$imagen->storeAs($ruta,$nombre);
-                        $fam->imagen_dni_frente = collect($rutas)->implode(' - ');
-                        $con1++;
+                        $fam->imagen_dni_dorso = collect($rutas)->implode(' - ');
+                        $con++;
                         }
-                    }else
-                    {
+                    }
+                    else{
                     $ext = $img->getClientOriginalExtension();
                     $nombre='imagen_dni_familiar-dorso-'.$l.'-'.time().'.'.$ext;
                     $img->storeAs($request->dni,$nombre);
                     $fam->imagen_dni_dorso = $ruta.'/'.$nombre;
                     }
                 }
-                
 
-                $fam->edad = $request->familiar[$l]['edadfam'];
-                $fam->ocupacion = $request->familiar[$l]['ocupacionfam'];
-                $fam->actividad_laboral = $request->familiar[$l]['actlab'];
+
 
                 if ( $request->hasFile('familiar.*.comping1') ){    // para saber 
                   $img = $request->file('familiar.*.comping1');
@@ -456,7 +500,6 @@ class DatosPersonaController extends Controller
 
 
 
-                $fam->ingresos = $request->familiar[$l]['ingresosfam'];
 
 
 
@@ -504,8 +547,9 @@ class DatosPersonaController extends Controller
 
         }
         }
+         return redirect('/administracion')->with('message', "Felicitaciones, hemos recibido tu inscripcion");//
+       
 
-        return redirect()->route('home')->with('info', 'Hemos recibido tu inscripcion');
         //meter el alert https://www.youtube.com/watch?v=t2OgwDHKIkQ
 
     }

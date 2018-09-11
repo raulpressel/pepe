@@ -15,7 +15,7 @@
                             <label for="email" class="col-md-4 control-label"> Direccion de E-Mail </label>
 
                             <div class="col-md-6">
-                                <input id="email" type="email" class="form-control" name="email" value="{{ old('email') }}" required>
+                                <input id="email" type="email" class="form-control" name="email" value="{{ old('email') }}" required  autofocus>
 
                                 @if ($errors->has('email'))
                                     <span class="help-block">
@@ -54,7 +54,7 @@
                             <label for="name" class="col-md-4 control-label">Nombre</label>
 
                             <div class="col-md-6">
-                                <input id="name" type="text" class="form-control" name="name" value="{{ old('name') }}" required autofocus>
+                                <input id="name" type="text" class="form-control" name="name" value="{{ old('name') }}" required>
 
                                 @if ($errors->has('name'))
                                     <span class="help-block">
@@ -85,7 +85,7 @@
                             <label for="dni" class="col-md-4 control-label">Dni / Pasaporte</label>
 
                             <div class="col-md-6">
-                                <input id="dni" type="text" class="form-control" name="dni" value="{{ old('dni') }}" required autofocus>
+                                <input id="dni" type="text" class="form-control" name="dni" value="{{ old('dni') }}" required>
 
                                 @if ($errors->has('dni'))
                                     <span class="help-block">

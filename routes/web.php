@@ -32,6 +32,8 @@ Route::get('/home', 'HomeController@index')->name('home');
 Route::resource('datospersona', 'DatosPersonaController');
 Auth::routes();
 
+Route::get('datospersona/carrera/{id}', 'DatosPersonaController@getCarreras');
+
 
 //Rutas para no logeados
 Route::get('contacto', function () {
@@ -50,6 +52,8 @@ Route::post('administracion/inscripciones/seleccion', 'InscripcionesController@s
 
 
 Route::get('administracion/inscripciones/seleccion/usuario/datos_usuario/{user_id}', 'InscripcionesController@datos_usuario')->name('datos_usuario'); //VER LOS DATOS INSCRIPTS
+
+Route::get('administracion/inscripciones/seleccion/usuario/datos_usuario/{user_id}/{dato}', 'InscripcionesController@datos_usuario')->name('modif-dato'); //MODIFICA LOS DATOS
 
 
 Route::get('administracion/inscripciones/seleccion/{user_id}/obsevacion', 'InscripcionesController@observacion' )->name('observacion'); //ve la obs
@@ -72,3 +76,12 @@ Route::get('/dar_baja_inscripcion/{id}','InscripcionesController@dar_baja_inscri
 Route::post('administracion/inscripciones/seleccion/otorgadas', 'InscripcionesController@otorgar')->name('otorgar');//para otorgar becas en el listado
 
 Route::get('pdf','InscripcionesController@generarPdf')->name('generate-pdf');
+
+
+
+
+   // Backup routes
+Route::get('/administracion/backup', 'BackupController@index');
+Route::get('/administracion/backup/create', 'BackupController@create');
+Route::get('/administracion/backup/download/{file_name}', ['as'=>'backDownload', 'uses'=>'BackupController@download']);
+Route::get('/administracion/backup/delete/{file_name}', 'BackupController@delete');
