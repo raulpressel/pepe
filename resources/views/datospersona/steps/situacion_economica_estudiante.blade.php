@@ -10,7 +10,7 @@
         <div class="form-group">
               <label for="validate-letras">Trabaja:</label>
                 <div class="input-group">
-                  <select value="{{ old('trabaja') }}" class="form-control" name="trabaja" id="trabaja" placeholder="Seleccione una opción" >
+                  <select value="{{ old('trabaja') }}" class="form-control" name="trabaja" id="trabaja" placeholder="Seleccione una opción" required>
                     <option value="">Seleccione una opción</option>
                     <option value="Si">Si</option><option value="No">No</option>
                 </select>
@@ -24,7 +24,7 @@
         <div style="display:none;" id="actividad" class="form-group">
               <label for="validate-letras">Actividad laboral:</label>
                 <div class="input-group">
-                  <select value="{{ old('actlab') }}" class="form-control" name="actlab" id="actlab" placeholder="Seleccione una opción" >
+                  <select value="{{ old('actlab') }}" class="form-control" name="actlab" id="actlab" placeholder="Seleccione una opción" required>
                     <option value="">Seleccione una opción</option>
                       <option value="activos">Empleados Activos o Jubilados</option>
                       <option value="monotri">Autónomos y Monotributistas</option>
@@ -42,7 +42,7 @@
             <label style="display:none;" id="afip" for="validate-number">Comrpobante de AFIP/pago monotributo:</label>
             <label style="display:none;" id="jurada" for="validate-number">Declaración jurada especificando actividad laboral e ingresos mensuales:</label>
             <div class="input-group">
-              <input type="file" id="comping1" name="comping1" multiple accept=".jpg, .jpeg, .png, .pdf" class="form-control" >
+              <input type="file" id="comping1" name="comping1" multiple accept=".jpg, .jpeg, .png, .pdf" class="form-control" required>
               
                 <span class="input-group-addon danger"><span class="glyphicon glyphicon-remove"></span></span>
               </div>
@@ -80,7 +80,7 @@
         <div style="display:none;" id="sueldodiv" class="form-group">
           <label for="validate-number">Ingresos Propios (Mensuales) $:</label>
           <div class="input-group" data-validate="number">
-            <input value="{{ old('sueldo') }}" type="number" min="0" class="form-control" name="sueldo" id="sueldo" placeholder="Ingrese solo numeros" >
+            <input value="{{ old('sueldo') }}" type="number" min="0" class="form-control" name="sueldo" id="sueldo" placeholder="Ingrese solo numeros" required>
             <span class="input-group-addon danger"><span class="glyphicon glyphicon-remove"></span></span>
           </div>
         </div>  
@@ -91,7 +91,7 @@
         <div class="form-group">
               <label for="validate-letras">Tiene Becas:</label>
                 <div class="input-group">
-                  <select value="{{ old('beca') }}" class="form-control" name="beca" id="beca" placeholder="Seleccione una opción" >
+                  <select value="{{ old('beca') }}" class="form-control" name="beca" id="beca" placeholder="Seleccione una opción" required>
                     <option value="">Seleccione una opción</option>
                     <option value="1">Si</option><option value="2">No</option>
                 </select>
@@ -102,7 +102,7 @@
           <div class="form-group">
               <label for="validate-letras">PROGRESAR:</label>
                 <div class="input-group">
-                  <select value="{{ old('progresar') }}" class="form-control" name="progresar" id="progresar" placeholder="Seleccione una opción" >
+                  <select value="{{ old('progresar') }}" class="form-control" name="progresar" id="progresar" placeholder="Seleccione una opción" required>
                     <option value="">Seleccione una opción</option>
                     <option value="1">Si</option><option value="2">No</option>
                 </select>
@@ -113,7 +113,7 @@
           <div class="form-group">
               <label for="validate-letras">Asignación Universal por Hijo:</label>
                 <div class="input-group">
-                  <select value="{{ old('asig') }}" class="form-control" name="asig" id="asig" placeholder="Seleccione una opción" >
+                  <select value="{{ old('asig') }}" class="form-control" name="asig" id="asig" placeholder="Seleccione una opción" required>
                     <option value="">Seleccione una opción</option>
                     <option value="1">Si</option><option value="2">No</option>
                 </select>
@@ -251,7 +251,7 @@ else{
           $('#comprobanteIngresos').html('');
 
           
-          $('#comprobanteIngresos').html("<div class='form-group'><label style='display:none;' id='recibo' for='validate-number'>Últimos tres recibos de sueldo:</label><label style='display:none;' id='afip' for='validate-number'>Comrpobante de AFIP/pago monotributo:</label><label style='display:none;' id='jurada' for='validate-number'>Declaración jurada especificando actividad laboral e ingresos mensuales:</label><div> <label >Comprobante:</label> </div><div class='input-group'><input type='file' id='comping1' name='comping1' accept='.jpg, .jpeg, .png' class='form-control' ><span class='input-group-addon danger'><span class='glyphicon glyphicon-remove'></span></span></div></div><div id='list-comping1-1' style='display:none;' class='form-group'><div class='input-group'><img class='thumb' id='list-comping1' />              </div></div><div style='display:none;' id='comprobanteIngresos2' class='form-group'><div> <label >Comprobante:</label> </div><div class='input-group'><input  type='file' id='comping2' name='comping2'  accept='.jpg, .jpeg, .png' class='form-control'><span class='input-group-addon danger'><span class='glyphicon glyphicon-remove'></span></span></div></div><div id='list-comping2-1' style='display:none;' class='form-group'><div class='input-group'><img class='thumb' id='list-comping2' />              </div></div><div style='display:none;' id='comprobanteIngresos3' class='form-group'><div> <label >Comprobante:</label> </div><div  class='input-group'><input type='file' id='comping3' name='comping3'  accept='.jpg, .jpeg, .png' class='form-control' ><span class='input-group-addon danger'><span class='glyphicon glyphicon-remove'></span></span></div></div><div id='list-comping3-1' style='display:none;' class='form-group'><div class='input-group'><img class='thumb' id='list-comping3' />             </div></div>");
+          $('#comprobanteIngresos').html("<div class='form-group'><label style='display:none;' id='recibo' for='validate-number'>Últimos tres recibos de sueldo:</label><label style='display:none;' id='afip' for='validate-number'>Comrpobante de AFIP/pago monotributo:</label><label style='display:none;' id='jurada' for='validate-number'>Declaración jurada especificando actividad laboral e ingresos mensuales:</label><div> <label >Comprobante:</label> </div><div class='input-group'><input type='file' id='comping1' name='comping1' accept='.jpg, .jpeg, .png' class='form-control' required><span class='input-group-addon danger'><span class='glyphicon glyphicon-remove'></span></span></div></div><div id='list-comping1-1' style='display:none;' class='form-group'><div class='input-group'><img class='thumb' id='list-comping1' />              </div></div><div style='display:none;' id='comprobanteIngresos2' class='form-group'><div> <label >Comprobante:</label> </div><div class='input-group'><input  type='file' id='comping2' name='comping2'  accept='.jpg, .jpeg, .png' class='form-control'><span class='input-group-addon danger'><span class='glyphicon glyphicon-remove'></span></span></div></div><div id='list-comping2-1' style='display:none;' class='form-group'><div class='input-group'><img class='thumb' id='list-comping2' />              </div></div><div style='display:none;' id='comprobanteIngresos3' class='form-group'><div> <label >Comprobante:</label> </div><div  class='input-group'><input type='file' id='comping3' name='comping3'  accept='.jpg, .jpeg, .png' class='form-control' ><span class='input-group-addon danger'><span class='glyphicon glyphicon-remove'></span></span></div></div><div id='list-comping3-1' style='display:none;' class='form-group'><div class='input-group'><img class='thumb' id='list-comping3' />             </div></div>");
 
           
           
