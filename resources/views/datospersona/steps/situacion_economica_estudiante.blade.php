@@ -121,7 +121,9 @@ if (selected === "") {
 $('#actividad').hide(); 
 //$('#comprobanteIngresos').hide();
 
-
+$('#comprobanteIngresosact').html(""); 
+$('#comprobanteIngresosaut').html(""); 
+$('#comprobanteIngresosinf').html("");
 
 }
 else{
@@ -140,6 +142,9 @@ $('#actividad').hide();
 
 if(selected === "No") {
 $('#actividad').hide(); 
+$('#comprobanteIngresosact').html(""); 
+$('#comprobanteIngresosaut').html(""); 
+$('#comprobanteIngresosinf').html("");
 
 }
 
