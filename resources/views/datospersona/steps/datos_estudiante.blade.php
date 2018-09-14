@@ -230,23 +230,8 @@
 
         <div class="col-sm-offset-3 col-sm-4">
 
-         <div id="imagendiscaestdiv" style="display:none;" class="form-group" >
+         <div id="imagendiscaestdiv" class="form-group" >
         
-          
-          
-            <label for="validate-number" class="label label-info">Imagen Certificado:</label>
-            <div class="input-group">
-              <input  type="file" id="imagendiscaest" name="imagendiscaest" class="form-control" accept=".jpg, .jpeg, .png, .pdf" required>
-                <span class="input-group-addon danger"><span class="glyphicon glyphicon-remove"></span></span>
-              </div>
-              
-          
-            </div>
-            <div id="list-imagendiscaest-1" style="display:none;" class="form-group">
-            <div  class="input-group">
-                <output id="list-imagendiscaest"></output>
-
-              </div>
             </div>  
           </div>
           
@@ -327,34 +312,15 @@ $('#discaest').on('change',function()
 var selected = $(this).val();
 
 if (selected === "") {
-$('#imagendiscaestdiv').hide(); 
+
 
 }
 else{
 
 if(selected === "Si") {
-$('#imagendiscaestdiv').show(); 
-}
-else if(selected === "No") {
-$('#imagendiscaestdiv').hide(); 
-}
-}
+ $('#imagendiscaestdiv').html(" <label class='label label-info' for='validate-number'>Imagen Certificado</label> <div class='input-group'>   <input  type='file' id='imagendiscaest' name='imagendiscaest' class='form-control' accept='.jpg, .jpeg, .png, .pdf' required><span class='input-group-addon danger'><span class='glyphicon glyphicon-remove'></span></span>              </div></div> <div id='list-imagendiscaest-1' style='display:none;' class='form-group'><div class='input-group'>       <img class='thumb' id='list-imagendiscaest' />   </div></div>");
 
-});
-</script>
-
-<script >
-  $(document).ready(function(){
-          
-         $("#discaest").focus(function(){
-
-          $('#imagendiscaestdiv').html('');
-
-          
-          $('#imagendiscaestdiv').html(" <label class='label label-warning' for='validate-number'>Imagen Certificado</label> <div class='input-group'>   <input  type='file' id='imagendiscaest' name='imagendiscaest' class='form-control' accept='.jpg, .jpeg, .png, .pdf' required><span class='input-group-addon danger'><span class='glyphicon glyphicon-remove'></span></span>              </div></div> <div id='list-imagendiscaest-1' style='display:none;' class='form-group'><div class='input-group'>       <img class='thumb' id='list-imagendiscaest' />   </div></div>");
-          
-
-        $(document).ready(function() {
+$(document).ready(function() {
        
         $('#imagendiscaest').on('change', function() {
             var $form = $(this).closest('form'),
@@ -407,8 +373,20 @@ $('#imagendiscaestdiv').hide();
                
          });
 
-        
-  }) 
+}
+else if(selected === "No") {
+
+$('#imagendiscaestdiv').html('');
+}
+}
+
+});
+</script>
+
+<script >
+  
+          
+    
       
            
        
@@ -423,7 +401,7 @@ $("#provincia").change(function (event) {
             }
             });
         });
-     })
+     
 </script>
 
 <script type="text/javascript">

@@ -42,16 +42,12 @@
 
                 <div class="col-sm-offset-3 col-sm-4">
 
-        <div style="display:none;" id="reciboalqdiv" class="form-group">
+        <div id="reciboalqdiv" class="form-group">
 
             </div>
    
-        <div style="display:none;" id="montoalqdiv" class="form-group">
-          <label class="label label-info" for="validate-number">Monto  $</label>
-          <div class="input-group" data-validate="number">
-            <input value="{{ old('montoalq') }}" type="number" class="form-control" name="montoalq" id="montoalq" placeholder="Ingrese solo numeros" required>
-            <span class="input-group-addon danger"><span class="glyphicon glyphicon-remove"></span></span>
-          </div>
+        <div  id="montoalqdiv" class="form-group">
+          
         </div>             
         
       </div>
@@ -77,8 +73,8 @@ $('#alq').on('change',function()
 var selected = $(this).val();
 
 if (selected === "") {
-$('#montoalqdiv').hide(); 
-$('#reciboalqdiv').hide();
+$('#montoalqdiv').html(""); 
+$('#reciboalqdiv').html("");
 
 }
 else{
@@ -87,39 +83,10 @@ else{
 
 if(selected === "Si") {
 
-$('#reciboalqdiv').show(); 
-$('#montoalqdiv').show(); 
+$('#reciboalqdiv').html("<label class='label label-info' for='validate-number'>Recibo de Alquiler</label><div class='input-group'> <input  type='file' id='reciboalq' name='reciboalq' accept='.jpg, .jpeg, .png' class='form-control' required>  <span class='input-group-addon danger'><span class='glyphicon glyphicon-remove'></span></span> </div> </div><div id='list-reciboalq-1' style='display:none;' class='form-group'><div class='input-group'> <img class='thumb' id='list-reciboalq' />  </div>");
+$('#montoalqdiv').html("<label class='label label-info' for='validate-number'>Monto  $</label>     <div class='input-group' data-validate='number'>            <input type='number' min='0' class='form-control' name='montoalq' id='montoalq' placeholder='Ingrese solo numeros' required>            <span class='input-group-addon danger'><span class='glyphicon glyphicon-remove'></span></span>          </div>");
  
-}
-else if(selected === "No") {
-$('#montoalqdiv').hide(); 
-$('#reciboalqdiv').hide(); 
-
-}
-
-
-}
-
-});
-</script>
-
-<script >
-  $(document).ready(function(){
-          
-         $("#alq").focus(function(){
-
-          $('#reciboalqdiv').html('');
-
-          
-          $('#reciboalqdiv').html("<label class='label label-info' for='validate-number'>Recibo de Alquiler</label><div class='input-group'> <input  type='file' id='reciboalq' name='reciboalq' accept='.jpg, .jpeg, .png' class='form-control' required>  <span class='input-group-addon danger'><span class='glyphicon glyphicon-remove'></span></span> </div> </div><div id='list-reciboalq-1' style='display:none;' class='form-group'><div class='input-group'> <img class='thumb' id='list-reciboalq' />  </div>");
-
-          
-
-            
-            
-          
-
-          $(document).ready(function() {
+ $(document).ready(function() {
 
         $('#montoalq, #reciboalq').on('change', function() {
         
@@ -158,8 +125,17 @@ $('#reciboalqdiv').hide();
                
         }); //cierra div document ready
 
+}
+else if(selected === "No") {
+$('#montoalqdiv').html(""); 
+$('#reciboalqdiv').html(""); 
+
+}
 
 
-   }) 
-       })
+}
+
+});
 </script>
+
+

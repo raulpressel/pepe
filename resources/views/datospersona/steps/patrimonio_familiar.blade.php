@@ -33,24 +33,12 @@
           
           <div class="col-sm-offset-3 col-sm-4">
 
-          <div style="display:none;" id="reciboalqfamdiv" class="form-group">
-            <label for="validate-number">Recibo de Alquiler:</label>
+          <div  id="reciboalqfamdiv" class="form-group">
             
-            <div class="input-group">
-              <input  type="file" id="reciboalqfam" name="reciboalqfam" accept=".jpg, .jpeg, .png" class="form-control" required>
-                <span class="input-group-addon danger"><span class="glyphicon glyphicon-remove"></span></span>
-              </div>
-              <div class="input-group">
-                <output id="list-reciboalqfam"></output>
-              </div>
             </div>
 
-		        <div style="display:none;" id="precioalqdiv" class="form-group">
-			          <label for="validate-number">Monto  $:</label>
-			          <div class="input-group" data-validate="number">
-			            <input value="{{ old('precioalquiler') }}" type="number" min="0" class="form-control" name="precioalquiler" id="precioalquiler" placeholder="Ingrese solo numeros" required>
-			            <span class="input-group-addon danger"><span class="glyphicon glyphicon-remove"></span></span>
-		          	</div>
+		        <div  id="precioalqdiv" class="form-group">
+			          
 		        </div>             
 		        
 				
@@ -88,22 +76,19 @@
                 <span class="input-group-addon danger"><span class="glyphicon glyphicon-remove"></span></span>
             </div>
           </div>
-
-			     <div style="display:none;" id="hasdiv" class="form-group">
-			        <label for="validate-optional">Superficie en Hectareas:</label>
-			        <div class="input-group">
-			        <input value="{{ old('has') }}" type="number" min="0" class="form-control" name="has" id="has" placeholder="Ingrese solo numeros">
-			        <span class="input-group-addon info"><span class="glyphicon glyphicon-asterisk"></span></span>
-			        </div>
+        </div>
+          <div class="col-sm-offset-3 col-sm-4">
+			     <div  id="hasdiv" class="form-group">
+			        
 			     </div>
 
-			     <div style="display:none;" id="actividaddiv" class="form-group">
-	              <label for="validate-optional">Actividad:</label>
-	                <div class="input-group" data-validate="letras">
-	                <input value="{{ old('actividad') }}" type="text" class="form-control" name="actividad" id="actividad" placeholder="Ingrese solo letras">
-	                <span class="input-group-addon info"><span class="glyphicon glyphicon-asterisk"></span></span>
-	            	</div>
+			     <div  id="actividaddiv" class="form-group">
+	              
 	          	</div>
+
+            </div>
+
+            <div class="col-sm-offset-2 col-sm-6">
 
 			        <div class="form-group">
               <label for="validate-letras">Posee Terrenos:</label>
@@ -116,15 +101,16 @@
             </div>
           </div>
 
-			       <div style="display:none;" id="terrenocantdiv" class="form-group">
-			        <label for="validate-optional">Cuántos:</label>
-			        <div class="input-group">
-			        <input value="{{ old('terrenocant')}}" type="number" min="0" class="form-control" name="terrenocant" id="terrenocant" placeholder="Ingrese solo numeros">
-			        <span class="input-group-addon info"><span class="glyphicon glyphicon-asterisk"></span></span>
-			        </div>
+        </div>
+
+        <div class="col-sm-offset-3 col-sm-4">
+
+			       <div  id="terrenocantdiv" class="form-group">
+			        
 			       </div>
+          </div>
 
-
+          <div class="col-sm-offset-2 col-sm-6">
 			          <div class="form-group">
               <label for="validate-letras">Posee automotores:</label>
                 <div class="input-group">
@@ -135,17 +121,15 @@
                 <span class="input-group-addon danger"><span class="glyphicon glyphicon-remove"></span></span>
             </div>
           </div>
-
-
-			        <div style="display:none;" id="autocantdiv" class="form-group">
-				        <label for="validate-optional">Cuántos:</label>
-				        <div class="input-group">
-				        <input value="{{ old('autocant') }}" type="number" class="form-control" min="0" name="autocant" id="autocant" placeholder="Ingrese solo numeros">
-				        <span class="input-group-addon info"><span class="glyphicon glyphicon-asterisk"></span></span>
-				        </div>
+        </div>
+          <div class="col-sm-offset-3 col-sm-4">
+			        <div id="autocantdiv" class="form-group">
+				        
 			        </div>
 
+            </div>
 
+            <div class="col-sm-offset-2 col-sm-6">
 			          <div class="form-group">
               <label for="validate-letras">Posee motocicletas:</label>
                 <div class="input-group">
@@ -157,15 +141,17 @@
             </div>
           </div>
 
+        </div>
 
-			        <div style="display:none;" id="motocantdiv" class="form-group">
-				        <label for="validate-optional">Cuántos:</label>
-				        <div class="input-group">
-				        <input value="{{ old('motocant') }}" type="number" min="0" class="form-control" name="motocant" id="motocant" placeholder="Ingrese solo numeros">
-				        <span class="input-group-addon info"><span class="glyphicon glyphicon-asterisk"></span></span>
-				        </div>
-			        </div>
+        <div class="col-sm-offset-3 col-sm-4">
+			        <div  id="motocantdiv" class="form-group">
+				        
+          </div>
+
+        </div>
 	      
+        <div class="col-sm-offset-2 col-sm-6">
+
 	      <ul class="list-inline pull-right">
             	<li><button type="button" class="btn btn-default prev-step">Anterior</button></li>
             	<li><button type="button" class="btn btn-primary next-step">Siguiente</button></li>
@@ -188,129 +174,16 @@ $('#alquila').on('change',function()
 var selected = $(this).val();
 
 if (selected === "") {
-$('#precioalqdiv').hide(); 
-$('#reciboalqfamdiv').hide(); 
+$('#precioalqdiv').html("");
+$('#reciboalqfamdiv').html(""); 
 
 }
 else{
 
 if(selected === "Si") {
-$('#precioalqdiv').show();
-$('#reciboalqfamdiv').show();   
-
-}
-else if(selected === "No") {
-$('#precioalqdiv').hide();
-$('#reciboalqfamdiv').hide();  
-
-}
-}
-
-});
-</script>
-
-<script type="text/javascript">
-
-$('#campo').on('change',function()
-{
-var selected = $(this).val();
-
-if (selected === "") {
-$('#hasdiv').hide(); 
-$('#actividaddiv').hide(); 
-
-}
-else{
-
-if(selected === "Si") {
-$('#hasdiv').show(); 
-$('#actividaddiv').show(); 
-}
-else if(selected === "No") {
-$('#hasdiv').hide(); 
-$('#actividaddiv').hide(); 
-}
-}
-
-});
-</script>
-
-<script type="text/javascript">
-
-$('#terreno').on('change',function()
-{
-var selected = $(this).val();
-
-if (selected === "") {
-$('#terrenocantdiv').hide(); 
-}
-else{
-
-if(selected === "Si") {
-$('#terrenocantdiv').show(); 
-
-}
-else if(selected === "No") {
-$('#terrenocantdiv').hide(); 
-}
-}
-
-});
-</script>
-
-<script type="text/javascript">
-
-$('#auto').on('change',function()
-{
-var selected = $(this).val();
-
-if (selected === "") {
-$('#autocantdiv').hide(); 
-}
-else{
-
-if(selected === "Si") {
-$('#autocantdiv').show(); 
-}
-else if(selected === "No") {
-$('#autocantdiv').hide(); 
-}
-}
-
-});
-</script>
-
-<script type="text/javascript">
-
-$('#moto').on('change',function()
-{
-var selected = $(this).val();
-
-if (selected === "") {
-$('#motocantdiv').hide(); 
-}
-else{
-
-if(selected === "Si") {
-$('#motocantdiv').show(); 
-}
-else if(selected === "No") {
-$('#motocantdiv').hide(); 
-}
-}
-
-});
-</script>
-
-<script >
-  $(document).ready(function(){
-          
-         $("#alquila").focus(function(){
-
-          $('#reciboalqfamdiv').html('');
-
-          
-          $('#reciboalqfamdiv').html("<label for='validate-number'>Recibo de Alquiler:</label><div class='input-group'> <input  type='file' id='reciboalqfam' name='reciboalqfam' accept='.jpg, .jpeg, .png' class='form-control' required> <span class='input-group-addon danger'><span class='glyphicon glyphicon-remove'></span></span></div></div> <div id='list-reciboalqfam-1' style='display:none;' class='form-group'><div class='input-group'>       <img class='thumb' id='list-reciboalqfam' /> </div>  </div>");
+$('#precioalqdiv').html("<label class='label label-info' for='validate-number'>Monto  $:</label>                <div class='input-group' data-validate='number'>                  <input  type='number' min='0' class='form-control' name='precioalquiler' id='precioalquiler' placeholder='Ingrese solo numeros' required>                  <span class='input-group-addon danger'><span class='glyphicon glyphicon-remove'></span></span>                </div>");
+ 
+          $('#reciboalqfamdiv').html("<label class='label label-info' for='validate-number'>Recibo de Alquiler:</label><div class='input-group'> <input  type='file' id='reciboalqfam' name='reciboalqfam' accept='.jpg, .jpeg, .png' class='form-control' required> <span class='input-group-addon danger'><span class='glyphicon glyphicon-remove'></span></span></div></div> <div id='list-reciboalqfam-1' style='display:none;' class='form-group'><div class='input-group'>       <img class='thumb' id='list-reciboalqfam' /> </div>  </div>");
 
 
           $(document).ready(function() {
@@ -350,10 +223,266 @@ $('#motocantdiv').hide();
 
         $('#reciboalqfam, #precioalquiler').trigger('change');
                
-        }); //cierra div document ready
+        });
+}
+else if(selected === "No") {
+$('#precioalqdiv').html("");
+$('#reciboalqfamdiv').html("");  
 
+}
+}
 
-
-   }) 
-       })
+});
 </script>
+
+<script type="text/javascript">
+
+$('#campo').on('change',function()
+{
+var selected = $(this).val();
+
+if (selected === "") {
+$('#hasdiv').html(""); 
+$('#actividaddiv').html(""); 
+
+}
+else{
+
+if(selected === "Si") {
+$('#hasdiv').html("<label class='label label-info' for='validate-optional'>Superficie en Hectareas:</label><div class='input-group'>              <input  type='number' min='0' class='form-control' name='has' id='has' placeholder='Ingrese solo numeros'>              <span class='input-group-addon danger'><span class='glyphicon glyphicon-remove'></span></span>        </div>"); 
+$('#actividaddiv').html("<label class='label label-info' for='validate-text'>Actividad:</label>                  <div class='input-group' >                  <input  type='text' class='form-control' name='actividad' id='actividad' placeholder='Ingrese solo letras'>                  <span class='input-group-addon danger'><span class='glyphicon glyphicon-remove'></span></span>                </div>"); 
+
+
+          $(document).ready(function() {
+
+        $('#actividad, #has').on('change', function() {
+        
+        var $form = $(this).closest('form'),
+        $group = $(this).closest('.input-group'),
+        $addon = $group.find('.input-group-addon'),
+        $icon = $addon.find('span'),
+        state = false;
+
+        if (!$group.data('validate')) {
+        state = $(this).val() ? true : false;
+        }else if ($group.data('validate') == "number") {
+        state = !isNaN(parseFloat($(this).val())) && isFinite($(this).val());}
+        
+        
+
+
+        if (state) {
+        $addon.removeClass('danger');
+        $addon.addClass('success');
+        $icon.attr('class', 'glyphicon glyphicon-ok');
+        }else{
+        $addon.removeClass('success');
+        $addon.addClass('danger');
+        $icon.attr('class', 'glyphicon glyphicon-remove');
+        }
+
+        if ($form.find('.input-group-addon.danger').length == 0) {
+        $form.find('[type="submit"]').prop('disabled', false);
+        }else{
+        $form.find('[type="submit"]').prop('disabled', true);
+        }
+        });  //cierra div change key up
+
+        $('#reciboalqfam, #precioalquiler').trigger('change');
+               
+        });
+}
+else if(selected === "No") {
+$('#hasdiv').html(""); 
+$('#actividaddiv').html(""); 
+}
+}
+
+});
+</script>
+
+<script type="text/javascript">
+
+$('#terreno').on('change',function()
+{
+var selected = $(this).val();
+
+if (selected === "") {
+$('#terrenocantdiv').html("");  
+}
+else{
+
+if(selected === "Si") {
+$('#terrenocantdiv').html("<label for='validate-number'>Cuántos:</label>              <div class='input-group'><input  type='number' min='0' class='form-control' name='terrenocant' id='terrenocant' placeholder='Ingrese solo numeros'>          <span class='input-group-addon danger'><span class='glyphicon glyphicon-remove'></span></span>       </div>"); 
+ $(document).ready(function() {
+
+        $('#terrenocant').on('change', function() {
+        
+        var $form = $(this).closest('form'),
+        $group = $(this).closest('.input-group'),
+        $addon = $group.find('.input-group-addon'),
+        $icon = $addon.find('span'),
+        state = false;
+
+        if (!$group.data('validate')) {
+        state = $(this).val() ? true : false;
+        }else if ($group.data('validate') == "number") {
+        state = !isNaN(parseFloat($(this).val())) && isFinite($(this).val());}
+        
+        
+
+
+        if (state) {
+        $addon.removeClass('danger');
+        $addon.addClass('success');
+        $icon.attr('class', 'glyphicon glyphicon-ok');
+        }else{
+        $addon.removeClass('success');
+        $addon.addClass('danger');
+        $icon.attr('class', 'glyphicon glyphicon-remove');
+        }
+
+        if ($form.find('.input-group-addon.danger').length == 0) {
+        $form.find('[type="submit"]').prop('disabled', false);
+        }else{
+        $form.find('[type="submit"]').prop('disabled', true);
+        }
+        });  //cierra div change key up
+
+        $('#terrenocant').trigger('change');
+               
+        });
+
+}
+else if(selected === "No") {
+$('#terrenocantdiv').html(""); 
+}
+}
+
+});
+</script>
+
+<script type="text/javascript">
+
+$('#auto').on('change',function()
+{
+var selected = $(this).val();
+
+if (selected === "") {
+$('#autocantdiv').html(""); 
+}
+else{
+
+if(selected === "Si") {
+$('#autocantdiv').html("<label for='validate-number'>Cuántos:</label>                <div class='input-group'>                <input  type='number' min='0' class='form-control' name='autocant' id='autocant' placeholder='Ingrese solo numeros'>               <span class='input-group-addon danger'><span class='glyphicon glyphicon-remove'></span></span>                </div>              </div>"); 
+
+$(document).ready(function() {
+
+        $('#autocant').on('change', function() {
+        
+        var $form = $(this).closest('form'),
+        $group = $(this).closest('.input-group'),
+        $addon = $group.find('.input-group-addon'),
+        $icon = $addon.find('span'),
+        state = false;
+
+        if (!$group.data('validate')) {
+        state = $(this).val() ? true : false;
+        }else if ($group.data('validate') == "number") {
+        state = !isNaN(parseFloat($(this).val())) && isFinite($(this).val());}
+        
+        
+
+
+        if (state) {
+        $addon.removeClass('danger');
+        $addon.addClass('success');
+        $icon.attr('class', 'glyphicon glyphicon-ok');
+        }else{
+        $addon.removeClass('success');
+        $addon.addClass('danger');
+        $icon.attr('class', 'glyphicon glyphicon-remove');
+        }
+
+        if ($form.find('.input-group-addon.danger').length == 0) {
+        $form.find('[type="submit"]').prop('disabled', false);
+        }else{
+        $form.find('[type="submit"]').prop('disabled', true);
+        }
+        });  //cierra div change key up
+
+        $('#autocant').trigger('change');
+               
+        });
+
+}
+else if(selected === "No") {
+$('#autocantdiv').html(""); 
+}
+}
+
+});
+</script>
+
+<script type="text/javascript">
+
+$('#moto').on('change',function()
+{
+var selected = $(this).val();
+
+if (selected === "") {
+$('#motocantdiv').html(""); 
+}
+else{
+
+if(selected === "Si") {
+$('#motocantdiv').html("<label for='validate-number'>Cuántos:</label>                <div class='input-group'>                <input  type='number' class='form-control' min='0' name='motocant' id='motocant' placeholder='Ingrese solo numeros'>                <span class='input-group-addon danger'><span class='glyphicon glyphicon-remove'></span></span>                </div>"); 
+
+$(document).ready(function() {
+
+        $('#motocant').on('change', function() {
+        
+        var $form = $(this).closest('form'),
+        $group = $(this).closest('.input-group'),
+        $addon = $group.find('.input-group-addon'),
+        $icon = $addon.find('span'),
+        state = false;
+
+        if (!$group.data('validate')) {
+        state = $(this).val() ? true : false;
+        }else if ($group.data('validate') == "number") {
+        state = !isNaN(parseFloat($(this).val())) && isFinite($(this).val());}
+        
+        
+
+
+        if (state) {
+        $addon.removeClass('danger');
+        $addon.addClass('success');
+        $icon.attr('class', 'glyphicon glyphicon-ok');
+        }else{
+        $addon.removeClass('success');
+        $addon.addClass('danger');
+        $icon.attr('class', 'glyphicon glyphicon-remove');
+        }
+
+        if ($form.find('.input-group-addon.danger').length == 0) {
+        $form.find('[type="submit"]').prop('disabled', false);
+        }else{
+        $form.find('[type="submit"]').prop('disabled', true);
+        }
+        });  //cierra div change key up
+
+        $('#motocant').trigger('change');
+               
+        });
+
+}
+else if(selected === "No") {
+$('#motocantdiv').html("");  
+}
+}
+
+});
+</script>
+

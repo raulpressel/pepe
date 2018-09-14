@@ -92,21 +92,12 @@
             </div>
           </div>
 
-          <div style="display:none;" id="divcantmat"class="form-group">
-              <label for="validate-letras">Cantidad de materias aprobadas:</label>
-                <div class="input-group">
-                  <select value="{{ old('cantmaterias') }}" class="form-control" name="cantmaterias" id="cantmaterias" placeholder="Seleccione una opción" required>
-                    <option value="" selected>Seleccione una opción</option></select>
-                <span class="input-group-addon danger"><span class="glyphicon glyphicon-remove"></span></span>
-            </div>
+          <div id="divcantmat"class="form-group">
+            
           </div>
 
-          <div style="display:none;" id="divpromedio" class="form-group">
-          <label for="validate-number">Promedio general:</label>
-          <div class="input-group" data-validate="number">
-            <input value="{{ old('promedio') }}" type="number" min="0" max="10" class="form-control" name="promedio" id="promedio" placeholder="Ingrese solo numeros" required>
-            <span class="input-group-addon danger"><span class="glyphicon glyphicon-remove"></span></span>
-          </div>
+          <div  id="divpromedio" class="form-group">
+          
         </div>             
           
 
@@ -165,7 +156,7 @@
           $('#div2').html("<label style='display:none;' class='label label-info' id='ing2' for='validate-number'>Ingrese Título Secundario con promedio general</label><label class='label label-info' style='display:none;' id='res2' for='validate-number'>Ingrese Analítico de materias aprobadas:</label><div class='input-group'><input  type='file' id='certificado' name='certificado[]' class='form-control' accept='.jpg, .jpeg, .png, .pdf' required><span class='input-group-addon danger'><span class='glyphicon glyphicon-remove'></span></span></div></div><div id='list-certificado-1' style='display:none;' class='form-group'><div class='input-group'><img class='thumb' id='list-certificado' /></div>");
   
   $(document).ready(function() {
-        $('#certificado, #constancia').on('change', function() {
+        $('#certificado, #constancia, #promedio').on('change', function() {
         var $form = $(this).closest('form'),
         $group = $(this).closest('.input-group'),
         $addon = $group.find('.input-group-addon'),
@@ -208,7 +199,7 @@
         }
         });
 
-        $('#certificado, #constancia').trigger('change');
+        $('#certificado, #constancia, #promedio').trigger('change');
 
                
         });
@@ -227,7 +218,9 @@ var selected = $(this).val();
 
 if (selected === "") {
   $('#div').hide(); 
-  $('#div2').hide();   
+  $('#div2').hide(); 
+  $('#divcantmat').html("");
+  $('#divpromedio').html("");  
 }
 else{
 $('#div').show(); 
@@ -237,13 +230,64 @@ if(selected === "Ingresante") {
 
 $('#ing').show(); 
 $('#ing2').show(); 
-$('#divpromedio').show(); 
+
+$('#divpromedio').html("<label for='validate-number'>Promedio general:</label>  <div class='input-group' data-validate='number'> <input  type='number' min='0' max='10' class='form-control' name='promedio' id='promedio' placeholder='Ingrese solo numeros' required> <span class='input-group-addon danger'><span class='glyphicon glyphicon-remove'></span></span> </div>"); 
+
+ $(document).ready(function() {
+        $('#promedio').on('change', function() {
+        var $form = $(this).closest('form'),
+        $group = $(this).closest('.input-group'),
+        $addon = $group.find('.input-group-addon'),
+        $icon = $addon.find('span'),
+        state = false;
+
+        console.log($(this).val());
+
+        if (!$group.data('validate')) {
+        state = $(this).val() ? true : false;
+        }else if ($group.data('validate') == "email") {
+        state = /^([a-zA-Z0-9_\.\-])+\@(([a-zA-Z0-9\-])+\.)+([a-zA-Z0-9]{2,4})+$/.test($(this).val())
+        }else if($group.data('validate') == 'phone') {
+        state = /^[(]{0,1}[0-9]{3}[)]{0,1}[-\s\.]{0,1}[0-9]{3}[-\s\.]{0,1}[0-9]{4}$/.test($(this).val())
+        }else if ($group.data('validate') == "length") {
+        state = $(this).val().length >= $group.data('length') ? true : false;
+        }else if ($group.data('validate') == "number") {
+        state = !isNaN(parseFloat($(this).val())) && isFinite($(this).val());}
+        else if ($group.data('validate') == "date") {
+        state = /^([0-9]{4})-(1[0-2]|0[1-9])-(3[0-1]|0[1-9]|[1-2][0-9])$/.test($(this).val())
+        }
+        else if ($group.data('validate') == "letras") {
+        state = /^([a-zñA-ZÑ]+(\s*[a-zñA-ZÑ]*)*[a-zñA-ZÑ])+$/.test($(this).val())
+                }
+        
+        if (state) {
+        $addon.removeClass('danger');
+        $addon.addClass('success');
+        $icon.attr('class', 'glyphicon glyphicon-ok');
+        }else{
+        $addon.removeClass('success');
+        $addon.addClass('danger');
+        $icon.attr('class', 'glyphicon glyphicon-remove');
+        }
+
+        if ($form.find('.input-group-addon.danger').length == 0) {
+        $form.find('[type="submit"]').prop('disabled', false);
+        }else{
+        $form.find('[type="submit"]').prop('disabled', true);
+        }
+        });
+
+        $('#promedio').trigger('change');
+
+               
+        });
+
 
 }
 else {
 $('#ing').hide(); 
 $('#ing2').hide(); 
-$('#divpromedio').hide(); 
+$('#divpromedio').html(""); 
 
 }
 
@@ -251,13 +295,63 @@ if((selected === "Renovante") || (selected === "Nuevo") || (selected === "Condic
 
 $('#res').show(); 
 $('#res2').show();
-$('#divcantmat').show();
+$('#divcantmat').html("<label for='validate-letras'>Cantidad de materias aprobadas:</label>  <div class='input-group'> <select  class='form-control' name='cantmaterias' id='cantmaterias' placeholder='Seleccione una opción' required> <option value='' selected>Seleccione una opción</option></select>  <span class='input-group-addon danger'><span class='glyphicon glyphicon-remove'></span></span>   </div>");
+
+$(document).ready(function() {
+        $('#cantmaterias').on('change', function() {
+        var $form = $(this).closest('form'),
+        $group = $(this).closest('.input-group'),
+        $addon = $group.find('.input-group-addon'),
+        $icon = $addon.find('span'),
+        state = false;
+
+        console.log($(this).val());
+
+        if (!$group.data('validate')) {
+        state = $(this).val() ? true : false;
+        }else if ($group.data('validate') == "email") {
+        state = /^([a-zA-Z0-9_\.\-])+\@(([a-zA-Z0-9\-])+\.)+([a-zA-Z0-9]{2,4})+$/.test($(this).val())
+        }else if($group.data('validate') == 'phone') {
+        state = /^[(]{0,1}[0-9]{3}[)]{0,1}[-\s\.]{0,1}[0-9]{3}[-\s\.]{0,1}[0-9]{4}$/.test($(this).val())
+        }else if ($group.data('validate') == "length") {
+        state = $(this).val().length >= $group.data('length') ? true : false;
+        }else if ($group.data('validate') == "number") {
+        state = !isNaN(parseFloat($(this).val())) && isFinite($(this).val());}
+        else if ($group.data('validate') == "date") {
+        state = /^([0-9]{4})-(1[0-2]|0[1-9])-(3[0-1]|0[1-9]|[1-2][0-9])$/.test($(this).val())
+        }
+        else if ($group.data('validate') == "letras") {
+        state = /^([a-zñA-ZÑ]+(\s*[a-zñA-ZÑ]*)*[a-zñA-ZÑ])+$/.test($(this).val())
+                }
+        
+        if (state) {
+        $addon.removeClass('danger');
+        $addon.addClass('success');
+        $icon.attr('class', 'glyphicon glyphicon-ok');
+        }else{
+        $addon.removeClass('success');
+        $addon.addClass('danger');
+        $icon.attr('class', 'glyphicon glyphicon-remove');
+        }
+
+        if ($form.find('.input-group-addon.danger').length == 0) {
+        $form.find('[type="submit"]').prop('disabled', false);
+        }else{
+        $form.find('[type="submit"]').prop('disabled', true);
+        }
+        });
+
+        $('#cantmaterias').trigger('change');
+
+               
+        });
+  
  
 }
 else {
 $('#res').hide(); 
 $('#res2').hide();
-$('#divcantmat').hide();
+$('#divcantmat').html("");
 }
 
 }
