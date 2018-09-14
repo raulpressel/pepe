@@ -15,23 +15,19 @@
 <p>Detalle de las enfermedades que afectan al estudiante y a los miembros del grupo familiar (presentación de los certificados médicos correspondientes, diagnóstico y medicación)</p>
 
 
-
+  <div class="col-sm-offset-2 col-sm-6" >
 
         <div id="proposalAccordion">
           
           <div id="tab_logiccon"> 
+   
 
-        
+          </div>        
     
-      
-      <div id='addrp0'>
-      </div> 
-      <div id='addrscriptvalidatecon0'>
-      </div> 
-      <div id='addrscriptfrentecon0'>
-      </div> 
-      <div id='addrscriptselectcon0'>
-      </div> 
+
+      </div>  <!--  cierra tablogic -->
+
+    </div> <!--  cierra div according -->
 
 <div class="col-sm-offset-2 col-sm-6">
       
@@ -47,9 +43,7 @@
     </ul>  
     
 </div>
-    </div>  <!--  cierra tablogic -->
-
-    </div> <!--  cierra div according -->
+    
 
 
 
@@ -58,8 +52,12 @@
    <script>
          $(document).ready(function(){
           var i=0;
+
+          console.log(i);
          $("#add_con").click(function(){
-          $('#addrp'+i).html("<div class='col-sm-offset-2 col-sm-6'><div class='panel panel-default'><div class='panel-heading'><h4 class='panel-title'><a data-toggle='collapse' data-parent='#proposalAcoordion' href='#collapseConsid'>Consideraciones "+(i+1)+"</a></h4></div><div id='collapseConsid' class='panel-collapse collapse in'><div class='panel-body'><div class='form-group' ><label for='validate-letras'>Parentesco:</label><div class='input-group'><select class='form-control' name='consideraciones["+i+"][parentesco]' id='consideraciones"+i+"parentesco' placeholder='Seleccione una opción' required><option value=''>Seleccione una opción</option><option value='Abuelo'>Abuelo/a</option><option value='Concubino'>Concubino/a</option><option value='Conyuge'>Cónyuge</option><option value='Cuniado'>Cuñado/a</option><option value='Hermano'>Hermano/a</option><option value='Hijo'>Hijo/a</option><option value='madre'>Madre</option><option value='padre'>Padre</option><option value='Nieto'>Nieto/a</option><option value='novio'>Novio/a</option><option value='Nuera'>Nuera</option><option value='Otro'>Otro</option><option value='Primo'>Primo/a</option><option value='Sobrino'>Sobrino/a</option><option value='Tio'>Tio/a</option><option value='Yerno'>Yerno</option></select><span class='input-group-addon danger'><span class='glyphicon glyphicon-remove'></span></span></div></div><div class='form-group'><label for='validate-letras'>Enfermedad:</label><div class='input-group' data-validate='letras'><input  type='text' class='form-control' name='consideraciones["+i+"][enfermedad]' id='consideraciones"+i+"enfermedad' placeholder='Ingrese solo letras' required><span class='input-group-addon danger'><span class='glyphicon glyphicon-remove'></span></span></div></div><div class='form-group'><label for='validate-letras'>Produce Incapacidad y/o Enfermedad cronica grave:</label><div class='input-group'><select  class='form-control' name='consideraciones["+i+"][incapacidad]' id='incapacidad"+i+"' placeholder='Seleccione una opción' required><option value=''>Seleccione una opción</option><option value='Si'>Si</option><option value='No'>No</option></select><span class='input-group-addon danger'><span class='glyphicon glyphicon-remove'></span></span></div></div> </div>                  <div class='col-sm-offset-3 col-sm-4'><div style='display:none;' id='imagencertificadodiv"+i+"' class='form-group'><label for='validate-number'>Imagen Certificado:</label><div class='input-group'><input  type='file' id='imagencertificado"+i+"' name='consideraciones["+i+"][imagen]' accept='.jpg, .jpeg, .png' class='form-control' required><span class='input-group-addon danger'><span class='glyphicon glyphicon-remove'></span></span></div></div><div id='list-imagencertificado"+i+"-1' style='display:none;' class='form-group'><div class='input-group'><img class='thumb' id='list-imagencertificado"+i+"' /></div></div></div></div></div></div>");
+          $('#tab_logiccon').append('<div id="addrp'+(i)+'"></div><div id="addrscriptvalidatecon'+(i)+'"></div><div id="addrscriptfrentecon'+(i)+'"></div><div id="addrscriptselectcon'+(i)+'"></div>  ');
+
+          $('#addrp'+i).html("<div class='panel panel-default'><div class='panel-heading'><h4 class='panel-title'><a data-toggle='collapse' data-parent='#proposalAcoordion' href='#collapseConsid'>Consideraciones "+(i+1)+"</a></h4></div><div id='collapseConsid' class='panel-collapse collapse in'><div class='panel-body'><div class='form-group' ><label for='validate-letras'>Parentesco:</label><div class='input-group'><select class='form-control' name='consideraciones["+i+"][parentesco]' id='consideraciones"+i+"parentesco' placeholder='Seleccione una opción' required><option value=''>Seleccione una opción</option><option value='Abuelo'>Abuelo/a</option><option value='Concubino'>Concubino/a</option><option value='Conyuge'>Cónyuge</option><option value='Cuniado'>Cuñado/a</option><option value='Hermano'>Hermano/a</option><option value='Hijo'>Hijo/a</option><option value='madre'>Madre</option><option value='padre'>Padre</option><option value='Nieto'>Nieto/a</option><option value='novio'>Novio/a</option><option value='Nuera'>Nuera</option><option value='Otro'>Otro</option><option value='Primo'>Primo/a</option><option value='Sobrino'>Sobrino/a</option><option value='Tio'>Tio/a</option><option value='Yerno'>Yerno</option></select><span class='input-group-addon danger'><span class='glyphicon glyphicon-remove'></span></span></div></div><div class='form-group'><label for='validate-text'>Enfermedad:</label><div class='input-group' ><input  type='text' class='form-control' name='consideraciones["+i+"][enfermedad]' id='consideraciones"+i+"enfermedad' placeholder='Ingrese solo letras' required><span class='input-group-addon danger'><span class='glyphicon glyphicon-remove'></span></span></div></div><div class='form-group'><label for='validate-letras'>Produce Incapacidad y/o Enfermedad cronica grave:</label><div class='input-group'><select  class='form-control' name='consideraciones["+i+"][incapacidad]' id='incapacidad"+i+"' placeholder='Seleccione una opción' required><option value=''>Seleccione una opción</option><option value='Si'>Si</option><option value='No'>No</option></select><span class='input-group-addon danger'><span class='glyphicon glyphicon-remove'></span></span></div></div>         <div class='col-sm-offset-2 col-sm-7'>          <div style='display:none;' id='imagencertificadodiv"+i+"' class='form-group'><label class='label label-info' for='validate-number'>Imagen Certificado:</label><div class='input-group'><input  type='file' id='imagencertificado"+i+"' name='consideraciones["+i+"][imagen]' accept='.jpg, .jpeg, .png' class='form-control' required><span class='input-group-addon danger'><span class='glyphicon glyphicon-remove'></span></span></div></div><div id='list-imagencertificado"+i+"-1' style='display:none;' class='form-group'><div class='input-group'><img class='thumb' id='list-imagencertificado"+i+"' /></div></div></div></div>");
                                                                                            
           
       
@@ -78,7 +76,7 @@
 
            });           
 
-          $('#tab_logiccon').append('<div id="addrp'+(i+1)+'"></div><div id="addrscriptvalidatecon'+(i+1)+'"></div><div id="addrscriptfrentecon'+(i+1)+'"></div><div id="addrscriptselectcon'+(i+1)+'"></div>  '); 
+           
             
          
 
@@ -100,25 +98,3 @@
 
 </div>
 
-<script type="text/javascript">
-
-$('#incapacidad0').on('change',function()
-{
-var selected = $(this).val();
-
-if (selected === "") {
-$('#imagencertificadodiv0').hide(); 
-
-}
-else{
-
-if(selected === "Si") {
-$('#imagencertificadodiv0').show(); 
-}
-else if(selected === "No") {
-$('#imagencertificadodiv0').hide(); 
-}
-}
-
-});
-</script>
