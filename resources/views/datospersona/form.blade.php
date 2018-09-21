@@ -1,11 +1,14 @@
+
 <!--Agregado para el modal -->
+<link rel="stylesheet" href="../css/modal.css"> 
+
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
 <!-- Latest compiled and minified CSS -->
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
 <!-- Latest compiled and minified JavaScript -->
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
 
-
+          <a id="top"></a>
 <div class="container">
   <div class="row">
     <section>
@@ -100,10 +103,7 @@
               </ul>
               @endif
             </div>
-
-              <form method="POST" action="{{ route('datospersona.store') }}" files="true" enctype="multipart/form-data">
-              {{ csrf_field() }}
-              <div class="modal fade" id="condiciones_rgpd" data-backdrop="static" tabindex="-1" role="dialog" aria-labelledby="lbcondiciones_rgpd" aria-hidden="true">
+            <div class="modal fade" id="condiciones_rgpd" data-backdrop="static" tabindex="-1" role="dialog" aria-labelledby="lbcondiciones_rgpd" aria-hidden="true">
   <div class="modal-dialog">
     <div class="modal-content">
       <div class="modal-body">
@@ -113,6 +113,7 @@
               <h3 class="panel-title" ><font color="blue">Requisitos para el formulario</font></h3>
             </div>
             <div>
+            
               <strong>Debera tener los siguientes formulario:</strong><br>
             * Fotocopia del dni (frente y dorso)<br>
             * Certificacion negativa del Anses<br>
@@ -129,13 +130,13 @@
               - Constancia de trabajo en el caso de tener actividad laboral
               - En el caso de poseer algun tipo de incapacidad, su certificado<br><br>
               <strong>Aclaraciones: </strong><br>
-              * La carga del siguiente formulario es en caracter de declaracion jurada. Ley?<br>
+              * La carga del siguiente formulario es en caracter de declaracion jurada.<br>
               * Tiempo estimado de carga: 12minutos<br> 
               * Se podran subir archivos de imagenes(.jpeg, .png) y documentos de formato portable (.pdf)<br>
               * Si visualiza:<br>
               <div class="glyphicon" style="height:10px; width:10px;">
-                <span class="input-group-addon success">
-                <span class="glyphicon glyphicon-ok">  
+                <span class="input-group-addon danger">
+                <span class="glyphicon glyphicon-remove">
                 </span></span>
               </div>
               &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Indica que falta cargar o poosee algun error en la carga<BR><BR>
@@ -155,7 +156,9 @@
               <br><br>
               <div class="panel-footer" align="center">
                 <font color="red"><strong>Tener en cuenta que no podra completar la postulacion si no completa todos los campos</strong></font> <br>
-                <!--<input type="Button"  class="btn-xs btn-success" id="oki">-->
+                <a href="#top">
+                  <input type="Button"  class="btn btn-success" value="Tengo todo" id="oki">
+                </a>
               </div>
             </div>
           </div>
@@ -164,6 +167,9 @@
     </div>
   </div>
 </div>
+              <form method="POST" action="{{ route('datospersona.store') }}" files="true" enctype="multipart/form-data">
+              {{ csrf_field() }}
+  
 
 
               <input type="hidden" id="becaid" name="becaid" value={{$aux->id}}>

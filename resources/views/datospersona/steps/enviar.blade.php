@@ -19,7 +19,7 @@
 
         
         <ul class="list-inline pull-right">
-            <li><button type="button" class="btn btn-default prev-step">Anterior</button></li>
+            <li><a href="#top" class="btn btn-default prev-step">Anterior</a></li>
             <li><button type="submit" class="btn btn-primary btn-info-full next-step">Enviar</button></li>
         </ul>
     </div>

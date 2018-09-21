@@ -1,4 +1,3 @@
-
   <div class="tab-pane" role="tabpanel" id="step2">
     <div class="container">
       <div class="row">
@@ -9,6 +8,11 @@
 
           <div class="form-group">
             <label for="validate-letras">Condición:</label>
+              <a href="#openModalCondicion" title="Ayuda">
+                <span >
+                  <i class="glyphicon glyphicon-info-sign"></i>
+                </span>
+              </a>
               <div class="input-group">
                 <select class="form-control" name="cond" id="cond" placeholder="Seleccione una opción" required>
                   <option value="">Seleccione una opción</option>
@@ -16,10 +20,23 @@
                     <option value= {{$condiciones->nombre}}><p>{{ $condiciones->nombre }}</p></option>
                   @endforeach
                 </select> 
-                <span class="input-group-addon danger"><span class="glyphicon glyphicon-remove"></span></span>               
+                <span class="input-group-addon danger"><span class="glyphicon glyphicon-remove"></span></span>
+                
               </div>
+
           </div>
         </div>
+
+        <div id="openModalCondicion" class="modalDialog">
+                  <div>
+                    <a href="#close" title="Close" class="close">X</a>
+                    <h2>Condición</h2>
+                    <p>Ingresante:</p>
+                    <p>Nuevo:</p>
+                    <p>Renovante:</p>
+                    <p>Condicional:</p>
+                  </div>
+                </div>
 
         <div class="col-sm-offset-3 col-sm-4">
 
@@ -103,8 +120,10 @@
 
 
           <ul class="list-inline pull-right">
-              <li><button type="button" class="btn btn-default prev-step">Anterior</button></li>
-              <li><button type="button" class="btn btn-primary next-step">Siguiente</button></li>
+              <li><a href="#top" class="btn btn-default prev-step">
+                Anterior
+              </a></li>
+              <li><a href="#top" class="btn btn-primary next-step"> Siguiente</a></li>
           </ul>
         
 
@@ -163,7 +182,7 @@
         $icon = $addon.find('span'),
         state = false;
 
-        console.log($(this).val());
+        
 
         if (!$group.data('validate')) {
         state = $(this).val() ? true : false;
@@ -241,7 +260,7 @@ $('#divpromedio').html("<label for='validate-number'>Promedio general:</label>  
         $icon = $addon.find('span'),
         state = false;
 
-        console.log($(this).val());
+        
 
         if (!$group.data('validate')) {
         state = $(this).val() ? true : false;
@@ -305,7 +324,7 @@ $(document).ready(function() {
         $icon = $addon.find('span'),
         state = false;
 
-        console.log($(this).val());
+        
 
         if (!$group.data('validate')) {
         state = $(this).val() ? true : false;

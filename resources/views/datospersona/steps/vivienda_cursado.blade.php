@@ -56,8 +56,8 @@
 
 
     <ul class="list-inline pull-right">
-        <li><button type="button" class="btn btn-default prev-step">Anterior</button></li>
-        <li><button type="button" class="btn btn-primary next-step">Siguiente</button></li>
+        <li><a href="#top" class="btn btn-default prev-step">Anterior</a></li>
+        <li><a href="#top" class="btn btn-primary next-step">Siguiente</a></li>
     </ul>
   </div>
   

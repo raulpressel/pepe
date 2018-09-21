@@ -1,11 +1,11 @@
-          
+
 <div class="tab-content">
   <div class="tab-pane active" role="tabpanel" id="step1">
     <div class="container">
       <div class="row">
         <h3>1.1 - Datos Personales del Estudiante</h3>
       </div>
-
+      <a id="irArriba1"></a>
         <div class="col-sm-offset-2 col-sm-6">
           
               <input type="hidden" name="user_id" id="user_id" value={{ $user->id }}>
@@ -47,7 +47,7 @@
         <div class="form-group">
           <label for="validate-number">  Solo frente</label>
           <div class="input-group">
-            <input type="file" id="imagen_frente" name="imagen_frente" class="form-control" accept=".jpg, .jpeg, .png" required>
+            <input  type="file" id="imagen_frente" name="imagen_frente" class="form-control" accept=".jpg, .jpeg, .png" required>
             <span class="input-group-addon danger"><span class="glyphicon glyphicon-remove"></span></span>
           </div>
         </div>
@@ -224,9 +224,6 @@
           </div>
         
         </div>
-        
-        
-        
 
         <div class="col-sm-offset-3 col-sm-4">
 
@@ -248,7 +245,6 @@
         $icon = $addon.find('span'),
         state = false;
 
-        console.log($(this).val());
 
         if (!$group.data('validate')) {
         state = $(this).val() ? true : false;
@@ -295,7 +291,9 @@
 <div class="col-sm-offset-2 col-sm-6">
 
 <ul class="list-unstyled pull-right">
-          <li><button type="button" class="btn btn-primary next-step">Siguiente</button></li>
+          <li><a href="#top" class="btn btn-primary next-step">
+                Siguiente</a>    
+         </li>
         </ul>
       
       </div>
@@ -329,7 +327,7 @@ $(document).ready(function() {
             $icon = $addon.find('span'),
             state = false;
 
-        console.log($(this).val());
+        
 
         if (!$group.data('validate')) {
         state = $(this).val() ? true : false;
@@ -384,10 +382,6 @@ $('#imagendiscaestdiv').html('');
 </script>
 
 <script >
-  
-          
-    
-      
            
        
 $("#provincia").change(function (event) {

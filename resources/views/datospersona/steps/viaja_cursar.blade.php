@@ -6,8 +6,6 @@
 
         <div class="col-sm-offset-2 col-sm-6">
 
-     
-
           <div class="form-group">
               <label for="validate-letras">Utiliza colectivos Urbanos:</label>
                 <div class="input-group">
@@ -72,8 +70,8 @@
 
 
     <ul class="list-inline pull-right">
-        <li><button type="button" class="btn btn-default prev-step">Anterior</button></li>
-        <li><button type="button" class="btn btn-primary next-step">Siguiente</button></li>
+        <li><a href="#top" class="btn btn-default prev-step">Anterior</a></li>
+        <li><a href="#top" class="btn btn-primary next-step">Siguiente</a></li>
     </ul>
 </div>
 
@@ -95,8 +93,6 @@ $('#cantviajadiv').html("");
 
 }
 else{
-
-
 
 if(selected === "Si") {
 
@@ -227,13 +223,6 @@ $('#cantkmdiv').html("");
          $("#mediadist").focus(function(){
 
           $('#recibopasajdiv').html('');
-
-          
-          
-
-
-          //cierra div document ready
-
 
    }) 
        })
